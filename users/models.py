@@ -8,13 +8,20 @@ class User(AbstractUser):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
+    def get_full_name(self):
+        if self.first_name and self.last_name:
+            return self.first_name + ' ' + self.last_name
+        else:
+            return self.username
+    get_full_name.short_description = _('Name')
+
     def save(self, *args, **kwargs):
         super(User, self).save(*args, **kwargs)
         if self.is_active:
             p, created = Profile.objects.get_or_create(user_id = self.uuid)
 
     class Meta:
-        ordering = ('username',)
+        ordering = ('first_name', 'last_name', 'username',)
 
 class Profile(models.Model):
 
