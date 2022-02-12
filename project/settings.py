@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     #third party
     'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     #local
     'users.apps.UsersConfig',
 ]
@@ -126,6 +128,10 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
 
 # Internationalization
@@ -148,6 +154,8 @@ STATIC_URL = get_secret('STATIC_URL') #'/static/'
 
 MEDIA_ROOT = get_secret('MEDIA_ROOT') # no trailing slash
 MEDIA_URL = get_secret('MEDIA_URL') #'/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
