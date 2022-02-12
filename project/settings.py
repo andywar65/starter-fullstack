@@ -169,7 +169,16 @@ STATIC_URL = get_secret('STATIC_URL') #'/static/'
 MEDIA_ROOT = get_secret('MEDIA_ROOT') # no trailing slash
 MEDIA_URL = get_secret('MEDIA_URL') #'/media/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Mail configuration
+#DEV: 'django.core.mail.backends.console.EmailBackend'
+#PROD: 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = get_secret('EMAIL_BACKEND')
+
+EMAIL_HOST = get_secret('EMAIL_HOST')
+EMAIL_PORT = get_secret('EMAIL_PORT')
+EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
