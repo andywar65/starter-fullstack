@@ -8,13 +8,6 @@ class User(AbstractUser):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
-    def get_full_name(self):
-        if self.first_name and self.last_name:
-            return self.first_name + ' ' + self.last_name
-        else:
-            return self.username
-    get_full_name.short_description = _('Name')
-
     def save(self, *args, **kwargs):
         super(User, self).save(*args, **kwargs)
         if self.is_active:
@@ -33,11 +26,14 @@ class Profile(models.Model):
     immutable = models.BooleanField(default = False,)
 
     def get_full_name(self):
-        return self.user.get_full_name()
+        if self.user.first_name and self.user.last_name:
+            return self.user.first_name + ' ' + self.user.last_name
+        else:
+            return self.user.username
     get_full_name.short_description = _('Name')
 
     def __str__(self):
-        return self.user.get_full_name()
+        return self.get_full_name()
 
     class Meta:
         verbose_name = _('Profile')
