@@ -56,13 +56,13 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     #third party
     'rest_framework',
-    'rest_framework.authtoken',
+    #'rest_framework.authtoken',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
+    #'dj_rest_auth',
+    #'dj_rest_auth.registration',
     #local
     'users.apps.UsersConfig',
 ]
@@ -142,10 +142,10 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-    ],
+    #'DEFAULT_AUTHENTICATION_CLASSES': [
+        #'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+    #],
 }
 
 # Internationalization
