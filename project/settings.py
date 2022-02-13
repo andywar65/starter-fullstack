@@ -16,7 +16,8 @@ import json
 from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = Path(__file__).resolve().parent
+BASE_DIR = Path(PROJECT_DIR).resolve().parent
 APPLICATION_DIR = Path(BASE_DIR).resolve(strict=True).parent
 
 with open(APPLICATION_DIR / 'secrets.json') as f:
@@ -63,6 +64,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     #'dj_rest_auth',
     #'dj_rest_auth.registration',
+    'fontawesomefree',
     #local
     'users.apps.UsersConfig',
 ]
@@ -82,7 +84,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [PROJECT_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
