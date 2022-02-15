@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra-head %}{% endblock extra-head %}
+
+{% block basebody %}
+  {% include 'navbar.html' %}
+  <div style="margin-top: 55px;"></div>
+  {% block content %}
+    <h1>Hello, world!</h1>
+  {% endblock content %}
+  {% include 'footer.html' %}
+{% endblock basebody %}

@@ -1,0 +1,24 @@
+<footer class="footer mt-auto">
+  <div class="container">
+    <span>{{ website.name }} - {% now 'Y' %}&nbsp;
+      {% if website.facebook %}
+        <a href="{{ website.facebook }}"><i id="social-fb" class="fa fa-facebook-square fa-2x"></i></a>
+      {% endif %}
+      {% if website.insta %}
+        <a href="{{ website.insta }}"><i id="social-insta" class="fa fa-instagram-square fa-2x"></i></a>
+      {% endif %}
+      {% if website.twitter %}
+        <a href="{{ website.twitter }}"><i id="social-twit" class="fa fa-twitter-square fa-2x"></i></a>
+      {% endif %}
+      {% if website.linked %}
+        <a href="{{ website.linked }}"><i id="social-in" class="fa fa-linkedin-square fa-2x"></i></a>
+      {% endif %}
+      {% if website.github %}
+        <a href="{{ website.github }}"><i id="social-git" class="fa fa-github-square fa-2x"></i></a>
+      {% endif %}
+      {% if website.external %}
+        <a href="{{ website.external }}"><i id="social-ext" class="fa fa-external-link-square fa-2x"></i></a>
+      {% endif %}
+    </span>
+  </div>
+</footer>
