@@ -32,6 +32,12 @@ class Profile(models.Model):
             return self.user.username
     get_full_name.short_description = _('Name')
 
+    def get_short_name(self):
+        if self.user.first_name:
+            return self.user.first_name
+        else:
+            return self.user.username
+
     def __str__(self):
         return self.get_full_name()
 
