@@ -1,61 +1,30 @@
 {% load static %}
 {% load i18n %}
 <header>
+  <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="/">
-      <img src="#" width="30" height="30" class="d-inline-block align-top" alt="Logo RP">
-      {{ request.site.name }}
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {% translate 'Projects' %}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">{% translate 'Projects' %}</a>
-            <a class="dropdown-item" href="#">{% translate 'Buildings' %}</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {% translate 'Documents' %}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">{% translate 'Documents' %}</a>
-            <a class="dropdown-item" href="#">{% translate 'Articles' %}</a>
-            {% if perms.accounting.view_invoice %}
-              <a class="dropdown-item" href="#">{% translate 'Invoices' %}</a>
-            {% endif %}
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {% translate 'Contacts' %}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">{% translate 'Messages' %}</a>
-            <a class="dropdown-item" href="#">{% translate 'Register' %}</a>
-            <a class="dropdown-item" href="#">{% translate 'Privacy' %}</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          {% if user.is_authenticated %}
-            <a class="nav-link" href="#" title="Gestisci l'account">
-              {% translate 'Hello' %} {{ user.get_short_name }}</a>
-          {% else %}
-          <a class="nav-link" href="#?next={{ request.get_full_path }}">{% translate 'Login' %}</a>
-          {% endif %}
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0" action="#" method="get">
-        <input class="form-control mr-sm-2" name="q" type="search" placeholder="{% translate 'Write something' %}" aria-label="Search">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">{% translate 'Search' %}</button>
-      </form>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Fixed navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
     </div>
   </nav>
 </header>
