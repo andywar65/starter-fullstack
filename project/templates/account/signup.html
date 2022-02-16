@@ -1,0 +1,27 @@
+{% extends "base_menu.html" %}
+
+{% load i18n %}
+{% load bootstrap5 %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div class="card mx-auto" style="width: 28rem; margin-top: 60px">
+  <div class="card-header">
+    <h3>{% trans "Sign Up" %}</h3>
+  </div>
+  <div class="card-body">
+    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
