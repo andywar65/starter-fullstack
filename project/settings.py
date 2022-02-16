@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'fontawesomefree',
     'bootstrap5',
     #local
     'users.apps.UsersConfig',

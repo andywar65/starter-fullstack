@@ -14,5 +14,6 @@
   {% endfor %}
   {% endif %}
   <a title="{{provider.name}}" class="btn btn-primary {{provider.id}}"
-     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{provider.name}}</a>
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+     <i class="fa fa-google"></i> - {{provider.name}}</a>
 {% endfor %}
