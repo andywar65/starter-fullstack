@@ -40,5 +40,11 @@ class ProfileChangeView(LoginRequiredMixin, FormView):
         profile.save()
         return super(ProfileChangeView, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if 'submitted' in self.request.GET:
+            context['submitted'] = self.request.GET['submitted']
+        return context
+
     def get_success_url(self):
         return (reverse('account_profile') + '?submitted=True')

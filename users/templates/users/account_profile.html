@@ -11,6 +11,11 @@
     <h3>{% trans "Change Profile" %}</h3>
   </div>
   <div class="card-body">
+    {% if submitted %}
+    <p class="alert alert-success" role="alert">
+      {% trans 'Profile has been successfully modified!' %}
+    </p>
+    {% endif %}
     <form method="POST" action="" enctype="multipart/form-data" class="password_change">
         {% csrf_token %}
         {% bootstrap_form form %}
