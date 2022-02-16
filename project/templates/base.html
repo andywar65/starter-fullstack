@@ -28,7 +28,7 @@
       }
     </style>
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <title>{% block title %}{{ request.site.name }}{% endblock title %}</title>
+    <title>{% block head_title %}{{ request.site.name }}{% endblock head_title %}</title>
     {% block extra-head %}{% endblock extra-head %}
   </head>
   <body class="d-flex flex-column h-100">

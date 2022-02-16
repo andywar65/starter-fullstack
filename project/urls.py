@@ -20,12 +20,13 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 from .views import *
+from users.views import *
 
 urlpatterns = [
     path('', HomePageTemplateView.as_view(), name='home'),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-    path('accounts/profile/', HomePageTemplateView.as_view(), name='account_profile'),
+    path('accounts/profile/', ProfileChangeView.as_view(), name='account_profile'),
     path('accounts/', include('allauth.urls')),
     path('api/v1/users/', include('users.api.v1.urls')),
 ]
