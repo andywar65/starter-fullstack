@@ -57,14 +57,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     #third party
     'rest_framework',
-    #'rest_framework.authtoken',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    #'dj_rest_auth',
-    #'dj_rest_auth.registration',
     'fontawesomefree',
+    'bootstrap5',
     #local
     'users.apps.UsersConfig',
 ]
