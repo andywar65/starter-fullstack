@@ -14,3 +14,7 @@ class ProfileChangeForm(forms.Form):
             'placeholder': 'you@example.com'}))
     bio = forms.CharField( label = _('Short bio'), required = False,
         widget = forms.Textarea(attrs={'placeholder': _("Talk about yourself")}) )
+
+class ProfileDeleteForm(forms.Form):
+    delete = forms.BooleanField( label=_("Check to delete the profile"),
+        required = True,)

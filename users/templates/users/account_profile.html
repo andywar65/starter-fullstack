@@ -21,6 +21,11 @@
         {% bootstrap_form form %}
         <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
         <a class="btn btn-secondary" href="{% url 'account_change_password' %}">{% trans "Change Password?" %}</a>
+        <hr>
+        {% if user.is_staff %}
+          <a class="btn btn-warning" href="/admin/">{% trans "Go to Admin" %}</a>
+        {% endif %}
+        <a class="btn btn-danger" href="{% url 'account_delete' %}">{% trans "Delete Account" %}</a>
     </form>
   </div>
 </div>

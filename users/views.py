@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from .models import User
-from .forms import ProfileChangeForm
+from .forms import *
 
 class ProfileChangeView(LoginRequiredMixin, FormView):
     form_class = ProfileChangeForm
@@ -14,7 +14,7 @@ class ProfileChangeView(LoginRequiredMixin, FormView):
     def setup(self, request, *args, **kwargs):
         self.user = request.user
         if self.user.profile.immutable:
-            raise Http404(_("Password cannot be changed by immutable user"))
+            raise Http404(_("Profile cannot be changed by immutable user"))
         super(ProfileChangeView, self).setup(request, *args, **kwargs)
 
     def get_initial(self):
@@ -48,3 +48,26 @@ class ProfileChangeView(LoginRequiredMixin, FormView):
 
     def get_success_url(self):
         return (reverse('account_profile') + '?submitted=True')
+
+class ProfileDeleteView(LoginRequiredMixin, FormView):
+    form_class = ProfileDeleteForm
+    template_name = 'users/account_delete.html'
+
+    def setup(self, request, *args, **kwargs):
+        self.user = request.user
+        if self.user.profile.immutable:
+            raise Http404(_("Profile cannot be changed by immutable user"))
+        super(ProfileDeleteView, self).setup(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        self.user.is_active = False
+        self.user.first_name = ''
+        self.user.last_name = ''
+        self.user.email = ''
+        self.user.save()
+        profile = self.user.profile
+        profile.delete()
+        return super(ProfileDeleteView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('home')
