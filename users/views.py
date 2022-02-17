@@ -4,6 +4,8 @@ from django.http import Http404
 from django.urls import reverse
 from django.utils.translation import gettext as _
 
+from allauth.account.models import EmailAddress
+
 from .models import User
 from .forms import *
 
@@ -67,6 +69,7 @@ class ProfileDeleteView(LoginRequiredMixin, FormView):
         self.user.save()
         profile = self.user.profile
         profile.delete()
+        EmailAddress.objects.filter(user_id=self.user.uuid).delete()
         return super(ProfileDeleteView, self).form_valid(form)
 
     def get_success_url(self):
