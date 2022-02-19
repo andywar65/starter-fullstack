@@ -17,6 +17,9 @@
         {% bootstrap_form form %}
         <button class="btn btn-danger" type="submit">{% trans "Confirm" %}</button>
     </form>
+    <p><small>*{% blocktrans with request.site.name as site_name %}Account will
+      be set to 'inactive'. All user info except username will be deleted.
+      Contact {{ site_name}} to recover your original account{% endblocktrans %}.</small></p>
   </div>
 </div>
 

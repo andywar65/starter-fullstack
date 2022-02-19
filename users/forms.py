@@ -16,5 +16,5 @@ class ProfileChangeForm(forms.Form):
         widget = forms.Textarea(attrs={'placeholder': _("Talk about yourself")}) )
 
 class ProfileDeleteForm(forms.Form):
-    delete = forms.BooleanField( label=_("Check to delete the profile"),
+    delete = forms.BooleanField( label=_("Check and Confirm to delete* the profile"),
         required = True,)
