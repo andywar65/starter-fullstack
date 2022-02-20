@@ -29,7 +29,7 @@ urlpatterns = [
     path('accounts/profile/', ProfileChangeView.as_view(), name='account_profile'),
     path('accounts/profile/delete/', ProfileDeleteView.as_view(), name='account_delete'),
     path('accounts/', include('allauth.urls')),
-    path('api/v1/users/', include('users.api.v1.urls')),
+    path('api/v1/users/', include('api.v1.urls')),
 ]
 
 if settings.DEBUG:
