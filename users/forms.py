@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import gettext as _
 
-from users.widgets import SmallClearableFileInput
+from project.widgets import SmallClearableFileInput
 
 class ProfileChangeForm(forms.Form):
     avatar = forms.FileField( required = False, widget = SmallClearableFileInput())
