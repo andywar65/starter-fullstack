@@ -11,7 +11,7 @@ from .forms import *
 
 class ProfileChangeView(LoginRequiredMixin, FormView):
     form_class = ProfileChangeForm
-    template_name = 'users/account_profile.html'
+    template_name = 'account/account_profile.html'
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
@@ -53,7 +53,7 @@ class ProfileChangeView(LoginRequiredMixin, FormView):
 
 class ProfileDeleteView(LoginRequiredMixin, FormView):
     form_class = ProfileDeleteForm
-    template_name = 'users/account_delete.html'
+    template_name = 'account/account_delete.html'
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
