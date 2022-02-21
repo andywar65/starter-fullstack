@@ -26,7 +26,6 @@ class Profile(models.Model):
     avatar = models.ImageField(blank = True, null=True,
         upload_to = 'uploads/users/')
     bio = models.TextField(_("Short bio"), null=True, blank=True)
-    immutable = models.BooleanField(default = False,)
 
     def get_full_name(self):
         if self.user.first_name and self.user.last_name:
