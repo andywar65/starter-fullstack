@@ -1,0 +1,15 @@
+{% extends 'base_menu.html' %}
+{% load i18n %}
+
+{% block title %}{% translate 'Page not found' %}{% endblock title %}
+{% block content %}
+<div class="card mx-auto" style="width: 28rem; margin-top: 60px">
+  <div class="card-header bg-warning">
+    <h3>{% trans "Page not found" %}</h3>
+  </div>
+  <div class="card-body">
+    <p>{% trans "Maybe this page no more exists, or the address is wrong" %}.</p>
+    <p>{% trans "Double check it and contact us to let us know" %}.</p>
+  </div>
+</div>
+{% endblock content %}

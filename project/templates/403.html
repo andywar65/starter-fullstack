@@ -1,0 +1,16 @@
+{% extends 'base_menu.html' %}
+{% load i18n %}
+
+{% block title %}{% translate 'Access denied' %}{% endblock title %}
+{% block content %}
+<div class="card mx-auto" style="width: 28rem; margin-top: 60px">
+  <div class="card-header bg-danger">
+    <h3>{% trans "Access denied" %}</h3>
+  </div>
+  <div class="card-body">
+    <p>{% translate "You don't have permissions to access this page" %}.</p>
+    <p>{% translate "Maybe you still have to" %} <a href="{% url 'account_login' %}">{% translate "login" %}</a>,
+    {% translate "otherwise contact us to request permissions" %}.</p>
+  </div>
+</div>
+{% endblock content %}
