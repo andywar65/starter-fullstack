@@ -12,7 +12,9 @@ from .forms import *
 class ImmutableProfilePassTestMix(UserPassesTestMixin):
     """Controls if user has immutable profile. If true, test is not passed."""
     def test_func(self):
-        return not self.request.user.profile.immutable
+        if self.request.user.is_superuser:
+            return True
+        return not self.request.user.has_perm('can_not_change_profile')
 
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     FormView):
