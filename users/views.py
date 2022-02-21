@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from allauth.account.models import EmailAddress
+from allauth.account.views import PasswordChangeView, PasswordSetView
 
 from .models import User
 from .forms import *
@@ -15,6 +16,12 @@ class ImmutableProfilePassTestMix(UserPassesTestMixin):
         if self.request.user.is_superuser:
             return True
         return not self.request.user.has_perm('users.can_not_change_profile')
+
+class TestedPasswordChangeView(ImmutableProfilePassTestMix, PasswordChangeView):
+    pass
+
+class TestedPasswordSetView(ImmutableProfilePassTestMix, PasswordSetView, ):
+    pass
 
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     FormView):
