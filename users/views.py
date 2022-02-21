@@ -14,7 +14,7 @@ class ImmutableProfilePassTestMix(UserPassesTestMixin):
     def test_func(self):
         if self.request.user.is_superuser:
             return True
-        return not self.request.user.has_perm('can_not_change_profile')
+        return not self.request.user.has_perm('users.can_not_change_profile')
 
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     FormView):
