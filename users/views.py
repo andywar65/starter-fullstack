@@ -1,5 +1,5 @@
 from django.views.generic.edit import FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import Http404
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -9,14 +9,18 @@ from allauth.account.models import EmailAddress
 from .models import User
 from .forms import *
 
-class ProfileChangeView(LoginRequiredMixin, FormView):
+class ImmutableProfilePassTestMix(UserPassesTestMixin):
+    """Controls if user has immutable profile. If true, test is not passed."""
+    def test_func(self):
+        return not self.request.user.profile.immutable
+
+class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
+    FormView):
     form_class = ProfileChangeForm
     template_name = 'account/account_profile.html'
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
-        if self.user.profile.immutable:
-            raise Http404(_("Profile cannot be changed by immutable user"))
         super(ProfileChangeView, self).setup(request, *args, **kwargs)
 
     def get_initial(self):
@@ -51,14 +55,13 @@ class ProfileChangeView(LoginRequiredMixin, FormView):
     def get_success_url(self):
         return (reverse('account_profile') + '?submitted=True')
 
-class ProfileDeleteView(LoginRequiredMixin, FormView):
+class ProfileDeleteView(LoginRequiredMixin, ImmutableProfilePassTestMix,
+    FormView):
     form_class = ProfileDeleteForm
     template_name = 'account/account_delete.html'
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
-        if self.user.profile.immutable:
-            raise Http404(_("Profile cannot be changed by immutable user"))
         super(ProfileDeleteView, self).setup(request, *args, **kwargs)
 
     def form_valid(self, form):
