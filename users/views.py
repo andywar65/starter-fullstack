@@ -5,7 +5,8 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from allauth.account.models import EmailAddress
-from allauth.account.views import PasswordChangeView, PasswordSetView
+from allauth.account.views import (PasswordChangeView, PasswordSetView,
+    PasswordResetView, EmailView)
 
 from .models import User
 from .forms import *
@@ -21,6 +22,12 @@ class TestedPasswordChangeView(ImmutableProfilePassTestMix, PasswordChangeView):
     pass
 
 class TestedPasswordSetView(ImmutableProfilePassTestMix, PasswordSetView, ):
+    pass
+
+class TestedPasswordResetView(ImmutableProfilePassTestMix, PasswordResetView, ):
+    pass
+
+class TestedEmailView(ImmutableProfilePassTestMix, EmailView, ):
     pass
 
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,

@@ -30,6 +30,8 @@ urlpatterns = [
     path('accounts/profile/delete/', ProfileDeleteView.as_view(), name='account_delete'),
     path('accounts/password/change/', TestedPasswordChangeView.as_view(), name='password_change'),
     path('accounts/password/set/', TestedPasswordSetView.as_view(), name='password_set'),
+    path('accounts/password/reset/', TestedPasswordResetView.as_view(), name='password_reset'),
+    path('accounts/email/', TestedEmailView.as_view(), name='account_email'),
     path('accounts/', include('allauth.urls')),
     path('api/v1/users/', include('users.api.v1.urls')),
 ]
