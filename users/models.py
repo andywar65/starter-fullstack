@@ -15,6 +15,9 @@ class User(AbstractUser):
 
     class Meta:
         ordering = ('first_name', 'last_name', 'username',)
+        permissions = [
+            ("can_not_change_profile", _("Immutable Profile")),
+        ]
 
 class Profile(models.Model):
 
