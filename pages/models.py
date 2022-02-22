@@ -16,15 +16,21 @@ class ImageData(models.Model):
     original = models.ImageField(_('Original image'),
         upload_to = 'uploads/images/original/')
     thumbnail = models.ImageField(_('Thumbnail'),
-        null=True, blank=True)
+        null=True, blank=True, upload_to = 'uploads/images/thumbnail/')
     date = models.DateField(_('Date'), default = now, )
 
     def save(self, *args, **kwargs):
         #make sure image is loaded in db
         super(ImageData, self).save(*args, **kwargs)
-        filename = self.original.name.replace('uploads/images/original/', '')
+        filename_ext = self.original.name.replace('uploads/images/original/', '')
+        filename = filename_ext.split('.')[0]
+        extension = filename_ext.split('.')[1]
         if not self.title:
             self.title = filename
+        if not self.thumbnail == 'uploads/images/thumbnail/' + filename + '.' + extension:
+            self.original.open()
+            image = Image.open(self.original)
+            image.thumbnail((60,60), Image.ANTIALIAS)
         #save all the changes we've made
         super(ImageData, self).save(*args, **kwargs)
 
