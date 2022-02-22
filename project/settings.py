@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     #local
     'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
 ]
 
 MIDDLEWARE = [
