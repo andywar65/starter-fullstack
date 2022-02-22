@@ -2,9 +2,9 @@ from django.db import models
 from django.utils.translation import gettext as _
 from django.utils.timezone import now
 
-class Image(models.Model):
+class ImageData(models.Model):
 
-    title = models.CharField(_('Title'), max_length = 50, )
+    title = models.CharField(_('Title'), max_length = 50, null=True, )
     description = models.CharField(_('Description'),
         help_text = _('Will be used in captions'),
         max_length = 100, null=True, blank=True)
