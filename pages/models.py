@@ -8,6 +8,7 @@ from django.utils.translation import gettext as _
 from django.utils.timezone import now
 
 def modify_image_format(filename_ext):
+    #TODO add all possible extensions
     conversion = {'JPG': 'JPEG',}
     ext = filename_ext.split('.')[-1].upper()
     return conversion[ext]
@@ -26,6 +27,7 @@ class ImageData(models.Model):
     date = models.DateField(_('Date'), default = now, )
 
     def save(self, *args, **kwargs):
+        #TODO save updated fields only?
         #make sure original image is loaded in db
         super(ImageData, self).save(*args, **kwargs)
         #get file data
