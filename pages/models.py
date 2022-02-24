@@ -66,6 +66,9 @@ class ImageData(models.Model):
         if changed:
             super(ImageData, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = _('Image')
         verbose_name_plural = _('Images')

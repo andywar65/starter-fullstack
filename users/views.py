@@ -46,17 +46,18 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
             'email': self.user.email,
-            'avatar': self.user.profile.avatar,
+            'avatar': None,
             'bio': self.user.profile.bio,
             })
         return initial
 
     def form_valid(self, form):
-        profile = self.user.profile
         self.user.first_name = form.cleaned_data['first_name']
         self.user.last_name = form.cleaned_data['last_name']
         self.user.email = form.cleaned_data['email']
-        profile.avatar = form.cleaned_data['avatar']
+
+        profile = self.user.profile
+        #profile.avatar = form.cleaned_data['avatar']
         profile.bio = form.cleaned_data['bio']
         self.user.save()
         profile.save()
