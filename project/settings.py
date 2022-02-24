@@ -12,8 +12,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import json
+from environs import Env
 
 from django.core.exceptions import ImproperlyConfigured
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 PROJECT_DIR = Path(__file__).resolve().parent
@@ -36,10 +40,10 @@ def get_secret(setting, secrets=secrets):
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = get_secret('DEBUG')
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS')
 
