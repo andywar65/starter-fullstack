@@ -57,6 +57,8 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
         self.user.email = form.cleaned_data['email']
 
         profile = self.user.profile
+        #TODO if form avatar, save the image and assign it to profile
+        #add delete avatar boolean
         #profile.avatar = form.cleaned_data['avatar']
         profile.bio = form.cleaned_data['bio']
         self.user.save()
