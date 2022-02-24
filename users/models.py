@@ -4,6 +4,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext as _
 
+from pages.models import ImageData
+
 class User(AbstractUser):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -23,8 +25,9 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE,
         primary_key=True, editable=False )
-    avatar = models.ImageField(blank = True, null=True,
-        upload_to = 'uploads/users/')
+    avatar = models.ForeignKey(ImageData, on_delete = models.SET_NULL,
+        related_name='profile_avatar', verbose_name = _('Avatar'), null=True,
+        blank=True)
     bio = models.TextField(_("Short bio"), null=True, blank=True)
 
     def get_full_name(self):
