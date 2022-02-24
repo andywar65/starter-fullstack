@@ -39,9 +39,11 @@ class ImageData(models.Model):
         height = self.original.height
         image = Image.open(self.original.path)
         filename_ext = self.original.name.replace('uploads/images/original/', '')
+        changed = False
         #check title
         if not self.title:
             self.title = filename_ext.split('.')[0]
+            changed = True
         #check versions
         if not self.thumbnail == self.original.name.replace('original', 'thumbnail'):
             if width>height:
@@ -54,8 +56,11 @@ class ImageData(models.Model):
             blob = BytesIO()
             thumb.save(blob, format=modify_image_format(filename_ext))
             self.thumbnail.save(filename_ext, File(blob), save=False)
-        #save all the changes we've made
-        super(ImageData, self).save(*args, **kwargs)
+            changed = True
+        image.close()
+        #save all the changes we eventually made
+        if changed:
+            super(ImageData, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('Image')
