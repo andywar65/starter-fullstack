@@ -35,31 +35,33 @@ class ImageData(models.Model):
         #make sure original image is loaded in db
         super(ImageData, self).save(*args, **kwargs)
         #get file data
-        width = self.original.width
-        height = self.original.height
-        image = Image.open(self.original.path)
-        filename_ext = self.original.name.replace('uploads/images/original/', '')
-        changed = False
+        data = {
+            'width' : self.original.width,
+            'height' : self.original.height,
+            'image' : Image.open(self.original.path),
+            'filename_ext' : self.original.name.replace('uploads/images/original/', ''),
+            'changed' : False
+        }
         #check title
         if not self.title:
-            self.title = filename_ext.split('.')[0]
-            changed = True
+            self.title = data['filename_ext'].split('.')[0]
+            data['changed'] = True
         #check versions
         if not self.thumbnail == self.original.name.replace('original', 'thumbnail'):
-            if width>height:
-                offset = (width-height)/2
-                thumb = image.crop((offset,0,width-offset,height))
-            elif height>width:
-                offset = (height-width)/2
-                thumb = image.crop((0,offset,width,height-offset))
+            if data['width']>data['height']:
+                offset = (data['width']-data['height'])/2
+                thumb = data['image'].crop((offset,0,data['width']-offset,data['height']))
+            elif data['height']>data['width']:
+                offset = (data['height']-data['width'])/2
+                thumb = data['image'].crop((0,offset,data['width'],data['height']-offset))
             thumb.thumbnail((64,64))
             blob = BytesIO()
-            thumb.save(blob, format=modify_image_format(filename_ext))
-            self.thumbnail.save(filename_ext, File(blob), save=False)
-            changed = True
-        image.close()
+            thumb.save(blob, format=modify_image_format(data['filename_ext']))
+            self.thumbnail.save(data['filename_ext'], File(blob), save=False)
+            data['changed'] = True
+        data['image'].close()
         #save all the changes we eventually made
-        if changed:
+        if data['changed']:
             super(ImageData, self).save(*args, **kwargs)
 
     class Meta:
