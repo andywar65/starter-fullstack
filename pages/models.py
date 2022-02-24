@@ -8,10 +8,14 @@ from django.utils.translation import gettext as _
 from django.utils.timezone import now
 
 def modify_image_format(filename_ext):
-    #TODO add all possible extensions
+    """We get the extention directly from original file, but sometimes
+    in PIL.Image.save(file, format='XXX') resulting format string is not
+    recognized. Use conversion dict to modify string."""
     conversion = {'JPG': 'JPEG',}
     ext = filename_ext.split('.')[-1].upper()
-    return conversion[ext]
+    if conversion[ext]:
+        return conversion[ext]
+    return ext
 
 class ImageData(models.Model):
 
@@ -46,7 +50,7 @@ class ImageData(models.Model):
             elif height>width:
                 offset = (height-width)/2
                 thumb = image.crop((0,offset,width,height-offset))
-            thumb.thumbnail((60,60))
+            thumb.thumbnail((64,64))
             blob = BytesIO()
             thumb.save(blob, format=modify_image_format(filename_ext))
             self.thumbnail.save(filename_ext, File(blob), save=False)
