@@ -92,7 +92,9 @@ class ProfileDeleteView(LoginRequiredMixin, ImmutableProfilePassTestMix,
         self.user.email = ''
         self.user.save()
         profile = self.user.profile
+        avatar = profile.avatar
         profile.delete()
+        avatar.delete()
         EmailAddress.objects.filter(user_id=self.user.uuid).delete()
         return super(ProfileDeleteView, self).form_valid(form)
 
