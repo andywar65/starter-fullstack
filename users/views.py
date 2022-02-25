@@ -46,23 +46,25 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
             'email': self.user.email,
-            'avatar': None,
+            'avatar': self.user.profile.avatar.original,
             'bio': self.user.profile.bio,
             })
         return initial
 
     def form_valid(self, form):
+        #assign user form fields
         self.user.first_name = form.cleaned_data['first_name']
         self.user.last_name = form.cleaned_data['last_name']
         self.user.email = form.cleaned_data['email']
-
-        profile = self.user.profile
-        #TODO if form avatar, save the image and assign it to profile
-        #add delete avatar boolean
-        #profile.avatar = form.cleaned_data['avatar']
-        profile.bio = form.cleaned_data['bio']
         self.user.save()
+        #assign profile form fields
+        profile = self.user.profile
+        profile.bio = form.cleaned_data['bio']
         profile.save()
+        #assign avatar form field
+        avatar = self.user.profile.avatar
+        avatar.original = form.cleaned_data['avatar']
+        avatar.save()
         return super(ProfileChangeView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
