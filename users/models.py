@@ -14,6 +14,10 @@ class User(AbstractUser):
         super(User, self).save(*args, **kwargs)
         if self.is_active:
             p, created = Profile.objects.get_or_create(user_id = self.uuid)
+            if not p.avatar:
+                i = ImageData.objects.create(title=_('Avatar')+' - '+ p.get_short_name())
+                p.avatar = i
+                p.save(update_fields=['avatar',])
 
     class Meta:
         ordering = ('first_name', 'last_name', 'username',)
@@ -26,8 +30,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,
         primary_key=True, editable=False )
     avatar = models.ForeignKey(ImageData, on_delete = models.SET_NULL,
-        related_name='profile_avatar', verbose_name = _('Avatar'), null=True,
-        blank=True)
+        related_name='profile_avatar', verbose_name = _('Avatar'), null=True )
     bio = models.TextField(_("Short bio"), null=True, blank=True)
 
     def get_full_name(self):
