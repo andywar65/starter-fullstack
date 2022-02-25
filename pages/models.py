@@ -25,7 +25,7 @@ class ImageData(models.Model):
         help_text = _('Will be used in captions'),
         max_length = 100, null=True, blank=True)
     original = models.ImageField(_('Original image'),
-        upload_to = 'uploads/images/original/')
+        upload_to = 'uploads/images/original/', null=True )
     thumbnail = models.ImageField(_('Thumbnail'),
         null=True, blank=True, upload_to = 'uploads/images/thumbnail/')
     date = models.DateField(_('Date'), default = now, )
@@ -43,31 +43,35 @@ class ImageData(models.Model):
         self.thumbnail.save(data['filename_ext'], File(blob), save=False)
 
     def save(self, *args, **kwargs):
-        #make sure original image is loaded in db
+        #make sure eventual original image is loaded in db
         super(ImageData, self).save(*args, **kwargs)
         #get file data
-        data = {
-            'width' : self.original.width,
-            'height' : self.original.height,
-            'image' : Image.open(self.original.path),
-            'filename_ext' : self.original.name.replace('uploads/images/original/', ''),
-        }
-        changed = False
-        #check title
-        if not self.title:
-            self.title = data['filename_ext'].split('.')[0]
-            changed = True
-        #check versions
-        if not self.thumbnail == self.original.name.replace('original', 'thumbnail'):
-            self.create_thumbnail(data)
-            changed = True
-        data['image'].close()
-        #save all the changes we eventually made
-        if changed:
-            super(ImageData, self).save(*args, **kwargs)
+        if self.original:
+            data = {
+                'width' : self.original.width,
+                'height' : self.original.height,
+                'image' : Image.open(self.original.path),
+                'filename_ext' : self.original.name.replace('uploads/images/original/', ''),
+            }
+            changed = False
+            #check title
+            if not self.title:
+                self.title = data['filename_ext'].split('.')[0]
+                changed = True
+            #check versions
+            if not self.thumbnail == self.original.name.replace('original', 'thumbnail'):
+                self.create_thumbnail(data)
+                changed = True
+            data['image'].close()
+            #save all the changes we eventually made
+            if changed:
+                super(ImageData, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        if self.title:
+            return self.title
+        else:
+            return _('Image') + '-' + str(self.id)
 
     class Meta:
         verbose_name = _('Image')
