@@ -28,7 +28,7 @@ class ImageData(models.Model):
         upload_to = 'uploads/images/original/', null=True )
     thumbnail = models.ImageField(_('Thumbnail'),
         null=True, blank=True, upload_to = 'uploads/images/thumbnail/')
-    date = models.DateField(_('Date'), default = now, )
+    date = models.DateTimeField(_('Date'), default = now, )
 
     def create_thumbnail(self, data):
         if data['width']>data['height']:
