@@ -12,7 +12,10 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           {% if user.is_authenticated %}
             <a class="nav-link" href="{% url 'account_profile' %}" title="{% trans 'Manage account' %}">
-                {% translate 'Hello' %} {{ user.profile.get_short_name }}</a>
+              {% if user.profile.avatar.thumbnail %}
+                <img class="rounded-circle" heigth="18px" width="18px" src="{{ user.profile.avatar.thumbnail.url }}" alt="{{ user.profile.avatar.title }}">
+              {% endif %}
+              {{ user.profile.get_short_name }}</a>
             <a class="nav-link" href="{% url 'account_logout' %}">{% translate 'Logout' %}</a>
           {% else %}
           <li class="nav-item">
