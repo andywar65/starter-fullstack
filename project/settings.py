@@ -45,7 +45,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -148,18 +148,14 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', ],
-    #'DEFAULT_AUTHENTICATION_CLASSES': [
-        #'rest_framework.authentication.SessionAuthentication',
-        #'rest_framework.authentication.TokenAuthentication',
-    #],
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = get_secret('LANGUAGE_CODE')
+LANGUAGE_CODE = 'it'
 
-TIME_ZONE = get_secret('TIME_ZONE')
+TIME_ZONE = 'Europe/Rome'
 
 USE_I18N = True
 
@@ -173,11 +169,11 @@ STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
 
-STATIC_ROOT = get_secret('STATIC_ROOT') # no trailing slash
-STATIC_URL = get_secret('STATIC_URL') #'/static/'
+STATIC_ROOT = env.str('STATIC_ROOT') # no trailing slash
+STATIC_URL = '/static/'
 
-MEDIA_ROOT = get_secret('MEDIA_ROOT') # no trailing slash
-MEDIA_URL = get_secret('MEDIA_URL') #'/media/'
+MEDIA_ROOT = env.str('MEDIA_ROOT') # no trailing slash
+MEDIA_URL = '/media/'
 
 # Mail configuration
 #DEV: 'django.core.mail.backends.console.EmailBackend'
