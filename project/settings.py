@@ -11,10 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-import json
 from environs import Env
-
-from django.core.exceptions import ImproperlyConfigured
 
 env = Env()
 env.read_env()
@@ -22,19 +19,7 @@ env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 PROJECT_DIR = Path(__file__).resolve().parent
 BASE_DIR = Path(PROJECT_DIR).resolve().parent
-APPLICATION_DIR = Path(BASE_DIR).resolve(strict=True).parent
-
-with open(APPLICATION_DIR / 'secrets.json') as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    '''Get the secret variable or return explicit exception.
-    Thanks to twoscoopsofdjango'''
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = 'Set the {0} environment variable'.format(setting)
-        raise ImproperlyConfigured(error_msg)
+#APPLICATION_DIR = Path(BASE_DIR).resolve(strict=True).parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -178,12 +163,13 @@ MEDIA_URL = '/media/'
 # Mail configuration
 #DEV: 'django.core.mail.backends.console.EmailBackend'
 #PROD: 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = get_secret('EMAIL_BACKEND')
+#TODO: learn how to use dj-email-url
+EMAIL_BACKEND = env.str('EMAIL_BACKEND')
 
-EMAIL_HOST = get_secret('EMAIL_HOST')
-EMAIL_PORT = get_secret('EMAIL_PORT')
-EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
+EMAIL_HOST = env.str('EMAIL_HOST')
+EMAIL_PORT = env.str('EMAIL_PORT')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
 
 # Default primary key field type
