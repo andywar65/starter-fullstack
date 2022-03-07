@@ -38,6 +38,12 @@
     <!-- Optional JavaScript -->
     <!-- Bootstrap bundled JS -->
     {% bootstrap_javascript %}
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+    <script>
+      document.body.addEventListener('htmx:configRequest', (e) => {
+        e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+        })
+    </script>
     {% block extra-js %}{% endblock extra-js %}
   </body>
 </html>
