@@ -21,6 +21,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" hx-get="{% url 'account_login' %}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/login/">{% trans 'Login' %}</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" hx-get="{% url 'account_signup' %}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/signup/">{% trans 'Sign Up' %}</a>
+          </li>
           {% endif %}
         </ul>
         <form class="d-flex">
