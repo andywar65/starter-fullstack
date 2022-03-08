@@ -19,7 +19,7 @@
             <a class="nav-link" href="{% url 'account_logout' %}">{% translate 'Logout' %}</a>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'account_login' %}">{% trans 'Login' %}</a>
+            <a class="nav-link active" aria-current="page" hx-get="{% url 'account_login' %}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/login/">{% trans 'Login' %}</a>
           </li>
           {% endif %}
         </ul>
