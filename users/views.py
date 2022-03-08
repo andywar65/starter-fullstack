@@ -6,7 +6,7 @@ from django.utils.translation import gettext as _
 
 from allauth.account.models import EmailAddress
 from allauth.account.views import (PasswordChangeView, PasswordSetView,
-    PasswordResetView, EmailView)
+    PasswordResetView, EmailView, LoginView)
 
 from .models import User
 from .forms import *
@@ -29,6 +29,14 @@ class TestedPasswordResetView(ImmutableProfilePassTestMix, PasswordResetView, ):
 
 class TestedEmailView(ImmutableProfilePassTestMix, EmailView, ):
     pass
+
+class HTMXLoginView(LoginView):
+
+    def get_template_names(self):
+        if self.request.htmx:
+            return ['account/login_htmx.html']
+        else:
+            return ['account/login.html']
 
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     FormView):
