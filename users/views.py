@@ -19,7 +19,12 @@ class ImmutableProfilePassTestMix(UserPassesTestMixin):
         return not self.request.user.has_perm('users.can_not_change_profile')
 
 class TestedPasswordChangeView(ImmutableProfilePassTestMix, PasswordChangeView):
-    pass
+
+    def get_template_names(self):
+        if self.request.htmx:
+            return ['account/password_change_htmx.html']
+        else:
+            return ['account/password_change.html']
 
 class TestedPasswordSetView(ImmutableProfilePassTestMix, PasswordSetView, ):
     pass
@@ -105,7 +110,7 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
 class ProfileDeleteView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     FormView):
     form_class = ProfileDeleteForm
-    
+
     def get_template_names(self):
         if self.request.htmx:
             return ['account/account_delete_htmx.html']
