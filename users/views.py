@@ -105,7 +105,12 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
 class ProfileDeleteView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     FormView):
     form_class = ProfileDeleteForm
-    template_name = 'account/account_delete.html'
+    
+    def get_template_names(self):
+        if self.request.htmx:
+            return ['account/account_delete_htmx.html']
+        else:
+            return ['account/account_delete.html']
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user

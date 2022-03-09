@@ -1,26 +1,9 @@
 {% extends "base_menu.html" %}
 
 {% load i18n %}
-{% load bootstrap5 %}
 
 {% block head_title %}{% trans "Delete Account" %}{% endblock %}
 
 {% block content %}
-<div class="card mx-auto" style="width: 28rem; margin-top: 60px">
-  <div class="card-header">
-    <h3>{% trans "Delete Account" %}</h3>
-  </div>
-  <div class="card-body">
-    <p>{% trans "Are you sure you want to delete your profile? There's no way back" %}.</p>
-    <form method="POST" action="" >
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <button class="btn btn-danger" type="submit">{% trans "Confirm" %}</button>
-    </form>
-    <p><small>*{% blocktrans with request.site.name as site_name %}Account will
-      be set to 'inactive'. All user info except username will be deleted.
-      Contact {{ site_name}} to recover your original account{% endblocktrans %}.</small></p>
-  </div>
-</div>
-
+  {% include "account/account_delete_htmx.html" %}
 {% endblock %}
