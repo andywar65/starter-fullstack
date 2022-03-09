@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.forms',
     #third party
-    'rest_framework',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -129,13 +128,6 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_QUERY_EMAIL = True
-
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly', ],
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

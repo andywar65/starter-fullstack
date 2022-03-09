@@ -24,7 +24,6 @@ from users.views import *
 
 urlpatterns = [
     path('', HomePageTemplateView.as_view(), name='home'),
-    path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     path('accounts/login/', HTMXLoginView.as_view(), name='account_login'),
     path('accounts/signup/', HTMXSignupView.as_view(), name='account_signup'),
@@ -35,7 +34,6 @@ urlpatterns = [
     path('accounts/password/reset/', TestedPasswordResetView.as_view(), name='password_reset'),
     path('accounts/email/', TestedEmailView.as_view(), name='account_email'),
     path('accounts/', include('allauth.urls')),
-    path('api/v1/users/', include('users.api.v1.urls')),
 ]
 
 if settings.DEBUG:
