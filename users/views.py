@@ -18,6 +18,14 @@ class ImmutableProfilePassTestMix(UserPassesTestMixin):
             return True
         return not self.request.user.has_perm('users.can_not_change_profile')
 
+class TemplateNamesMixin:
+    """Switches template depending on request.htmx"""
+    def get_template_names(self):
+        if self.request.htmx:
+            return [self.template_name.replace('account/', 'account/htmx/')]
+        else:
+            return [self.template_name]
+
 class TestedPasswordChangeView(ImmutableProfilePassTestMix, PasswordChangeView):
 
     def get_template_names(self):
@@ -57,14 +65,9 @@ class HTMXSignupView(SignupView):
             return ['account/signup.html']
 
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
-    FormView):
+    TemplateNamesMixin, FormView):
     form_class = ProfileChangeForm
-
-    def get_template_names(self):
-        if self.request.htmx:
-            return ['account/account_profile_htmx.html']
-        else:
-            return ['account/account_profile.html']
+    template_name = 'account/account_profile.html'
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
