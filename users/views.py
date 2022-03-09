@@ -54,7 +54,12 @@ class HTMXSignupView(SignupView):
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     FormView):
     form_class = ProfileChangeForm
-    template_name = 'account/account_profile.html'
+
+    def get_template_names(self):
+        if self.request.htmx:
+            return ['account/account_profile_htmx.html']
+        else:
+            return ['account/account_profile.html']
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user

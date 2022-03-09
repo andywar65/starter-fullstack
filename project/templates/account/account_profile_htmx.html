@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load bootstrap5 %}
+
+<div class="card mx-auto" style="width: 28rem; margin-top: 60px">
+  <div class="card-header">
+    <h3>{% trans "Change Profile" %}</h3>
+  </div>
+  <div class="card-body">
+    {% if submitted %}
+    <p class="alert alert-success" role="alert">
+      {% trans 'Profile has been successfully modified!' %}
+    </p>
+    {% endif %}
+    <form method="POST" action="" enctype="multipart/form-data" class="password_change">
+        {% csrf_token %}
+        {% if user.profile.avatar.thumbnail %}
+          <img class="rounded-circle" src="{{ user.profile.avatar.thumbnail.url }}" alt="{{ user.profile.avatar.title }}">
+        {% endif %}
+        {% bootstrap_form form %}
+        <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
+        <a class="btn btn-secondary" href="{% url 'account_change_password' %}">{% trans "Change Password?" %}</a>
+        <hr>
+        {% if user.is_staff %}
+          <a class="btn btn-warning" href="/admin/">{% trans "Go to Admin" %}</a>
+        {% endif %}
+        <a class="btn btn-danger" href="{% url 'account_delete' %}">{% trans "Delete Account" %}</a>
+    </form>
+  </div>
+</div>
