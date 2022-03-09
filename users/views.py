@@ -25,7 +25,12 @@ class TestedPasswordSetView(ImmutableProfilePassTestMix, PasswordSetView, ):
     pass
 
 class TestedPasswordResetView(ImmutableProfilePassTestMix, PasswordResetView, ):
-    pass
+
+    def get_template_names(self):
+        if self.request.htmx:
+            return ['account/password_reset_htmx.html']
+        else:
+            return ['account/password_reset.html']
 
 class TestedEmailView(ImmutableProfilePassTestMix, EmailView, ):
     pass

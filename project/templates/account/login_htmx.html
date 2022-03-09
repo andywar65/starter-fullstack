@@ -32,7 +32,7 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-        <a class="btn btn-secondary" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        <a class="btn btn-secondary" hx-get="{% url 'account_reset_password' %}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/password/reset/">{% trans "Forgot Password?" %}</a>
       </form>
     </div>
   </div>
