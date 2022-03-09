@@ -26,43 +26,25 @@ class TemplateNamesMixin:
         else:
             return [self.template_name]
 
-class TestedPasswordChangeView(ImmutableProfilePassTestMix, PasswordChangeView):
-
-    def get_template_names(self):
-        if self.request.htmx:
-            return ['account/password_change_htmx.html']
-        else:
-            return ['account/password_change.html']
+class TestedPasswordChangeView(ImmutableProfilePassTestMix, TemplateNamesMixin,
+    PasswordChangeView):
+    pass
 
 class TestedPasswordSetView(ImmutableProfilePassTestMix, PasswordSetView, ):
     pass
 
-class TestedPasswordResetView(ImmutableProfilePassTestMix, PasswordResetView, ):
-
-    def get_template_names(self):
-        if self.request.htmx:
-            return ['account/password_reset_htmx.html']
-        else:
-            return ['account/password_reset.html']
+class TestedPasswordResetView(ImmutableProfilePassTestMix, TemplateNamesMixin,
+    PasswordResetView, ):
+    pass
 
 class TestedEmailView(ImmutableProfilePassTestMix, EmailView, ):
     pass
 
-class HTMXLoginView(LoginView):
+class HTMXLoginView(TemplateNamesMixin, LoginView):
+    pass
 
-    def get_template_names(self):
-        if self.request.htmx:
-            return ['account/login_htmx.html']
-        else:
-            return ['account/login.html']
-
-class HTMXSignupView(SignupView):
-
-    def get_template_names(self):
-        if self.request.htmx:
-            return ['account/signup_htmx.html']
-        else:
-            return ['account/signup.html']
+class HTMXSignupView(TemplateNamesMixin, SignupView):
+    pass
 
 class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
     TemplateNamesMixin, FormView):
