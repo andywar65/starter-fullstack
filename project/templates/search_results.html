@@ -1,0 +1,8 @@
+{% extends 'base_menu.html' %}
+{% load i18n %}
+
+{% block head_title %}{{ website.acro }} | {% translate 'Search' %}{%endblock head_title %}
+
+{% block content %}
+  {% include 'htmx/search_results.html' %}
+{% endblock content %}
