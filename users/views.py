@@ -6,7 +6,7 @@ from django.utils.translation import gettext as _
 
 from allauth.account.models import EmailAddress
 from allauth.account.views import (PasswordChangeView, PasswordSetView,
-    PasswordResetView, EmailView, LoginView, SignupView)
+    PasswordResetView, EmailView, LoginView, LogoutView, SignupView)
 
 from .models import User
 from .forms import *
@@ -41,6 +41,9 @@ class TestedEmailView(ImmutableProfilePassTestMix, EmailView, ):
     pass
 
 class HTMXLoginView(TemplateNamesMixin, LoginView):
+    pass
+
+class HTMXLogoutView(TemplateNamesMixin, LogoutView):
     pass
 
 class HTMXSignupView(TemplateNamesMixin, SignupView):

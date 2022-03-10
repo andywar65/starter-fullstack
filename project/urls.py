@@ -25,6 +25,7 @@ urlpatterns = [
     path('', HomePageTemplateView.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('accounts/login/', HTMXLoginView.as_view(), name='account_login'),
+    path('accounts/logout/', HTMXLogoutView.as_view(), name='account_logout'),
     path('accounts/signup/', HTMXSignupView.as_view(), name='account_signup'),
     path('accounts/profile/', ProfileChangeView.as_view(), name='account_profile'),
     path('accounts/profile/delete/', ProfileDeleteView.as_view(), name='account_delete'),
