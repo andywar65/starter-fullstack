@@ -18,12 +18,12 @@
         {% include "socialaccount/snippets/login_extra.html" %}
       </div>
 
-      <p>{% blocktrans with site.name as site_name %}...or, <a class="link-primary" hx-get="{{ signup_url }}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/signup/">sign up</a>
+      <p>{% blocktrans with site.name as site_name %}...or, <a class="link-primary" hx-get="{{ signup_url }}" hx-trigger="click" hx-target="#main" hx-push-url="{{ signup_url }}">sign up</a>
       for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
       {% else %}
       <p>{% blocktrans %}If you have not created an account yet, then please
-      <a class="link-primary" hx-get="{{ signup_url }}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/signup/">sign up</a> first.{% endblocktrans %}</p>
+      <a class="link-primary" hx-get="{{ signup_url }}" hx-trigger="click" hx-target="#main" hx-push-url="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
       {% endif %}
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
@@ -32,7 +32,7 @@
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
         <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-        <a class="btn btn-secondary" hx-get="{% url 'account_reset_password' %}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/password/reset/">{% trans "Forgot Password?" %}</a>
+        <a class="btn btn-secondary" hx-get="{% url 'account_reset_password' %}" hx-trigger="click" hx-target="#main" hx-push-url="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
       </form>
     </div>
   </div>

@@ -23,7 +23,7 @@
         {% if user.is_staff %}
           <a class="btn btn-warning" href="/admin/">{% trans "Go to Admin" %}</a>
         {% endif %}
-        <a class="btn btn-danger" hx-get="{% url 'account_delete' %}" hx-trigger="click" hx-target="#main" hx-push-url="/accounts/profile/delete/">{% trans "Delete Account" %}</a>
+        <a class="btn btn-danger" hx-get="{% url 'account_delete' %}" hx-trigger="click" hx-target="#main" hx-push-url="{% url 'account_delete' %}">{% trans "Delete Account" %}</a>
     </form>
   </div>
 </div>
