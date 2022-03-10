@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 from environs import Env
 
+from django.utils.translation import gettext_lazy as _
+
 env = Env()
 env.read_env()
 
@@ -36,6 +38,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -140,6 +143,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('it', _('Italian')),
+    ('en', _('English')),
+]
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    #'pages.translation',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
