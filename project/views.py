@@ -3,8 +3,17 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
+from pages.models import Logo
+
 class HomePageTemplateView(TemplateView):
     template_name = 'base_menu.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        logo = Logo.objects.first()
+        if logo:
+            context['logo'] = logo
+        return context
 
 class SelectLanguageTemplateView(TemplateView):
 
