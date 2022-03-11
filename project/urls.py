@@ -26,22 +26,14 @@ from users.views import *
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
-    path('accounts/login/', HTMXLoginView.as_view(), name='account_login'),
-    path('accounts/logout/', HTMXLogoutView.as_view(), name='account_logout'),
-    path('accounts/signup/', HTMXSignupView.as_view(), name='account_signup'),
-    path('accounts/profile/', ProfileChangeView.as_view(), name='account_profile'),
-    path('accounts/profile/delete/', ProfileDeleteView.as_view(), name='account_delete'),
-    path('accounts/password/change/', TestedPasswordChangeView.as_view(), name='password_change'),
-    path('accounts/password/set/', TestedPasswordSetView.as_view(), name='password_set'),
-    path('accounts/password/reset/', TestedPasswordResetView.as_view(), name='password_reset'),
-    path('accounts/email/', TestedEmailView.as_view(), name='account_email'),
-    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('users.urls')),
 ]
 
 urlpatterns += i18n_patterns(
     path('', HomePageTemplateView.as_view(), name='home'),
     path(_('search/'), search_results, name='search_results'),
-    path(_('select-language/'), SelectLanguageTemplateView.as_view(), name='select_language'),
+    path(_('select-language/'), SelectLanguageTemplateView.as_view(),
+        name='select_language'),
 )
 
 if settings.DEBUG:
