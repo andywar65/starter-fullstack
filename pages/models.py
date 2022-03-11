@@ -37,6 +37,8 @@ class ImageData(models.Model):
         elif data['height']>data['width']:
             offset = (data['height']-data['width'])/2
             thumb = data['image'].crop((0,offset,data['width'],data['height']-offset))
+        else:
+            thumb = data['image']
         thumb.thumbnail((64,64))
         blob = BytesIO()
         thumb.save(blob, format=modify_image_format(data['filename_ext']))
@@ -77,3 +79,13 @@ class ImageData(models.Model):
         verbose_name = _('Image')
         verbose_name_plural = _('Images')
         ordering = ('-date', )
+
+class Logo(models.Model):
+
+    title = models.CharField(_('Title'), max_length = 50,)
+    image = models.ForeignKey(ImageData, on_delete = models.SET_NULL,
+        related_name='logo_image', verbose_name = _('Image'), null=True )
+
+    class Meta:
+        verbose_name = _('Logo')
+        verbose_name_plural = _('Logo')

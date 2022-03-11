@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ImageData
+from .models import ImageData, Logo
 
 @admin.register(ImageData)
 class ImageDataAdmin(admin.ModelAdmin):
@@ -10,3 +10,7 @@ class ImageDataAdmin(admin.ModelAdmin):
             'fields': ('title', 'description', 'original', 'date', ),
         }),
         )
+
+@admin.register(Logo)
+class LogoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image')
