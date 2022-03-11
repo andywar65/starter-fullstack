@@ -24,7 +24,7 @@ from .views import *
 from users.views import *
 
 urlpatterns = [
-    path('', HomePageTemplateView.as_view(), name='home'),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('accounts/login/', HTMXLoginView.as_view(), name='account_login'),
     path('accounts/logout/', HTMXLogoutView.as_view(), name='account_logout'),
@@ -39,6 +39,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('', HomePageTemplateView.as_view(), name='home'),
     path(_('search/'), search_results, name='search_results'),
 )
 
