@@ -1,16 +1,8 @@
+{% extends 'base_menu.html' %}
 {% load i18n %}
 
-<form class="form-inline mb-sm-2" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-    <input name="next" type="hidden" value="/">
-    <select class="select form-control mr-sm-2" name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }}
-            </option>
-        {% endfor %}
-    </select>
-    <button class="btn btn-outline-secondary mr-sm-2" type="submit">{% translate 'Set language' %}</button>
-</form>
+{% block head_title %}{% translate 'Select language' %}{%endblock head_title %}
+
+{% block content %}
+  {% include 'htmx/language_selector.html' %}
+{% endblock content %}

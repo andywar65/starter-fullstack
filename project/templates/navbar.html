@@ -25,6 +25,9 @@
             <a class="nav-link" hx-get="{% url 'account_signup' %}" hx-trigger="click" hx-target="#main" hx-push-url="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
           </li>
           {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" title="{% trans 'Set language' %}" hx-get="{% url 'select_language' %}" hx-trigger="click" hx-target="#main" hx-push-url="{% url 'select_language' %}"><i class="fa fa-language"></i></a>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="{% trans 'Write something' %}" aria-label="Search">

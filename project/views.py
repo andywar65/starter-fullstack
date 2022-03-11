@@ -6,6 +6,14 @@ from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 class HomePageTemplateView(TemplateView):
     template_name = 'base_menu.html'
 
+class SelectLanguageTemplateView(TemplateView):
+
+    def get_template_names(self):
+        if self.request.htmx:
+            return ['htmx/language_selector.html']
+        else:
+            return ['language_selector.html']
+
 class ValidateForm(forms.Form):
     q = forms.CharField(max_length=100)
 

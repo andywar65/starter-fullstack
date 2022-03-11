@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<div class="card mx-auto" style="width: 28rem; margin-top: 60px">
+  <div class="card-header">
+    <h3>{% translate 'Set language' %}</h3>
+  </div>
+  <div class="card-body">
+    <form class="row" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+      <div class="col-auto">
+        <input name="next" type="hidden" value="{% url 'select_language' %}">
+        <select class="form-control" name="language">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ language.name_local }}
+                </option>
+            {% endfor %}
+        </select>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary" type="submit">{% translate 'Set language' %}</button>
+      </div>
+    </form>
+  </div>
+</div>
