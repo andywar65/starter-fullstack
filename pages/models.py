@@ -7,6 +7,8 @@ from django.conf import settings
 from django.utils.translation import gettext as _
 from django.utils.timezone import now
 
+from .choices import ICONS
+
 def modify_image_format(filename_ext):
     """We get the extention directly from original file, but sometimes
     in PIL.Image.save(file, format='XXX') resulting format string is not
@@ -89,3 +91,14 @@ class Logo(models.Model):
     class Meta:
         verbose_name = _('Logo')
         verbose_name_plural = _('Logo')
+
+class FooterLink(models.Model):
+
+    title = models.CharField(_('Title'), max_length = 50,)
+    link = models.URLField(_('Link'), max_length = 200,)
+    icon = models.CharField(max_length = 50, choices = ICONS,
+        verbose_name = _('Link to'), default='fa-external-link-square')
+
+    class Meta:
+        verbose_name = _('Footer link')
+        verbose_name_plural = _('Footer links')

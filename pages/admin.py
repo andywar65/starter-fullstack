@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ImageData, Logo
+from .models import ImageData, Logo, FooterLink
 
 @admin.register(ImageData)
 class ImageDataAdmin(admin.ModelAdmin):
@@ -14,3 +14,7 @@ class ImageDataAdmin(admin.ModelAdmin):
 @admin.register(Logo)
 class LogoAdmin(admin.ModelAdmin):
     list_display = ('title', 'image')
+
+@admin.register(FooterLink)
+class FooterLinkAdmin(admin.ModelAdmin):
+    list_display = ('title', 'icon')
