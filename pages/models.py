@@ -97,7 +97,7 @@ class FooterLink(models.Model):
     title = models.CharField(_('Title'), max_length = 50,)
     link = models.URLField(_('Link'), max_length = 200,)
     icon = models.CharField(max_length = 50, choices = ICONS,
-        verbose_name = _('Link to'), default='fa-external-link-square')
+        verbose_name = _('Icon'), default='fa-external-link')
 
     class Meta:
         verbose_name = _('Footer link')

@@ -17,4 +17,4 @@ class LogoAdmin(admin.ModelAdmin):
 
 @admin.register(FooterLink)
 class FooterLinkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'icon')
+    list_display = ('title', 'link')

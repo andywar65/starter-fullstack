@@ -1,5 +1,8 @@
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container">
     <span class="text-muted">{{ request.site.name }} - {% now 'Y' %} </span>
+    {% for link in f_links %}
+      <a class="btn btn-outline-secondary me-2" href="{{ link.link }}" title="{{ link.title }}"><i class="fa {{ link.icon }} fa-lg"></i></a>
+    {% endfor %}
   </div>
 </footer>
