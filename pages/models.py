@@ -50,6 +50,39 @@ class ImageData(models.Model):
         thumb.save(blob, format=modify_image_format(data['filename_ext']))
         self.thumbnail.save(data['filename_ext'], File(blob), save=False)
 
+    def create_popup(self, data):
+        if data['width']>data['height']:
+            offset = (data['width']-data['height'])/2
+            popup = data['image'].crop((offset,0,data['width']-offset,data['height']))
+        elif data['height']>data['width']:
+            offset = (data['height']-data['width'])/2
+            popup = data['image'].crop((0,offset,data['width'],data['height']-offset))
+        else:
+            popup = data['image']
+        popup.thumbnail((256,256))
+        blob = BytesIO()
+        popup.save(blob, format=modify_image_format(data['filename_ext']))
+        self.popup.save(data['filename_ext'], File(blob), save=False)
+
+    def create_wide(self, data):
+        if data['height']>data['width']:
+            return False
+        if (data['width']/data['height']) > (16/9):
+            w2 = data['height']*16/9
+            offset = (data['width']-w2)/2
+            wide = data['image'].crop((offset,0,data['width']-offset,data['height']))
+        elif (data['width']/data['height']) < (16/9):
+            h2 = data['width']*9/16
+            offset = (data['height']-h2)/2
+            wide = data['image'].crop((0,offset,data['width'],data['height']-offset))
+        else:
+            wide = data['image']
+        wide.resize((1920,1080))
+        blob = BytesIO()
+        wide.save(blob, format=modify_image_format(data['filename_ext']))
+        self.wide.save(data['filename_ext'], File(blob), save=False)
+        return True
+
     def save(self, *args, **kwargs):
         #make sure eventual original image is loaded in db
         super(ImageData, self).save(*args, **kwargs)
@@ -70,6 +103,13 @@ class ImageData(models.Model):
             if not self.thumbnail == self.original.name.replace('original', 'thumbnail'):
                 self.create_thumbnail(data)
                 changed = True
+            if not self.popup == self.original.name.replace('original', 'popup'):
+                self.create_popup(data)
+                changed = True
+            if not self.wide == self.original.name.replace('original', 'wide'):
+                wide_changed = self.create_wide(data)
+                if wide_changed:
+                    changed = True
             data['image'].close()
             #save all the changes we eventually made
             if changed:
@@ -106,3 +146,20 @@ class FooterLink(models.Model):
     class Meta:
         verbose_name = _('Footer link')
         verbose_name_plural = _('Footer links')
+
+class HomePage(models.Model):
+
+    title = models.CharField(_('Title'),
+        help_text=_("Appears on first image"),
+        max_length = 50, null=True, blank=True)
+    intro = models.CharField(_('Subtitle'), max_length = 100,
+        null=True, blank=True, help_text = _('Website in few words'))
+    body = models.TextField(_('Text'),
+        null=True, blank=True, help_text = _('Talk about this website'))
+    carousel = models.ManyToManyField(ImageData)
+
+    def __str__(self):
+        return self.title if self.title else _('Home Page - ') + str(self.id)
+
+    class Meta:
+        verbose_name = _('Home Page')
