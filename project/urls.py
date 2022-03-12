@@ -20,8 +20,8 @@ from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 
-from .views import *
-from users.views import *
+from .views import search_results, SelectLanguageTemplateView
+from pages.views import HomePageTemplateView
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),

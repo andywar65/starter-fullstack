@@ -3,11 +3,6 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
-from pages.models import Logo
-
-class HomePageTemplateView(TemplateView):
-    template_name = 'base_menu.html'
-
 class SelectLanguageTemplateView(TemplateView):
 
     def get_template_names(self):
