@@ -30,6 +30,10 @@ class ImageData(models.Model):
         upload_to = 'uploads/images/original/', null=True )
     thumbnail = models.ImageField(_('Thumbnail'),
         null=True, blank=True, upload_to = 'uploads/images/thumbnail/')
+    popup = models.ImageField(_('Popup'),
+        null=True, blank=True, upload_to = 'uploads/images/popup/')
+    wide = models.ImageField(_('Wide'),
+        null=True, blank=True, upload_to = 'uploads/images/wide/')
     date = models.DateTimeField(_('Date'), default = now, )
 
     def create_thumbnail(self, data):
