@@ -8,6 +8,12 @@ from .models import HomePage
 class HomePageTemplateView(TemplateView):
     template_name = 'pages/home.html'
 
+    def get_template_names(self):
+        if self.request.htmx:
+            return [self.template_name.replace('pages/', 'pages/htmx/')]
+        else:
+            return [self.template_name]
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page'] = HomePage.objects.first()

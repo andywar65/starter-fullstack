@@ -1,21 +1,8 @@
 {% extends 'base_menu.html' %}
-{% load static %}
 {% load i18n %}
 
 {% block head_title %}{% translate 'Home' %}{%endblock head_title %}
 
 {% block content %}
-{% include 'pages/gallery.html' %}
-<hr class="mb-4">
-<div class="row">
-
-  {% if page.intro %}
-    <h4 class="text-left"><strong><em>{{ page.intro }}</em></strong></h4>
-  {% endif %}
-  {% if page.body %}
-    <p class="text-left">{{ page.body }}</p>
-  {% endif %}
-
-</div>
-
+  {% include 'pages/htmx/home.html' %}
 {% endblock content %}
