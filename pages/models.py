@@ -27,7 +27,9 @@ class ImageData(models.Model):
         help_text = _('Will be used in captions'),
         max_length = 100, null=True, blank=True)
     original = models.ImageField(_('Original image'),
-        upload_to = 'uploads/images/original/', null=True )
+        upload_to = 'uploads/images/original/', null=True,
+        help_text = _("""Landscape and at least 1600px wide if you want to use 
+            them in carousels"""), )
     thumbnail = models.ImageField(_('Thumbnail'),
         null=True, blank=True, upload_to = 'uploads/images/thumbnail/')
     popup = models.ImageField(_('Popup'),
