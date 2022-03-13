@@ -14,7 +14,7 @@ class HomePageTemplateView(TemplateView):
         if not context['page']:
             raise Http404(_("No Home Pages available"))
         #we add this context to feed the standard gallery
-        context['main_gall_slug'] = get_random_string(7)
+        context['main_gal_slug'] = get_random_string(7)
         context['title'] = context['page'].title
         #context for the page
         context['images'] = context['page'].carousel.all()

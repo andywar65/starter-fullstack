@@ -3,33 +3,33 @@
 <div class="row">
   <div id="gallery-{{ main_gal_slug }}" class="carousel slide" data-ride="carousel">
     {% if images|length > 1 %}
-      <ol class="carousel-indicators">
+      <div class="carousel-indicators">
       {% for image in images %}
-        <li data-target="#gallery-{{ main_gal_slug }}" data-slide-to="{{ forloop.counter0 }}"
-        {% if forloop.first %}class="active"{% endif %}></li>
+        <button type="button" data-bs-target="#gallery-{{ main_gal_slug }}" data-bs-slide-to="{{ forloop.counter0 }}"
+        {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}">></button>
       {% endfor %}
-      </ol>
-      <a class="carousel-control-prev" href="#gallery-{{ main_gal_slug }}" role="button" data-slide="prev">
+      </div>
+      <button class="carousel-control-prev" data-bs-target="#gallery-{{ main_gal_slug }}" type="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">{% translate 'Previous' %}</span>
-      </a>
-      <a class="carousel-control-next" href="#gallery-{{ main_gal_slug }}" role="button" data-slide="next">
+        <span class="visually-hidden">{% translate 'Previous' %}</span>
+      </button>
+      <button class="carousel-control-next" data-bs-target="#gallery-{{ main_gal_slug }}" type="button" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">{% translate 'Next' %}</span>
-      </a>
+        <span class="visually-hidden">{% translate 'Next' %}</span>
+      </button>
     {% endif %}
     <div class="carousel-inner">
       {% for image in images %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
           <img src="{{ image.wide.url }}"
             class="d-block w-100">
-          {% if image.caption or forloop.first %}
+          {% if image.description or forloop.first %}
             <div class="gradient-mask"></div>
             <div class="carousel-caption d-none d-md-block">
               {% if forloop.first %}
                 <h1 class="display-1">{{ title }}</h1>
               {% endif %}
-              <p>{{ image.caption|default_if_none:"" }}</p>
+              <p>{{ image.description|default_if_none:"" }}</p>
             </div>
           {% endif %}
         </div>
