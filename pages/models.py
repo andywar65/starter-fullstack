@@ -67,17 +67,17 @@ class ImageData(models.Model):
     def create_wide(self, data):
         if data['height']>data['width']:
             return False
-        if (data['width']/data['height']) > (16/9):
-            w2 = data['height']*16/9
+        if (data['width']/data['height']) > 2:
+            w2 = data['height']*2
             offset = (data['width']-w2)/2
             wide = data['image'].crop((offset,0,data['width']-offset,data['height']))
-        elif (data['width']/data['height']) < (16/9):
-            h2 = data['width']*9/16
+        elif (data['width']/data['height']) < 2:
+            h2 = data['width']*0.5
             offset = (data['height']-h2)/2
             wide = data['image'].crop((0,offset,data['width'],data['height']-offset))
         else:
             wide = data['image']
-        wide.resize((1920,1080))
+        wide.resize((1600,800))
         blob = BytesIO()
         wide.save(blob, format=modify_image_format(data['filename_ext']))
         self.wide.save(data['filename_ext'], File(blob), save=False)
