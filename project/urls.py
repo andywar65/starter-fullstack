@@ -25,6 +25,7 @@ from pages.views import HomePageTemplateView
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     #path('accounts/', include('allauth.urls')),
     path('accounts/', include('users.urls')),
