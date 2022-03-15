@@ -7,6 +7,8 @@ from django.conf import settings
 from django.utils.translation import gettext as _
 from django.utils.timezone import now
 
+from filebrowser.fields import FileBrowseField
+
 from .choices import ICONS
 
 def modify_image_format(filename_ext):
@@ -28,7 +30,7 @@ class ImageData(models.Model):
         max_length = 100, null=True, blank=True)
     original = models.ImageField(_('Original image'),
         upload_to = 'uploads/images/original/', null=True,
-        help_text = _("""Landscape and at least 1600px wide if you want to use 
+        help_text = _("""Landscape and at least 1600px wide if you want to use
             them in carousels"""), )
     thumbnail = models.ImageField(_('Thumbnail'),
         null=True, blank=True, upload_to = 'uploads/images/thumbnail/')
@@ -165,3 +167,21 @@ class HomePage(models.Model):
 
     class Meta:
         verbose_name = _('Home Page')
+        verbose_name_plural = _('Home Pages')
+
+class HomePageCarousel(models.Model):
+
+    home = models.ForeignKey(HomePage, on_delete = models.CASCADE,
+        related_name='homepage_carousel', verbose_name = _('Home Page') )
+    fb_image = FileBrowseField(_("Image"), max_length=200,
+        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
+        directory='images/')
+    description = models.CharField(_('Description'),
+        help_text = _('Will be used in captions'),
+        max_length = 100, null=True, blank=True)
+    position = models.PositiveSmallIntegerField(_("Position"), null=True)
+
+    class Meta:
+        verbose_name = _('Home page carousel')
+        verbose_name_plural = _('Home page carousels')
+        ordering = ['position',]
