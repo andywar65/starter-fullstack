@@ -160,7 +160,6 @@ class HomePage(models.Model):
         null=True, blank=True, help_text = _('Website in few words'))
     body = models.TextField(_('Text'),
         null=True, blank=True, help_text = _('Talk about this website'))
-    carousel = models.ManyToManyField(ImageData)
 
     def __str__(self):
         return self.title if self.title else _('Home Page - ') + str(self.id)
