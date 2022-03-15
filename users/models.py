@@ -7,8 +7,6 @@ from django.utils.translation import gettext as _
 from filebrowser.fields import FileBrowseField
 from filebrowser.base import FileObject
 
-from pages.models import ImageData
-
 class User(AbstractUser):
 
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -17,10 +15,6 @@ class User(AbstractUser):
         super(User, self).save(*args, **kwargs)
         if self.is_active:
             p, created = Profile.objects.get_or_create(user_id = self.uuid)
-            if not p.avatar:
-                i = ImageData.objects.create(title=_('Avatar')+' - '+ p.get_short_name())
-                p.avatar = i
-                p.save(update_fields=['avatar',])
 
     class Meta:
         ordering = ('first_name', 'last_name', 'username',)
@@ -32,8 +26,6 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE,
         primary_key=True, editable=False )
-    avatar = models.ForeignKey(ImageData, on_delete = models.SET_NULL,
-        related_name='profile_avatar', verbose_name = _('Avatar'), null=True )
     temp_image = models.ImageField(_("Image"), max_length=200,
         null=True, blank=True, upload_to='uploads/images/users/')
     fb_image = FileBrowseField(_("Image"), max_length=200,
