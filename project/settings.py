@@ -40,6 +40,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 INSTALLED_APPS = [
     'modeltranslation',
     'grappelli',
+    'filebrowser',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,6 +137,17 @@ SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 GRAPPELLI_ADMIN_TITLE = env.str("GRAPPELLI_ADMIN_TITLE", default=_('Admin'))
+
+FILEBROWSER_VERSIONS = {
+    'admin_thumbnail': {'verbose_name': 'Admin Thumbnail', 'width': 60, 'height': 60, 'opts': 'crop'},
+    'thumbnail': {'verbose_name': 'Thumbnail (1 col)', 'width': 64, 'height': 64, 'opts': 'crop'},
+    'small': {'verbose_name': 'Small (2 col)', 'width': 140, 'height': '', 'opts': ''},
+    'medium': {'verbose_name': 'Medium (4col )', 'width': 300, 'height': '', 'opts': ''},
+    'big': {'verbose_name': 'Big (6 col)', 'width': 460, 'height': '', 'opts': ''},
+    'large': {'verbose_name': 'Large (8 col)', 'width': 680, 'height': '', 'opts': ''},
+    'wide': {'verbose_name': 'Landscape 2:1', 'width': 1600, 'height': 800, 'opts': 'crop'},
+    'popup': {'verbose_name': 'Popups', 'width': 256, 'height': 256, 'opts': 'crop'},
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

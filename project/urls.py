@@ -20,11 +20,14 @@ from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 
+from filebrowser.sites import site
+
 from .views import search_results, SelectLanguageTemplateView
 from pages.views import HomePageTemplateView
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+    path('admin/filebrowser/', site.urls),
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
     #path('accounts/', include('allauth.urls')),
