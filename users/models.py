@@ -4,6 +4,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext as _
 
+from filebrowser.fields import FileBrowseField
+from filebrowser.base import FileObject
+
 from pages.models import ImageData
 
 class User(AbstractUser):
@@ -31,6 +34,11 @@ class Profile(models.Model):
         primary_key=True, editable=False )
     avatar = models.ForeignKey(ImageData, on_delete = models.SET_NULL,
         related_name='profile_avatar', verbose_name = _('Avatar'), null=True )
+    temp_image = models.ImageField(_("Image"), max_length=200,
+        null=True, blank=True, upload_to='uploads/images/users/')
+    fb_image = FileBrowseField(_("Image"), max_length=200,
+        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
+        null=True, directory='images/users/')
     bio = models.TextField(_("Short bio"), null=True, blank=True)
 
     def get_full_name(self):
