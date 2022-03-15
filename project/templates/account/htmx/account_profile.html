@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load fb_versions %}
 {% load bootstrap5 %}
 
 <div class="card mx-auto" style="width: 28rem; margin-top: 60px">
@@ -13,8 +14,8 @@
     {% endif %}
     <form method="POST" action="" enctype="multipart/form-data" class="password_change">
         {% csrf_token %}
-        {% if user.profile.avatar.thumbnail %}
-          <img class="rounded-circle" src="{{ user.profile.avatar.thumbnail.url }}" alt="{{ user.profile.avatar.title }}">
+        {% if user.profile.fb_image %}
+          <img class="rounded-circle" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
         {% endif %}
         {% bootstrap_form form %}
         <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>

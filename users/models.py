@@ -57,6 +57,15 @@ class Profile(models.Model):
     def __str__(self):
         return self.get_full_name()
 
+    def save(self, *args, **kwargs):
+        #save and upload image
+        super(Profile, self).save(*args, **kwargs)
+        if self.temp_image:
+            #image is saved on the front end, passed to fb_image and deleted
+            self.fb_image=FileObject(str(self.temp_image))
+            self.temp_image = None
+            super(Profile, self).save(*args, **kwargs)
+
     class Meta:
         verbose_name = _('Profile')
         verbose_name_plural = _('Profiles')

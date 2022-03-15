@@ -65,7 +65,7 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
             'email': self.user.email,
-            'avatar': self.user.profile.avatar.original,
+            'avatar': self.user.profile.fb_image,
             'bio': self.user.profile.bio,
             })
         return initial
@@ -79,11 +79,12 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
         #assign profile form fields
         profile = self.user.profile
         profile.bio = form.cleaned_data['bio']
+        profile.temp_image = form.cleaned_data['avatar']
         profile.save()
         #assign avatar form field
-        avatar = self.user.profile.avatar
-        avatar.original = form.cleaned_data['avatar']
-        avatar.save()
+        #avatar = self.user.profile.avatar
+        #avatar.original = form.cleaned_data['avatar']
+        #avatar.save()
         return super(ProfileChangeView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
