@@ -8,7 +8,7 @@ from allauth.account.models import EmailAddress
 from allauth.account.views import (PasswordChangeView, PasswordSetView,
     PasswordResetView, EmailView, LoginView, LogoutView, SignupView)
 
-from .models import User
+from .models import User, UserMessage
 from .forms import *
 
 class ImmutableProfilePassTestMix(UserPassesTestMixin):
@@ -81,10 +81,7 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
         profile.bio = form.cleaned_data['bio']
         profile.temp_image = form.cleaned_data['avatar']
         profile.save()
-        #assign avatar form field
-        #avatar = self.user.profile.avatar
-        #avatar.original = form.cleaned_data['avatar']
-        #avatar.save()
+
         return super(ProfileChangeView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -120,3 +117,24 @@ class ProfileDeleteView(LoginRequiredMixin, ImmutableProfilePassTestMix,
 
     def get_success_url(self):
         return reverse('home')
+
+class ContactFormView(LoginRequiredMixin, TemplateNamesMixin, FormView):
+    form_class = ContactForm
+    template_name = 'account/contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if 'submitted' in self.request.GET:
+            context['submitted'] = self.request.GET['submitted']
+        return context
+
+    def form_valid(self, form):
+        subject = form.cleaned_data['subject']
+        body = form.cleaned_data['body']
+        user = self.request.user
+        UserMessage.objects.create(user_id=user.uuid, subject=subject,
+            body=body )
+        return super(ContactFormView, self).form_valid(form)
+
+    def get_success_url(self):
+        return (reverse('account_contact') + '?submitted=True')

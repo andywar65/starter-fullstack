@@ -1,6 +1,8 @@
 from django import forms
+from django.forms import ModelForm
 from django.utils.translation import gettext as _
 
+from .models import UserMessage
 from project.widgets import SmallClearableFileInput
 
 class ProfileChangeForm(forms.Form):
@@ -18,3 +20,13 @@ class ProfileChangeForm(forms.Form):
 class ProfileDeleteForm(forms.Form):
     delete = forms.BooleanField( label=_("Check and Confirm to delete* the profile"),
         required = True,)
+
+class ContactForm(ModelForm):
+
+    class Meta:
+        model = UserMessage
+        fields = ('subject', 'body', )
+        widgets = {
+            'subject': forms.TextInput(attrs={'placeholder': _("Write here the subject")}),
+            'body': forms.Textarea(attrs={'placeholder': _("Write here the message")}),
+            }
