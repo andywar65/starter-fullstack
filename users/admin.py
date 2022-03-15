@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import (User, Profile, )
+from .models import (User, Profile, UserMessage )
 
 class UserAdmin(UserAdmin):
     list_display = ('username', 'is_staff', 'is_active', 'is_superuser')
@@ -13,3 +13,7 @@ admin.site.register(User, UserAdmin)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('get_full_name', )
     exclude = ('temp_image', )
+
+@admin.register(UserMessage)
+class UserMessageAdmin(admin.ModelAdmin):
+    list_display = ('user', 'subject', )

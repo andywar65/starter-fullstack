@@ -61,3 +61,17 @@ class Profile(models.Model):
     class Meta:
         verbose_name = _('Profile')
         verbose_name_plural = _('Profiles')
+
+class UserMessage(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+        related_name='user_message', verbose_name = _('User'), )
+    subject = models.CharField(max_length = 200,
+        verbose_name = _('Subject'), )
+    body = models.TextField(verbose_name = _('Text'), )
+
+    def __str__(self):
+        return _('Message - %(id)d') % {'id': self.id}
+
+    class Meta:
+        verbose_name = _('Message')
+        verbose_name_plural = _('Messages')
