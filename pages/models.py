@@ -135,6 +135,9 @@ class Logo(models.Model):
     title = models.CharField(_('Title'), max_length = 50,)
     image = models.ForeignKey(ImageData, on_delete = models.SET_NULL,
         related_name='logo_image', verbose_name = _('Image'), null=True )
+    fb_image = FileBrowseField(_("Image"), max_length=200,
+        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
+        directory='images/', null=True)
 
     class Meta:
         verbose_name = _('Logo')

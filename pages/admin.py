@@ -13,7 +13,7 @@ class ImageDataAdmin(admin.ModelAdmin):
 
 @admin.register(Logo)
 class LogoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image')
+    list_display = ('title', 'fb_image')
 
 @admin.register(FooterLink)
 class FooterLinkAdmin(admin.ModelAdmin):
