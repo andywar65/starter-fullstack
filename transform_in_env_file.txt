@@ -18,3 +18,4 @@ MEDIA_ROOT=/path/to/your/media_app
 MEDIA_URL=/media/
 LANGUAGE_CODE=it
 TIME_ZONE=Europe/Rome
+GRAPPELLI_ADMIN_TITLE=

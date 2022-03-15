@@ -135,12 +135,14 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 SOCIALACCOUNT_QUERY_EMAIL = True
 
+GRAPPELLI_ADMIN_TITLE = env.str("GRAPPELLI_ADMIN_TITLE", default=_('Admin'))
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'it'
+LANGUAGE_CODE = env.str("LANGUAGE_CODE", default='en-us')
 
-TIME_ZONE = 'Europe/Rome'
+TIME_ZONE = env.str("TIME_ZONE", default='UTC')
 
 USE_I18N = True
 
@@ -163,10 +165,10 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = env.str('STATIC_ROOT') # no trailing slash
-STATIC_URL = '/static/'
+STATIC_URL = env.str("STATIC_URL", default='/static/')
 
 MEDIA_ROOT = env.str('MEDIA_ROOT') # no trailing slash
-MEDIA_URL = '/media/'
+MEDIA_URL = env.str("MEDIA_URL", default='/media/')
 
 # Mail configuration
 #DEV: 'django.core.mail.backends.console.EmailBackend'
