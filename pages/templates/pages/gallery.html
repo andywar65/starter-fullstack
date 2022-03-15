@@ -1,3 +1,4 @@
+{% load fb_versions %}
 {% load i18n %}
 
 <div class="row">
@@ -21,7 +22,7 @@
     <div class="carousel-inner">
       {% for image in images %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <img src="{{ image.wide.url }}"
+          <img src="{% version image.fb_image 'wide' %}"
             class="d-block w-100">
           {% if image.description or forloop.first %}
             <div class="gradient-mask"></div>

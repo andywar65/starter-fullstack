@@ -23,5 +23,5 @@ class HomePageTemplateView(TemplateView):
         context['main_gal_slug'] = get_random_string(7)
         context['title'] = context['page'].title
         #context for the page
-        context['images'] = context['page'].carousel.exclude(wide=None)
+        context['images'] = context['page'].homepage_carousel.all()
         return context
