@@ -1,4 +1,6 @@
 from django.views.generic.edit import FormView
+from django.core.mail import EmailMessage
+from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import Http404
 from django.urls import reverse
@@ -134,6 +136,13 @@ class ContactFormView(LoginRequiredMixin, TemplateNamesMixin, FormView):
         user = self.request.user
         UserMessage.objects.create(user_id=user.uuid, subject=subject,
             body=body )
+        recipient = settings.EMAIL_RECIPIENT
+        msg = '%(body)s\n\n%(from)s: %(full)s (%(email)s)' % {
+            'body': body, 'from': _('From'),
+            'full': user.profile.get_full_name(), 'email': user.email}
+        mailto = [recipient, ]
+        email = EmailMessage(subject, msg, settings.SERVER_EMAIL, mailto)
+        email.send()
         return super(ContactFormView, self).form_valid(form)
 
     def get_success_url(self):
