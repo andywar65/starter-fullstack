@@ -12,8 +12,7 @@
       {% trans 'Profile has been successfully modified!' %}
     </p>
     {% endif %}
-    <form method="POST" action="" enctype="multipart/form-data">
-      {% csrf_token %}
+    <form hx-post="{% url 'account_profile' %}" hx-target="#main" hx-encoding="multipart/form-data">
       {% if user.profile.fb_image %}
         <img class="rounded-circle" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
       {% endif %}
