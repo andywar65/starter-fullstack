@@ -127,7 +127,7 @@ class ContactFormView(LoginRequiredMixin, TemplateNamesMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if 'submitted' in self.request.GET:
-            context['submitted'] = self.request.GET['submitted']
+            context['submitted'] = True
         return context
 
     def form_valid(self, form):
