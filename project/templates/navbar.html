@@ -6,7 +6,7 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" hx-get="{% url 'home' %}" hx-target="#main" hx-push-url="{% url 'home' %}">
+      <a class="navbar-brand" hx-get="{% url 'home' %}" hx-target="#content" hx-push-url="{% url 'home' %}">
         {% if logo %}<img src="{% version logo.fb_image 'thumbnail' %}" width="32" height="32" class="d-inline-block align-top" alt="{{ logo.title }}"> {% endif %}{{ request.site.name }}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,31 +16,31 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" hx-get="{% url 'account_contact' %}" hx-target="#main" hx-push-url="{% url 'account_contact' %}">{% trans 'Contact' %}</a>
+            <a class="nav-link" hx-get="{% url 'account_contact' %}" hx-target="#content" hx-push-url="{% url 'account_contact' %}">{% trans 'Contact' %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" hx-get="{% url 'account_profile' %}" hx-target="#main" hx-push-url="{% url 'account_profile' %}" title="{% trans 'Manage account' %}">
+            <a class="nav-link" hx-get="{% url 'account_profile' %}" hx-target="#content" hx-push-url="{% url 'account_profile' %}" title="{% trans 'Manage account' %}">
               {% if user.profile.fb_image %}
                 <img class="rounded-circle" heigth="20px" width="20px" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
               {% endif %}
               {{ user.profile.get_short_name }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" hx-get="{% url 'account_logout' %}" hx-target="#main" hx-push-url="{% url 'account_logout' %}">{% translate 'Logout' %}</a>
+            <a class="nav-link" hx-get="{% url 'account_logout' %}" hx-target="#content" hx-push-url="{% url 'account_logout' %}">{% translate 'Logout' %}</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" hx-get="{% url 'account_login' %}" hx-target="#main" hx-push-url="{% url 'account_login' %}">{% trans 'Login' %}</a>
+            <a class="nav-link" hx-get="{% url 'account_login' %}" hx-target="#content" hx-push-url="{% url 'account_login' %}">{% trans 'Login' %}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" hx-get="{% url 'account_signup' %}" hx-target="#main" hx-push-url="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
+            <a class="nav-link" hx-get="{% url 'account_signup' %}" hx-target="#content" hx-push-url="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
           </li>
           {% endif %}
         </ul>
-        <a class="btn btn-outline-secondary me-2" title="{% trans 'Set language' %}" hx-get="{% url 'select_language' %}" hx-target="#main" hx-push-url="{% url 'select_language' %}"><i class="fa fa-language fa-lg"></i></a>
+        <a class="btn btn-outline-secondary me-2" title="{% trans 'Set language' %}" hx-get="{% url 'select_language' %}" hx-target="#content" hx-push-url="{% url 'select_language' %}"><i class="fa fa-language fa-lg"></i></a>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="{% trans 'Write something' %}" aria-label="Search">
-          <button class="btn btn-outline-secondary" hx-get="{% url 'search_results' %}" hx-target="#main" hx-push-url="{% url 'search_results' %}">{% trans 'Search' %}</button>
+          <button class="btn btn-outline-secondary" hx-get="{% url 'search_results' %}" hx-target="#content" hx-push-url="{% url 'search_results' %}">{% trans 'Search' %}</button>
         </form>
       </div>
     </div>

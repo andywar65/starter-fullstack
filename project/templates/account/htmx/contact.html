@@ -11,7 +11,7 @@
       {% trans 'Message has been successfully sent!' %}
     </p>
     {% endif %}
-    <form hx-post="{% url 'account_contact' %}" hx-target="#main">
+    <form hx-post="{% url 'account_contact' %}" hx-target="#content">
       {% bootstrap_form form %}
       <button class="btn btn-primary" type="submit">{% trans 'Send message' %}</button>
     </form>

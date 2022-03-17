@@ -12,7 +12,7 @@
       {% trans 'Profile has been successfully modified!' %}
     </p>
     {% endif %}
-    <form hx-post="{% url 'account_profile' %}" hx-target="#main" hx-encoding="multipart/form-data">
+    <form hx-post="{% url 'account_profile' %}" hx-target="#content" hx-encoding="multipart/form-data">
       {% if user.profile.fb_image %}
         <img class="rounded-circle" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
       {% endif %}
@@ -20,8 +20,8 @@
       <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
     </form>
     <hr>
-    <a class="btn btn-secondary" hx-get="{% url 'password_change' %}" hx-target="#main" hx-push-url="{% url 'password_change' %}">{% trans "Change Password?" %}</a>
-    <a class="btn btn-danger" hx-get="{% url 'account_delete' %}" hx-target="#main" hx-push-url="{% url 'account_delete' %}">{% trans "Delete Account" %}</a>
+    <a class="btn btn-secondary" hx-get="{% url 'password_change' %}" hx-target="#content" hx-push-url="{% url 'password_change' %}">{% trans "Change Password?" %}</a>
+    <a class="btn btn-danger" hx-get="{% url 'account_delete' %}" hx-target="#content" hx-push-url="{% url 'account_delete' %}">{% trans "Delete Account" %}</a>
     {% if user.is_staff %}
       <hr>
       <a class="btn btn-warning" href="/admin/">{% trans "Go to Admin" %}</a>
