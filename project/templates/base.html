@@ -32,9 +32,11 @@
     {% block extra-head %}{% endblock extra-head %}
   </head>
   <body class="d-flex flex-column h-100">
-    {% block basebody %}
-      <h1>Hello, world!</h1>
-    {% endblock basebody %}
+    <div class="basemenu">
+      {% block basemenu %}
+        <h1>Hello, world!</h1>
+      {% endblock basemenu %}
+    </div>
     <!-- Optional JavaScript -->
     <!-- Bootstrap bundled JS -->
     {% bootstrap_javascript %}
