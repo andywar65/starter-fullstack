@@ -9,7 +9,8 @@
           <h3>{% translate 'Set language' %}</h3>
         </div>
         <div class="card-body">
-          <form class="row" hx-post="{% url 'set_language' %}" hx-target="#basemenu">
+          <form class="row" action="{% url 'set_language' %}" method="POST">
+            {% csrf_token %}
             <div class="col-auto">
               <input name="next" type="hidden" value="{% url 'select_language' %}">
               <select class="form-control" name="language">
