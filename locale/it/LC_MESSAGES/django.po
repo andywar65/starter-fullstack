@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 17:33+0100\n"
+"POT-Creation-Date: 2022-03-20 19:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgid "Date"
 msgstr ""
 
 #: .\pages\legacy.py:113 .\pages\legacy.py:116 .\pages\models.py:17
-#: .\pages\models.py:57 .\users\models.py:29 .\users\models.py:31
+#: .\pages\models.py:57 .\users\models.py:31 .\users\models.py:33
 msgid "Image"
 msgstr "Immagine"
 
@@ -102,7 +102,7 @@ msgstr "Sottotitolo"
 msgid "Website in few words"
 msgstr "Il sito in poche parole"
 
-#: .\pages\models.py:43 .\users\models.py:70
+#: .\pages\models.py:43 .\users\models.py:72
 msgid "Text"
 msgstr "Testo"
 
@@ -146,7 +146,7 @@ msgstr "Prossimo"
 msgid "Home"
 msgstr ""
 
-#: .\pages\views.py:21
+#: .\pages\views.py:22
 msgid "No Home Pages available"
 msgstr "Nessuna homepage disponibile"
 
@@ -154,11 +154,11 @@ msgstr "Nessuna homepage disponibile"
 msgid "Admin"
 msgstr "Amministrazione"
 
-#: .\project\settings.py:164
+#: .\project\settings.py:168
 msgid "Italian"
 msgstr "Italiano"
 
-#: .\project\settings.py:165
+#: .\project\settings.py:169
 msgid "English"
 msgstr "Inglese"
 
@@ -229,7 +229,8 @@ msgstr "Conferma indirizzo email"
 
 #: .\project\templates\account\htmx\account_delete.html:9
 msgid "Are you sure you want to delete your profile? There's no way back"
-msgstr "Sicuro di voler annullare la registrazione? Non c'è modo di ripristinarla"
+msgstr ""
+"Sicuro di voler annullare la registrazione? Non c'è modo di ripristinarla"
 
 #: .\project\templates\account\htmx\account_delete.html:13
 #: .\project\templates\account\htmx\email_confirm.html:17
@@ -242,7 +243,8 @@ msgid ""
 "Account will\n"
 "      be set to 'inactive'. All user info except username will be deleted.\n"
 "      Contact %(site_name)s to recover your original account"
-msgstr "La registrazione sarà resa 'inattiva'. Tutte le informazioni utente\n"
+msgstr ""
+"La registrazione sarà resa 'inattiva'. Tutte le informazioni utente\n"
 "saranno cancellate eccetto l'username. Contatta %(site_name)s per\n"
 "ripristinare la registrazione originale"
 
@@ -307,8 +309,8 @@ msgid ""
 "You currently do not have any e-mail address set up. You should really add "
 "an e-mail address so you can receive notifications, reset your password, etc."
 msgstr ""
-"Attualmente non hai registrato indirizzi email. Dovresti aggiungere un"
-"indirizzo email così puoi ricevere notifiche, resettare la password, ecc."
+"Attualmente non hai registrato indirizzi email. Dovresti aggiungere "
+"unindirizzo email così puoi ricevere notifiche, resettare la password, ecc."
 
 #: .\project\templates\account\htmx\email.html:48
 msgid "Add E-mail Address"
@@ -357,8 +359,9 @@ msgid ""
 "\" hx-target=\"#content\" hx-push-url=\"%(signup_url)s\">sign up</a>\n"
 "      for a %(site_name)s account and sign in below:"
 msgstr ""
-"...oppure, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-trigger=\"click"
-"\" hx-target=\"#content\" hx-push-url=\"%(signup_url)s\">registra</a>\n"
+"...oppure, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-trigger="
+"\"click\" hx-target=\"#content\" hx-push-url=\"%(signup_url)s\">registra</"
+"a>\n"
 "      un account per %(site_name)s e accedi qui sotto:"
 
 #: .\project\templates\account\htmx\login.html:25
@@ -425,8 +428,8 @@ msgid ""
 "We have sent you an e-mail. If you have not received it please check your "
 "spam folder. Otherwise contact us if you do not receive it in a few minutes."
 msgstr ""
-"Ti abbiamo inviato una mail. Se non l'hai ricevuta cerca nella cartella dello "
-"spam. Altrimenti contattaci se non la ricevi nei prossimi minuti."
+"Ti abbiamo inviato una mail. Se non l'hai ricevuta cerca nella cartella "
+"dello spam. Altrimenti contattaci se non la ricevi nei prossimi minuti."
 
 #: .\project\templates\account\htmx\password_reset_from_key.html:6
 msgid "Bad Token"
@@ -440,8 +443,8 @@ msgid ""
 "a>."
 msgstr ""
 "Il link per ripristinare la password non era valido, forse perché era già "
-"stato usato. Richiedi di nuovo <a href=\"%(passwd_reset_url)s\">il ripristino</"
-"a>."
+"stato usato. Richiedi di nuovo <a href=\"%(passwd_reset_url)s\">il "
+"ripristino</a>."
 
 #: .\project\templates\account\htmx\password_reset_from_key.html:16
 msgid "change password"
@@ -461,7 +464,7 @@ msgstr "Invia password"
 #: .\project\templates\account\htmx\signup.html:17
 #: .\project\templates\navbar.html:36
 msgid "Sign Up"
-msgstr "Accedi"
+msgstr "Registrati"
 
 #: .\project\templates\account\htmx\signup.html:9
 #, python-format
@@ -470,9 +473,9 @@ msgid ""
 "\"%(login_url)s\" hx-trigger=\"click\" hx-target=\"#content\" hx-push-url="
 "\"%(login_url)s\">sign in</a>."
 msgstr ""
-"Sei già registrato? Allora <a class=\"link-primary\" hx-get="
-"\"%(login_url)s\" hx-trigger=\"click\" hx-target=\"#content\" hx-push-url="
-"\"%(login_url)s\">accedi</a>."
+"Sei già registrato? Allora <a class=\"link-primary\" hx-get=\"%(login_url)s"
+"\" hx-trigger=\"click\" hx-target=\"#content\" hx-push-url=\"%(login_url)s"
+"\">accedi</a>."
 
 #: .\project\templates\account\htmx\verification_sent.html:5
 #: .\project\templates\account\htmx\verified_email_required.html:5
@@ -488,6 +491,9 @@ msgid ""
 "your main inbox, check your spam folder. Please contact us if you do not "
 "receive the verification e-mail within a few minutes."
 msgstr ""
+"Ti abbiamo inviato una e-mail con un Link inserito all'interno. Per "
+"completare il procedimento di verifica clicca sul Link. Contattaci se non "
+"ricevi la mail entro qualche minuto."
 
 #: .\project\templates\account\htmx\verified_email_required.html:10
 msgid ""
@@ -495,6 +501,9 @@ msgid ""
 "    you are who you claim to be. For this purpose, we require that you\n"
 "    verify ownership of your e-mail address. "
 msgstr ""
+"Per utilizzare questa parte del sito dobbiamo verificare\n"
+"che sei veramente chi dici di essere. Sarà sufficiente\n"
+"dimostrare che hai effettivamente accesso al tuo indirizzo e-mail. "
 
 #: .\project\templates\account\htmx\verified_email_required.html:14
 msgid ""
@@ -504,6 +513,10 @@ msgid ""
 "Otherwise\n"
 "    contact us if you do not receive it within a few minutes."
 msgstr ""
+"Ti abbiamo inviato un messaggio e-mail di verifica.\n"
+"Clicca sul link contenuto nella mail.\n"
+"Se non dovessi ricevere il messaggio entro qualche minuto, contattaci.\n"
+"Grazie."
 
 #: .\project\templates\account\htmx\verified_email_required.html:18
 #, python-format
@@ -511,6 +524,8 @@ msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
 "mail address</a>."
 msgstr ""
+"<strong>Nota:</strong> Puoi cambiare <a href=\"%(email_url)s\">in ogni "
+"momento l'indirizzo e-mail usato per la registrazione</a>."
 
 #: .\project\templates\account\signup.html:5
 msgid "Signup"
@@ -546,7 +561,7 @@ msgstr "Nessun risultato"
 
 #: .\project\templates\htmx\search_results.html:16
 msgid "We didn't find elements that satisfy your search"
-msgstr "Non abbiamo trovato elementi che soddisfacessero la tua ricerca"
+msgstr "Non abbiamo trovato elementi che soddisfino la tua ricerca"
 
 #: .\project\templates\language_selector.html:4
 msgid "Select language"
@@ -571,26 +586,26 @@ msgstr "Scrivi qualcosa"
 #: .\project\templates\socialaccount\login.html:8
 #, python-format
 msgid "Connect %(provider)s"
-msgstr ""
+msgstr "Connetti %(provider)s"
 
 #: .\project\templates\socialaccount\login.html:10
 #, python-format
 msgid "Sign In Via %(provider)s"
-msgstr ""
+msgstr "Accedi tramite %(provider)s"
 
 #: .\project\templates\socialaccount\login.html:15
 #, python-format
 msgid "You are about to connect a new third party account from %(provider)s."
-msgstr ""
+msgstr "Stai per connettere un nuovo account da %(provider)s."
 
 #: .\project\templates\socialaccount\login.html:17
 #, python-format
 msgid "You are about to sign in using a third party account from %(provider)s."
-msgstr ""
+msgstr "Stai per accedere tramite un account da %(provider)s."
 
 #: .\project\templates\socialaccount\login.html:22
 msgid "Continue"
-msgstr ""
+msgstr "Continua"
 
 #: .\project\templates\widgets\small_clearable_file_input.html:5
 msgid "Download"
@@ -620,7 +635,7 @@ msgstr "Cognome"
 msgid "Email"
 msgstr ""
 
-#: .\users\forms.py:17 .\users\models.py:34
+#: .\users\forms.py:17 .\users\models.py:36
 msgid "Short bio"
 msgstr "Biografia"
 
@@ -640,40 +655,45 @@ msgstr "Scrivi il soggetto"
 msgid "Write here the message"
 msgstr "Scrivi il messaggio"
 
-#: .\users\models.py:22
-msgid "Immutable Profile"
-msgstr "Profilo immutabile"
-
-#: .\users\models.py:41
-msgid "Name"
-msgstr "Nome"
-
-#: .\users\models.py:62
-msgid "Profile"
-msgstr "Profilo"
-
-#: .\users\models.py:63
-msgid "Profiles"
-msgstr "Profili"
-
-#: .\users\models.py:67
+#: .\users\models.py:20 .\users\models.py:69
 msgid "User"
 msgstr "Utente"
 
-#: .\users\models.py:69
+#: .\users\models.py:21
+#| msgid "User"
+msgid "Users"
+msgstr "Utenti"
+
+#: .\users\models.py:24
+msgid "Immutable Profile"
+msgstr "Profilo immutabile"
+
+#: .\users\models.py:43
+msgid "Name"
+msgstr "Nome"
+
+#: .\users\models.py:64
+msgid "Profile"
+msgstr "Profilo"
+
+#: .\users\models.py:65
+msgid "Profiles"
+msgstr "Profili"
+
+#: .\users\models.py:71
 msgid "Subject"
 msgstr "Soggetto"
 
-#: .\users\models.py:73
+#: .\users\models.py:75
 #, python-format
 msgid "Message - %(id)d"
 msgstr "Messaggio - %(id)d"
 
-#: .\users\models.py:76
+#: .\users\models.py:78
 msgid "Message"
 msgstr "Messaggio"
 
-#: .\users\models.py:77
+#: .\users\models.py:79
 msgid "Messages"
 msgstr "Messaggi"
 
