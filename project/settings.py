@@ -170,7 +170,7 @@ LANGUAGES = [
 ]
 
 MODELTRANSLATION_TRANSLATION_FILES = (
-    #'pages.translation',
+    'pages.translation',
 )
 
 # Static files (CSS, JavaScript, Images)

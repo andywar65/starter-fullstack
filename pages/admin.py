@@ -1,22 +1,26 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 from .models import Logo, FooterLink, HomePage, HomePageCarousel
 
-@admin.register(Logo)
-class LogoAdmin(admin.ModelAdmin):
+class LogoAdmin(TranslationAdmin):
     list_display = ('title', 'fb_image')
 
-@admin.register(FooterLink)
-class FooterLinkAdmin(admin.ModelAdmin):
+admin.site.register(Logo, LogoAdmin)
+
+class FooterLinkAdmin(TranslationAdmin):
     list_display = ('title', 'link')
 
-class HomePageCarouselInline(admin.TabularInline):
+admin.site.register(FooterLink, FooterLinkAdmin)
+
+class HomePageCarouselInline(TranslationTabularInline):
     model = HomePageCarousel
     fields = ('position', 'fb_image', 'description', )
     sortable_field_name = "position"
     extra = 0
 
-@admin.register(HomePage)
-class HomePageAdmin(admin.ModelAdmin):
+class HomePageAdmin(TranslationAdmin):
     list_display = ('__str__', )
     inlines = [ HomePageCarouselInline,  ]
+
+admin.site.register(HomePage, HomePageAdmin)
