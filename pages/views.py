@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import Http404
 from django.views.generic import TemplateView
 from django.utils.crypto import get_random_string
+from django.utils.translation import gettext_lazy as _
 
 from .models import HomePage
 

@@ -17,6 +17,8 @@ class User(AbstractUser):
             p, created = Profile.objects.get_or_create(user_id = self.uuid)
 
     class Meta:
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
         ordering = ('first_name', 'last_name', 'username',)
         permissions = [
             ("can_not_change_profile", _("Immutable Profile")),
