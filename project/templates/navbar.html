@@ -37,7 +37,7 @@
           </li>
           {% endif %}
         </ul>
-        <a class="btn btn-outline-secondary me-2" title="{% trans 'Set language' %}" hx-get="{% url 'select_language' %}" hx-target="#basemenu" hx-push-url="{% url 'select_language' %}"><i class="fa fa-language fa-lg"></i></a>
+        <a class="btn btn-outline-secondary me-2" title="{% trans 'Set language' %}" hx-get="{% url 'select_language' %}" hx-target="#content" hx-push-url="{% url 'select_language' %}"><i class="fa fa-language fa-lg"></i></a>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="{% trans 'Write something' %}" aria-label="Search">
           <button class="btn btn-outline-secondary" hx-get="{% url 'search_results' %}" hx-target="#content" hx-push-url="{% url 'search_results' %}">{% trans 'Search' %}</button>
