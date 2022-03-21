@@ -171,6 +171,7 @@ LANGUAGES = [
 
 MODELTRANSLATION_TRANSLATION_FILES = (
     'pages.translation',
+    'users.translation',
 )
 
 # Static files (CSS, JavaScript, Images)
