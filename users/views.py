@@ -60,10 +60,16 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
         self.user = request.user
         super(ProfileChangeView, self).setup(request, *args, **kwargs)
 
+    def get_form_class(self):
+        if self.user.profile.fb_image:
+            self.form_class = ProfileChangeNoAvatarForm
+        return self.form_class
+
     def get_initial(self):
         initial = super(ProfileChangeView, self).get_initial()
 
         initial.update({
+            'no_avatar': False,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
             'email': self.user.email,
@@ -81,6 +87,8 @@ class ProfileChangeView(LoginRequiredMixin, ImmutableProfilePassTestMix,
         profile = self.user.profile
         profile.bio = form.cleaned_data['bio']
         profile.temp_image = form.cleaned_data['avatar']
+        if 'no_avatar' in form.cleaned_data and form.cleaned_data['no_avatar']:
+            profile.fb_image = None
         profile.save()
 
         return super(ProfileChangeView, self).form_valid(form)

@@ -5,12 +5,27 @@ from django.utils.translation import gettext_lazy as _
 from .models import UserMessage
 
 class ProfileChangeForm(forms.Form):
-    avatar = forms.FileField( required = False, )
+    avatar = forms.FileField( required = False, widget = forms.FileInput())
     first_name = forms.CharField( label = _('First name'), required = False,
         widget = forms.TextInput())
     last_name = forms.CharField( label = _('Last name'), required = False,
         widget = forms.TextInput())
-    email = forms.EmailField(label = _('Email'), required = False,
+    email = forms.EmailField(label = _('Email'), required = True,
+        widget=forms.EmailInput(attrs={'autocomplete': 'email',
+            'placeholder': 'you@example.com'}))
+    bio = forms.CharField( label = _('Short bio'), required = False,
+        widget = forms.Textarea(attrs={'placeholder': _("Talk about yourself")}) )
+
+class ProfileChangeNoAvatarForm(forms.Form):
+    no_avatar = forms.BooleanField( label=_("Check to delete Avatar"),
+        required = False,)
+    avatar = forms.FileField( label = _('Change Avatar'), required = False, 
+        widget = forms.FileInput())
+    first_name = forms.CharField( label = _('First name'), required = False,
+        widget = forms.TextInput())
+    last_name = forms.CharField( label = _('Last name'), required = False,
+        widget = forms.TextInput())
+    email = forms.EmailField(label = _('Email'), required = True,
         widget=forms.EmailInput(attrs={'autocomplete': 'email',
             'placeholder': 'you@example.com'}))
     bio = forms.CharField( label = _('Short bio'), required = False,
