@@ -3,10 +3,9 @@ from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 
 from .models import UserMessage
-from project.widgets import SmallClearableFileInput
 
 class ProfileChangeForm(forms.Form):
-    avatar = forms.FileField( required = False, widget = SmallClearableFileInput())
+    avatar = forms.FileField( required = False, )
     first_name = forms.CharField( label = _('First name'), required = False,
         widget = forms.TextInput())
     last_name = forms.CharField( label = _('Last name'), required = False,
