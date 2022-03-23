@@ -14,7 +14,9 @@
     {% endif %}
     <form hx-post="{% url 'account_profile' %}" hx-target="#content" hx-encoding="multipart/form-data">
       {% if user.profile.fb_image %}
-        <img class="rounded-circle" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
+        <a href="{{ user.profile.fb_image.url }}">
+          <img class="rounded-circle" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
+        </a>
       {% endif %}
       {% bootstrap_form form %}
       <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
