@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-20 19:59+0100\n"
+"POT-Creation-Date: 2022-03-23 18:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,15 +150,15 @@ msgstr ""
 msgid "No Home Pages available"
 msgstr "Nessuna homepage disponibile"
 
-#: .\project\settings.py:139
+#: .\project\settings.py:136
 msgid "Admin"
 msgstr "Amministrazione"
 
-#: .\project\settings.py:168
+#: .\project\settings.py:165
 msgid "Italian"
 msgstr "Italiano"
 
-#: .\project\settings.py:169
+#: .\project\settings.py:166
 msgid "English"
 msgstr "Inglese"
 
@@ -196,7 +196,7 @@ msgstr "Verifica e contattaci per segnalarlo"
 
 #: .\project\templates\account\account_delete.html:5
 #: .\project\templates\account\htmx\account_delete.html:6
-#: .\project\templates\account\htmx\account_profile.html:24
+#: .\project\templates\account\htmx\account_profile.html:29
 msgid "Delete Account"
 msgstr "Elimina registrazione"
 
@@ -206,8 +206,8 @@ msgid "Account Inactive"
 msgstr "Registrazione inattiva"
 
 #: .\project\templates\account\account_profile.html:5
-#: .\project\templates\account\htmx\account_profile.html:7
-#: .\project\templates\account\htmx\account_profile.html:20
+#: .\project\templates\account\htmx\account_profile.html:10
+#: .\project\templates\account\htmx\account_profile.html:25
 msgid "Change Profile"
 msgstr "Cambia profilo"
 
@@ -230,7 +230,7 @@ msgstr "Conferma indirizzo email"
 #: .\project\templates\account\htmx\account_delete.html:9
 msgid "Are you sure you want to delete your profile? There's no way back"
 msgstr ""
-"Sicuro di voler annullare la registrazione? Non c'è modo di ripristinarla"
+"Sicuro di voler annullare la registrazione? Non potrai ripristinarla"
 
 #: .\project\templates\account\htmx\account_delete.html:13
 #: .\project\templates\account\htmx\email_confirm.html:17
@@ -252,15 +252,15 @@ msgstr ""
 msgid "This account is inactive."
 msgstr "Questa registrazione è inattiva"
 
-#: .\project\templates\account\htmx\account_profile.html:12
+#: .\project\templates\account\htmx\account_profile.html:15
 msgid "Profile has been successfully modified!"
 msgstr "Il profilo è stato modificato con successo!"
 
-#: .\project\templates\account\htmx\account_profile.html:23
+#: .\project\templates\account\htmx\account_profile.html:28
 msgid "Change Password?"
 msgstr "Cambia la password?"
 
-#: .\project\templates\account\htmx\account_profile.html:27
+#: .\project\templates\account\htmx\account_profile.html:32
 msgid "Go to Admin"
 msgstr "Vai all'amministrazione"
 
@@ -405,7 +405,7 @@ msgstr "Cambia la password"
 #: .\project\templates\account\password_reset.html:5
 #: .\project\templates\account\password_reset_done.html:6
 msgid "Password Reset"
-msgstr "Modifica la password"
+msgstr "Reimposta la password"
 
 #: .\project\templates\account\htmx\password_reset.html:13
 msgid ""
@@ -417,7 +417,7 @@ msgstr ""
 
 #: .\project\templates\account\htmx\password_reset.html:18
 msgid "Reset My Password"
-msgstr "Modifica la password"
+msgstr "Reimposta la password"
 
 #: .\project\templates\account\htmx\password_reset.html:21
 msgid "Please contact us if you have any trouble resetting your password."
@@ -540,8 +540,8 @@ msgstr "Nota"
 msgid "you are already logged in as %(user_display)s."
 msgstr "sei già autenticato come %(user_display)s."
 
-#: .\project\templates\htmx\language_selector.html:9
-#: .\project\templates\htmx\language_selector.html:27
+#: .\project\templates\htmx\language_selector.html:5
+#: .\project\templates\htmx\language_selector.html:24
 #: .\project\templates\navbar.html:40
 msgid "Set language"
 msgstr "Seleziona lingua"
@@ -607,14 +607,6 @@ msgstr "Stai per accedere tramite un account da %(provider)s."
 msgid "Continue"
 msgstr "Continua"
 
-#: .\project\templates\widgets\small_clearable_file_input.html:5
-msgid "Download"
-msgstr "Scarica"
-
-#: .\project\templates\widgets\small_clearable_file_input.html:8
-msgid "or delete"
-msgstr "o cancella"
-
 #: .\project\urls.py:56
 msgid "search/"
 msgstr "cerca/"
@@ -623,35 +615,43 @@ msgstr "cerca/"
 msgid "select-language/"
 msgstr "seleziona-lingua/"
 
-#: .\users\forms.py:10
+#: .\users\forms.py:9 .\users\forms.py:24
 msgid "First name"
 msgstr "Nome"
 
-#: .\users\forms.py:12
+#: .\users\forms.py:11 .\users\forms.py:26
 msgid "Last name"
 msgstr "Cognome"
 
-#: .\users\forms.py:14
+#: .\users\forms.py:13 .\users\forms.py:28
 msgid "Email"
 msgstr ""
 
-#: .\users\forms.py:17 .\users\models.py:36
+#: .\users\forms.py:16 .\users\forms.py:31 .\users\models.py:36
 msgid "Short bio"
 msgstr "Biografia"
 
-#: .\users\forms.py:18
+#: .\users\forms.py:17 .\users\forms.py:32
 msgid "Talk about yourself"
 msgstr "Qualche notizia su di te"
 
-#: .\users\forms.py:21
+#: .\users\forms.py:20
+msgid "Check to delete Avatar"
+msgstr "Spunta per eliminare Avatar"
+
+#: .\users\forms.py:22
+msgid "Change Avatar"
+msgstr "Cambia Avatar"
+
+#: .\users\forms.py:35
 msgid "Check and Confirm to delete* the profile"
 msgstr "Spunta e conferma per eliminare* la registrazione"
 
-#: .\users\forms.py:30
+#: .\users\forms.py:44
 msgid "Write here the subject"
 msgstr "Scrivi il soggetto"
 
-#: .\users\forms.py:31
+#: .\users\forms.py:45
 msgid "Write here the message"
 msgstr "Scrivi il messaggio"
 
@@ -660,7 +660,6 @@ msgid "User"
 msgstr "Utente"
 
 #: .\users\models.py:21
-#| msgid "User"
 msgid "Users"
 msgstr "Utenti"
 
@@ -697,6 +696,6 @@ msgstr "Messaggio"
 msgid "Messages"
 msgstr "Messaggi"
 
-#: .\users\views.py:140
+#: .\users\views.py:146
 msgid "From"
 msgstr "Da"
