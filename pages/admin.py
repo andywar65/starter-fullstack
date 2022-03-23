@@ -1,4 +1,8 @@
 from django.contrib import admin
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
+from django.utils.translation import gettext_lazy as _
+
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
 from .models import Logo, FooterLink, HomePage, HomePageCarousel
@@ -24,3 +28,24 @@ class HomePageAdmin(TranslationAdmin):
     inlines = [ HomePageCarouselInline,  ]
 
 admin.site.register(HomePage, HomePageAdmin)
+
+class FlatPageAdmin(FlatPageAdmin):
+    fieldsets = (
+        (None, {'fields': ('url', 'title', 'content', 'sites')}),
+        (_('Advanced options'), {
+            'fields': (
+                #'enable_comments',
+                'registration_required',
+                'template_name',
+            ),
+        }),
+    )
+    class Media:
+        js = [
+            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+            '/static/grappelli/tinymce_setup/tinymce_setup.js',
+        ]
+
+# Re-register FlatPageAdmin
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, FlatPageAdmin)
