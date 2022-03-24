@@ -16,8 +16,8 @@ class ProfileChangeForm(forms.Form):
     bio = forms.CharField( label = _('Short bio'), required = False,
         widget = forms.Textarea(attrs={'placeholder': _("Talk about yourself")}) )
 
-class ProfileChangeNoAvatarForm(forms.Form):
-    no_avatar = forms.BooleanField( label=_("Check to delete Avatar"),
+class ProfileChangeDelAvatarForm(forms.Form):
+    del_avatar = forms.BooleanField( label=_("Check to delete Avatar"),
         required = False,)
     avatar = forms.FileField( label = _('Change Avatar'), required = False, 
         widget = forms.FileInput())
