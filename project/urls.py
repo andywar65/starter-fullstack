@@ -48,12 +48,11 @@ urlpatterns = [
         name='password_reset'),
     path('accounts/email/', TestedEmailView.as_view(), name='account_email'),
     path('accounts/', include('allauth.urls')),
-    #path('accounts/', include('users.urls')),
+    path('docs/', include('django.contrib.flatpages.urls')),
 ]
 
 urlpatterns += i18n_patterns(
     path('', HomePageTemplateView.as_view(), name='home'),
-    path(_('docs/'), include('django.contrib.flatpages.urls')),
     path(_('search/'), search_results, name='search_results'),
     path(_('select-language/'), SelectLanguageTemplateView.as_view(),
         name='select_language'),
