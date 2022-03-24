@@ -1,6 +1,7 @@
 {% load static %}
 {% load fb_versions %}
 {% load i18n %}
+{% load flatpages %}
 
 <header>
   <!-- Fixed navbar -->
@@ -14,6 +15,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {% translate 'Docs' %}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% get_flatpages as flatpages %}
+              {% for page in flatpages %}
+                <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
+              {% endfor %}
+            </div>
+          </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" hx-get="{% url 'account_contact' %}" hx-target="#content" hx-push-url="{% url 'account_contact' %}">{% trans 'Contact' %}</a>

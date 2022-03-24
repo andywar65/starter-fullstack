@@ -27,10 +27,10 @@ from pages.views import HomePageTemplateView
 from users.views import *
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/filebrowser/', site.urls),
     path('grappelli/', include('grappelli.urls')), # grappelli URLS
     path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('accounts/login/', HTMXLoginView.as_view(), name='account_login'),
     path('accounts/logout/', HTMXLogoutView.as_view(), name='account_logout'),
     path('accounts/signup/', HTMXSignupView.as_view(), name='account_signup'),
