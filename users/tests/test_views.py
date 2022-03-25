@@ -56,8 +56,8 @@ class UserViewsTest(TestCase):
 
     def test_immutable_user_views_status_code_403(self):
         print("\n-Test Immutable User Views logged")
-
         self.client.login(username='immutable', password='P4s5W0r6')
+
         response = self.client.get(reverse('account_profile'))
         self.assertEqual(response.status_code, 403)
         print("\n--Test Immutable Account Profile forbidden")
@@ -72,8 +72,8 @@ class UserViewsTest(TestCase):
 
     def test_user_views_status_code_200(self):
         print("\n-Test User Views logged in")
-
         self.client.login(username='boss', password='P4s5W0r6')
+
         response = self.client.get(reverse('account_profile'))
         self.assertEqual(response.status_code, 200)
         print("\n--Test Account Profile success")
@@ -85,3 +85,32 @@ class UserViewsTest(TestCase):
         response = self.client.get(reverse('account_contact'))
         self.assertEqual(response.status_code, 200)
         print("\n--Test Account Contact success")
+
+    def test_change_account_profile(self):
+        print("\n-Test Change account profile")
+        self.client.login(username='boss', password='P4s5W0r6')
+        img_path = Path(settings.STATIC_ROOT).joinpath('tests/image.jpg')
+        with open(img_path, 'rb') as f:
+            content = f.read()
+
+        response = self.client.post(reverse('account_profile'),
+            {'first_name': '', 'last_name': '', 'email': 'boss@example.com',
+            'avatar': SimpleUploadedFile('image.jpg', content, 'image/jpg'),
+            'bio': '' },
+            follow = True)
+        self.assertRedirects(response,
+            reverse('account_profile')+'?submitted=True',
+            status_code=302,
+            target_status_code = 200)
+        print("\n--Test Add Avatar redirect")
+
+        response = self.client.post(reverse('account_profile'),
+            {'first_name': '', 'last_name': '', 'email': 'boss@example.com',
+            'avatar': '', 'del_avatar': True,
+            'bio': '' },
+            follow = True)
+        self.assertRedirects(response,
+            reverse('account_profile')+'?submitted=True',
+            status_code=302,
+            target_status_code = 200)
+        print("\n--Test Delete Avatar redirect")
