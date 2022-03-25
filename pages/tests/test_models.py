@@ -3,7 +3,7 @@ from django.test import TestCase, override_settings
 from pages.models import HomePage
 
 @override_settings(USE_I18N=False)
-class UserModelTest(TestCase):
+class PageModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         print("\nTest page models")
