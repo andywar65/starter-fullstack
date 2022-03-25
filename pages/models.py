@@ -1,6 +1,3 @@
-from PIL import Image
-from io import BytesIO
-
 from django.db import models
 from django.core.files import File
 from django.conf import settings
@@ -44,7 +41,9 @@ class HomePage(models.Model):
         null=True, blank=True, help_text = _('Talk about this website'))
 
     def __str__(self):
-        return self.title if self.title else _('Home Page - ') + str(self.id)
+        if self.title:
+            return self.title
+        return _('Home Page - ') + str(self.id)
 
     class Meta:
         verbose_name = _('Home Page')
