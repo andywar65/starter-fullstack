@@ -15,3 +15,6 @@ class PageViewTest(TestCase):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         print("\n-Test Homepage status 200")
+
+        self.assertTemplateUsed(response, 'pages/home.html')
+        print("\n-Test Homepage template")
