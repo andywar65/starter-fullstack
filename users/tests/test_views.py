@@ -10,14 +10,15 @@ from allauth.account.models import EmailAddress
 
 from users.models import User
 
-@override_settings(USE_I18N=False)#not working
+@override_settings(USE_I18N=False)
 @override_settings(MEDIA_ROOT=Path(settings.MEDIA_ROOT).joinpath('temp'))
 class UserViewsTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         print("\nTest user views")
-        User.objects.create_superuser('boss', 'boss@example.com',
+        boss = User.objects.create_superuser('boss', 'boss@example.com',
             'P4s5W0r6')
+        EmailAddress.objects.create(user_id=boss.uuid)
         immutable = User.objects.create_user('immutable', 'immu@example.com',
             'P4s5W0r6')
         p = Permission.objects.get(codename='can_not_change_profile')
@@ -108,9 +109,35 @@ class UserViewsTest(TestCase):
             {'first_name': '', 'last_name': '', 'email': 'boss@example.com',
             'avatar': '', 'del_avatar': True,
             'bio': '' },
-            follow = True)
+            headers = {'HX-REQUEST': True}, #not working
+            follow = True )
         self.assertRedirects(response,
             reverse('account_profile')+'?submitted=True',
             status_code=302,
             target_status_code = 200)
         print("\n--Test Delete Avatar redirect")
+
+    def test_send_account_contact(self):
+        print("\n-Test send account contact")
+        self.client.login(username='boss', password='P4s5W0r6')
+
+        response = self.client.post(reverse('account_contact'),
+            {'subject': 'Subject', 'body': 'Message'},
+            follow = True)
+        self.assertRedirects(response,
+            reverse('account_contact')+'?submitted=True',
+            status_code=302,
+            target_status_code = 200)
+        print("\n--Test send account contact redirect")
+
+    def test_delete_account_profile(self):
+        print("\n-Test delete account profile")
+        self.client.login(username='boss', password='P4s5W0r6')
+
+        response = self.client.post(reverse('account_delete'),
+            {'delete': True}, follow = True)
+        self.assertRedirects(response,
+            reverse('home'),
+            status_code=302,
+            target_status_code = 404) #we don't have HomePage
+        print("\n--Test delete account profile redirect")
