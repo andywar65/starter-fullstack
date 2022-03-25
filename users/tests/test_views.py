@@ -23,40 +23,65 @@ class UserViewsTest(TestCase):
         p = Permission.objects.get(codename='can_not_change_profile')
         immutable.user_permissions.add(p)
 
+    def tearDown(self):
+        """Checks existing files, then removes them"""
+        path = Path(settings.MEDIA_ROOT).joinpath('uploads/images/users/')
+        list = [e for e in path.iterdir() if e.is_file()]
+        for file in list:
+            Path(file).unlink()
+
     def test_user_views_status_code_302(self):
         print("\n-Test User Views not logged")
+
         response = self.client.get(reverse('account_profile'))
-        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response,
+            reverse('account_login')+'?next=/accounts/profile/',
+            status_code=302,
+            target_status_code = 200)
         print("\n--Test Account Profile redirect")
+
         response = self.client.get(reverse('account_delete'))
-        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response,
+            reverse('account_login')+'?next=/accounts/profile/delete/',
+            status_code=302,
+            target_status_code = 200)
         print("\n--Test Account Delete redirect")
+
         response = self.client.get(reverse('account_contact'))
-        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response,
+            reverse('account_login')+'?next=/accounts/contact/',
+            status_code=302,
+            target_status_code = 200)
         print("\n--Test Account Contact redirect")
 
     def test_immutable_user_views_status_code_403(self):
         print("\n-Test Immutable User Views logged")
+
         self.client.login(username='immutable', password='P4s5W0r6')
         response = self.client.get(reverse('account_profile'))
         self.assertEqual(response.status_code, 403)
         print("\n--Test Immutable Account Profile forbidden")
+
         response = self.client.get(reverse('account_delete'))
         self.assertEqual(response.status_code, 403)
         print("\n--Test Immutable Account Delete forbidden")
+
         response = self.client.get(reverse('account_contact'))
         self.assertEqual(response.status_code, 200)
         print("\n--Test Immutable Account Contact success")
 
     def test_user_views_status_code_200(self):
         print("\n-Test User Views logged in")
+
         self.client.login(username='boss', password='P4s5W0r6')
         response = self.client.get(reverse('account_profile'))
         self.assertEqual(response.status_code, 200)
         print("\n--Test Account Profile success")
+
         response = self.client.get(reverse('account_delete'))
         self.assertEqual(response.status_code, 200)
         print("\n--Test Account Delete success")
+
         response = self.client.get(reverse('account_contact'))
         self.assertEqual(response.status_code, 200)
         print("\n--Test Account Contact success")
