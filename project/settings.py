@@ -176,14 +176,13 @@ MEDIA_ROOT = env.str('MEDIA_ROOT') # no trailing slash
 MEDIA_URL = env.str("MEDIA_URL", default='/media/')
 
 # Mail configuration
-#DEV: 'django.core.mail.backends.console.EmailBackend'
-#PROD use dj_email_url
-EMAIL_BACKEND = env.str("EMAIL_BACKEND")
 
-EMAIL_HOST = env.str("EMAIL_HOST")
+EMAIL_BACKEND = env.str("EMAIL_BACKEND",
+    default='django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = env.str("EMAIL_HOST", default='email_host')
 EMAIL_PORT = env.int("EMAIL_PORT", default=465)
-EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
-EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD", default='password')
+EMAIL_HOST_USER = env.str("EMAIL_HOST_USER", default='user')
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=False)
 EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", default=False)
 SERVER_EMAIL = env.str("SERVER_EMAIL", default='root@localhost')
