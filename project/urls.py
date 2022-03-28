@@ -1,9 +1,10 @@
 import debug_toolbar
 
-from django.contrib import admin
 from django.conf import settings
-from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
+from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 
@@ -37,6 +38,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('docs/', include('django.contrib.flatpages.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
+    #path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+        #name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 urlpatterns += i18n_patterns(
