@@ -1,1 +1,1 @@
-python manage.py runserver
+python -X dev manage.py runserver
