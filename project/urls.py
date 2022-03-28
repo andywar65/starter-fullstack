@@ -13,6 +13,11 @@ from filebrowser.sites import site
 from .views import search_results, SelectLanguageTemplateView
 from pages.views import HomePageTemplateView
 from users.views import *
+from .sitemaps import *
+
+sitemaps = {
+    'flat': FlatPageSitemap,
+}
 
 urlpatterns = [
     path('admin/filebrowser/', site.urls),
@@ -38,8 +43,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('docs/', include('django.contrib.flatpages.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
-    #path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-        #name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 urlpatterns += i18n_patterns(
