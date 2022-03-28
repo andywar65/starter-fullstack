@@ -29,6 +29,7 @@ django==4.0.3
     #   -r requirements.in
     #   django-allauth
     #   django-bootstrap-v5
+    #   django-debug-toolbar
     #   django-htmx
     #   django-modeltranslation
 django-allauth==0.50.0
@@ -37,6 +38,8 @@ django-bootstrap-v5==1.0.11
     # via -r requirements.in
 django-cache-url==3.4.0
     # via environs
+django-debug-toolbar==3.2.4
+    # via -r requirements.in
 django-filebrowser==4.0.1
     # via -r requirements.in
 django-grappelli==3.0.3
@@ -84,7 +87,9 @@ six==1.16.0
 soupsieve==2.3.1
     # via beautifulsoup4
 sqlparse==0.4.2
-    # via django
+    # via
+    #   django
+    #   django-debug-toolbar
 tzdata==2022.1
     # via django
 urllib3==1.26.9

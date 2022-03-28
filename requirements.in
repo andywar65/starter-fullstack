@@ -8,3 +8,4 @@ django-htmx==1.9.0
 django-modeltranslation==0.17.5
 environs[django]
 coverage
+django-debug-toolbar
