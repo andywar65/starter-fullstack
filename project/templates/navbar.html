@@ -16,13 +16,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="/docs/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {% translate 'Docs' %}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% get_flatpages as flatpages %}
               {% for page in flatpages %}
-                <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
+                <a class="dropdown-item" href="/docs{{ page.url }}">{{ page.title }}</a>
               {% endfor %}
             </div>
           </li>
