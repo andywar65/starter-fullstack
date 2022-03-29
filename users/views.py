@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 
 from allauth.account.models import EmailAddress
+from allauth.socialaccount.models import SocialAccount
 from allauth.account.views import (PasswordChangeView, PasswordSetView,
     PasswordResetView, EmailView, LoginView, LogoutView, SignupView)
 
@@ -120,6 +121,7 @@ class ProfileDeleteView(LoginRequiredMixin, ImmutableProfilePassTestMix,
         profile = self.user.profile
         profile.delete()
         EmailAddress.objects.filter(user_id=self.user.uuid).delete()
+        SocialAccount.objects.filter(user_id=self.user.uuid).delete()
         return super(ProfileDeleteView, self).form_valid(form)
 
     def get_success_url(self):
