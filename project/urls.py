@@ -1,4 +1,3 @@
-import debug_toolbar
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
@@ -10,7 +9,18 @@ from django.utils.translation import gettext_lazy as _
 from filebrowser.sites import site
 
 from pages.views import HomePageTemplateView
-from users.views import *
+from users.views import (
+    ContactFormView,
+    HTMXLoginView,
+    HTMXLogoutView,
+    HTMXSignupView,
+    ProfileChangeView,
+    ProfileDeleteView,
+    TestedEmailView,
+    TestedPasswordChangeView,
+    TestedPasswordResetView,
+    TestedPasswordSetView,
+)
 
 from .views import SelectLanguageTemplateView, search_results
 

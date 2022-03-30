@@ -1,5 +1,9 @@
 from django import forms
-from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+from django.contrib.postgres.search import (  # noqa: F401
+    SearchQuery,
+    SearchRank,
+    SearchVector,
+)
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -24,15 +28,17 @@ def search_results(request):
         template = "search_results.html"
     form = ValidateForm(request.GET)
     if form.is_valid():
-        q = SearchQuery(request.GET["q"])
+        q = SearchQuery(request.GET["q"])  # noqa: F841
 
+        """
         # search in articles example
-        # v = SearchVector('title', 'intro', 'body')
-        # articles = Article.objects.annotate(rank=SearchRank(v, q))
-        # articles = articles.filter(rank__gt=0.01)
-        # if articles:
-        # articles = articles.order_by('-rank')
-        # success = True
+        v = SearchVector('title', 'intro', 'body')
+        articles = Article.objects.annotate(rank=SearchRank(v, q))
+        articles = articles.filter(rank__gt=0.01)
+        if articles:
+        articles = articles.order_by('-rank')
+        success = True
+        """
 
         return render(
             request, template, {"search": request.GET["q"], "success": success}
