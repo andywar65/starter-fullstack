@@ -19,7 +19,7 @@ class ProfileChangeForm(forms.Form):
 class ProfileChangeDelAvatarForm(forms.Form):
     del_avatar = forms.BooleanField( label=_("Check to delete Avatar"),
         required = False,)
-    avatar = forms.FileField( label = _('Change Avatar'), required = False, 
+    avatar = forms.FileField( label = _('Change Avatar'), required = False,
         widget = forms.FileInput())
     first_name = forms.CharField( label = _('First name'), required = False,
         widget = forms.TextInput())
