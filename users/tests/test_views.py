@@ -165,6 +165,6 @@ class UserViewsTest(TestCase):
             reverse("account_delete"), {"delete": True}, follow=True
         )
         self.assertRedirects(
-            response, reverse("home"), status_code=302, target_status_code=404
-        )  # we don't have HomePage
+            response, reverse("home"), status_code=302, target_status_code=200
+        )
         print("\n--Test delete account profile redirect")

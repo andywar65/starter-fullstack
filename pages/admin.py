@@ -49,7 +49,7 @@ class FlatPageAdmin(FlatPageAdmin):
             _("Advanced options"),
             {
                 "fields": (
-                    #'enable_comments',
+                    # 'enable_comments',
                     "registration_required",
                     "template_name",
                 ),
