@@ -1,19 +1,18 @@
 import debug_toolbar
-
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.contrib.sitemaps.views import sitemap
 from django.contrib.flatpages.sitemaps import FlatPageSitemap
-from django.urls import path, include
+from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
-
 from filebrowser.sites import site
 
-from .views import search_results, SelectLanguageTemplateView
 from pages.views import HomePageTemplateView
 from users.views import *
+
+from .views import SelectLanguageTemplateView, search_results
 
 sitemaps = {
     "flatpages": FlatPageSitemap,

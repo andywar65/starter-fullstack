@@ -1,4 +1,4 @@
-from pages.models import Logo, FooterLink
+from pages.models import FooterLink, Logo
 
 
 def get_navbar_footer_data(request):

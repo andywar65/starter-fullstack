@@ -1,9 +1,8 @@
-from django.db import models
-from django.core.files import File
 from django.conf import settings
-from django.utils.translation import gettext_lazy as _
+from django.core.files import File
+from django.db import models
 from django.utils.timezone import now
-
+from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
 
 from .choices import ICONS

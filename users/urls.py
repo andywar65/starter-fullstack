@@ -1,13 +1,12 @@
-from django.urls import path, re_path
-
 from allauth.account.views import (
     account_inactive,
-    email_verification_sent,
     confirm_email,
+    email_verification_sent,
     password_reset_done,
     password_reset_from_key,
     password_reset_from_key_done,
 )
+from django.urls import path, re_path
 
 from .views import *
 

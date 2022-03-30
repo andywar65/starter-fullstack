@@ -1,7 +1,7 @@
 from django import forms
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
 
 class SelectLanguageTemplateView(TemplateView):

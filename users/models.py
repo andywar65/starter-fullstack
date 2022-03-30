@@ -1,11 +1,10 @@
 import uuid
 
-from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db import models
 from django.utils.translation import gettext_lazy as _
-
-from filebrowser.fields import FileBrowseField
 from filebrowser.base import FileObject
+from filebrowser.fields import FileBrowseField
 
 
 class User(AbstractUser):

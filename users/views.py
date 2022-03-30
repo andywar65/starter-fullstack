@@ -1,25 +1,24 @@
-from django.views.generic.edit import FormView
-from django.core.mail import EmailMessage
-from django.conf import settings
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import Http404
-from django.urls import reverse
-from django.utils.translation import gettext as _
-
 from allauth.account.models import EmailAddress
-from allauth.socialaccount.models import SocialAccount
 from allauth.account.views import (
-    PasswordChangeView,
-    PasswordSetView,
-    PasswordResetView,
     EmailView,
     LoginView,
     LogoutView,
+    PasswordChangeView,
+    PasswordResetView,
+    PasswordSetView,
     SignupView,
 )
+from allauth.socialaccount.models import SocialAccount
+from django.conf import settings
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.mail import EmailMessage
+from django.http import Http404
+from django.urls import reverse
+from django.utils.translation import gettext as _
+from django.views.generic.edit import FormView
 
-from .models import User, UserMessage
 from .forms import *
+from .models import User, UserMessage
 
 
 class ImmutableProfilePassTestMix(UserPassesTestMixin):

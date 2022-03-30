@@ -1,10 +1,10 @@
 from pathlib import Path
 
 from django.conf import settings
-from django.test import TestCase, override_settings
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase, override_settings
 
-from users.models import User, Profile, UserMessage
+from users.models import Profile, User, UserMessage
 
 
 @override_settings(USE_I18N=False)

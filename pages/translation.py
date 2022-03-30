@@ -1,5 +1,6 @@
-from modeltranslation.translator import register, TranslationOptions
-from .models import Logo, FooterLink, HomePage, HomePageCarousel
+from modeltranslation.translator import TranslationOptions, register
+
+from .models import FooterLink, HomePage, HomePageCarousel, Logo
 
 
 @register(Logo)

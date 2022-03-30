@@ -1,7 +1,7 @@
 from pathlib import Path
-from environs import Env
 
 from django.utils.translation import gettext_lazy as _
+from environs import Env
 
 env = Env()
 env.read_env()

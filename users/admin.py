@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from modeltranslation.admin import TranslationAdmin
 
-from .models import User, Profile, UserMessage
+from .models import Profile, User, UserMessage
 
 
 class UserAdmin(UserAdmin):

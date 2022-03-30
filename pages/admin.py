@@ -2,10 +2,9 @@ from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
-
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-from .models import Logo, FooterLink, HomePage, HomePageCarousel
+from .models import FooterLink, HomePage, HomePageCarousel, Logo
 
 
 class LogoAdmin(TranslationAdmin):

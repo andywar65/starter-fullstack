@@ -1,12 +1,11 @@
 from pathlib import Path
 
-from django.conf import settings
-from django.test import TestCase, override_settings
-from django.core.files.uploadedfile import SimpleUploadedFile
-from django.urls import reverse
-from django.contrib.auth.models import Permission
-
 from allauth.account.models import EmailAddress
+from django.conf import settings
+from django.contrib.auth.models import Permission
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase, override_settings
+from django.urls import reverse
 
 from users.models import User
 
