@@ -1,19 +1,25 @@
 {% load i18n %}
 {% load bootstrap5 %}
 
-<div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
-  <div class="card-header">
-    <h3>{% trans "Contact" %}</h3>
+{% include 'navbar.html' %}
+<main class="flex-shrink-0">
+  <div id="content" class="container">
+    <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
+      <div class="card-header">
+        <h3>{% trans "Contact" %}</h3>
+      </div>
+      <div class="card-body">
+        {% if submitted %}
+        <p class="alert alert-success" role="alert">
+          {% trans 'Message has been successfully sent!' %}
+        </p>
+        {% endif %}
+        <form hx-post="{% url 'account_contact' %}" hx-target="#content">
+          {% bootstrap_form form %}
+          <button class="btn btn-primary" type="submit">{% trans 'Send message' %}</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    {% if submitted %}
-    <p class="alert alert-success" role="alert">
-      {% trans 'Message has been successfully sent!' %}
-    </p>
-    {% endif %}
-    <form hx-post="{% url 'account_contact' %}" hx-target="#content">
-      {% bootstrap_form form %}
-      <button class="btn btn-primary" type="submit">{% trans 'Send message' %}</button>
-    </form>
-  </div>
-</div>
+</main>
+{% include 'footer.html' %}

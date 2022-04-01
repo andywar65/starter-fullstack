@@ -2,37 +2,43 @@
 {% load account socialaccount %}
 {% load bootstrap5 %}
 
-  <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
-    <div class="card-header">
-      <h3>{% trans "Sign In" %}</h3>
-    </div>
-    <div class="card-body">
-      {% get_providers as socialaccount_providers %}
-
-      {% if socialaccount_providers %}
-
-      <p>{% trans "Sign in with Google..."%}</p>
-
-      <div class="row mx-auto" style="margin-bottom: 20px">
-        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-        {% include "socialaccount/snippets/login_extra.html" %}
+{% include 'navbar.html' %}
+<main class="flex-shrink-0">
+  <div id="content" class="container">
+    <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
+      <div class="card-header">
+        <h3>{% trans "Sign In" %}</h3>
       </div>
+      <div class="card-body">
+        {% get_providers as socialaccount_providers %}
 
-      <p>{% blocktrans with site.name as site_name %}...or, <a class="link-primary" hx-get="{{ signup_url }}" hx-trigger="click" hx-target="#content" hx-push-url="{{ signup_url }}">sign up</a>
-      for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+        {% if socialaccount_providers %}
 
-      {% else %}
-      <p>{% blocktrans %}If you have not created an account yet, then please
-      <a class="link-primary" hx-get="{{ signup_url }}" hx-trigger="click" hx-target="#content" hx-push-url="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-      {% endif %}
-      <form class="login" method="POST" action="{% url 'account_login' %}">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% if redirect_field_value %}
-        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        <p>{% trans "Sign in with Google..."%}</p>
+
+        <div class="row mx-auto" style="margin-bottom: 20px">
+          {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+          {% include "socialaccount/snippets/login_extra.html" %}
+        </div>
+
+        <p>{% blocktrans with site.name as site_name %}...or, <a class="link-primary" hx-get="{{ signup_url }}" hx-target="#basemenu" hx-push-url="{{ signup_url }}">sign up</a>
+        for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+        {% else %}
+        <p>{% blocktrans %}If you have not created an account yet, then please
+        <a class="link-primary" hx-get="{{ signup_url }}" hx-trigger="click" hx-target="#content" hx-push-url="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
         {% endif %}
-        <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
-        <a class="btn btn-secondary" hx-get="{% url 'account_reset_password' %}" hx-trigger="click" hx-target="#content" hx-push-url="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-      </form>
+        <form class="login" method="POST" action="{% url 'account_login' %}">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+          <a class="btn btn-secondary" hx-get="{% url 'account_reset_password' %}" hx-trigger="click" hx-target="#content" hx-push-url="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </form>
+      </div>
     </div>
   </div>
+</main>
+{% include 'footer.html' %}

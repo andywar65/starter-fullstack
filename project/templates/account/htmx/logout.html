@@ -1,19 +1,25 @@
 {% load i18n %}
 
-<div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
-  <div class="card-header">
-    <h3>{% trans "Sign Out" %}</h3>
-  </div>
-  <div class="card-body">
+{% include 'navbar.html' %}
+<main class="flex-shrink-0">
+  <div id="content" class="container">
+    <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
+      <div class="card-header">
+        <h3>{% trans "Sign Out" %}</h3>
+      </div>
+      <div class="card-body">
 
-    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+        <p>{% trans 'Are you sure you want to sign out?' %}</p>
 
-    <form method="post" action="{% url 'account_logout' %}">
-      {% csrf_token %}
-      {% if redirect_field_value %}
-      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-      {% endif %}
-      <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
-    </form>
+        <form method="post" action="{% url 'account_logout' %}">
+          {% csrf_token %}
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+          {% endif %}
+          <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+</main>
+{% include 'footer.html' %}

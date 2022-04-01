@@ -1,9 +1,9 @@
-{% extends "base_menu.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Contact" %}{% endblock %}
 
-{% block content %}
+{% block basemenu %}
   {% include "account/htmx/contact.html" %}
 {% endblock %}

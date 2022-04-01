@@ -1,14 +1,20 @@
 {% load i18n %}
 
-{% include 'pages/gallery.html' %}
-<hr class="mb-4">
-<div class="row">
+{% include 'navbar.html' %}
+<main class="flex-shrink-0">
+  <div id="content" class="container">
+    {% include 'pages/gallery.html' %}
+    <hr class="mb-4">
+    <div class="row">
 
-  {% if page.intro %}
-    <h4 class="text-left"><strong><em>{{ page.intro }}</em></strong></h4>
-  {% endif %}
-  {% if page.body %}
-    <p class="text-left">{{ page.body }}</p>
-  {% endif %}
+      {% if page.intro %}
+        <h4 class="text-left"><strong><em>{{ page.intro }}</em></strong></h4>
+      {% endif %}
+      {% if page.body %}
+        <p class="text-left">{{ page.body }}</p>
+      {% endif %}
 
-</div>
+    </div>
+  </div>
+</main>
+{% include 'footer.html' %}
