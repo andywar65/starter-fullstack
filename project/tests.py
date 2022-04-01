@@ -1,5 +1,26 @@
+from io import StringIO
+
+from django.core.management import call_command
 from django.test import TestCase, override_settings
 from django.urls import reverse
+
+
+class PendingMigrationsTests(TestCase):
+    """Copy/paste from 'Boost your Django DX', by Adam Johnson"""
+
+    def test_no_pending_migrations(self):
+        print("\nTest pending migrations")
+        out = StringIO()
+        try:
+            call_command(
+                "makemigrations",
+                "--dry-run",
+                "--check",
+                stdout=out,
+                stderr=StringIO(),
+            )
+        except SystemExit:  # pragma: no cover
+            raise AssertionError("Pending migrations:\n" + out.getvalue()) from None
 
 
 @override_settings(USE_I18N=False)
