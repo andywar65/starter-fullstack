@@ -3,17 +3,13 @@ from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 
+from users.views import HxTemplateMixin
+
 from .models import HomePage
 
 
-class HomePageTemplateView(TemplateView):
-    template_name = "pages/home.html"
-
-    def get_template_names(self):
-        if self.request.htmx:
-            return [self.template_name.replace("pages/", "pages/htmx/")]
-        else:
-            return [self.template_name]
+class HomePageTemplateView(HxTemplateMixin, TemplateView):
+    template_name = "pages/htmx/home.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
