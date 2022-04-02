@@ -34,61 +34,61 @@ class ImmutableProfilePassTestMix(UserPassesTestMixin):
         return not self.request.user.has_perm("users.can_not_change_profile")
 
 
-class TemplateNamesMixin:
+class HxTemplateMixin:
     """Switches template depending on request.htmx"""
 
     def get_template_names(self):
-        if self.request.htmx:
-            return [self.template_name.replace("account/", "account/htmx/")]
+        if not self.request.htmx:
+            return [self.template_name.replace("htmx/", "")]
         else:
             return [self.template_name]
 
 
 class TestedPasswordChangeView(
-    ImmutableProfilePassTestMix, TemplateNamesMixin, PasswordChangeView
+    ImmutableProfilePassTestMix, HxTemplateMixin, PasswordChangeView
 ):
-    pass
+    template_name = "account/htmx/password_change.html"
 
 
 class TestedPasswordSetView(
     ImmutableProfilePassTestMix,
     PasswordSetView,
 ):
-    pass
+    template_name = "account/htmx/password_set.html"
 
 
 class TestedPasswordResetView(
     ImmutableProfilePassTestMix,
-    TemplateNamesMixin,
+    HxTemplateMixin,
     PasswordResetView,
 ):
-    pass
+    template_name = "account/htmx/password_reset.html"
 
 
 class TestedEmailView(
     ImmutableProfilePassTestMix,
     EmailView,
 ):
-    pass
+    template_name = "account/htmx/email.html"
 
 
-class HTMXLoginView(TemplateNamesMixin, LoginView):
-    pass
+class HTMXLoginView(HxTemplateMixin, LoginView):
+    template_name = "account/htmx/login.html"
 
 
-class HTMXLogoutView(TemplateNamesMixin, LogoutView):
-    pass
+class HTMXLogoutView(HxTemplateMixin, LogoutView):
+    template_name = "account/htmx/logout.html"
 
 
-class HTMXSignupView(TemplateNamesMixin, SignupView):
-    pass
+class HTMXSignupView(HxTemplateMixin, SignupView):
+    template_name = "account/htmx/signup.html"
 
 
 class ProfileChangeView(
-    LoginRequiredMixin, ImmutableProfilePassTestMix, TemplateNamesMixin, FormView
+    LoginRequiredMixin, ImmutableProfilePassTestMix, HxTemplateMixin, FormView
 ):
     form_class = ProfileChangeForm
-    template_name = "account/account_profile.html"
+    template_name = "account/htmx/account_profile.html"
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
@@ -140,10 +140,10 @@ class ProfileChangeView(
 
 
 class ProfileDeleteView(
-    LoginRequiredMixin, ImmutableProfilePassTestMix, TemplateNamesMixin, FormView
+    LoginRequiredMixin, ImmutableProfilePassTestMix, HxTemplateMixin, FormView
 ):
     form_class = ProfileDeleteForm
-    template_name = "account/account_delete.html"
+    template_name = "account/htmx/account_delete.html"
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
@@ -165,9 +165,9 @@ class ProfileDeleteView(
         return reverse("home")
 
 
-class ContactFormView(LoginRequiredMixin, TemplateNamesMixin, FormView):
+class ContactFormView(LoginRequiredMixin, HxTemplateMixin, FormView):
     form_class = ContactForm
-    template_name = "account/contact.html"
+    template_name = "account/htmx/contact.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
