@@ -7,13 +7,11 @@ from django.contrib.postgres.search import (  # noqa: F401
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from users.views import HxTemplateMixin
 
-class SelectLanguageTemplateView(TemplateView):
-    def get_template_names(self):
-        if self.request.htmx:
-            return ["htmx/language_selector.html"]
-        else:
-            return ["language_selector.html"]
+
+class SelectLanguageTemplateView(HxTemplateMixin, TemplateView):
+    template_name = "htmx/language_selector.html"
 
 
 class ValidateForm(forms.Form):
