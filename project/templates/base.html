@@ -44,7 +44,7 @@
     <script>
       document.body.addEventListener('htmx:configRequest', (e) => {
         e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-        })
+      })
     </script>
     {% block extra-js %}{% endblock extra-js %}
   </body>

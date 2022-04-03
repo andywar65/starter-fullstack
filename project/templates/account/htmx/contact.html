@@ -10,9 +10,9 @@
       </div>
       <div class="card-body">
         {% if submitted %}
-        <p class="alert alert-success" role="alert">
-          {% trans 'Message has been successfully sent!' %}
-        </p>
+          <p class="alert alert-success" role="alert">
+            {% trans 'Message has been successfully sent!' %}
+          </p>
         {% endif %}
         <form hx-post="{% url 'account_contact' %}" hx-target="#content">
           {% bootstrap_form form %}

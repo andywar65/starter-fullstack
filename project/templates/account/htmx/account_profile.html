@@ -11,9 +11,9 @@
       </div>
       <div class="card-body">
         {% if submitted %}
-        <p class="alert alert-success" role="alert">
-          {% trans 'Profile has been successfully modified!' %}
-        </p>
+          <p class="alert alert-success" role="alert">
+            {% trans 'Profile has been successfully modified!' %}
+          </p>
         {% endif %}
         <form hx-post="{% url 'account_profile' %}" hx-target="#basemenu" hx-encoding="multipart/form-data">
           {% if user.profile.fb_image %}

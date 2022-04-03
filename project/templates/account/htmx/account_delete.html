@@ -8,9 +8,9 @@
   <div class="card-body">
     <p>{% trans "Are you sure you want to delete your profile? There's no way back" %}.</p>
     <form method="POST" action="" >
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <button class="btn btn-danger" type="submit">{% trans "Confirm" %}</button>
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button class="btn btn-danger" type="submit">{% trans "Confirm" %}</button>
     </form>
     <p><small>*{% blocktrans with request.site.name as site_name %}Account will
       be set to 'inactive'. All user info except username will be deleted.

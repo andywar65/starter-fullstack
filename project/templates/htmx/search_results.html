@@ -5,19 +5,19 @@
   <div id="content" class="container">
     <div class="card mx-auto" style="max-width: 960px; margin-top: 60px">
       {% if success %}
-      <div class="card-header">
-        <h3>{% translate 'Search' %}: "{{ search }}"</h3>
-      </div>
-      <div class="card-body">
-        <p>{% trans "Search results..." %}</p>
-      </div>
+        <div class="card-header">
+          <h3>{% translate 'Search' %}: "{{ search }}"</h3>
+        </div>
+        <div class="card-body">
+          <p>{% trans "Search results..." %}</p>
+        </div>
       {% else %}
-      <div class="card-header">
-        <h3>{% translate 'Null search' %}</h3>
-      </div>
-      <div class="card-body">
-        <p>{% trans "We didn't find elements that satisfy your search" %}</p>
-      </div>
+        <div class="card-header">
+          <h3>{% translate 'Null search' %}</h3>
+        </div>
+        <div class="card-body">
+          <p>{% trans "We didn't find elements that satisfy your search" %}</p>
+        </div>
       {% endif %}
     </div>
   </div>

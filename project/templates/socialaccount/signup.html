@@ -6,22 +6,22 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
-  <div class="card-header">
-    {% trans "Sign Up" %}
-  </div>
-  <div class="card-body">
-    <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
-    {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+  <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
+    <div class="card-header">
+      {% trans "Sign Up" %}
+    </div>
+    <div class="card-body">
+      <p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+        {{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
 
-    <form id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
-      {% csrf_token %}
-      {% bootstrap_form form %}
-      {% if redirect_field_value %}
-      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-      {% endif %}
-      <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
-    </form>
+      <form id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
+      </form>
+    </div>
   </div>
-</div>
 {% endblock %}
