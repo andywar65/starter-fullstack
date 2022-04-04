@@ -1,6 +1,7 @@
 import uuid
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Permission
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from filebrowser.base import FileObject
@@ -15,6 +16,13 @@ class User(AbstractUser):
         super(User, self).save(*args, **kwargs)
         if self.is_active:
             p, created = Profile.objects.get_or_create(user_id=self.uuid)
+            if created:
+                content_type = ContentType.objects.get_for_model(Profile)
+                permission = Permission.objects.get(
+                    codename="change_profile",
+                    content_type=content_type,
+                )
+                self.user_permissions.add(permission)
 
     class Meta:
         verbose_name = _("User")
@@ -24,9 +32,6 @@ class User(AbstractUser):
             "last_name",
             "username",
         )
-        permissions = [
-            ("can_not_change_profile", _("Immutable Profile")),
-        ]
 
 
 class Profile(models.Model):
@@ -46,6 +51,7 @@ class Profile(models.Model):
         max_length=200,
         extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
         null=True,
+        blank=True,
         directory="images/users/",
     )
     bio = models.TextField(_("Short bio"), null=True, blank=True)

@@ -26,12 +26,10 @@ from .models import UserMessage
 
 
 class ImmutableProfilePassTestMix(UserPassesTestMixin):
-    """Controls if user has immutable profile. If true, test is not passed."""
+    """Controls if user can change profile."""
 
     def test_func(self):
-        if self.request.user.is_superuser:
-            return True
-        return not self.request.user.has_perm("users.can_not_change_profile")
+        return self.request.user.has_perm("users.change_profile")
 
 
 class HxTemplateMixin:
