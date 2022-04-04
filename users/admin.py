@@ -1,24 +1,25 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationTabularInline
 
 from .models import Profile, User, UserMessage
+
+
+class ProfileAdmin(TranslationTabularInline):
+    model = Profile
+    exclude = ("temp_image",)
+    extra = 0
 
 
 class UserAdmin(UserAdmin):
     list_display = ("username", "is_staff", "is_active", "is_superuser")
     list_editable = ("is_staff", "is_active")
+    inlines = [
+        ProfileAdmin,
+    ]
 
 
 admin.site.register(User, UserAdmin)
-
-
-class ProfileAdmin(TranslationAdmin):
-    list_display = ("get_full_name",)
-    exclude = ("temp_image",)
-
-
-admin.site.register(Profile, ProfileAdmin)
 
 
 @admin.register(UserMessage)
