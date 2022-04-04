@@ -21,8 +21,8 @@ class UserViewsTest(TestCase):
         immutable = User.objects.create_user(
             "immutable", "immu@example.com", "P4s5W0r6"
         )
-        p = Permission.objects.get(codename="can_not_change_profile")
-        immutable.user_permissions.add(p)
+        p = Permission.objects.get(codename="change_profile")
+        immutable.user_permissions.remove(p)
 
     def tearDown(self):
         """Checks existing files, then removes them"""
