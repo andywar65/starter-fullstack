@@ -74,7 +74,7 @@ class UserViewsTest(TestCase):
         print("\n--Test Immutable Account Delete forbidden")
 
         response = self.client.get(reverse("account_contact"))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 403)
         print("\n--Test Immutable Account Contact success")
 
     def test_user_views_status_code_200(self):

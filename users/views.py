@@ -10,7 +10,7 @@ from allauth.account.views import (
 )
 from allauth.socialaccount.models import SocialAccount
 from django.conf import settings
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -25,13 +25,6 @@ from .forms import (
 from .models import UserMessage
 
 
-class ImmutableProfilePassTestMix(UserPassesTestMixin):
-    """Controls if user can change profile."""
-
-    def test_func(self):
-        return self.request.user.has_perm("users.change_profile")
-
-
 class HxTemplateMixin:
     """Switches template depending on request.htmx"""
 
@@ -43,31 +36,35 @@ class HxTemplateMixin:
 
 
 class TestedPasswordChangeView(
-    ImmutableProfilePassTestMix, HxTemplateMixin, PasswordChangeView
+    PermissionRequiredMixin, HxTemplateMixin, PasswordChangeView
 ):
     template_name = "account/htmx/password_change.html"
+    permission_required = "users.change_profile"
 
 
 class TestedPasswordSetView(
-    ImmutableProfilePassTestMix,
+    PermissionRequiredMixin,
     PasswordSetView,
 ):
     template_name = "account/htmx/password_set.html"
+    permission_required = "users.change_profile"
 
 
 class TestedPasswordResetView(
-    ImmutableProfilePassTestMix,
+    PermissionRequiredMixin,
     HxTemplateMixin,
     PasswordResetView,
 ):
     template_name = "account/htmx/password_reset.html"
+    permission_required = "users.change_profile"
 
 
 class TestedEmailView(
-    ImmutableProfilePassTestMix,
+    PermissionRequiredMixin,
     EmailView,
 ):
     template_name = "account/htmx/email.html"
+    permission_required = "users.change_profile"
 
 
 class HTMXLoginView(HxTemplateMixin, LoginView):
@@ -83,10 +80,11 @@ class HTMXSignupView(HxTemplateMixin, SignupView):
 
 
 class ProfileChangeView(
-    LoginRequiredMixin, ImmutableProfilePassTestMix, HxTemplateMixin, FormView
+    LoginRequiredMixin, PermissionRequiredMixin, HxTemplateMixin, FormView
 ):
     form_class = ProfileChangeForm
     template_name = "account/htmx/account_profile.html"
+    permission_required = "users.change_profile"
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
@@ -138,10 +136,11 @@ class ProfileChangeView(
 
 
 class ProfileDeleteView(
-    LoginRequiredMixin, ImmutableProfilePassTestMix, HxTemplateMixin, FormView
+    LoginRequiredMixin, PermissionRequiredMixin, HxTemplateMixin, FormView
 ):
     form_class = ProfileDeleteForm
     template_name = "account/htmx/account_delete.html"
+    permission_required = "users.change_profile"
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
@@ -163,9 +162,12 @@ class ProfileDeleteView(
         return reverse("home")
 
 
-class ContactFormView(LoginRequiredMixin, HxTemplateMixin, FormView):
+class ContactFormView(
+    LoginRequiredMixin, PermissionRequiredMixin, HxTemplateMixin, FormView
+):
     form_class = ContactForm
     template_name = "account/htmx/contact.html"
+    permission_required = "users.change_profile"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
