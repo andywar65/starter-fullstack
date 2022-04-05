@@ -1,8 +1,17 @@
+from datetime import datetime
+
+from django.contrib.auth import get_user_model
+from django.contrib.sites.models import Site
 from django.db import models
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
 
+from project.utils import generate_unique_slug
+
 from .choices import ICONS
+
+User = get_user_model()
 
 
 class Logo(models.Model):
@@ -99,6 +108,93 @@ class HomePageCarousel(models.Model):
     class Meta:
         verbose_name = _("Home page carousel")
         verbose_name_plural = _("Home page carousels")
+        ordering = [
+            "position",
+        ]
+
+
+def default_intro():
+    current_site = Site.objects.get_current()
+    return _("Another article by %(name)s!") % {"name": current_site.name}
+
+
+class Article(models.Model):
+    slug = models.SlugField(max_length=50, editable=False, null=True)
+    title = models.CharField(
+        _("Title"), help_text=_("The title of the article"), max_length=50
+    )
+    intro = models.CharField(_("Introduction"), default=default_intro, max_length=100)
+    body = models.TextField(_("Text"), null=True)
+    date = models.DateField(
+        _("Date"),
+        default=now,
+    )
+    last_updated = models.DateTimeField(editable=False, null=True)
+    author = models.ForeignKey(
+        User, on_delete=models.SET_NULL, blank=True, null=True, verbose_name=_("Author")
+    )
+
+    def get_path(self):
+        temp = self.date
+        # conditional added for test to work
+        if isinstance(temp, str):
+            temp = temp.split(" ")[0]
+            temp = datetime.strptime(temp, "%Y-%m-%d")
+        return _("/articles/") + temp.strftime("%Y/%m/%d") + "/" + self.slug
+
+    def get_previous(self):
+        try:
+            return self.get_previous_by_date()
+        except Article.DoesNotExist:
+            return
+
+    def get_next(self):
+        try:
+            return self.get_next_by_date()
+        except Article.DoesNotExist:
+            return
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = generate_unique_slug(Article, self.title)
+        self.last_updated = now()
+        super(Article, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Article")
+        verbose_name_plural = _("Articles")
+        ordering = ("-date",)
+
+
+class ArticleCarousel(models.Model):
+
+    home = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        related_name="article_carousel",
+        verbose_name=_("Article"),
+    )
+    fb_image = FileBrowseField(
+        _("Image"),
+        max_length=200,
+        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
+        directory="images/",
+    )
+    description = models.CharField(
+        _("Description"),
+        help_text=_("Will be used in captions"),
+        max_length=100,
+        null=True,
+        blank=True,
+    )
+    position = models.PositiveSmallIntegerField(_("Position"), null=True)
+
+    class Meta:
+        verbose_name = _("Article carousel")
+        verbose_name_plural = _("Article carousels")
         ordering = [
             "position",
         ]
