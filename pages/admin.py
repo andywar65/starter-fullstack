@@ -4,7 +4,14 @@ from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-from .models import FooterLink, HomePage, HomePageCarousel, Logo
+from .models import (
+    Article,
+    ArticleCarousel,
+    FooterLink,
+    HomePage,
+    HomePageCarousel,
+    Logo,
+)
 
 
 class LogoAdmin(TranslationAdmin):
@@ -67,3 +74,50 @@ class FlatPageAdmin(FlatPageAdmin):
 # Re-register FlatPageAdmin
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
+
+
+class ArticleCarouselInline(admin.TabularInline):
+    model = ArticleCarousel
+    fields = (
+        "position",
+        "fb_image",
+        "description",
+    )
+    sortable_field_name = "position"
+    extra = 0
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ("title", "date", "author")
+    search_fields = ("title", "date", "intro")
+    inlines = [
+        ArticleCarouselInline,
+    ]
+
+    class Media:
+        js = [
+            "/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js",
+            "/static/js/tinymce_setup.js",
+        ]
+
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": ("title", "date", "intro"),
+            },
+        ),
+        (
+            _("Text"),
+            {
+                "fields": ("body",),
+            },
+        ),
+        (
+            None,
+            {
+                "fields": ("author",),
+            },
+        ),
+    )
