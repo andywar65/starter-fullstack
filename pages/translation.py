@@ -1,6 +1,13 @@
 from modeltranslation.translator import TranslationOptions, register
 
-from .models import FooterLink, HomePage, HomePageCarousel, Logo
+from .models import (
+    Article,
+    ArticleCarousel,
+    FooterLink,
+    HomePage,
+    HomePageCarousel,
+    Logo,
+)
 
 
 @register(Logo)
@@ -27,5 +34,21 @@ class HomePageTranslationOptions(TranslationOptions):
 
 @register(HomePageCarousel)
 class HomePageCarouselTranslationOptions(TranslationOptions):
+    fields = ("description",)
+    # required_languages = ('it', 'en')
+
+
+@register(Article)
+class ArticleTranslationOptions(TranslationOptions):
+    fields = (
+        "title",
+        "intro",
+        "body",
+    )
+    # required_languages = ('it', 'en')
+
+
+@register(ArticleCarousel)
+class ArticleCarouselTranslationOptions(TranslationOptions):
     fields = ("description",)
     # required_languages = ('it', 'en')

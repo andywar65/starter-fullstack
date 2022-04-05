@@ -76,7 +76,7 @@ admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
 
 
-class ArticleCarouselInline(admin.TabularInline):
+class ArticleCarouselInline(TranslationTabularInline):
     model = ArticleCarousel
     fields = (
         "position",
@@ -88,7 +88,7 @@ class ArticleCarouselInline(admin.TabularInline):
 
 
 @admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin):
+class ArticleAdmin(TranslationAdmin):
     list_display = ("title", "date", "author")
     search_fields = ("title", "date", "intro")
     inlines = [
@@ -111,6 +111,7 @@ class ArticleAdmin(admin.ModelAdmin):
         (
             _("Text"),
             {
+                "classes": ("grp-collapse",),
                 "fields": ("body",),
             },
         ),
