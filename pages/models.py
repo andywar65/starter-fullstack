@@ -1,8 +1,7 @@
-from datetime import datetime
-
 from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 from django.db import models
+from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
@@ -135,12 +134,15 @@ class Article(models.Model):
     )
 
     def get_path(self):
-        temp = self.date
-        # conditional added for test to work
-        if isinstance(temp, str):
-            temp = temp.split(" ")[0]
-            temp = datetime.strptime(temp, "%Y-%m-%d")
-        return _("/articles/") + temp.strftime("%Y/%m/%d") + "/" + self.slug
+        return reverse(
+            "articles:article_detail",
+            kwargs={
+                "year": self.date.year,
+                "month": self.date.month,
+                "day": self.date.day,
+                "slug": self.slug,
+            },
+        )
 
     def get_previous(self):
         try:
