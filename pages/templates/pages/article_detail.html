@@ -1,0 +1,7 @@
+{% extends "base_menu.html" %}
+
+{% block head_title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+  {% include "pages/htmx/article_detail.html" %}
+{% endblock %}

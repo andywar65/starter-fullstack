@@ -71,10 +71,11 @@ class ArticleDayArchiveView(DayArchiveView):
     allow_empty = True
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(HxTemplateMixin, DetailView):
     model = Article
     context_object_name = "article"
     slug_field = "slug"
+    template_name = "pages/htmx/article_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
