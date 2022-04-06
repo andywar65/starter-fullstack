@@ -1,0 +1,18 @@
+{% load i18n %}
+
+{% include 'navbar.html' %}
+<main class="flex-shrink-0">
+  <div id="content" class="container">
+    <div class="card mx-auto" style="max-width: 960px; margin-top: 60px">
+      <div class="card-header">
+        <h3>{% translate 'Articles' %}</h3>
+      </div>
+      <div class="card-body">
+        {% for article in articles %}
+          <a class="link-primary" hx-get="{{ article.get_path }}" hx-target="#content" hx-push-url="{{ article.get_path }}">{{ article.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+{% include 'footer.html' %}

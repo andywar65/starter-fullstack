@@ -30,13 +30,14 @@ class HomePageTemplateView(HxTemplateMixin, TemplateView):
         return context
 
 
-class ArticleArchiveIndexView(ArchiveIndexView):
+class ArticleArchiveIndexView(HxTemplateMixin, ArchiveIndexView):
     model = Article
     date_field = "date"
     allow_future = True
     context_object_name = "articles"
     paginate_by = 12
     allow_empty = True
+    template_name = "pages/htmx/article_index.html"
 
 
 class ArticleYearArchiveView(YearArchiveView):

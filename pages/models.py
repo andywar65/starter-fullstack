@@ -113,8 +113,12 @@ class HomePageCarousel(models.Model):
 
 
 def default_intro():
-    current_site = Site.objects.get_current()
-    return _("Another article by %(name)s!") % {"name": current_site.name}
+    # following try/except for test to work
+    try:
+        current_site = Site.objects.get_current()
+        return _("Another article by %(name)s!") % {"name": current_site.name}
+    except Site.DoesNotExist:
+        return _("Another article!")
 
 
 class Article(models.Model):
@@ -135,7 +139,7 @@ class Article(models.Model):
 
     def get_path(self):
         return reverse(
-            "articles:article_detail",
+            "pages:article_detail",
             kwargs={
                 "year": self.date.year,
                 "month": self.date.month,

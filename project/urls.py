@@ -74,7 +74,7 @@ urlpatterns += i18n_patterns(
         SelectLanguageTemplateView.as_view(),
         name="select_language",
     ),
-    path(_("articles/"), include("pages.urls", namespace="articles")),
+    path(_("articles/"), include("pages.urls", namespace="pages")),
 )
 
 if settings.DEBUG:

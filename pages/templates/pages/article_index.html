@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block head_title %}{% translate 'Articles' %}{%endblock head_title %}
+
+{% block basemenu %}
+  {% include 'pages/htmx/article_index.html' %}
+{% endblock basemenu %}
