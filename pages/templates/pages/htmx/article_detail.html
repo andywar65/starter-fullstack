@@ -1,8 +1,18 @@
+{% load i18n %}
+
 <div class="card mx-auto" style="max-width: 960px; margin-top: 60px">
   <div class="card-header">
     <h3>{{ article.title }}</h3>
+    <p>
+      <em>{{ article.intro }}</em>
+      {% if article.author %}
+        - {% translate "by"%} {{ article.author.profile.get_full_name }}
+      {% endif %}
+    </p>
   </div>
   <div class="card-body">
-    <p>{{ article.body | safe }}</p>
+    {% include 'pages/gallery.html' %}
+    <hr class="mb-4">
+    {{ article.body | safe }}
   </div>
 </div>
