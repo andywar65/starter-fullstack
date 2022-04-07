@@ -8,9 +8,13 @@
         <h3>{% translate 'Articles' %}</h3>
       </div>
       <div class="card-body">
-        {% for article in articles %}
-          <a class="link-primary" hx-get="{{ article.get_path }}" hx-target="#content" hx-push-url="{{ article.get_path }}">{{ article.title }}</a>
-        {% endfor %}
+        <ul>
+          {% for article in articles %}
+            <li>
+              <a class="link-primary" hx-get="{{ article.get_path }}" hx-target="#content" hx-push-url="{{ article.get_path }}">{{ article.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
   </div>

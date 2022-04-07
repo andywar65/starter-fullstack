@@ -118,7 +118,7 @@ def default_intro():
         current_site = Site.objects.get_current()
         return _("Another article by %(name)s!") % {"name": current_site.name}
     except Site.DoesNotExist:
-        return _("Another article!")
+        return _("Another article by this site!")
 
 
 class Article(models.Model):
