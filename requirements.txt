@@ -52,6 +52,10 @@ django-modeltranslation==0.17.5
     # via -r requirements.in
 environs[django]==9.5.0
     # via -r requirements.in
+factory-boy==3.2.1
+    # via -r requirements.in
+faker==13.3.4
+    # via factory-boy
 idna==3.3
     # via requests
 marshmallow==3.15.0
@@ -70,6 +74,8 @@ pyjwt[crypto]==2.3.0
     # via django-allauth
 pyparsing==3.0.7
     # via packaging
+python-dateutil==2.8.2
+    # via faker
 python-dotenv==0.20.0
     # via environs
 python3-openid==3.2.0
@@ -84,6 +90,7 @@ six==1.16.0
     # via
     #   django-filebrowser
     #   django-modeltranslation
+    #   python-dateutil
 soupsieve==2.3.1
     # via beautifulsoup4
 sqlparse==0.4.2
