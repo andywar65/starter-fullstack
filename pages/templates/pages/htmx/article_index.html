@@ -1,5 +1,4 @@
 {% load i18n %}
-{% load fb_versions %}
 
 {% include 'navbar.html' %}
 <main class="flex-shrink-0">
@@ -9,37 +8,7 @@
         <h3>{% translate 'Articles' %}</h3>
       </div>
       <div class="card-body">
-        {% if articles %}
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {% for article in articles %}
-              <div class="col">
-                <div class="card">
-                  <div class="card-header">
-                    <h4 class="link-secondary" hx-get="{{ article.get_path }}" hx-target="#content" hx-push-url="{{ article.get_path }}">{{ article.title }}</h4>
-                  </div>
-                  <div class="card-body">
-                    {% if article.article_carousel.first %}
-                      <img class="card-img-top"
-                        src="{% version article.article_carousel.first.fb_image 'popup' %}"
-                        alt="{{ article.intro }}">
-                    {% endif %}
-                    <p>
-                      {{ article.date|date:"d M Y" }}
-                      {% if article.author %}
-                        - {% translate "by"%} {{ article.author.profile.get_full_name }}
-                      {% endif %}
-                    </p>
-                    <p>
-                      <em>{{ article.intro }}</em>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        {% else %}
-          <p>{% translate "No articles available" %}</p>
-        {% endif %}
+        {% include "pages/includes/article_list.html" %}
       </div>
     </div>
   </div>

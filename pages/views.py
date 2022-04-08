@@ -27,6 +27,7 @@ class HomePageTemplateView(HxTemplateMixin, TemplateView):
         context["title"] = context["page"].title
         # context for the page
         context["images"] = context["page"].homepage_carousel.all()
+        context["articles"] = Article.objects.all()[:6]
         return context
 
 
