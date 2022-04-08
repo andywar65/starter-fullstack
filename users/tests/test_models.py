@@ -34,18 +34,18 @@ class UserModelTest(TestCase):
         user = User.objects.get(username="andy.war65")
         self.assertEquals(user.profile.__str__(), "Andrea Guerra")
         print("\n-Tested Profile __str__")
-        self.assertEquals(user.profile.get_full_name(), "Andrea Guerra")
+        self.assertEquals(user.get_full_name(), "Andrea Guerra")
         print("\n-Tested Profile full name")
-        self.assertEquals(user.profile.get_short_name(), "Andrea")
+        self.assertEquals(user.get_short_name(), "Andrea")
         print("\n-Tested Profile short name")
 
     def test_profile_get_no_names(self):
         user = User.objects.get(username="nonames")
         self.assertEquals(user.profile.__str__(), "nonames")
         print("\n-Tested Profile no __str__")
-        self.assertEquals(user.profile.get_full_name(), "nonames")
+        self.assertEquals(user.get_full_name(), "nonames")
         print("\n-Tested Profile no full name")
-        self.assertEquals(user.profile.get_short_name(), "nonames")
+        self.assertEquals(user.get_short_name(), "nonames")
         print("\n-Tested Profile no short name")
 
     def test_usermessage_get_str(self):

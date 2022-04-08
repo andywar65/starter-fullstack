@@ -38,7 +38,7 @@
                 {% if user.profile.fb_image %}
                   <img class="rounded-circle" heigth="20px" width="20px" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
                 {% endif %}
-                {{ user.profile.get_short_name }}</a>
+                {{ user.get_short_name }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" hx-get="{% url 'account_logout' %}" hx-target="#basemenu" hx-push-url="{% url 'account_logout' %}">{% translate 'Logout' %}</a>

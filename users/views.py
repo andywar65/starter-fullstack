@@ -184,7 +184,7 @@ class ContactFormView(
         msg = "%(body)s\n\n%(from)s: %(full)s (%(email)s)" % {
             "body": body,
             "from": _("From"),
-            "full": user.profile.get_full_name(),
+            "full": user.get_full_name(),
             "email": user.email,
         }
         mailto = [

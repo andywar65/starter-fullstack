@@ -7,7 +7,7 @@
       {{ article.date|date:"d M Y" }} -
       <em>{{ article.intro }}</em>
       {% if article.author %}
-        - {% translate "by"%} {{ article.author.profile.get_full_name }}
+        - {% translate "by"%} {{ article.author.get_full_name }}
       {% endif %}
     </p>
   </div>
