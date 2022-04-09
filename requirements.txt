@@ -6,7 +6,7 @@
 #
 asgiref==3.5.0
     # via django
-beautifulsoup4==4.10.0
+beautifulsoup4==4.11.1
     # via django-bootstrap-v5
 certifi==2021.10.8
     # via requests
@@ -64,7 +64,7 @@ oauthlib==3.2.0
     # via requests-oauthlib
 packaging==21.3
     # via marshmallow
-pillow==9.0.1
+pillow==9.1.0
     # via django-filebrowser
 psycopg2-binary==2.9.3
     # via -r requirements.in
@@ -91,7 +91,7 @@ six==1.16.0
     #   django-filebrowser
     #   django-modeltranslation
     #   python-dateutil
-soupsieve==2.3.1
+soupsieve==2.3.2
     # via beautifulsoup4
 sqlparse==0.4.2
     # via
