@@ -4,6 +4,8 @@ from django.core.management import call_command
 from django.test import TestCase, override_settings
 from django.urls import reverse
 
+from pages.models import Article
+
 
 class PendingMigrationsTests(TestCase):
     """Copy/paste from 'Boost your Django DX', by Adam Johnson"""
@@ -43,8 +45,12 @@ class ProjectViewTest(TestCase):
 class SearchTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        pass
-        # Set up non-modified objects used by all test methods
+        print("\nTest search views")
+        Article.objects.create(
+            title="Article 4",
+            date="2020-05-10",
+            body="Foo",
+        )
 
     def test_search_results_view_status_code(self):
         response = self.client.get(reverse("search_results") + "?q=foo")
@@ -54,9 +60,24 @@ class SearchTest(TestCase):
         self.assertTemplateUsed(response, "search_results.html")
         print("\n-Test search template")
 
-        self.assertFalse(response.context["success"])
-        print("\n-Test search no success")
+        self.assertTrue(response.context["success"])
+        print("\n-Test search success")
 
         response = self.client.get(reverse("search_results") + "?q=")
         self.assertFalse(response.context["success"])
         print("\n-Test search not validating")
+
+        response = self.client.get(reverse("search_results") + "?q=false")
+        self.assertFalse(response.context["success"])
+        print("\n-Test search no success")
+
+    def test_search_results_view_context_posts(self):
+        article = Article.objects.filter(slug="article-4")
+        response = self.client.get(reverse("search_results") + "?q=foo")
+        # workaround found in
+        # https://stackoverflow.com/questions/17685023/
+        # how-do-i-test-django-querysets-are-equal
+        self.assertQuerysetEqual(
+            response.context["articles"], article, transform=lambda x: x
+        )
+        print("\n-Test search equal querysets")
