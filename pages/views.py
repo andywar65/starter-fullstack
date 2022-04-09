@@ -34,43 +34,43 @@ class HomePageTemplateView(HxTemplateMixin, TemplateView):
 class ArticleArchiveIndexView(HxTemplateMixin, ArchiveIndexView):
     model = Article
     date_field = "date"
-    allow_future = True
     context_object_name = "articles"
     paginate_by = 6
     allow_empty = True
     template_name = "pages/htmx/article_index.html"
 
 
-class ArticleYearArchiveView(YearArchiveView):
+class ArticleYearArchiveView(HxTemplateMixin, YearArchiveView):
     model = Article
-    make_object_list = True
     date_field = "date"
-    allow_future = True
     context_object_name = "articles"
     paginate_by = 6
     year_format = "%Y"
     allow_empty = True
+    template_name = "pages/htmx/article_index.html"
 
 
-class ArticleMonthArchiveView(MonthArchiveView):
+class ArticleMonthArchiveView(HxTemplateMixin, MonthArchiveView):
     model = Article
     date_field = "date"
-    allow_future = True
     context_object_name = "articles"
+    paginate_by = 6
     year_format = "%Y"
     month_format = "%m"
     allow_empty = True
+    template_name = "pages/htmx/article_index.html"
 
 
-class ArticleDayArchiveView(DayArchiveView):
+class ArticleDayArchiveView(HxTemplateMixin, DayArchiveView):
     model = Article
     date_field = "date"
-    allow_future = True
     context_object_name = "articles"
+    paginate_by = 6
     year_format = "%Y"
     month_format = "%m"
     day_format = "%d"
     allow_empty = True
+    template_name = "pages/htmx/article_index.html"
 
 
 class ArticleDetailView(HxTemplateMixin, DetailView):
