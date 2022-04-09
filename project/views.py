@@ -1,12 +1,9 @@
 from django import forms
-from django.contrib.postgres.search import (  # noqa: F401
-    SearchQuery,
-    SearchRank,
-    SearchVector,
-)
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from pages.models import Article
 from users.views import HxTemplateMixin
 
 
@@ -26,20 +23,23 @@ def search_results(request):
         template = "search_results.html"
     form = ValidateForm(request.GET)
     if form.is_valid():
-        q = SearchQuery(request.GET["q"])  # noqa: F841
-
-        """
-        # search in articles example
-        v = SearchVector('title', 'intro', 'body')
+        q = SearchQuery(request.GET["q"])
+        # search in articles
+        v = SearchVector("title", "intro", "body")
         articles = Article.objects.annotate(rank=SearchRank(v, q))
         articles = articles.filter(rank__gt=0.01)
         if articles:
-        articles = articles.order_by('-rank')
-        success = True
-        """
+            articles = articles.order_by("-rank")
+            success = True
 
         return render(
-            request, template, {"search": request.GET["q"], "success": success}
+            request,
+            template,
+            {
+                "search": request.GET["q"],
+                "articles": articles,
+                "success": success,
+            },
         )
     else:
         return render(
