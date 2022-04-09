@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from allauth.socialaccount.models import SocialAccount
 from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
@@ -22,6 +23,9 @@ class UserModelTest(TestCase):
         )
         # next save is just for coverage purposes
         user.save()
+        SocialAccount.objects.create(
+            user_id=user.uuid, provider="google", extra_data={"picture": "foo"}
+        )
         profile = user.profile
         profile.bio = "My biography"
         profile.save()
@@ -30,23 +34,32 @@ class UserModelTest(TestCase):
         )
         UserMessage.objects.create(user_id=user.uuid, subject="Foo", body="Bar")
 
+    def test_user_get_avatar(self):
+        user = User.objects.get(username="andy.war65")
+        self.assertEquals(user.get_avatar(), "foo")
+        print("\n-Tested User get avatar")
+
     def test_profile_get_names(self):
         user = User.objects.get(username="andy.war65")
         self.assertEquals(user.profile.__str__(), "Andrea Guerra")
         print("\n-Tested Profile __str__")
+        self.assertEquals(user.__str__(), "Andrea Guerra")
+        print("\n-Tested User __str__")
         self.assertEquals(user.get_full_name(), "Andrea Guerra")
-        print("\n-Tested Profile full name")
+        print("\n-Tested User full name")
         self.assertEquals(user.get_short_name(), "Andrea")
-        print("\n-Tested Profile short name")
+        print("\n-Tested User short name")
 
     def test_profile_get_no_names(self):
         user = User.objects.get(username="nonames")
         self.assertEquals(user.profile.__str__(), "nonames")
         print("\n-Tested Profile no __str__")
+        self.assertEquals(user.__str__(), "nonames")
+        print("\n-Tested User no __str__")
         self.assertEquals(user.get_full_name(), "nonames")
-        print("\n-Tested Profile no full name")
+        print("\n-Tested User no full name")
         self.assertEquals(user.get_short_name(), "nonames")
-        print("\n-Tested Profile no short name")
+        print("\n-Tested User no short name")
 
     def test_usermessage_get_str(self):
         message = UserMessage.objects.get(subject="Foo")
