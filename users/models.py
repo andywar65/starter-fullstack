@@ -1,5 +1,6 @@
 import uuid
 
+from allauth.socialaccount.models import SocialAccount
 from django.contrib.auth.models import AbstractUser, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
@@ -35,6 +36,17 @@ class User(AbstractUser):
             return self.first_name
         else:
             return self.username
+
+    def get_avatar(self):
+        if self.profile and self.profile.fb_image:
+            thumb = self.profile.fb_image.version_generate("thumbnail")
+            return thumb.url
+        # attempts to retrieve avatar from social account
+        try:
+            s = SocialAccount.objects.get(user_id=self.uuid)
+            return s.get_avatar_url()
+        except SocialAccount.DoesNotExist:
+            pass
 
     def __str__(self):
         return self.get_full_name()

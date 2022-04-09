@@ -35,8 +35,8 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" hx-get="{% url 'account_profile' %}" hx-target="#basemenu" hx-push-url="{% url 'account_profile' %}" title="{% trans 'Manage account' %}">
-                {% if user.profile.fb_image %}
-                  <img class="rounded-circle" heigth="20px" width="20px" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
+                {% if user.get_avatar %}
+                  <img class="rounded-circle" heigth="20px" width="20px" src="{{ user.get_avatar }}" alt="">
                 {% endif %}
                 {{ user.get_short_name }}</a>
             </li>

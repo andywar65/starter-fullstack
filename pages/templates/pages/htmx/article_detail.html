@@ -7,7 +7,11 @@
       {{ article.date|date:"d M Y" }} -
       <em>{{ article.intro }}</em>
       {% if article.author %}
-        - {% translate "by"%} {{ article.author.get_full_name }}
+        - {% translate "by"%}
+        {% if article.author.get_avatar %}
+          <img class="rounded-circle" heigth="20px" width="20px" src="{{ article.author.get_avatar }}" alt="">
+        {% endif %}
+        {{ article.author.get_full_name }}
       {% endif %}
     </p>
   </div>
