@@ -36,7 +36,7 @@ class ArticleArchiveIndexView(HxTemplateMixin, ArchiveIndexView):
     date_field = "date"
     allow_future = True
     context_object_name = "articles"
-    paginate_by = 12
+    paginate_by = 6
     allow_empty = True
     template_name = "pages/htmx/article_index.html"
 
@@ -47,7 +47,7 @@ class ArticleYearArchiveView(YearArchiveView):
     date_field = "date"
     allow_future = True
     context_object_name = "articles"
-    paginate_by = 12
+    paginate_by = 6
     year_format = "%Y"
     allow_empty = True
 
