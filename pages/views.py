@@ -14,6 +14,18 @@ from users.views import HxTemplateMixin
 from .models import Article, HomePage
 
 
+class HxPageTemplateMixin:
+    """Switches template depending on request.htmx and pagination"""
+
+    def get_template_names(self):
+        if not self.request.htmx:
+            return [self.template_name.replace("htmx/", "")]
+        elif "page" in self.request.GET:
+            return ["pages/includes/infinite_scroll.html"]
+        else:
+            return [self.template_name]
+
+
 class HomePageTemplateView(HxTemplateMixin, TemplateView):
     template_name = "pages/htmx/home.html"
 
@@ -31,7 +43,7 @@ class HomePageTemplateView(HxTemplateMixin, TemplateView):
         return context
 
 
-class ArticleArchiveIndexView(HxTemplateMixin, ArchiveIndexView):
+class ArticleArchiveIndexView(HxPageTemplateMixin, ArchiveIndexView):
     model = Article
     date_field = "date"
     context_object_name = "articles"
@@ -40,7 +52,7 @@ class ArticleArchiveIndexView(HxTemplateMixin, ArchiveIndexView):
     template_name = "pages/htmx/article_index.html"
 
 
-class ArticleYearArchiveView(HxTemplateMixin, YearArchiveView):
+class ArticleYearArchiveView(HxPageTemplateMixin, YearArchiveView):
     model = Article
     date_field = "date"
     context_object_name = "articles"
@@ -50,7 +62,7 @@ class ArticleYearArchiveView(HxTemplateMixin, YearArchiveView):
     template_name = "pages/htmx/article_index.html"
 
 
-class ArticleMonthArchiveView(HxTemplateMixin, MonthArchiveView):
+class ArticleMonthArchiveView(HxPageTemplateMixin, MonthArchiveView):
     model = Article
     date_field = "date"
     context_object_name = "articles"
@@ -61,7 +73,7 @@ class ArticleMonthArchiveView(HxTemplateMixin, MonthArchiveView):
     template_name = "pages/htmx/article_index.html"
 
 
-class ArticleDayArchiveView(HxTemplateMixin, DayArchiveView):
+class ArticleDayArchiveView(HxPageTemplateMixin, DayArchiveView):
     model = Article
     date_field = "date"
     context_object_name = "articles"
