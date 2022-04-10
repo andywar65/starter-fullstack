@@ -55,6 +55,7 @@ class ArticleArchiveIndexView(HxPageTemplateMixin, ArchiveIndexView):
 class ArticleYearArchiveView(HxPageTemplateMixin, YearArchiveView):
     model = Article
     date_field = "date"
+    make_object_list = True
     context_object_name = "articles"
     paginate_by = 6
     year_format = "%Y"
