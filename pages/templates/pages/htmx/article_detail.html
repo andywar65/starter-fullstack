@@ -4,8 +4,8 @@
   <div class="card-header">
     <h3>{{ article.title }}</h3>
     <p>
-      {{ article.date|date:"d M Y" }} -
       <em>{{ article.intro }}</em>
+      - {{ article.date|date:"d M Y" }}
       {% if article.author %}
         - {% translate "by"%}
         {% if article.author.get_avatar %}
