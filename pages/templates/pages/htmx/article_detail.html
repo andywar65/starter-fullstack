@@ -1,5 +1,6 @@
 {% load i18n %}
 
+{% include 'pages/gallery.html' %}
 <div class="card mx-auto" style="max-width: 960px; margin-top: 60px">
   <div class="card-header">
     <h3>{{ article.title }}</h3>
@@ -16,8 +17,6 @@
     </p>
   </div>
   <div class="card-body">
-    {% include 'pages/gallery.html' %}
-    <p></p>
     {{ article.body | safe }}
     <hr class="mb-4">
     <div class="row">
