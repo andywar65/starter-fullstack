@@ -75,6 +75,7 @@ urlpatterns += i18n_patterns(
         name="select_language",
     ),
     path(_("articles/"), include("pages.urls", namespace="pages")),
+    path(_("projects/"), include("portfolio.urls", namespace="portfolio")),
 )
 
 if settings.DEBUG:
