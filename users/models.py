@@ -82,6 +82,11 @@ class Profile(models.Model):
         directory="images/users/",
     )
     bio = models.TextField(_("Short bio"), null=True, blank=True)
+    anonymize = models.BooleanField(
+        _("Anonymize"),
+        default=False,
+        help_text=_("Anonymize your account in public pages"),
+    )
 
     def __str__(self):
         return self.user.get_full_name()
