@@ -21,7 +21,7 @@
             {% include "socialaccount/snippets/login_extra.html" %}
           </div>
 
-          <p>{% blocktrans with site.name as site_name %}...or, <a class="link-primary" hx-get="{{ signup_url }}" hx-target="#basemenu" hx-push-url="{{ signup_url }}">sign up</a>
+          <p>{% blocktrans with site.name as site_name %}...or, <a class="link-primary" hx-get="{{ signup_url }}" hx-target="#menucont" hx-push-url="{{ signup_url }}">sign up</a>
             for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
         {% else %}

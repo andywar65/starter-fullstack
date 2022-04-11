@@ -15,7 +15,7 @@
             {% trans 'Profile has been successfully modified!' %}
           </p>
         {% endif %}
-        <form hx-post="{% url 'account_profile' %}" hx-target="#basemenu" hx-encoding="multipart/form-data">
+        <form hx-post="{% url 'account_profile' %}" hx-target="#menucont" hx-encoding="multipart/form-data">
           {% if user.profile.fb_image %}
             <a href="{{ user.profile.fb_image.url }}">
               <img class="rounded-circle" src="{% version user.profile.fb_image 'thumbnail' %}" alt="">
