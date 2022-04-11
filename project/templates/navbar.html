@@ -41,6 +41,9 @@
                 <a class="dropdown-item" hx-get="{% url 'account_profile' %}" hx-target="#menucont" hx-push-url="{% url 'account_profile' %}">{% trans 'Profile' %}</a>
                 <a class="dropdown-item" hx-get="{% url 'account_contact' %}" hx-target="#menucont" hx-push-url="{% url 'account_contact' %}">{% trans 'Contact' %}</a>
                 <a class="dropdown-item" hx-get="{% url 'account_logout' %}" hx-target="#menucont" hx-push-url="{% url 'account_logout' %}">{% trans 'Logout' %}</a>
+                {% if user.is_staff %}
+                  <a class="dropdown-item" href="/admin/">{% trans "Go to Admin" %}</a>
+                {% endif %}
               </div>
             </li>
           {% else %}

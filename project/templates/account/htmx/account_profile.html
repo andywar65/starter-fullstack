@@ -28,10 +28,6 @@
         <hr>
         <a class="btn btn-success" href="{% url 'socialaccount_connections' %}">{% trans "Connect social" %}</a>
         <a class="btn btn-danger" hx-get="{% url 'account_delete' %}" hx-target="#content" hx-push-url="{% url 'account_delete' %}">{% trans "Delete Account" %}</a>
-        {% if user.is_staff %}
-          <hr>
-          <a class="btn btn-warning" href="/admin/">{% trans "Go to Admin" %}</a>
-        {% endif %}
       </div>
     </div>
   </div>
