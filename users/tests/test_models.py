@@ -43,7 +43,7 @@ class UserModelTest(TestCase):
         user = User.objects.get(username="andy.war65")
         self.assertEquals(user.profile.__str__(), "Andrea Guerra")
         print("\n-Tested Profile __str__")
-        self.assertEquals(user.__str__(), "Andrea Guerra")
+        self.assertEquals(user.__str__(), "andy.war65")
         print("\n-Tested User __str__")
         self.assertEquals(user.get_full_name(), "Andrea Guerra")
         print("\n-Tested User full name")
