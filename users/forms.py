@@ -25,6 +25,10 @@ class ProfileChangeForm(forms.Form):
         required=False,
         widget=forms.Textarea(attrs={"placeholder": _("Talk about yourself")}),
     )
+    anonymize = forms.BooleanField(
+        label=_("Check to anonymize your profile"),
+        required=False,
+    )
 
 
 class ProfileChangeDelAvatarForm(forms.Form):
@@ -52,6 +56,10 @@ class ProfileChangeDelAvatarForm(forms.Form):
         label=_("Short bio"),
         required=False,
         widget=forms.Textarea(attrs={"placeholder": _("Talk about yourself")}),
+    )
+    anonymize = forms.BooleanField(
+        label=_("Check to anonymize your profile"),
+        required=False,
     )
 
 

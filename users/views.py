@@ -105,6 +105,7 @@ class ProfileChangeView(
                 "last_name": self.user.last_name,
                 "email": self.user.email,
                 "bio": self.user.profile.bio,
+                "anonymize": self.user.profile.anonymize,
             }
         )
         return initial
@@ -121,6 +122,7 @@ class ProfileChangeView(
         profile.temp_image = form.cleaned_data["avatar"]
         if "del_avatar" in form.cleaned_data and form.cleaned_data["del_avatar"]:
             profile.fb_image = None
+        profile.anonymize = form.cleaned_data["anonymize"]
         profile.save()
 
         return super(ProfileChangeView, self).form_valid(form)
@@ -153,7 +155,9 @@ class ProfileDeleteView(
         self.user.email = ""
         self.user.save()
         profile = self.user.profile
-        profile.delete()
+        profile.fb_image = None
+        profile.bio = ""
+        profile.save()
         EmailAddress.objects.filter(user_id=self.user.uuid).delete()
         SocialAccount.objects.filter(user_id=self.user.uuid).delete()
         return super(ProfileDeleteView, self).form_valid(form)

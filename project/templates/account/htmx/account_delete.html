@@ -6,7 +6,7 @@
     <h3>{% trans "Delete Account" %}</h3>
   </div>
   <div class="card-body">
-    <p>{% trans "Are you sure you want to delete your profile? There's no way back" %}.</p>
+    <p>{% trans "Are you sure you want to delete your profile?" %}</p>
     <form method="POST" action="" >
       {% csrf_token %}
       {% bootstrap_form form %}
@@ -15,5 +15,9 @@
     <p><small>*{% blocktrans with request.site.name as site_name %}Account will
       be set to 'inactive'. All user info except username will be deleted.
       Contact {{ site_name}} to recover your original account{% endblocktrans %}.</small></p>
+    {% if not user.profile.anonymize %}
+      <p><small>{% blocktrans %}First check 'Anonymize' on your profile if you
+        want to anonymize your username{% endblocktrans %}.</small></p>
+    {% endif %}
   </div>
 </div>

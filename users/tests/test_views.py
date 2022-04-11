@@ -108,6 +108,7 @@ class UserViewsTest(TestCase):
                 "email": "boss@example.com",
                 "avatar": SimpleUploadedFile("image.jpg", content, "image/jpg"),
                 "bio": "",
+                "anonymize": False,
             },
             follow=True,
         )
@@ -128,6 +129,7 @@ class UserViewsTest(TestCase):
                 "avatar": "",
                 "del_avatar": True,
                 "bio": "",
+                "anonymize": False,
             },
             headers={"HX-REQUEST": True},  # not working
             follow=True,

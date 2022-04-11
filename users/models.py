@@ -26,19 +26,25 @@ class User(AbstractUser):
                 self.user_permissions.add(permission)
 
     def get_full_name(self):
-        if self.first_name and self.last_name:
+        if self.profile.anonymize:
+            return _("Anonymous")
+        elif self.first_name and self.last_name:
             return self.first_name + " " + self.last_name
         else:
             return self.username
 
     def get_short_name(self):
-        if self.first_name:
+        if self.profile.anonymize:
+            return _("Anonymous")
+        elif self.first_name:
             return self.first_name
         else:
             return self.username
 
     def get_avatar(self):
-        if self.profile and self.profile.fb_image:
+        if self.profile.anonymize:
+            return
+        elif self.profile.fb_image:
             thumb = self.profile.fb_image.version_generate("thumbnail")
             return thumb.url
         # attempts to retrieve avatar from social account
@@ -46,7 +52,7 @@ class User(AbstractUser):
             s = SocialAccount.objects.get(user_id=self.uuid)
             return s.get_avatar_url()
         except SocialAccount.DoesNotExist:
-            pass
+            return
 
     def __str__(self):
         return self.username
@@ -89,7 +95,7 @@ class Profile(models.Model):
     )
 
     def __str__(self):
-        return self.user.get_full_name()
+        return self.user.username
 
     def save(self, *args, **kwargs):
         # save and upload image
