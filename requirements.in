@@ -10,4 +10,3 @@ environs[django]
 coverage
 django-debug-toolbar
 factory_boy
-pre-commit
