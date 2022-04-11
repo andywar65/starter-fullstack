@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-11 12:44+0200\n"
-"PO-Revision-Date: 2022-04-11 12:52+0200\n"
+"POT-Creation-Date: 2022-04-11 18:00+0200\n"
+"PO-Revision-Date: 2022-04-11 18:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
@@ -303,10 +303,6 @@ msgstr "Cambia la password?"
 msgid "Connect social"
 msgstr "Connetti social"
 
-#: .\project\templates\account\htmx\account_profile.html:33
-msgid "Go to Admin"
-msgstr "Vai all'amministrazione"
-
 #: .\project\templates\account\htmx\contact.html:14
 msgid "Message has been successfully sent!"
 msgstr "Il messaggio è stato inviato con successo!"
@@ -505,7 +501,7 @@ msgstr "Invia password"
 
 #: .\project\templates\account\htmx\signup.html:9
 #: .\project\templates\account\htmx\signup.html:20
-#: .\project\templates\navbar.html:51
+#: .\project\templates\navbar.html:56
 #: .\project\templates\socialaccount\signup.html:11
 #: .\project\templates\socialaccount\signup.html:23
 msgid "Sign Up"
@@ -514,12 +510,13 @@ msgstr "Registrati"
 #: .\project\templates\account\htmx\signup.html:12
 #, python-format
 msgid ""
-"Already have an account? Then please <a class=\"link-primary\" hx-get="
-"\"%(login_url)s\" hx-target=\"#menucont\" hx-push-url=\"%(login_url)s\">sign "
-"in</a>."
+"Already have an account or a Google account? Then please <a class=\"link-"
+"primary\" hx-get=\"%(login_url)s\" hx-target=\"#menucont\" hx-push-url="
+"\"%(login_url)s\">sign in</a>."
 msgstr ""
-"Sei già registrato? Allora <a class=\"link-primary\" hx-get=\"%(login_url)s"
-"\" hx-target=\"#menucont\" hx-push-url=\"%(login_url)s\">accedi</a>."
+"Sei già registrato o hai un account Google? Allora <a class=\"link-primary\" "
+"hx-get=\"%(login_url)s\" hx-target=\"#menucont\" hx-push-url=\"%(login_url)s"
+"\">accedi</a>."
 
 #: .\project\templates\account\htmx\verification_sent.html:5
 #: .\project\templates\account\htmx\verified_email_required.html:5
@@ -587,12 +584,12 @@ msgstr "sei già autenticato come %(user_display)s."
 
 #: .\project\templates\htmx\language_selector.html:8
 #: .\project\templates\htmx\language_selector.html:27
-#: .\project\templates\navbar.html:55
+#: .\project\templates\navbar.html:61
 msgid "Set language"
 msgstr "Seleziona lingua"
 
 #: .\project\templates\htmx\search_results.html:9
-#: .\project\templates\navbar.html:58 .\project\templates\search_results.html:4
+#: .\project\templates\navbar.html:64 .\project\templates\search_results.html:4
 msgid "Search"
 msgstr "Cerca"
 
@@ -624,11 +621,15 @@ msgstr "Profilo"
 msgid "Logout"
 msgstr ""
 
-#: .\project\templates\navbar.html:48
+#: .\project\templates\navbar.html:45
+msgid "Go to Admin"
+msgstr "Vai all'amministrazione"
+
+#: .\project\templates\navbar.html:52 .\project\templates\navbar.html:55
 msgid "Login"
 msgstr ""
 
-#: .\project\templates\navbar.html:57
+#: .\project\templates\navbar.html:63
 msgid "Write something"
 msgstr "Scrivi qualcosa"
 
