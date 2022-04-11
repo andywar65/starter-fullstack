@@ -9,7 +9,7 @@
         <h3>{% trans "Sign Up" %}</h3>
       </div>
       <div class="card-body">
-        <p>{% blocktrans %}Already have an account? Then please <a class="link-primary" hx-get="{{ login_url }}" hx-target="#menucont" hx-push-url="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Already have an account or a Google account? Then please <a class="link-primary" hx-get="{{ login_url }}" hx-target="#menucont" hx-push-url="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
         <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
           {% csrf_token %}
