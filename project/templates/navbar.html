@@ -19,7 +19,7 @@
             <a class="nav-link" hx-get="{% url 'pages:article_index' %}" hx-target="#menucont" hx-push-url="{% url 'pages:article_index' %}">{% trans 'Blog' %}</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/docs/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {% translate 'Docs' %}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -47,11 +47,14 @@
               </div>
             </li>
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link" hx-get="{% url 'account_login' %}" hx-target="#menucont" hx-push-url="{% url 'account_login' %}">{% trans 'Login' %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" hx-get="{% url 'account_signup' %}" hx-target="#menucont" hx-push-url="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% trans 'Login' %}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" hx-get="{% url 'account_login' %}" hx-target="#menucont" hx-push-url="{% url 'account_login' %}">{% trans 'Login' %}</a>
+                <a class="dropdown-item" hx-get="{% url 'account_signup' %}" hx-target="#menucont" hx-push-url="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
+              </div>
             </li>
           {% endif %}
         </ul>
