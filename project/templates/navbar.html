@@ -20,7 +20,7 @@
               {% trans 'Projects' %}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'portfolio:project_list' %}">{% trans 'Projects' %}</a>
+              <a class="dropdown-item" hx-get="{% url 'portfolio:project_list' %}" hx-target="#menucont" hx-push-url="{% url 'portfolio:project_list' %}">{% trans 'Projects' %}</a>
             </div>
           </li>
           <li class="nav-item dropdown">
