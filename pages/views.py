@@ -9,6 +9,7 @@ from django.views.generic.dates import (
     YearArchiveView,
 )
 
+from portfolio.models import Project
 from users.views import HxTemplateMixin
 
 from .models import Article, HomePage
@@ -40,6 +41,7 @@ class HomePageTemplateView(HxTemplateMixin, TemplateView):
         # context for the page
         context["images"] = context["page"].homepage_carousel.all()
         context["articles"] = Article.objects.all()[:6]
+        context["progs"] = Project.objects.all()[:6]
         return context
 
 

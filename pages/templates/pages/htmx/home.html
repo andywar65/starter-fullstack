@@ -19,6 +19,17 @@
     <div class="card mx-auto" style="max-width: 960px; margin-top: 20px;">
       <div class="card-header">
         <h3 class="link-secondary"
+          hx-get="{% url 'portfolio:project_list' %}"
+          hx-target="#menucont"
+          hx-push-url="{% url 'portfolio:project_list' %}">{% translate 'Projects' %}</h3>
+      </div>
+      <div class="card-body">
+        {% include "portfolio/includes/project_list_loop.html" %}
+      </div>
+    </div>
+    <div class="card mx-auto" style="max-width: 960px; margin-top: 20px;">
+      <div class="card-header">
+        <h3 class="link-secondary"
           hx-get="{% url 'pages:article_index' %}"
           hx-target="#menucont"
           hx-push-url="{% url 'pages:article_index' %}">{% translate 'Articles' %}</h3>
