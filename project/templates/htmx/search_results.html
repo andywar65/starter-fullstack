@@ -9,6 +9,21 @@
           <h3>{% translate 'Search' %}: "{{ search }}"</h3>
         </div>
         <div class="card-body">
+          {% if projects %}
+            <h5>{% translate 'Projects' %}</h5>
+            {% for project in projects %}
+              <ul>
+                <li>
+                  <span><a class="link-primary"
+                    hx-get="{{ project.get_full_path }}"
+                    hx-target="#content"
+                    hx-url-push="{{ project.get_full_path }}">{{ project.title }}</a>
+                    <em>{{ project.intro }}</em>
+                  </span>
+                </li>
+              </ul>
+            {% endfor %}
+          {% endif %}
           {% if articles %}
             <h5>{% translate 'Articles' %}</h5>
             {% for article in articles %}

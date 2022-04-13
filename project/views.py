@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from pages.models import Article
+from portfolio.models import Project
 from users.views import HxTemplateMixin
 
 
@@ -31,6 +32,12 @@ def search_results(request):
         if articles:
             articles = articles.order_by("-rank")
             success = True
+        # search in projects
+        projects = Project.objects.annotate(rank=SearchRank(v, q))
+        projects = projects.filter(rank__gt=0.01)
+        if projects:
+            projects = projects.order_by("-rank")
+            success = True
 
         return render(
             request,
@@ -38,6 +45,7 @@ def search_results(request):
             {
                 "search": request.GET["q"],
                 "articles": articles,
+                "projects": projects,
                 "success": success,
             },
         )
