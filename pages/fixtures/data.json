@@ -1,0 +1,21 @@
+[
+{
+    "model": "pages.article",
+    "pk": 10,
+    "fields": {
+        "slug": "coco",
+        "title": "Coco",
+        "title_it": "Coco",
+        "title_en": "Will gun.",
+        "intro": "Trade break suddenly save school.",
+        "intro_it": "Another article by architettura.APP!",
+        "intro_en": "Trade break suddenly save school.",
+        "body": "Our response any mother yet stop determine deep production news again common show information attention dinner improve these evidence eat usually war foot knowledge teach.",
+        "body_it": "Coco",
+        "body_en": "Our response any mother yet stop determine deep production news again common show information attention dinner improve these evidence eat usually war foot knowledge teach.",
+        "date": "2021-04-11",
+        "last_updated": "2022-04-11T17:04:58.038Z",
+        "author": "31f7a6aa-ce55-4f00-a34c-d4294077d060"
+    }
+}
+]
