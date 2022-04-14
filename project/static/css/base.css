@@ -24,3 +24,15 @@ main > .container {
   bottom: 0;
   background: linear-gradient(to top, black, transparent, transparent);
 }
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.link-primary {
+    cursor: pointer;
+}
+
+a.link-primary:hover, a.link-primary:focus {
+    cursor: pointer;
+}
