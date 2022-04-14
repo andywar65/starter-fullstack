@@ -7,7 +7,11 @@
       <div class="col">
         <div class="card h-100">
           <div class="card-header">
-            <h4 class="link-secondary" hx-get="{{ article.get_path }}" hx-target="#content" hx-push-url="{{ article.get_path }}">{{ article.title }}</h4>
+            <h4 class="link-primary"
+              hx-get="{{ article.get_path }}"
+              hx-target="#content"
+              hx-push-url="{{ article.get_path }}">{{ article.title }}
+            </h4>
           </div>
           <div class="card-body">
             {% if article.article_carousel.first %}
