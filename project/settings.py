@@ -177,7 +177,7 @@ USE_TZ = True
 
 LANGUAGES = [
     ("it", _("Italian")),
-    ("en", _("English")),
+    ("de", _("German")),
 ]
 
 MODELTRANSLATION_TRANSLATION_FILES = (
