@@ -26,7 +26,14 @@ main > .container {
   background: linear-gradient(to top, black, transparent, transparent);
 }
 
+/*------------------------------------
+- fix HTMX
+------------------------------------*/
 .dropdown-item {
+  cursor: pointer;
+}
+
+.navbar-brand {
   cursor: pointer;
 }
 
