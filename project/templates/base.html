@@ -11,27 +11,11 @@
     <!-- Bootstrap CSS -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     {% bootstrap_css %}
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <title>{% block head_title %}{{ request.site.name }}{% endblock head_title %}</title>
     {% block extra-head %}{% endblock extra-head %}
   </head>
-  <body class="d-flex flex-column h-100">
+  <body class="d-flex flex-column h-100" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div id="menucont">
       {% block menucont %}
         <h1>Hello, world!</h1>
@@ -41,11 +25,6 @@
     <!-- Bootstrap bundled JS -->
     {% bootstrap_javascript %}
     <script src="{% static 'js/htmx.min.js' %}"></script>
-    <script>
-      document.body.addEventListener('htmx:configRequest', (e) => {
-        e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-      })
-    </script>
     {% block extra-js %}{% endblock extra-js %}
   </body>
 </html>
