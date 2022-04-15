@@ -1,3 +1,6 @@
+from pathlib import Path
+
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 from django.db import models
@@ -5,6 +8,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
+from PIL import Image
 
 from project.utils import generate_unique_slug
 
@@ -110,6 +114,22 @@ class HomePageCarousel(models.Model):
         ordering = [
             "position",
         ]
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = self.fb_image.version_generate("wide")
+        if img.width < 1600 or img.height < 800:
+            path = Path(settings.MEDIA_ROOT).joinpath(
+                self.fb_image.version_path("wide")
+            )
+            img = Image.open(path)
+            back = Image.new(img.mode, (1600, 800))
+            position = (
+                int((back.width - img.width) / 2),
+                int((back.height - img.height) / 2),
+            )
+            back.paste(img, position)
+            back.save(path)
 
 
 def default_intro():
