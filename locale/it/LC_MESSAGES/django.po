@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-14 13:46+0200\n"
+"POT-Creation-Date: 2022-04-15 00:09+0200\n"
 "PO-Revision-Date: 2022-04-14 13:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -176,7 +176,7 @@ msgstr "di"
 
 #: .\pages\templates\pages\htmx\home.html:24
 #: .\project\templates\htmx\search_results.html:13
-#: .\project\templates\navbar.html:20 .\project\templates\navbar.html:23
+#: .\project\templates\navbar.html:25 .\project\templates\navbar.html:31
 msgid "Projects"
 msgstr "Progetti"
 
@@ -251,7 +251,7 @@ msgstr "Cambia profilo"
 
 #: .\project\templates\account\contact.html:5
 #: .\project\templates\account\htmx\contact.html:9
-#: .\project\templates\navbar.html:48
+#: .\project\templates\navbar.html:68
 msgid "Contact"
 msgstr "Contatto"
 
@@ -507,7 +507,7 @@ msgstr "Invia password"
 
 #: .\project\templates\account\htmx\signup.html:9
 #: .\project\templates\account\htmx\signup.html:20
-#: .\project\templates\navbar.html:62
+#: .\project\templates\navbar.html:94
 #: .\project\templates\socialaccount\signup.html:11
 #: .\project\templates\socialaccount\signup.html:23
 msgid "Sign Up"
@@ -590,12 +590,13 @@ msgstr "sei già autenticato come %(user_display)s."
 
 #: .\project\templates\htmx\language_selector.html:8
 #: .\project\templates\htmx\language_selector.html:27
-#: .\project\templates\navbar.html:67
+#: .\project\templates\navbar.html:100
 msgid "Set language"
 msgstr "Seleziona lingua"
 
 #: .\project\templates\htmx\search_results.html:9
-#: .\project\templates\navbar.html:70 .\project\templates\search_results.html:4
+#: .\project\templates\navbar.html:103
+#: .\project\templates\search_results.html:4
 msgid "Search"
 msgstr "Cerca"
 
@@ -611,31 +612,31 @@ msgstr "Non abbiamo trovato elementi che soddisfino la tua ricerca"
 msgid "Select language"
 msgstr "Seleziona la lingua"
 
-#: .\project\templates\navbar.html:28
+#: .\project\templates\navbar.html:37
 msgid "Docs"
 msgstr "Documenti"
 
-#: .\project\templates\navbar.html:31
+#: .\project\templates\navbar.html:43
 msgid "Blog"
 msgstr ""
 
-#: .\project\templates\navbar.html:47 .\users\models.py:110
+#: .\project\templates\navbar.html:63 .\users\models.py:110
 msgid "Profile"
 msgstr "Profilo"
 
-#: .\project\templates\navbar.html:49
+#: .\project\templates\navbar.html:73
 msgid "Logout"
 msgstr ""
 
-#: .\project\templates\navbar.html:51
+#: .\project\templates\navbar.html:76
 msgid "Go to Admin"
 msgstr "Vai all'amministrazione"
 
-#: .\project\templates\navbar.html:58 .\project\templates\navbar.html:61
+#: .\project\templates\navbar.html:83 .\project\templates\navbar.html:89
 msgid "Login"
 msgstr ""
 
-#: .\project\templates\navbar.html:69
+#: .\project\templates\navbar.html:102
 msgid "Write something"
 msgstr "Scrivi qualcosa"
 
