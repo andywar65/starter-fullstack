@@ -122,7 +122,13 @@ def default_intro():
 
 
 class Article(models.Model):
-    slug = models.SlugField(max_length=50, editable=False, null=True)
+    slug = models.SlugField(
+        _("Slug"),
+        max_length=50,
+        null=True,
+        blank=True,
+        help_text=_("Appears on the address bar"),
+    )
     title = models.CharField(
         _("Title"), help_text=_("The title of the article"), max_length=50
     )

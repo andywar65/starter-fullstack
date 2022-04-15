@@ -41,6 +41,7 @@ class HomePageCarouselTranslationOptions(TranslationOptions):
 @register(Article)
 class ArticleTranslationOptions(TranslationOptions):
     fields = (
+        "slug",
         "title",
         "intro",
         "body",
