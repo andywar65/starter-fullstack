@@ -6,7 +6,7 @@ from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
 
-from project.utils import generate_unique_slug
+from project.utils import check_wide_image, generate_unique_slug
 
 from .choices import ICONS
 
@@ -111,6 +111,10 @@ class HomePageCarousel(models.Model):
             "position",
         ]
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        check_wide_image(self.fb_image)
+
 
 def default_intro():
     # following try/except for test to work
@@ -204,3 +208,7 @@ class ArticleCarousel(models.Model):
         ordering = [
             "position",
         ]
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        check_wide_image(self.fb_image)

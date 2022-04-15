@@ -1,4 +1,8 @@
+from pathlib import Path
+
+from django.conf import settings
 from django.utils.text import slugify
+from PIL import Image
 
 
 def generate_unique_slug(klass, field):
@@ -17,3 +21,17 @@ def generate_unique_slug(klass, field):
         unique_slug = "%s-%d" % (origin_slug, numb)
         numb += 1
     return unique_slug
+
+
+def check_wide_image(fb_image):
+    img = fb_image.version_generate("wide")
+    if img.width < 1600 or img.height < 800:
+        path = Path(settings.MEDIA_ROOT).joinpath(fb_image.version_path("wide"))
+        img = Image.open(path)
+        back = Image.new(img.mode, (1600, 800))
+        position = (
+            int((back.width - img.width) / 2),
+            int((back.height - img.height) / 2),
+        )
+        back.paste(img, position)
+        back.save(path)
