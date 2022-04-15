@@ -24,6 +24,11 @@ def generate_unique_slug(klass, field):
 
 
 def check_wide_image(fb_image):
+    """
+    Checks if image is suitable for wide version. Performs 'version_generate',
+    then controls dimensions. If small, pastes the image on a 1600x800 black
+    background replacing original wide version. fb_image is a Fileobject.
+    """
     img = fb_image.version_generate("wide")
     if img.width < 1600 or img.height < 800:
         path = Path(settings.MEDIA_ROOT).joinpath(fb_image.version_path("wide"))
