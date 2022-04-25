@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-11 18:00+0200\n"
-"PO-Revision-Date: 2022-04-11 18:03+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2022-04-25 16:27+0200\n"
+"PO-Revision-Date: 2022-04-25 16:32+0200\n"
+"Last-Translator: andywar65 <andy.war1965@gmail.com>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Advanced options"
 msgstr "Opzioni avanzate"
 
-#: .\pages\admin.py:118 .\pages\models.py:71 .\pages\models.py:130
+#: .\pages\admin.py:118 .\pages\models.py:71 .\pages\models.py:134
 #: .\users\models.py:126
 msgid "Text"
 msgstr "Testo"
@@ -36,11 +36,11 @@ msgid "External link"
 msgstr "Link esterno"
 
 #: .\pages\models.py:19 .\pages\models.py:38 .\pages\models.py:57
-#: .\pages\models.py:127
+#: .\pages\models.py:131
 msgid "Title"
 msgstr "Titolo"
 
-#: .\pages\models.py:23 .\pages\models.py:93 .\pages\models.py:187
+#: .\pages\models.py:23 .\pages\models.py:93 .\pages\models.py:191
 #: .\users\models.py:76 .\users\models.py:83
 msgid "Image"
 msgstr "Immagine"
@@ -93,15 +93,15 @@ msgstr ""
 msgid "Home Pages"
 msgstr "Home Page"
 
-#: .\pages\models.py:99 .\pages\models.py:193
+#: .\pages\models.py:99 .\pages\models.py:197
 msgid "Description"
 msgstr "Descrizione"
 
-#: .\pages\models.py:100 .\pages\models.py:194
+#: .\pages\models.py:100 .\pages\models.py:198
 msgid "Will be used in captions"
 msgstr "Utilizzato nelle didascalie"
 
-#: .\pages\models.py:105 .\pages\models.py:199
+#: .\pages\models.py:105 .\pages\models.py:203
 msgid "Position"
 msgstr "Posizione"
 
@@ -113,47 +113,47 @@ msgstr "Galleria delle homepage"
 msgid "Home page carousels"
 msgstr "Gallerie delle homepage"
 
-#: .\pages\models.py:119
+#: .\pages\models.py:123
 #, python-format
 msgid "Another article by %(name)s!"
 msgstr "Un nuovo articolo di %(name)s!"
 
-#: .\pages\models.py:121
+#: .\pages\models.py:125
 msgid "Another article by this site!"
 msgstr "Un nuovo articolo da questo sito!"
 
-#: .\pages\models.py:127
+#: .\pages\models.py:131
 msgid "The title of the article"
 msgstr "Il titolo dell'articolo"
 
-#: .\pages\models.py:129
+#: .\pages\models.py:133
 msgid "Introduction"
 msgstr "Introduzione"
 
-#: .\pages\models.py:132
+#: .\pages\models.py:136
 msgid "Date"
 msgstr "Data"
 
-#: .\pages\models.py:137
+#: .\pages\models.py:141
 msgid "Author"
 msgstr "Autore"
 
-#: .\pages\models.py:173 .\pages\models.py:184
+#: .\pages\models.py:177 .\pages\models.py:188
 msgid "Article"
 msgstr "Articolo"
 
-#: .\pages\models.py:174 .\pages\templates\pages\article_index.html:4
+#: .\pages\models.py:178 .\pages\templates\pages\article_index.html:4
 #: .\pages\templates\pages\htmx\article_index.html:8
 #: .\pages\templates\pages\htmx\home.html:24
 #: .\project\templates\htmx\search_results.html:13
 msgid "Articles"
 msgstr "Articoli"
 
-#: .\pages\models.py:202
+#: .\pages\models.py:206
 msgid "Article carousel"
 msgstr "Galleria degli articoli"
 
-#: .\pages\models.py:203
+#: .\pages\models.py:207
 msgid "Article carousels"
 msgstr "Gallerie degli articoli"
 
@@ -165,16 +165,16 @@ msgstr "Precedente"
 msgid "Next"
 msgstr "Prossimo"
 
-#: .\pages\templates\pages\home.html:4
+#: .\pages\templates\pages\home.html:4 .\project\templates\admin\base.html:151
 msgid "Home"
 msgstr ""
 
 #: .\pages\templates\pages\htmx\article_detail.html:11
-#: .\pages\templates\pages\includes\article_list.html:21
+#: .\pages\templates\pages\includes\article_list.html:25
 msgid "by"
 msgstr "di"
 
-#: .\pages\templates\pages\includes\article_list.html:37
+#: .\pages\templates\pages\includes\article_list.html:41
 msgid "No articles available"
 msgstr "Nessun articolo disponibile"
 
@@ -182,15 +182,15 @@ msgstr "Nessun articolo disponibile"
 msgid "No Home Pages available"
 msgstr "Nessuna home page disponibile"
 
-#: .\project\settings.py:129
+#: .\project\settings.py:146
 msgid "Admin"
 msgstr "Amministrazione"
 
-#: .\project\settings.py:178
+#: .\project\settings.py:199
 msgid "Italian"
 msgstr "Italiano"
 
-#: .\project\settings.py:179
+#: .\project\settings.py:200
 msgid "English"
 msgstr "Inglese"
 
@@ -582,11 +582,32 @@ msgstr "Nota"
 msgid "you are already logged in as %(user_display)s."
 msgstr "sei già autenticato come %(user_display)s."
 
+#: .\project\templates\admin\base.html:82
+msgid "Django administration"
+msgstr "Amministrazione di Django"
+
+#: .\project\templates\admin\base.html:109
 #: .\project\templates\htmx\language_selector.html:8
 #: .\project\templates\htmx\language_selector.html:27
 #: .\project\templates\navbar.html:61
 msgid "Set language"
 msgstr "Seleziona lingua"
+
+#: .\project\templates\admin\base.html:118
+msgid "Change password"
+msgstr "Cambia la password"
+
+#: .\project\templates\admin\base.html:121
+msgid "Log out"
+msgstr ""
+
+#: .\project\templates\admin\base.html:128
+msgid "View site"
+msgstr "Vai al sito"
+
+#: .\project\templates\admin\base.html:133
+msgid "Documentation"
+msgstr "Documentazione"
 
 #: .\project\templates\htmx\search_results.html:9
 #: .\project\templates\navbar.html:64 .\project\templates\search_results.html:4
@@ -690,17 +711,21 @@ msgstr ""
 "%(site_name)s. Come ultima operazione ti chiediamo di riempire il form qui "
 "sotto:"
 
-#: .\project\urls.py:71
+#: .\project\urls.py:72
 msgid "search/"
 msgstr "cerca/"
 
-#: .\project\urls.py:73
+#: .\project\urls.py:74
 msgid "select-language/"
 msgstr "seleziona-lingua/"
 
-#: .\project\urls.py:77
+#: .\project\urls.py:78
 msgid "articles/"
 msgstr "articoli/"
+
+#: .\project\urls.py:79
+msgid "buildings/"
+msgstr "edifici/"
 
 #: .\users\forms.py:11 .\users\forms.py:43
 msgid "First name"
