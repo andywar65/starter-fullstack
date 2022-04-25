@@ -32,12 +32,17 @@ django==4.0.3
     #   django-debug-toolbar
     #   django-htmx
     #   django-modeltranslation
+    #   django-taggit
+    #   django-treebeard
+    #   djangorestframework
 django-allauth==0.50.0
     # via -r requirements.in
 django-bootstrap-v5==1.0.11
     # via -r requirements.in
 django-cache-url==3.4.0
     # via environs
+django-colorfield==0.6.3
+    # via -r requirements.in
 django-debug-toolbar==3.2.4
     # via -r requirements.in
 django-filebrowser==4.0.1
@@ -49,6 +54,16 @@ django-grappelli==3.0.3
 django-htmx==1.9.0
     # via -r requirements.in
 django-modeltranslation==0.17.5
+    # via -r requirements.in
+django-taggit==2.1.0
+    # via -r requirements.in
+django-treebeard==4.5.1
+    # via -r requirements.in
+djangorestframework==3.13.1
+    # via
+    #   -r requirements.in
+    #   djangorestframework-gis
+djangorestframework-gis==0.18
     # via -r requirements.in
 environs[django]==9.5.0
     # via -r requirements.in
@@ -65,7 +80,9 @@ oauthlib==3.2.0
 packaging==21.3
     # via marshmallow
 pillow==9.1.0
-    # via django-filebrowser
+    # via
+    #   django-colorfield
+    #   django-filebrowser
 psycopg2-binary==2.9.3
     # via -r requirements.in
 pycparser==2.21
@@ -80,6 +97,8 @@ python-dotenv==0.20.0
     # via environs
 python3-openid==3.2.0
     # via django-allauth
+pytz==2022.1
+    # via djangorestframework
 requests==2.27.1
     # via
     #   django-allauth
