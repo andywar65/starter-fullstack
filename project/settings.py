@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.postgres",
+    "django.contrib.gis",
     "django.contrib.sites",
     "django.contrib.flatpages",
     "django.contrib.sitemaps",
@@ -50,9 +51,15 @@ INSTALLED_APPS = [
     "bootstrap5",
     "django_htmx",
     "debug_toolbar",
+    "taggit",
+    "treebeard",
+    "rest_framework",
+    "rest_framework_gis",
+    "colorfield",
     # local
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
+    "buildings.apps.BuildingsConfig",
 ]
 
 MIDDLEWARE = [

@@ -64,6 +64,7 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    path("build-api/", include("buildings.api_urls")),
 ]
 
 urlpatterns += i18n_patterns(
@@ -75,6 +76,7 @@ urlpatterns += i18n_patterns(
         name="select_language",
     ),
     path(_("articles/"), include("pages.urls", namespace="pages")),
+    path(_("buildings/"), include("buildings.urls", namespace="buildings")),
 )
 
 if settings.DEBUG:
