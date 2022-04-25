@@ -71,6 +71,10 @@ factory-boy==3.2.1
     # via -r requirements.in
 faker==13.3.4
     # via factory-boy
+geographiclib==1.52
+    # via geopy
+geopy==2.2.0
+    # via -r requirements.in
 idna==3.3
     # via requests
 marshmallow==3.15.0
