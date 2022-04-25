@@ -30,6 +30,7 @@ django==4.0.3
     #   django-allauth
     #   django-bootstrap-v5
     #   django-debug-toolbar
+    #   django-filter
     #   django-htmx
     #   django-modeltranslation
     #   django-taggit
@@ -46,6 +47,8 @@ django-colorfield==0.6.3
 django-debug-toolbar==3.2.4
     # via -r requirements.in
 django-filebrowser==4.0.1
+    # via -r requirements.in
+django-filter==21.1
     # via -r requirements.in
 django-grappelli==3.0.3
     # via

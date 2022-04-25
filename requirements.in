@@ -14,6 +14,7 @@ django-taggit
 django-treebeard
 djangorestframework
 djangorestframework-gis
+django-filter
 django-colorfield
 geopy
 ezdxf
