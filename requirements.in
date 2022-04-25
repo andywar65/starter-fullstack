@@ -16,3 +16,4 @@ djangorestframework
 djangorestframework-gis
 django-colorfield
 geopy
+ezdxf

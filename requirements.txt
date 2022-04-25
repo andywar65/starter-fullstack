@@ -67,6 +67,8 @@ djangorestframework-gis==0.18
     # via -r requirements.in
 environs[django]==9.5.0
     # via -r requirements.in
+ezdxf==0.17.2
+    # via -r requirements.in
 factory-boy==3.2.1
     # via -r requirements.in
 faker==13.3.4
@@ -94,7 +96,9 @@ pycparser==2.21
 pyjwt[crypto]==2.3.0
     # via django-allauth
 pyparsing==3.0.7
-    # via packaging
+    # via
+    #   ezdxf
+    #   packaging
 python-dateutil==2.8.2
     # via faker
 python-dotenv==0.20.0
@@ -120,6 +124,8 @@ sqlparse==0.4.2
     # via
     #   django
     #   django-debug-toolbar
+typing-extensions==4.2.0
+    # via ezdxf
 tzdata==2022.1
     # via django
 urllib3==1.26.9
