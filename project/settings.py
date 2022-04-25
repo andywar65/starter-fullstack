@@ -191,6 +191,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+CITY_LAT = 41.8988
+CITY_LONG = 12.5451
+CITY_ZOOM = 10
+
 LANGUAGES = [
     ("it", _("Italian")),
     ("en", _("English")),
