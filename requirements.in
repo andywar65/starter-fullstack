@@ -10,3 +10,8 @@ environs[django]
 coverage
 django-debug-toolbar
 factory_boy
+django-taggit
+django-treebeard
+djangorestframework
+djangorestframework-gis
+django-colorfield
