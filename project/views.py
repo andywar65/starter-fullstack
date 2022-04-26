@@ -3,6 +3,7 @@ from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from buildings.models import Journal
 from pages.models import Article
 from users.views import HxTemplateMixin
 
@@ -31,6 +32,12 @@ def search_results(request):
         if articles:
             articles = articles.order_by("-rank")
             success = True
+        # search in journals
+        jours = Journal.objects.annotate(rank=SearchRank(v, q))
+        jours = jours.filter(rank__gt=0.01)
+        if jours:
+            jours = jours.order_by("-rank")
+            success = True
 
         return render(
             request,
@@ -38,6 +45,7 @@ def search_results(request):
             {
                 "search": request.GET["q"],
                 "articles": articles,
+                "jours": jours,
                 "success": success,
             },
         )

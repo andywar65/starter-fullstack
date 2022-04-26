@@ -24,6 +24,17 @@
               </ul>
             {% endfor %}
           {% endif %}
+          {% if jours %}
+            <h5>{% translate 'Building log entries' %}</h5>
+            {% for jour in jours %}
+              <ul>
+                <li>
+                  <a href="{{ jour.get_path }}">{{ jour.title }}</a>
+                  {{ jour.intro }}
+                </li>
+              </ul>
+            {% endfor %}
+          {% endif %}
         </div>
       {% else %}
         <div class="card-header">
