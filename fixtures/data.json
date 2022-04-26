@@ -1730,8 +1730,8 @@
     "fields": {
         "provider": "google",
         "name": "Google",
-        "client_id": "122835296299-6bv63kkk0jf3br18he7au6n77h1o30nv.apps.googleusercontent.com",
-        "secret": "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",
+        "client_id": "665088527637-qaqnngjacigvg0m2153v6ac7g4qi7k7l.apps.googleusercontent.com",
+        "secret": "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",
         "key": "",
         "sites": [
             1
@@ -2907,7 +2907,7 @@
         "date": "2021-07-10T08:32:10Z",
         "image": "",
         "fb_image": "uploads/buildings/images/20210710_103210.jpg",
-        "caption": "Non c'Ë guaina"
+        "caption": "Non c'√® guaina"
     }
 },
 {
@@ -2973,7 +2973,7 @@
         "date": "2021-07-12T08:11:22Z",
         "image": "",
         "fb_image": "uploads/buildings/images/20210712_101122.jpg",
-        "caption": "Prova grÈs da 2 cm di spessore"
+        "caption": "Prova gr√©s da 2 cm di spessore"
     }
 },
 {
@@ -3677,7 +3677,7 @@
         "date": "2021-08-07T06:56:04Z",
         "image": "",
         "fb_image": "uploads/buildings/images/20210807_085604.jpg",
-        "caption": "Qui si Ë deciso di posare travertino da 2cm"
+        "caption": "Qui si √® deciso di posare travertino da 2cm"
     }
 },
 {
@@ -3699,7 +3699,7 @@
         "date": "2021-08-07T06:58:54Z",
         "image": "",
         "fb_image": "uploads/buildings/images/20210807_085854.jpg",
-        "caption": "Pavimentazione pressochÈ finita"
+        "caption": "Pavimentazione pressoch√© finita"
     }
 },
 {
@@ -5030,7 +5030,7 @@
         "build": 1,
         "slug": "posa-travertino-2cm",
         "title": "Posa travertino",
-        "intro": "In fase di completamento le pavimentazioni, a buon punto il grÈs tipo travertino da 2cm",
+        "intro": "In fase di completamento le pavimentazioni, a buon punto il gr√©s tipo travertino da 2cm",
         "body": "<h4>Presenti</h4>\r\n<ul>\r\n<li>per la DL: arch. A. Guerra</li>\r\n<li>per la ditta: geom. A. Frioni</li>\r\n</ul>\r\n<h3>&nbsp;Pulizia facciate</h3>\r\n<p>Pulizia dagli alloggi custodi. Ho prescritto alla ditta di coordinarsi con i pulitori per dare priorit&agrave; all'impermeabilizzazione del terrazzo giochi.</p>\r\n<h3>Pavimentazioni</h3>\r\n<p>Sul terrazzo pannelli in fase di completamento assieme ai battiscopa, si stanno eseguendo le stuccature e si sta posando il gr&eacute;s finto travertino da 2 cm. Per posare quest'ultimo a volte occorre scalfire leggermente il massetto con il \"robot\", inoltre bisogna tagliare l'aletta dei giunti di frazionamento lato travertino. Nelle foto alcuni punti ancora da completare in giro per il cantiere. Obbiettivo della ditta &egrave; completare domani.</p>\r\n<h3>Altre lavorazioni</h3>\r\n<p>Luned&igrave; si comincia con il rivestimento dei muretti. Contestualmente faremo un giro del cantiere per vedere quali sono le lavorazioni che mancano.</p>",
         "date": "2021-08-06",
         "last_updated": "2021-08-14T14:49:07.200Z",
@@ -5058,7 +5058,7 @@
         "build": 1,
         "slug": "travertino-da-1cm",
         "title": "Travertino da 1cm",
-        "intro": "Fornitura del grÈs finto travertino e programmazione lavori",
+        "intro": "Fornitura del gr√©s finto travertino e programmazione lavori",
         "body": "<h4>Presenti</h4>\r\n<ul>\r\n<li>per la DL: arch. A. Guerra</li>\r\n</ul>\r\n<h3>Travertino 1cm</h3>\r\n<p>In mattinata si &egrave; avuta la fornitura del gr&eacute;s finto travertino 45x90 da 1cm di spessore. Da luned&igrave; si proceder&agrave; a posarlo a partire dal terrazzo ciminiere, proseguendo poi sul terrazzo giochi, palestra, amministrazione, mensa (tutti ancora da demolire). Volutamente ci lasciamo per ultimo quello della mensa che &egrave; quello messo meglio, ed eventualmente si far&agrave; ad ottobre.</p>\r\n<h3>Pulizia facciate</h3>\r\n<p>Oggi dovrebbe completarsi la pulizia facciate (vedi foto), da domani si proceder&agrave; con l'impermeabilizzazione della cortina sul terrazzo giochi, lasciando libero per luned&igrave; il campo per le ulteriori lavorazioni.</p>\r\n<h3>Altre lavorazioni</h3>\r\n<p>Qui di seguito una lista delle lavorazioni da impostare per la settimana prossima:</p>\r\n<ul>\r\n<li><strong>Ripristino travertino</strong></li>\r\n<li><strong>Magazzino carta</strong>: spostamento porta, nuovo muro nel porticato, canale di ventilazione, porta REI</li>\r\n<li><strong>Atrio bar</strong>: rifacimento pavimentazione, nuovo scarico per la cucina, eventuale passo d'uomo</li>\r\n<li><strong>Muretti</strong>: nuovo muro sull'aula magna, rialzo muro ciminiere e mensa</li>\r\n<li><strong>Chiostrine</strong>: rifacimento pavimentazioni</li>\r\n</ul>\r\n<p>Una volta impostato il ripristino del travertino sul terrazzo giochi prendere contatto con Schicchi per il tappeto anti trauma e il tendaggio ombreggiante. Sentire Sciotti per l'acqua sul terrazzo giochi, lo scarico della vasiera elementari nord, l'alimentazione delle vasiere liceo (sopra l'ingresso e sopra il terrazzo amministrazione)</p>",
         "date": "2021-08-13",
         "last_updated": "2021-08-14T14:49:07.195Z",
@@ -5156,7 +5156,7 @@
         "build": 1,
         "slug": "considerazioni-sulle-ringhiere",
         "title": "Considerazioni sulle ringhiere",
-        "intro": "A quali ringhiere dare la priorit‡? Secondo campione Faraone",
+        "intro": "A quali ringhiere dare la priorit√†? Secondo campione Faraone",
         "body": "<h4>Presenti</h4>\r\n<ul>\r\n<li>Per la scuola: Sigg.re J. Eberl Marchetti, K. Grozinger</li>\r\n<li>Per la DL: arch. A. Guerra</li>\r\n<li>Per la ditta: geom. A. Frioni, arch.F. Antonelli</li>\r\n</ul>\r\n<h3>Infiltrazioni nel magazzino birra</h3>\r\n<p>Il magazzino birra &egrave; un locale interrato a forma di \"L\" che abbraccia la centrale idrica. In fondo al locale, a confine con la centrale termica, sono state riscontrate delle abbondanti infiltrazioni, molto simili a quelle che si avevano nello stesso punto prima della ristrutturazione dei terrazzi. All'epoca la cosa era stata attribuita alla mancata tenuta del terrazzo soprastante (terrazzo ciminiere), anche perch&eacute; in corrispondenza di quel muro &egrave; presente un giunto strutturale (per orientarsi, l'infiltrazione si trova esattamente sotto la punta del cosiddetto \"Titanic\"). Durante l'estate scorsa, la guaina del terrazzo ciminiere &egrave; stata completamente rifatta senza soluzione di continuit&agrave; su tutta la superficie, nonostante l'andamento accidentato del terrazzo stesso (gradoni, rampe, muretti). Escluderei a priori che l'infiltrazione sia dovuta ad una perdita della guaina (d'altronde non ci sono state precipitazioni ultimamente), &egrave; probabile che l'infiltrazione sia dovuta alla pulizia della vicina facciata dell'asilo, in cui il giunto strutturale si estende fino alla copertura. Attualmente il giunto verticale &egrave; protetto da un cordone di mastice la cui tenuta parrebbe sufficiente in caso di normale pioggia, ma insufficiente nel caso di getto d'acqua a pressione. Una volta penetrata nella muratura, l'acqua scende e si trova gi&agrave; oltre la guaina del terrazzo, ad un certo punto incontra il giunto orizzontale e ne segue la pendenza finch&eacute; non trova un punto di sfogo.</p>\r\n<p>La questione dei giunti verticali prima o poi andr&agrave; affrontata, dato che il mastice utilizzato &egrave; ottimo ma non eterno.</p>\r\n<h3>&nbsp;Terrazzo elementari nord</h3>\r\n<p>Di fronte alla porta pi&ugrave; vicina alle scale di ingresso c'&egrave; una zona in contropendenza in cui l'acqua ristagna. Il bocchettone corrispondente inoltre non &egrave; posizionato nel punto pi&ugrave; basso. Occorre smontare una parte di pavimentazione, raschiare il massetto e riposare la pavimentazione, oppure vedere se il problema &egrave; riconducibile alla fascia bianca da 2 cm che forma una diga. La prima lastra di detta fascia &egrave; sicuramente da sostituire, essendo stata sagomata male (vedi foto).</p>\r\n<h3>Ringhiere modulari</h3>\r\n<p>Come da accordi il primo scaglione di ringhiere modulari &egrave; di 200 metri totali. Gli elementi coprono il terrazzo elementari nord, il terrazzo di fronte alla palestra, i muretti nuovi di fronte ai fotovoltaici e il passaggio a nord est. Quest'ultimo &egrave; stato modificato e semplificato in corso d'opera, per cui le balaustre saranno di meno e diverse. Le balaustre destinate a questo settore (31 metri circa) potrebbero essere utilizzate sul sottostante terrazzo mensa, dove le balaustre originali presentano dei punti in cui l'altezza &egrave; di 94 - 95 cm, molto aldisotto della norma. In genere, come risoluzione palliativa, le balaustre originali possono essere fatte scorrere verso l'alto, in attesa di essere sostituite.</p>\r\n<p>A titolo di esempio: sul fronte dei fotovoltaici abbiamo tre muretti nuovi, inframmezzati da settori con balaustre originali, spesso pi&ugrave; basse della norma. Le balaustre nuove ovviamente saranno posizionate ad altezza regolamentare, quelle originali possono essere fatte slittare verso l'alto in attesa della loro sostituzione. Avere le balaustre tutte alla stessa altezza far&agrave; notare di meno la loro eterogeneit&agrave;.</p>\r\n<h3>Vasiere liceo</h3>\r\n<p>La vasiera che si affaccia sul terrazzo amministrazione ha il battente troppo alto, per cui sul fondo si forma una pozza. Bisogna rialzare il battente con il massetto ed impermeabilizzarlo (anche con resina). In futuro, quando avremo la ringhiera a sostituzione di quella esistente, la faccia in cemento armato della vasiera verso il terrazzo sar&agrave; rivestita con i soliti listelli in laterizio.</p>\r\n<p>La vasiera che si affaccia sulle scale di ingresso non &egrave; raggiunta dall'acqua, nonostante la presa sia ad una distanza di circa un metro e mezzo. Se il problema &egrave; l'esigua altezza del massetto in cui alloggiare una tubazione, si pu&ograve; agire in questo modo:</p>\r\n<ul>\r\n<li>creare una nicchia nel muro in prossimit&agrave; della presa d'acqua, nicchia protetta da uno sportellino. La nicchia deve essere grande abbastanza per contenere la centralina di irrigazione.</li>\r\n<li>derivare l'acqua nella nicchia e predisporre il tubicino di irrigazione dalla nicchia alla vasiera. Detto tubo sar&agrave; da 1 cm di diametro, facile da annegare nel massetto.</li>\r\n</ul>\r\n<h3>Profilo finto rame</h3>\r\n<p>Il profilo manca sulla scala del terrazzo mensa e sulla scala lunga di fronte ai campi sportivi.</p>\r\n<p>Sui terrazzi ristrutturati quest'anno il profilo manca di sigillatura.</p>\r\n<h3>Magazzino carta</h3>\r\n<p>Le due pareti su cui si pensava di aprire la nuova porta e il canale di ventilazione sono in c.a. con funzione antisismica. Il progettista arch. D. Pini sta elaborando una soluzione alternativa.</p>\r\n<h3>Secondo campione Faraone</h3>\r\n<p>L'arch. F. Antonelli ha portato un campione di profilo antiscavalco tondo da applicare al sistema \"Ninfa\" della Faraone. Aldil&agrave; del colore che &egrave; confermato alluminio naturale, il campione &egrave; sembrato soddisfacente, per cui l'arch. elaborer&agrave; un preventivo per le balaustre dell'atrio. Detto preventivo si basa sugli elaborati da noi forniti, e potrebbe variare un po' rispetto a quello definitivo da fare previo rilievo.</p>\r\n<p><img src=\"/media/_versions/20210826_112529_large.jpg\" alt=\"\" width=\"100%\" /></p>\r\n<p>Sono state avanzate preoccupazioni riguardo il peso aggiuntivo delle balaustre in vetro sulle scale e sulle balconate dell'atrio, ma si pu&ograve; facilmente dimostrare che le preoccupazioni sono eccessive:</p>\r\n<p>il vetro utilizzato (8+8) pesa 40 kg/mq, ma noi ne utilizziamo solo 70 cm in altezza, per cui il peso si riduce a 28 kg al metro (facciamo 30 considerando il profilo in alluminio). Dobbiamo per&ograve; considerare la detrazione della griglia, che stimiamo in 5 kg al metro, per cui il peso aggiuntivo &egrave; di 25 kg al metro. Avendo visionato il verbale di collaudo originale dell'edificio, sappiamo che i solai della scuola sono stati progettati per sostenere 700kg al metro quadro di carico accidentale. Tanto per fare un confronto, un carico accidentale possibile (ma molto difficile) per l'atrio &egrave; di avere 4 persone al mq (una densit&agrave; da concerto allo stadio). Quattro persone pesano in media 70x4=280 kg al mq, molto lontani dal limite di progetto. La struttura inoltre deve sostenere se stessa, nella fattispecie si tratta di un solettone in cemento armato pieno su un graticciato di travi con passo 2,4x2,4 m. Senza fare calcoli approfonditi &egrave; facile immaginare che l'intero sistema pesi un 800kg al mq, a cui aggiungere il carico accidentale di progetto (totale 1500 kg/mq). E' anche da considerare che in presenza di scale e aggetti i progettisti diventano ancora pi&ugrave; conservativi, per cui &egrave; lecito supporre che nella zona in cui andiamo ad aggiungere il vetro il carico progettato sia anche superiore alla tonnellata e mezza di cui sopra, tonnellata e mezza al cui confronto i nostri 25kg fanno tenerezza.</p>\r\n<p>In conclusione posso affermare che la balaustra in vetro pu&ograve; essere aggiunta in totale sicurezza.</p>",
         "date": "2021-08-26",
         "last_updated": "2021-08-27T14:00:01.898Z",
