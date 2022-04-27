@@ -12,7 +12,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     {% bootstrap_css %}
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <title>{% block head_title %}{{ request.site.name }}{% endblock head_title %}</title>
+    <title>{{ request.site.name }}</title>
     {% block extra-head %}{% endblock extra-head %}
   </head>
   <body class="d-flex flex-column h-100" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
