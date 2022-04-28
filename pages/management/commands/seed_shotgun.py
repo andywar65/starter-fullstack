@@ -27,4 +27,6 @@ def create_articles():
     for wp_post in wp_posts:
         date = datetime.fromisoformat(wp_post["date"])
         title = wp_post["title"]["rendered"]
-        Shotgun.objects.create(title=title, date=date)
+        content = wp_post["content"]["rendered"]
+        body = content.split("<p>")[1].split("</p>")[0]
+        Shotgun.objects.create(title=title, date=date, body=body)
