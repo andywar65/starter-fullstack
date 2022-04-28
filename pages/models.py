@@ -6,7 +6,7 @@ from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
 
-from project.utils import check_wide_image, generate_unique_slug
+from project.utils import check_tall_image, check_wide_image, generate_unique_slug
 
 from .choices import ICONS
 
@@ -212,3 +212,32 @@ class ArticleCarousel(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         check_wide_image(self.fb_image)
+
+
+class Shotgun(models.Model):
+    title = models.CharField(
+        _("Title"), help_text=_("The title of the article"), max_length=50
+    )
+    body = models.TextField(_("Text"), null=True)
+    date = models.DateField(
+        _("Date"),
+        default=now,
+    )
+    fb_image = FileBrowseField(
+        _("Image"),
+        max_length=200,
+        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
+        directory="images/shotgun/",
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = _("Shotgun article")
+        verbose_name_plural = _("Shotgun articles")
+        ordering = [
+            "-date",
+        ]
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        check_tall_image(self.fb_image)

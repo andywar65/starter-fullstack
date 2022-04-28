@@ -156,6 +156,12 @@ FILEBROWSER_VERSIONS = {
         "height": 800,
         "opts": "crop",
     },
+    "tall": {
+        "verbose_name": "Portrait 9:16",
+        "width": 450,
+        "height": 800,
+        "opts": "crop",
+    },
     "popup": {"verbose_name": "Popups", "width": 256, "height": 256, "opts": "crop"},
 }
 

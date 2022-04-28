@@ -23,6 +23,25 @@ def generate_unique_slug(klass, field):
     return unique_slug
 
 
+def check_tall_image(fb_image):
+    """
+    Checks if image is suitable for tall version. Performs 'version_generate',
+    then controls dimensions. If small, pastes the image on a 450x800 black
+    background replacing original tall version. fb_image is a Fileobject.
+    """
+    img = fb_image.version_generate("tall")
+    if img.width < 450 or img.height < 800:
+        path = Path(settings.MEDIA_ROOT).joinpath(fb_image.version_path("tall"))
+        img = Image.open(path)
+        back = Image.new(img.mode, (450, 800))
+        position = (
+            int((back.width - img.width) / 2),
+            int((back.height - img.height) / 2),
+        )
+        back.paste(img, position)
+        back.save(path)
+
+
 def check_wide_image(fb_image):
     """
     Checks if image is suitable for wide version. Performs 'version_generate',

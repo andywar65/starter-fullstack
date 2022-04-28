@@ -11,6 +11,7 @@ from .models import (
     HomePage,
     HomePageCarousel,
     Logo,
+    Shotgun,
 )
 
 
@@ -127,4 +128,12 @@ class ArticleAdmin(TranslationAdmin):
                 "fields": ("author",),
             },
         ),
+    )
+
+
+@admin.register(Shotgun)
+class ShotgunAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "date",
     )
