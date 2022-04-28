@@ -28,5 +28,11 @@ def create_articles():
         date = datetime.fromisoformat(wp_post["date"])
         title = wp_post["title"]["rendered"]
         content = wp_post["content"]["rendered"]
-        body = content.split("<p>")[1].split("</p>")[0]
+        body = ""
+        if "<p>" in content:
+            body = content.split("<p>")[1].split("</p>")[0]
+        link = ""
+        if "data-orig-file" in content:
+            link = content.split('data-orig-file="')[1].split('"')[0]
+            body = body + link
         Shotgun.objects.create(title=title, date=date, body=body)
