@@ -12,16 +12,18 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **options):
-
+        #  TODO escape if shotgun exists
         self.stdout.write("Seeding database with shotgun articles...")
 
-        create_articles()
+        target = "https://www.andywar.net/wp-json/wp/v2/posts?page="
+        for i in range(1, 3):
+            self.stdout.write("Page " + str(i))
+            create_articles(target + str(i))
 
         self.stdout.write("Done.")
 
 
-def create_articles():
-    target = "https://www.andywar.net/wp-json/wp/v2/posts"
+def create_articles(target):
     response = requests.get(target)
     wp_posts = response.json()
     for wp_post in wp_posts:
