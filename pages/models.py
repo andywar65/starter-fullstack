@@ -240,4 +240,5 @@ class Shotgun(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        check_tall_image(self.fb_image)
+        if self.fb_image:
+            check_tall_image(self.fb_image)
