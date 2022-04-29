@@ -137,3 +137,4 @@ class ShotgunAdmin(admin.ModelAdmin):
         "title",
         "date",
     )
+    exclude = ("image",)

@@ -2,10 +2,9 @@ from datetime import datetime
 from io import BytesIO
 
 import requests
-from django.conf import settings
+from django.core.files import File
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
-from PIL import Image
 
 from pages.models import Shotgun
 
@@ -40,22 +39,10 @@ def create_articles(target):
         body = ""
         if "<p>" in content:
             body = content.split("<p>")[1].split("</p>")[0]
-        link = ""
+        shot = Shotgun.objects.create(title=title, date=date, body=body)
         if "data-orig-file" in content:
             link = content.split('data-orig-file="')[1].split('"')[0]
             filename = link.split("/")[-1]
-            path = settings.MEDIA_ROOT + "/uploads/images/shotgun/" + filename
             r = requests.get(link)
-            i = Image.open(BytesIO(r.content))
-            img = i.resize((450, 800))
-            if img.width < 450 or img.height < 800:
-                back = Image.new(img.mode, (450, 800))
-                position = (
-                    int((450 - img.width) / 2),
-                    int((800 - img.height) / 2),
-                )
-                back.paste(img, position)
-                back.save(path)
-            else:
-                img.save(path)
-        Shotgun.objects.create(title=title, date=date, body=body)
+            blob = BytesIO(r.content)
+            shot.image.save(filename, File(blob), save=True)

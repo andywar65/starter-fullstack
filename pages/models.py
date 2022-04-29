@@ -4,6 +4,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
+from filebrowser.base import FileObject
 from filebrowser.fields import FileBrowseField
 
 from project.utils import check_tall_image, check_wide_image, generate_unique_slug
@@ -245,6 +246,11 @@ class Shotgun(models.Model):
         ]
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if self.fb_image:
+        # save and upload image
+        super(Shotgun, self).save(*args, **kwargs)
+        if self.image:
+            # image is saved on the front end, passed to fb_image and deleted
+            self.fb_image = FileObject(str(self.image))
             check_tall_image(self.fb_image)
+            self.image = None
+            super(Shotgun, self).save(*args, **kwargs)
