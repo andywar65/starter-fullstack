@@ -230,6 +230,12 @@ class Shotgun(models.Model):
         directory="images/shotgun/",
         null=True,
     )
+    image = models.ImageField(
+        _("Image"),
+        max_length=200,
+        null=True,
+        upload_to="uploads/images/shotgun/",
+    )
 
     class Meta:
         verbose_name = _("Shotgun article")
