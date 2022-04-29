@@ -173,6 +173,12 @@ FILEBROWSER_VERSIONS = {
         "height": 800,
         "opts": "crop",
     },
+    "wide_landscape": {
+        "verbose_name": "Landscape 2:1 (legacy)",
+        "width": 1600,
+        "height": 800,
+        "opts": "crop",
+    },
     "popup": {"verbose_name": "Popups", "width": 256, "height": 256, "opts": "crop"},
 }
 
