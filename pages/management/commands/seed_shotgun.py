@@ -47,6 +47,15 @@ def create_articles(target):
             path = settings.MEDIA_ROOT + "/uploads/images/shotgun/" + filename
             r = requests.get(link)
             i = Image.open(BytesIO(r.content))
-            i.save(path)
-            i.close()
+            img = i.resize((450, 800))
+            if img.width < 450 or img.height < 800:
+                back = Image.new(img.mode, (450, 800))
+                position = (
+                    int((450 - img.width) / 2),
+                    int((800 - img.height) / 2),
+                )
+                back.paste(img, position)
+                back.save(path)
+            else:
+                img.save(path)
         Shotgun.objects.create(title=title, date=date, body=body)
