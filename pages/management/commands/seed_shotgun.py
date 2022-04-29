@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import requests
-from django.core.management.base import BaseCommand  # , CommandError
+from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from pages.models import Shotgun
@@ -12,7 +12,11 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **options):
-        #  TODO escape if shotgun exists
+        if Shotgun.objects.exists():
+            raise CommandError(
+                "This command cannot be run when any article exist, to guard "
+                + "against accidental use on production."
+            )
         self.stdout.write("Seeding database with shotgun articles...")
 
         target = "https://www.andywar.net/wp-json/wp/v2/posts?page="
