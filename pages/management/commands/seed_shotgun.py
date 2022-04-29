@@ -1,8 +1,11 @@
 from datetime import datetime
+from io import BytesIO
 
 import requests
+from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+from PIL import Image
 
 from pages.models import Shotgun
 
@@ -20,7 +23,7 @@ class Command(BaseCommand):
         self.stdout.write("Seeding database with shotgun articles...")
 
         target = "https://www.andywar.net/wp-json/wp/v2/posts?page="
-        for i in range(1, 3):
+        for i in range(1, 2):  # 55
             self.stdout.write("Page " + str(i))
             create_articles(target + str(i))
 
@@ -28,8 +31,8 @@ class Command(BaseCommand):
 
 
 def create_articles(target):
-    response = requests.get(target)
-    wp_posts = response.json()
+    r = requests.get(target)
+    wp_posts = r.json()
     for wp_post in wp_posts:
         date = datetime.fromisoformat(wp_post["date"])
         title = wp_post["title"]["rendered"]
@@ -40,5 +43,10 @@ def create_articles(target):
         link = ""
         if "data-orig-file" in content:
             link = content.split('data-orig-file="')[1].split('"')[0]
-            body = body + link
+            filename = link.split("/")[-1]
+            path = settings.MEDIA_ROOT + "/uploads/images/shotgun/" + filename
+            r = requests.get(link)
+            i = Image.open(BytesIO(r.content))
+            i.save(path)
+            i.close()
         Shotgun.objects.create(title=title, date=date, body=body)
