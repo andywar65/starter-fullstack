@@ -12,7 +12,6 @@ from pages.models import Shotgun
 class Command(BaseCommand):
     help = "Seed database with shotgun article data."
 
-    @transaction.atomic
     def handle(self, *args, **options):
         if Shotgun.objects.exists():
             raise CommandError(
@@ -22,13 +21,14 @@ class Command(BaseCommand):
         self.stdout.write("Seeding database with shotgun articles...")
 
         target = "https://www.andywar.net/wp-json/wp/v2/posts?page="
-        for i in range(1, 2):  # 55
+        for i in range(42, 46):  # 1-55
             self.stdout.write("Page " + str(i))
             create_articles(target + str(i))
 
         self.stdout.write("Done.")
 
 
+@transaction.atomic
 def create_articles(target):
     r = requests.get(target)
     wp_posts = r.json()
