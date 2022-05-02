@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block head_title %}{% translate 'Articles' %}{%endblock head_title %}
+
+{% block menucont %}
+  {% include 'pages/htmx/shotgun_index.html' %}
+{% endblock menucont %}

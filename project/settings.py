@@ -150,6 +150,7 @@ FILEBROWSER_VERSIONS = {
     },
     "big": {"verbose_name": "Big (6 col)", "width": 460, "height": "", "opts": ""},
     "large": {"verbose_name": "Large (8 col)", "width": 680, "height": "", "opts": ""},
+    "shot": {"verbose_name": "Shotgun image", "width": "", "height": 800, "opts": ""},
     "wide": {
         "verbose_name": "Landscape 2:1",
         "width": 1600,

@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load fb_versions %}
+
+{% if shots %}
+  {% for shot in shots %}
+    <div class="card" style="margin-bottom: 20px">
+      <div class="card-header">
+        <h4>
+          {{ shot.title | safe }}
+        </h4>
+      </div>
+      <div class="card-body">
+        {% if shot.fb_image %}
+          <div style="max-height: 800px">
+            <img
+              src="{% version shot.fb_image 'shot' %}"
+              alt="{{ shot.body | safe }}">
+          </div>
+        {% endif %}
+        <p>
+          {{ shot.date|date:"d M Y" }}
+        </p>
+        <p>
+          {{ shot.body | safe }}
+        </p>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>{% translate "No articles available" %}</p>
+{% endif %}

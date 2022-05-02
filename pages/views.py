@@ -11,7 +11,7 @@ from django.views.generic.dates import (
 
 from users.views import HxTemplateMixin
 
-from .models import Article, HomePage
+from .models import Article, HomePage, Shotgun
 
 
 class HxPageTemplateMixin:
@@ -50,6 +50,23 @@ class ArticleArchiveIndexView(HxPageTemplateMixin, ArchiveIndexView):
     paginate_by = 6
     allow_empty = True
     template_name = "pages/htmx/article_index.html"
+
+
+class ShotgunArchiveIndexView(ArchiveIndexView):
+    model = Shotgun
+    date_field = "date"
+    context_object_name = "shots"
+    paginate_by = 6
+    allow_empty = True
+    template_name = "pages/htmx/shotgun_index.html"
+
+    def get_template_names(self):
+        if not self.request.htmx:
+            return [self.template_name.replace("htmx/", "")]
+        elif "page" in self.request.GET:
+            return ["pages/includes/infinite_shotgun.html"]
+        else:
+            return [self.template_name]
 
 
 class ArticleYearArchiveView(HxPageTemplateMixin, YearArchiveView):

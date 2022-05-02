@@ -6,11 +6,13 @@ from .views import (
     ArticleDetailView,
     ArticleMonthArchiveView,
     ArticleYearArchiveView,
+    ShotgunArchiveIndexView,
 )
 
 app_name = "pages"
 urlpatterns = [
     path("", ArticleArchiveIndexView.as_view(), name="article_index"),
+    path("shotgun/", ShotgunArchiveIndexView.as_view(), name="shotgun_index"),
     path("<int:year>/", ArticleYearArchiveView.as_view(), name="article_year"),
     path(
         "<int:year>/<int:month>/",

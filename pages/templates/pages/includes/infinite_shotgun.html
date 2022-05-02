@@ -1,0 +1,8 @@
+{% include "pages/includes/shotgun_list.html" %}
+{% if page_obj.has_next %}
+  <p
+    hx-get="{% url 'pages:shotgun_index' %}?page={{ page_obj.next_page_number }}"
+    hx-trigger="revealed"
+    hx-swap="afterend">
+  </p>
+{% endif %}

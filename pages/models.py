@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from filebrowser.base import FileObject
 from filebrowser.fields import FileBrowseField
 
-from project.utils import check_tall_image, check_wide_image, generate_unique_slug
+from project.utils import check_wide_image, generate_unique_slug  # check_tall_image,
 
 from .choices import ICONS
 
@@ -251,6 +251,6 @@ class Shotgun(models.Model):
         if self.image:
             # image is saved on the front end, passed to fb_image and deleted
             self.fb_image = FileObject(str(self.image))
-            check_tall_image(self.fb_image)
+            # check_tall_image(self.fb_image)
             self.image = None
             super(Shotgun, self).save(*args, **kwargs)
