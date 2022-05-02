@@ -217,7 +217,7 @@ class ArticleCarousel(models.Model):
 
 class Shotgun(models.Model):
     title = models.CharField(
-        _("Title"), help_text=_("The title of the article"), max_length=50
+        _("Title"), help_text=_("The title of the article"), max_length=100
     )
     body = models.TextField(_("Text"), null=True)
     date = models.DateField(
