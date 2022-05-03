@@ -13,7 +13,7 @@
         {% if shot.fb_image %}
           <img class="card-img-top"
             src="{% version shot.fb_image 'shot' %}"
-            alt="{{ shot.body | safe }}">
+            alt="{{ shot.body }}">
         {% endif %}
         <p>
           {{ shot.date|date:"d M Y" }}

@@ -40,8 +40,12 @@ def create_articles(target):
         if "<p>" in content:
             body = content.split("<p>")[1].split("</p>")[0]
         shot = Shotgun.objects.create(title=title, date=date, body=body)
+        link = ""
         if "data-orig-file" in content:
             link = content.split('data-orig-file="')[1].split('"')[0]
+        elif "</figure>" in content:
+            link = content.split('src="')[1].split('"')[0]
+        if link:
             filename = link.split("/")[-1]
             r = requests.get(link)
             blob = BytesIO(r.content)
