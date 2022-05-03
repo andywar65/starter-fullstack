@@ -3,7 +3,7 @@
 
 {% if shots %}
   {% for shot in shots %}
-    <div class="card" style="margin-bottom: 20px">
+    <div class="card mx-auto" style="margin-bottom: 20px;{{ shot.get_card_width }}">
       <div class="card-header">
         <h4>
           {{ shot.title | safe }}
@@ -11,11 +11,9 @@
       </div>
       <div class="card-body">
         {% if shot.fb_image %}
-          <div style="max-height: 800px">
-            <img
-              src="{% version shot.fb_image 'shot' %}"
-              alt="{{ shot.body | safe }}">
-          </div>
+          <img class="card-img-top"
+            src="{% version shot.fb_image 'shot' %}"
+            alt="{{ shot.body | safe }}">
         {% endif %}
         <p>
           {{ shot.date|date:"d M Y" }}

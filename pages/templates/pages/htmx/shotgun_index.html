@@ -2,15 +2,8 @@
 
 {% include 'navbar.html' %}
 <main class="flex-shrink-0">
-  <div id="content" class="container">
-    <div class="card mx-auto" style="max-width: 960px; margin-top: 60px">
-      <div class="card-header">
-        <h3>{% translate 'Articles' %}</h3>
-      </div>
-      <div class="card-body">
-        {% include "pages/includes/infinite_shotgun.html" %}
-      </div>
-    </div>
+  <div id="content" class="container" style="margin-top: 60px">
+    {% include "pages/includes/infinite_shotgun.html" %}
   </div>
 </main>
 {% include 'footer.html' %}
