@@ -260,3 +260,32 @@ class Shotgun(models.Model):
             # check_tall_image(self.fb_image)
             self.image = None
             super(Shotgun, self).save(*args, **kwargs)
+
+
+class ShotgunImage(models.Model):
+    shot = models.ForeignKey(
+        Shotgun,
+        on_delete=models.CASCADE,
+        related_name="shotgun_image",
+        verbose_name=_("Article"),
+    )
+    description = models.CharField(
+        _("Description"), help_text=_("Used in captions"), max_length=200
+    )
+    fb_image = FileBrowseField(
+        _("Image"),
+        max_length=200,
+        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
+        directory="images/shotgun/",
+        null=True,
+    )
+    image = models.ImageField(
+        _("Image"),
+        max_length=200,
+        null=True,
+        upload_to="uploads/images/shotgun/",
+    )
+
+    class Meta:
+        verbose_name = _("Shotgun image")
+        verbose_name_plural = _("Shotgun images")

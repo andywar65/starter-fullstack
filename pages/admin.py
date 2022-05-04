@@ -12,6 +12,7 @@ from .models import (
     HomePageCarousel,
     Logo,
     Shotgun,
+    ShotgunImage,
 )
 
 
@@ -131,6 +132,15 @@ class ArticleAdmin(TranslationAdmin):
     )
 
 
+class ShotgunImageInline(admin.TabularInline):
+    model = ShotgunImage
+    fields = (
+        "description",
+        "fb_image",
+    )
+    extra = 0
+
+
 @admin.register(Shotgun)
 class ShotgunAdmin(admin.ModelAdmin):
     list_display = (
@@ -138,3 +148,6 @@ class ShotgunAdmin(admin.ModelAdmin):
         "date",
     )
     exclude = ("image",)
+    inlines = [
+        ShotgunImageInline,
+    ]
