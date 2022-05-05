@@ -8,7 +8,7 @@ from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
 from filebrowser.sites import site
 
-from pages.views import HomePageTemplateView
+from pages.views import ShotgunArchiveIndexView  # HomePageTemplateView
 from users.views import (
     ContactFormView,
     HTMXLoginView,
@@ -67,7 +67,8 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path("", HomePageTemplateView.as_view(), name="home"),
+    # path("", HomePageTemplateView.as_view(), name="home"),
+    path("", ShotgunArchiveIndexView.as_view(), name="shotgun_index"),
     path(_("search/"), search_results, name="search_results"),
     path(
         _("select-language/"),
