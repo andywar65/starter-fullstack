@@ -246,10 +246,10 @@ class Shotgun(models.Model):
         ]
 
     def get_card_width(self):
-        if self.fb_image:
-            if self.fb_image.height > self.fb_image.width:
-                return "max-width: 450px"
-        return "max-width: 960px"
+        for img in self.shotgun_image.all():
+            if img.fb_image.width > img.fb_image.height:
+                return "max-width: 960px"
+        return "max-width: 450px"
 
     def save(self, *args, **kwargs):
         # save and upload image

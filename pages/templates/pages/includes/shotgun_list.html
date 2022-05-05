@@ -10,10 +10,12 @@
         </h4>
       </div>
       <div class="card-body">
-        {% if shot.fb_image %}
-          <img class="card-img-top"
-            src="{% version shot.fb_image 'shot' %}"
-            alt="{{ shot.body }}">
+        {% if shot.shotgun_image %}
+          {% for image in shot.shotgun_image.all %}
+            <img class="card-img-top"
+              src="{% version image.fb_image 'shot' %}"
+              alt="{{ image.description }}">
+          {% endfor %}
         {% endif %}
         <p>
           {{ shot.date|date:"d M Y" }}
