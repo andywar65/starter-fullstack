@@ -3,7 +3,7 @@ from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from pages.models import Article
+from pages.models import Article, Shotgun
 from users.views import HxTemplateMixin
 
 
@@ -31,6 +31,13 @@ def search_results(request):
         if articles:
             articles = articles.order_by("-rank")
             success = True
+        # search in shotgun articles
+        v = SearchVector("title", "body")
+        shots = Shotgun.objects.annotate(rank=SearchRank(v, q))
+        shots = shots.filter(rank__gt=0.01)
+        if shots:
+            shots = shots.order_by("-rank")
+            success = True
 
         return render(
             request,
@@ -38,6 +45,7 @@ def search_results(request):
             {
                 "search": request.GET["q"],
                 "articles": articles,
+                "shots": shots,
                 "success": success,
             },
         )
