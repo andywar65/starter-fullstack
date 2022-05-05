@@ -12,9 +12,11 @@
       <div class="card-body">
         {% if shot.shotgun_image %}
           {% for image in shot.shotgun_image.all %}
-            <img class="card-img-top"
-              src="{% version image.fb_image 'shot' %}"
-              alt="{{ image.description }}">
+            <div class="text-center">
+              <img class="img-fluid"
+                src="{% version image.fb_image 'shot' %}"
+                alt="{{ image.description }}">
+            </div>
           {% endfor %}
         {% endif %}
         <p>
