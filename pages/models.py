@@ -224,19 +224,6 @@ class Shotgun(models.Model):
         _("Date"),
         default=now,
     )
-    fb_image = FileBrowseField(
-        _("Image"),
-        max_length=200,
-        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
-        directory="images/shotgun/",
-        null=True,
-    )
-    image = models.ImageField(
-        _("Image"),
-        max_length=200,
-        null=True,
-        upload_to="uploads/images/shotgun/",
-    )
 
     class Meta:
         verbose_name = _("Shotgun article")
@@ -250,16 +237,6 @@ class Shotgun(models.Model):
             if img.fb_image.width > img.fb_image.height:
                 return "max-width: 960px"
         return "max-width: 450px"
-
-    def save(self, *args, **kwargs):
-        # save and upload image
-        super(Shotgun, self).save(*args, **kwargs)
-        if self.image:
-            # image is saved on the front end, passed to fb_image and deleted
-            self.fb_image = FileObject(str(self.image))
-            # check_tall_image(self.fb_image)
-            self.image = None
-            super(Shotgun, self).save(*args, **kwargs)
 
 
 class ShotgunImage(models.Model):
