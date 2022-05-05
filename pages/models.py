@@ -289,3 +289,13 @@ class ShotgunImage(models.Model):
     class Meta:
         verbose_name = _("Shotgun image")
         verbose_name_plural = _("Shotgun images")
+
+    def save(self, *args, **kwargs):
+        # save and upload image
+        super(ShotgunImage, self).save(*args, **kwargs)
+        if self.image:
+            # image is saved on the front end, passed to fb_image and deleted
+            self.fb_image = FileObject(str(self.image))
+            # check_tall_image(self.fb_image)
+            self.image = None
+            super(ShotgunImage, self).save(*args, **kwargs)
