@@ -13,9 +13,14 @@
         {% if shot.shotgun_image %}
           {% for image in shot.shotgun_image.all %}
             <div class="text-center">
-              <img class="img-fluid"
-                src="{% version image.fb_image 'shot' %}"
-                alt="{{ image.description }}">
+              <figure class="figure">
+                <img class="figure-img img-fluid"
+                  src="{% version image.fb_image 'shot' %}"
+                  alt="{{ image.description }}">
+                <figcaption class="figure-caption">
+                  {{ image.description }}
+                </figcaption>
+              </figure>
             </div>
           {% endfor %}
         {% endif %}
