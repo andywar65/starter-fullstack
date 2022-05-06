@@ -247,7 +247,11 @@ class ShotgunImage(models.Model):
         verbose_name=_("Article"),
     )
     description = models.CharField(
-        _("Description"), help_text=_("Used in captions"), max_length=200
+        _("Description"),
+        help_text=_("Used in captions"),
+        max_length=200,
+        null=True,
+        blank=True,
     )
     fb_image = FileBrowseField(
         _("Image"),

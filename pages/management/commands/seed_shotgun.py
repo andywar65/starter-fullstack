@@ -51,6 +51,9 @@ def create_articles(target):
             if "<img" not in temp and "<div" not in temp:
                 body += temp
         shot = Shotgun.objects.create(title=title, date=date, body=body)
+        featured = wp_post["jetpack_featured_media_url"]
+        if featured:
+            create_shotgun_image(shot, featured)
         link = ""
         if "data-orig-file" in content:
             list = content.split('data-orig-file="')
