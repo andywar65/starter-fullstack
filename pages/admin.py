@@ -151,3 +151,9 @@ class ShotgunAdmin(admin.ModelAdmin):
     inlines = [
         ShotgunImageInline,
     ]
+
+    class Media:
+        js = [
+            "/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js",
+            "/static/js/tinymce_setup.js",
+        ]

@@ -21,7 +21,7 @@ class Command(BaseCommand):
         self.stdout.write("Seeding database with shotgun articles...")
 
         target = "https://www.andywar.net/wp-json/wp/v2/posts?page="
-        for i in range(45, 46):  # 1-55
+        for i in range(35, 36):  # 1-72
             self.stdout.write("Page " + str(i))
             create_articles(target + str(i))
 
@@ -49,7 +49,7 @@ def create_articles(target):
         for i in list[1:]:
             temp = i.split("</p>")[0]
             if "<img" not in temp and "<div" not in temp:
-                body = temp
+                body += temp
         shot = Shotgun.objects.create(title=title, date=date, body=body)
         link = ""
         if "data-orig-file" in content:
