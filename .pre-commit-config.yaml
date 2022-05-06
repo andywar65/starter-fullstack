@@ -34,3 +34,9 @@ repos:
       - id: djhtml
         args:
           - --tabwidth=2
+  - repo: https://github.com/gitguardian/ggshield
+    rev: v1.11.0
+    hooks:
+      - id: ggshield
+        language_version: python3
+        stages: [commit]
