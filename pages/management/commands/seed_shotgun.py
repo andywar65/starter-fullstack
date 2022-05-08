@@ -20,10 +20,10 @@ class Command(BaseCommand):
             )
         self.stdout.write("Seeding database with shotgun articles...")
 
-        target = "https://www.andywar.net/wp-json/wp/v2/posts?page="
-        for i in range(1, 72):  # 1-72
+        target = "https://www.rifondazionepodistica.it/wp-json/wp/v2/posts?page="
+        for i in range(1, 3):  # 1-72
             self.stdout.write("Page " + str(i))
-            create_articles(target + str(i))
+            create_articles(target + str(i) + "&categories=184")
 
         self.stdout.write("Done.")
 
@@ -59,6 +59,8 @@ def create_articles(target):
             list = content.split('data-orig-file="')
             for i in list[1:]:
                 link = i.split('"')[0]
+                if "?fit" in link:
+                    link = link.split("?fit")[0]
                 if link:
                     create_shotgun_image(shot, link)
         elif "<figure" in content or "<img" in content:
