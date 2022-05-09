@@ -20,10 +20,18 @@ class Command(BaseCommand):
             )
         self.stdout.write("Seeding database with shotgun articles...")
 
+        list = [
+            (370, 3),
+            (371, 5),
+            (372, 28),
+            (373, 4),
+            (374, 3),
+        ]
         target = "https://www.rifondazionepodistica.it/wp-json/wp/v2/posts?page="
-        for i in range(1, 3):  # 1-72
-            self.stdout.write("Page " + str(i))
-            create_articles(target + str(i) + "&categories=184")
+        for k in list:
+            for i in range(1, k[1]):  # 1-72
+                self.stdout.write("Category " + str(k[0]) + " - Page " + str(i))
+                create_articles(target + str(i) + "&categories=" + str(k[0]))
 
         self.stdout.write("Done.")
 
@@ -67,5 +75,9 @@ def create_articles(target):
             list = content.split('src="')
             for i in list[1:]:
                 link = i.split('"')[0]
+                if "?resize" in link:
+                    link = link.split("?resize")[0]
+                elif "?w=474" in link:
+                    link = link.split("?w=474")[0]
                 if link:
                     create_shotgun_image(shot, link)
