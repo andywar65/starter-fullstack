@@ -135,9 +135,11 @@ class ArticleAdmin(TranslationAdmin):
 class ShotgunImageInline(admin.TabularInline):
     model = ShotgunImage
     fields = (
+        "position",
         "description",
         "fb_image",
     )
+    sortable_field_name = "position"
     extra = 0
 
 

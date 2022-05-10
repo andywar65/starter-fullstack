@@ -266,6 +266,7 @@ class ShotgunImage(models.Model):
         null=True,
         upload_to="uploads/images/shotgun/",
     )
+    position = models.PositiveSmallIntegerField(_("Position"), null=True)
 
     class Meta:
         verbose_name = _("Shotgun image")
