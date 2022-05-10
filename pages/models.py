@@ -271,6 +271,9 @@ class ShotgunImage(models.Model):
     class Meta:
         verbose_name = _("Shotgun image")
         verbose_name_plural = _("Shotgun images")
+        ordering = [
+            "position",
+        ]
 
     def save(self, *args, **kwargs):
         # save and upload image
