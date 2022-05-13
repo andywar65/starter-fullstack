@@ -117,3 +117,15 @@ class ArticleDetailView(HxTemplateMixin, DetailView):
         # context for the post
         context["images"] = context["article"].article_carousel.all()
         return context
+
+
+class ShotgunDetailView(DetailView):
+    model = Shotgun
+    context_object_name = "shot"
+    template_name = "pages/htmx/shotgun_detail.html"
+
+    def get_template_names(self):
+        if not self.request.htmx:
+            return [self.template_name.replace("htmx/", "")]
+        else:
+            return [self.template_name]

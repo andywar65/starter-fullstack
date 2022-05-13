@@ -18,7 +18,7 @@
                   src="{% version image.fb_image 'shot' %}"
                   alt="{{ image.description }}">
                 <figcaption class="figure-caption">
-                  {{ image.description }}
+                  {{ image.description | default_if_none:'' }}
                 </figcaption>
               </figure>
             </div>

@@ -1,0 +1,7 @@
+{% extends "base_menu.html" %}
+
+{% block head_title %}{{ shot.title }}{% endblock %}
+
+{% block content %}
+  {% include "pages/htmx/shotgun_detail.html" %}
+{% endblock %}

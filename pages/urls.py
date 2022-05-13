@@ -6,6 +6,7 @@ from .views import (  # ShotgunArchiveIndexView,
     ArticleDetailView,
     ArticleMonthArchiveView,
     ArticleYearArchiveView,
+    ShotgunDetailView,
 )
 
 app_name = "pages"
@@ -27,5 +28,10 @@ urlpatterns = [
         "<int:year>/<int:month>/<int:day>/<slug>/",
         ArticleDetailView.as_view(),
         name="article_detail",
+    ),
+    path(
+        "shot/<int:pk>/",
+        ShotgunDetailView.as_view(),
+        name="shotgun_detail",
     ),
 ]
