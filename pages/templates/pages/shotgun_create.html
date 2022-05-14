@@ -1,5 +1,8 @@
-{% extends "base_menu.html" %}
+{% extends "base.html" %}
+{% load i18n %}
 
-{% block content %}
+{% block head_title %}{% translate 'Add Shot article' %}{%endblock head_title %}
+
+{% block menucont %}
   {% include "pages/htmx/shotgun_create.html" %}
 {% endblock %}
