@@ -236,7 +236,7 @@ class Shotgun(models.Model):
         for img in self.shotgun_image.all():
             if img.fb_image.width > img.fb_image.height:
                 return "max-width: 960px"
-        return "max-width: 450px"
+        return "max-width: 480px"
 
 
 class ShotgunImage(models.Model):
