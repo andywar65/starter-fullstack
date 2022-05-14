@@ -6,6 +6,7 @@ from .views import (  # ShotgunArchiveIndexView,
     ArticleDetailView,
     ArticleMonthArchiveView,
     ArticleYearArchiveView,
+    ShotgunCreateFormView,
     ShotgunDetailView,
 )
 
@@ -33,5 +34,10 @@ urlpatterns = [
         "shot/<int:pk>/",
         ShotgunDetailView.as_view(),
         name="shotgun_detail",
+    ),
+    path(
+        "shot/add/",
+        ShotgunCreateFormView.as_view(),
+        name="shotgun_create",
     ),
 ]

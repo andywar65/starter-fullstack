@@ -1,0 +1,18 @@
+{% load i18n %}
+{% load bootstrap5 %}
+
+<div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
+  <div class="card-header">
+    <h3>{% trans "Add shot article" %}</h3>
+  </div>
+  <div class="card-body">
+    <form
+      hx-post="{% url 'pages:shotgun_create' %}"
+      hx-target="#menucont"
+      hx-encoding="multipart/form-data"
+      hx-push-url="{% url 'shotgun_index' %}">
+      {% bootstrap_form form %}
+      <button class="btn btn-primary" type="submit">{% trans "Add article" %}</button>
+    </form>
+  </div>
+</div>
