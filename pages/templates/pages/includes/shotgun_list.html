@@ -1,36 +1,9 @@
 {% load i18n %}
-{% load fb_versions %}
 
 {% if shots %}
   {% for shot in shots %}
     <div class="card mx-auto" style="margin-bottom: 20px;{{ shot.get_card_width }}">
-      <div class="card-header">
-        <h4>
-          {{ shot.title | safe }}
-        </h4>
-      </div>
-      <div class="card-body">
-        {% if shot.shotgun_image %}
-          {% for image in shot.shotgun_image.all %}
-            <div class="text-center">
-              <figure class="figure">
-                <img class="figure-img img-fluid"
-                  src="{% version image.fb_image 'shot' %}"
-                  alt="{{ image.description }}">
-                <figcaption class="figure-caption">
-                  {{ image.description | default_if_none:'' }}
-                </figcaption>
-              </figure>
-            </div>
-          {% endfor %}
-        {% endif %}
-        <p>
-          {{ shot.date|date:"d M Y" }}
-        </p>
-        <p>
-          {{ shot.body | safe }}
-        </p>
-      </div>
+      {% include "pages/includes/shotgun_card.html" %}
     </div>
   {% endfor %}
 {% else %}
