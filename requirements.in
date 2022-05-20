@@ -16,5 +16,6 @@ djangorestframework
 djangorestframework-gis
 django-filter
 django-colorfield
+django-geojson
 geopy
 ezdxf
