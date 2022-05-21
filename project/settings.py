@@ -56,10 +56,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_gis",
     "colorfield",
+    "djgeojson",
     # local
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
     "buildings.apps.BuildingsConfig",
+    "djeotree.apps.DjeotreeConfig",
 ]
 
 MIDDLEWARE = [
