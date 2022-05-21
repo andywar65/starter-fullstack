@@ -85,6 +85,8 @@ geopy==2.2.0
     # via -r requirements.in
 idna==3.3
     # via requests
+jsonfield==3.1.0
+    # via -r requirements.in
 marshmallow==3.15.0
     # via environs
 oauthlib==3.2.0
