@@ -185,6 +185,11 @@ FILEBROWSER_VERSIONS = {
     "popup": {"verbose_name": "Popups", "width": 256, "height": 256, "opts": "crop"},
 }
 
+LEAFLET_CONFIG = {
+    "DEFAULT_CENTER": (41.8988, 12.5451),
+    "DEFAULT_ZOOM": 10,
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
