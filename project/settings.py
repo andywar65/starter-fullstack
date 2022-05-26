@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "rest_framework_gis",
     "colorfield",
     "djgeojson",
+    "leaflet",
     # local
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",

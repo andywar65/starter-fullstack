@@ -18,5 +18,6 @@ django-filter
 django-colorfield
 django-geojson
 jsonfield
+django-leaflet
 geopy
 ezdxf
