@@ -188,7 +188,10 @@ FILEBROWSER_VERSIONS = {
 LEAFLET_CONFIG = {
     "DEFAULT_CENTER": (41.8988, 12.5451),
     "DEFAULT_ZOOM": 10,
+    "RESET_VIEW": False,
+    "TILES": [],
 }
+MAPBOX_TOKEN = env.str("MAPBOX_TOKEN")
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -208,7 +211,6 @@ USE_TZ = True
 CITY_LAT = 41.8988
 CITY_LONG = 12.5451
 CITY_ZOOM = 10
-MAPBOX_TOKEN = ""
 
 LANGUAGES = [
     ("it", _("Italian")),
