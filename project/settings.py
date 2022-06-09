@@ -189,7 +189,6 @@ LEAFLET_CONFIG = {
     "DEFAULT_CENTER": (41.8988, 12.5451),
     "DEFAULT_ZOOM": 10,
     "RESET_VIEW": False,
-    "TILES": [],
 }
 MAPBOX_TOKEN = env.str("MAPBOX_TOKEN")
 
