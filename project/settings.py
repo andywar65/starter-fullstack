@@ -182,7 +182,7 @@ FILEBROWSER_VERSIONS = {
         "height": 800,
         "opts": "crop",
     },
-    "popup": {"verbose_name": "Popups", "width": 256, "height": 256, "opts": "crop"},
+    "popup": {"verbose_name": "Popups", "width": 256, "height": 128, "opts": "crop"},
 }
 
 LEAFLET_CONFIG = {
