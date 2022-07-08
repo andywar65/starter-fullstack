@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
+from tinymce.models import HTMLField
 
 from project.utils import check_wide_image, generate_unique_slug
 
@@ -131,7 +132,7 @@ class Article(models.Model):
         _("Title"), help_text=_("The title of the article"), max_length=50
     )
     intro = models.CharField(_("Introduction"), default=default_intro, max_length=100)
-    body = models.TextField(_("Text"), null=True)
+    body = HTMLField(_("Text"), null=True)
     date = models.DateField(
         _("Date"),
         default=now,
