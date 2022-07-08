@@ -31,6 +31,7 @@ INTERNAL_IPS = [
 INSTALLED_APPS = [
     "grappelli",
     "filebrowser",
+    "tinymce",
     "modeltranslation",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -233,6 +234,19 @@ STATIC_URL = env.str("STATIC_URL", default="/static/")
 
 MEDIA_ROOT = env.str("MEDIA_ROOT")  # no trailing slash
 MEDIA_URL = env.str("MEDIA_URL", default="/media/")
+
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "height": 500,
+    "menubar": True,
+    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+    "code,help,wordcount",
+    "toolbar": "undo redo | formatselect | "
+    "bold italic backcolor | alignleft aligncenter "
+    "alignright alignjustify | bullist numlist outdent indent | "
+    "removeformat | help",
+}
 
 # Mail configuration
 

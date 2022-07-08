@@ -65,6 +65,7 @@ urlpatterns = [
         name="django.contrib.sitemaps.views.sitemap",
     ),
     path("build-api/", include("buildings.api_urls")),
+    path("tinymce/", include("tinymce.urls")),
 ]
 
 urlpatterns += i18n_patterns(

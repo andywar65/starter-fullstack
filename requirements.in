@@ -21,3 +21,4 @@ jsonfield
 django-leaflet
 geopy
 ezdxf
+django-tinymce
