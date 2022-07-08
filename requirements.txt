@@ -33,10 +33,12 @@ django==4.0.3
     #   django-filter
     #   django-geojson
     #   django-htmx
+    #   django-leaflet
     #   django-modeltranslation
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
+    #   jsonfield
 django-allauth==0.50.0
     # via -r requirements.in
 django-bootstrap-v5==1.0.11
@@ -59,9 +61,13 @@ django-grappelli==3.0.3
     #   django-filebrowser
 django-htmx==1.9.0
     # via -r requirements.in
+django-leaflet==0.28.3
+    # via -r requirements.in
 django-modeltranslation==0.17.5
     # via -r requirements.in
 django-taggit==2.1.0
+    # via -r requirements.in
+django-tinymce==3.4.0
     # via -r requirements.in
 django-treebeard==4.5.1
     # via -r requirements.in
