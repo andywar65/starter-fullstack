@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-09 11:42+0200\n"
-"PO-Revision-Date: 2022-07-09 11:51+0200\n"
+"POT-Creation-Date: 2022-07-09 15:32+0200\n"
+"PO-Revision-Date: 2022-07-09 15:35+0200\n"
 "Last-Translator: andywar65 <andy.war1965@gmail.com>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: .\pages\admin.py:62
+#: .\pages\admin.py:57
 msgid "Advanced options"
 msgstr "Opzioni avanzate"
 
-#: .\pages\admin.py:112 .\pages\models.py:72 .\pages\models.py:135
+#: .\pages\admin.py:110 .\pages\models.py:72 .\pages\models.py:135
 #: .\users\models.py:126
 msgid "Text"
 msgstr "Testo"
@@ -618,11 +618,15 @@ msgstr "Cerca"
 msgid "Building log entries"
 msgstr "Giornali di cantiere"
 
-#: .\project\templates\htmx\search_results.html:41
+#: .\project\templates\htmx\search_results.html:39
+msgid "GeoTree elements"
+msgstr "Elementi GeoTree"
+
+#: .\project\templates\htmx\search_results.html:54
 msgid "Null search"
 msgstr "Nessun risultato"
 
-#: .\project\templates\htmx\search_results.html:44
+#: .\project\templates\htmx\search_results.html:57
 msgid "We didn't find elements that satisfy your search"
 msgstr "Non abbiamo trovato elementi che soddisfino la tua ricerca"
 
@@ -639,7 +643,7 @@ msgid "Buildings"
 msgstr "Edifici"
 
 #: .\project\templates\navbar.html:27
-msgid "Geotree"
+msgid "GeoTree"
 msgstr ""
 
 #: .\project\templates\navbar.html:32
