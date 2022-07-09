@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from buildings.models import Journal
+from djeotree.models import Element
 from pages.models import Article
 from users.views import HxTemplateMixin
 
@@ -38,6 +39,13 @@ def search_results(request):
         if jours:
             jours = jours.order_by("-rank")
             success = True
+        # search in djeotree elements
+        v = SearchVector("intro", "body")
+        elements = Element.objects.annotate(rank=SearchRank(v, q))
+        elements = elements.filter(rank__gt=0.01)
+        if elements:
+            elements = elements.order_by("-rank")
+            success = True
 
         return render(
             request,
@@ -46,6 +54,7 @@ def search_results(request):
                 "search": request.GET["q"],
                 "articles": articles,
                 "jours": jours,
+                "elements": elements,
                 "success": success,
             },
         )

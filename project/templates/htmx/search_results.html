@@ -35,6 +35,19 @@
               </ul>
             {% endfor %}
           {% endif %}
+          {% if elements %}
+            <h5>{% translate 'GeoTree elements' %}</h5>
+            {% for element in elements %}
+              <ul>
+                <li>
+                  <a href="{% url 'geotree:element_detail' username=element.user.username pk=element.id %}">
+                    {{ element }}
+                  </a>
+                  {{ element.intro }}
+                </li>
+              </ul>
+            {% endfor %}
+          {% endif %}
         </div>
       {% else %}
         <div class="card-header">
