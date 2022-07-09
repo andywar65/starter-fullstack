@@ -68,7 +68,7 @@ class HomePage(models.Model):
         blank=True,
         help_text=_("Website in few words"),
     )
-    body = models.TextField(
+    body = HTMLField(
         _("Text"), null=True, blank=True, help_text=_("Talk about this website")
     )
 
