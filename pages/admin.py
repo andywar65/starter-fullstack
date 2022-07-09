@@ -103,7 +103,7 @@ class ArticleAdmin(TranslationAdmin):
         (
             None,
             {
-                "fields": ("title", "date", "intro"),
+                "fields": ("title", "slug", "intro", "date"),
             },
         ),
         (
