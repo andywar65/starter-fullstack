@@ -51,12 +51,12 @@ class TestedPasswordSetView(
 
 
 class TestedPasswordResetView(
-    PermissionRequiredMixin,
+    # PermissionRequiredMixin,
     HxTemplateMixin,
     PasswordResetView,
 ):
     template_name = "account/htmx/password_reset.html"
-    permission_required = "users.change_profile"
+    # permission_required = "users.change_profile"
 
 
 class TestedEmailView(
