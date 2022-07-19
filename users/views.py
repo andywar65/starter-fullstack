@@ -11,6 +11,7 @@ from allauth.account.views import (
 from allauth.socialaccount.models import SocialAccount
 from django.conf import settings
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.utils.translation import gettext as _
@@ -51,12 +52,17 @@ class TestedPasswordSetView(
 
 
 class TestedPasswordResetView(
-    # PermissionRequiredMixin,
     HxTemplateMixin,
     PasswordResetView,
 ):
     template_name = "account/htmx/password_reset.html"
-    # permission_required = "users.change_profile"
+
+    def setup(self, request, *args, **kwargs):
+        self.user = request.user
+        super(TestedPasswordResetView, self).setup(request, *args, **kwargs)
+        if request.user.is_authenticated:
+            if not request.user.has_perm("users.change_profile"):
+                raise PermissionDenied
 
 
 class TestedEmailView(
