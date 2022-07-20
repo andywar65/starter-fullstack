@@ -23,12 +23,12 @@
       <div class="col col-6">
         {% with prev=article.get_previous %}{% if prev %}
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
-          <a class="link-primary" hx-get="{{ prev.get_path }}" hx-target="#content" hx-push-url="{{ prev.get_path }}">{{ prev.title }}</a>
+          <a class="link-primary" hx-get="{{ prev.get_path }}" hx-target="#content" hx-push-url="true">{{ prev.title }}</a>
         {% endif %}{% endwith %}
       </div>
       <div class="col col-6 text-end">
         {% with next=article.get_next %}{% if next %}
-          <a class="link-primary" hx-get="{{ next.get_path }}" hx-target="#content" hx-push-url="{{ next.get_path }}">{{ next.title }}</a>
+          <a class="link-primary" hx-get="{{ next.get_path }}" hx-target="#content" hx-push-url="true">{{ next.title }}</a>
           <i class="fa fa-arrow-right" aria-hidden="true"></i>
         {% endif %}{% endwith %}
       </div>

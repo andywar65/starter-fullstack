@@ -23,11 +23,11 @@
           {% endif %}
           {% bootstrap_form form %}
           <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
-          <a class="btn btn-secondary" hx-get="{% url 'password_change' %}" hx-target="#content" hx-push-url="{% url 'password_change' %}">{% trans "Change Password?" %}</a>
+          <a class="btn btn-secondary" hx-get="{% url 'password_change' %}" hx-target="#content" hx-push-url="true">{% trans "Change Password?" %}</a>
         </form>
         <hr>
         <a class="btn btn-success" href="{% url 'socialaccount_connections' %}">{% trans "Connect social" %}</a>
-        <a class="btn btn-danger" hx-get="{% url 'account_delete' %}" hx-target="#content" hx-push-url="{% url 'account_delete' %}">{% trans "Delete Account" %}</a>
+        <a class="btn btn-danger" hx-get="{% url 'account_delete' %}" hx-target="#content" hx-push-url="true">{% trans "Delete Account" %}</a>
       </div>
     </div>
   </div>
