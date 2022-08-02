@@ -2,11 +2,13 @@ from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.fields import FileBrowseField
+from tinymce.models import HTMLField
 
-from project.utils import check_wide_image, generate_unique_slug
+from project.utils import check_wide_image
 
 from .choices import ICONS
 
@@ -67,7 +69,7 @@ class HomePage(models.Model):
         blank=True,
         help_text=_("Website in few words"),
     )
-    body = models.TextField(
+    body = HTMLField(
         _("Text"), null=True, blank=True, help_text=_("Talk about this website")
     )
 
@@ -126,12 +128,12 @@ def default_intro():
 
 
 class Article(models.Model):
-    slug = models.SlugField(max_length=50, editable=False, null=True)
+    slug = models.SlugField(max_length=60, null=True, editable=False)
     title = models.CharField(
         _("Title"), help_text=_("The title of the article"), max_length=50
     )
     intro = models.CharField(_("Introduction"), default=default_intro, max_length=100)
-    body = models.TextField(_("Text"), null=True)
+    body = HTMLField(_("Text"), null=True)
     date = models.DateField(
         _("Date"),
         default=now,
@@ -165,8 +167,9 @@ class Article(models.Model):
             return
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = generate_unique_slug(Article, self.title)
+        if not self.id:
+            super(Article, self).save(*args, **kwargs)
+        self.slug = slugify(self.title) + "-" + str(self.id)
         self.last_updated = now()
         super(Article, self).save(*args, **kwargs)
 
