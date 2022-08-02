@@ -50,6 +50,8 @@ django-htmx==1.9.0
     # via -r requirements.in
 django-modeltranslation==0.17.5
     # via -r requirements.in
+django-tinymce==3.4.0
+    # via -r requirements.in
 environs[django]==9.5.0
     # via -r requirements.in
 factory-boy==3.2.1
