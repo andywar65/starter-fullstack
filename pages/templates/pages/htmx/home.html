@@ -21,7 +21,8 @@
         <h3 class="link-primary"
           hx-get="{% url 'pages:article_index' %}"
           hx-target="#menucont"
-          hx-push-url="{% url 'pages:article_index' %}">{% translate 'Articles' %}</h3>
+          hx-push-url="true">{% translate 'Articles' %}
+        </h3>
       </div>
       <div class="card-body">
         {% include "pages/includes/article_list.html" %}
