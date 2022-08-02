@@ -3,6 +3,7 @@ from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+from tinymce.widgets import TinyMCE
 
 from .models import (
     Article,
@@ -45,17 +46,11 @@ class HomePageAdmin(TranslationAdmin):
         HomePageCarouselInline,
     ]
 
-    class Media:
-        js = [
-            "/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js",
-            "/static/js/tinymce_setup.js",
-        ]
-
 
 admin.site.register(HomePage, HomePageAdmin)
 
 
-class FlatPageAdmin(FlatPageAdmin):
+class TinyMCEFlatPageAdmin(FlatPageAdmin):
     fieldsets = (
         (None, {"fields": ("url", "title", "content", "sites")}),
         (
@@ -70,16 +65,19 @@ class FlatPageAdmin(FlatPageAdmin):
         ),
     )
 
-    class Media:
-        js = [
-            "/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js",
-            "/static/js/tinymce_setup.js",
-        ]
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == "content":
+            return db_field.formfield(
+                widget=TinyMCE(
+                    attrs={"cols": 80, "rows": 30},
+                )
+            )
+        return super().formfield_for_dbfield(db_field, **kwargs)
 
 
 # Re-register FlatPageAdmin
 admin.site.unregister(FlatPage)
-admin.site.register(FlatPage, FlatPageAdmin)
+admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 
 
 class ArticleCarouselInline(TranslationTabularInline):
@@ -101,17 +99,11 @@ class ArticleAdmin(TranslationAdmin):
         ArticleCarouselInline,
     ]
 
-    class Media:
-        js = [
-            "/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js",
-            "/static/js/tinymce_setup.js",
-        ]
-
     fieldsets = (
         (
             None,
             {
-                "fields": ("title", "date", "intro"),
+                "fields": ("title", "intro", "date"),
             },
         ),
         (
