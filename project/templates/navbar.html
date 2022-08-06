@@ -7,19 +7,43 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" hx-get="{% url 'home' %}" hx-target="#menucont" hx-push-url="{% url 'home' %}">
-        {% if logo %}<img src="{% version logo.fb_image 'thumbnail' %}" width="32" height="32" class="d-inline-block align-top" alt="{{ logo.title }}"> {% endif %}{{ request.site.name }}
+      <a class="navbar-brand"
+        hx-get="{% url 'home' %}"
+        hx-target="#menucont"
+        hx-push-url="true">
+        {% if logo %}
+          <img src="{% version logo.fb_image 'thumbnail' %}"
+            width="32"
+            height="32"
+            class="d-inline-block align-top"
+            alt="{{ logo.title }}">
+        {% endif %}{{ request.site.name }}
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" hx-get="{% url 'pages:article_index' %}" hx-target="#menucont" hx-push-url="{% url 'pages:article_index' %}">{% trans 'Blog' %}</a>
+            <a class="nav-link"
+              hx-get="{% url 'pages:article_index' %}"
+              hx-target="#menucont"
+              hx-push-url="true">{% trans 'Blog' %}
+            </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle"
+              href=""
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
               {% translate 'Docs' %}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -31,16 +55,37 @@
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle"
+                href=""
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
                 {% if user.get_avatar %}
-                  <img class="rounded-circle" heigth="20px" width="20px" src="{{ user.get_avatar }}" alt="">
+                  <img class="rounded-circle"
+                    heigth="20px"
+                    width="20px"
+                    src="{{ user.get_avatar }}"
+                    alt="">
                 {% endif %}
                 {{ user.get_short_name }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" hx-get="{% url 'account_profile' %}" hx-target="#menucont" hx-push-url="{% url 'account_profile' %}">{% trans 'Profile' %}</a>
-                <a class="dropdown-item" hx-get="{% url 'account_contact' %}" hx-target="#menucont" hx-push-url="{% url 'account_contact' %}">{% trans 'Contact' %}</a>
-                <a class="dropdown-item" hx-get="{% url 'account_logout' %}" hx-target="#menucont" hx-push-url="{% url 'account_logout' %}">{% trans 'Logout' %}</a>
+                <a class="dropdown-item"
+                  hx-get="{% url 'account_profile' %}"
+                  hx-target="#menucont"
+                  hx-push-url="true">{% trans 'Profile' %}
+                </a>
+                <a class="dropdown-item"
+                  hx-get="{% url 'account_contact' %}"
+                  hx-target="#menucont"
+                  hx-push-url="true">{% trans 'Contact' %}
+                </a>
+                <a class="dropdown-item"
+                  hx-get="{% url 'account_logout' %}"
+                  hx-target="#menucont"
+                  hx-push-url="true">{% trans 'Logout' %}
+                </a>
                 {% if user.is_staff %}
                   <a class="dropdown-item" href="/admin/">{% trans "Go to Admin" %}</a>
                 {% endif %}
@@ -48,20 +93,45 @@
             </li>
           {% else %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle"
+                href=""
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
                 {% trans 'Login' %}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" hx-get="{% url 'account_login' %}" hx-target="#menucont" hx-push-url="{% url 'account_login' %}">{% trans 'Login' %}</a>
-                <a class="dropdown-item" hx-get="{% url 'account_signup' %}" hx-target="#menucont" hx-push-url="{% url 'account_signup' %}">{% trans 'Sign Up' %}</a>
+                <a class="dropdown-item"
+                  hx-get="{% url 'account_login' %}"
+                  hx-target="#menucont"
+                  hx-push-url="true">{% trans 'Login' %}
+                </a>
+                <a class="dropdown-item"
+                  hx-get="{% url 'account_signup' %}"
+                  hx-target="#menucont"
+                  hx-push-url="true">{% trans 'Sign Up' %}
+                </a>
               </div>
             </li>
           {% endif %}
         </ul>
-        <a class="btn btn-outline-secondary me-2" title="{% trans 'Set language' %}" hx-get="{% url 'select_language' %}" hx-target="#menucont" hx-push-url="{% url 'select_language' %}"><i class="fa fa-language fa-lg"></i></a>
+        <a class="btn btn-outline-secondary me-2"
+          title="{% trans 'Set language' %}"
+          hx-get="{% url 'select_language' %}"
+          hx-target="#menucont"
+          hx-push-url="true">
+          <i class="fa fa-language fa-lg"></i>
+        </a>
         <form class="d-flex" action="{% url 'search_results' %}" method="get">
-          <input class="form-control me-2" name="q" type="search" placeholder="{% translate 'Write something' %}" aria-label="Search">
-          <button class="btn btn-outline-secondary" type="submit">{% translate 'Search' %}</button>
+          <input class="form-control me-2"
+            name="q"
+            type="search"
+            placeholder="{% translate 'Write something' %}"
+            aria-label="Search">
+          <button class="btn btn-outline-secondary"
+            type="submit">{% translate 'Search' %}
+          </button>
         </form>
       </div>
     </div>
