@@ -58,7 +58,6 @@ class TestedPasswordResetView(
     template_name = "account/htmx/password_reset.html"
 
     def setup(self, request, *args, **kwargs):
-        self.user = request.user
         super(TestedPasswordResetView, self).setup(request, *args, **kwargs)
         if request.user.is_authenticated:
             if not request.user.has_perm("users.change_profile"):
