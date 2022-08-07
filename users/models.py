@@ -27,7 +27,7 @@ class User(AbstractUser):
 
     def get_full_name(self):
         if self.profile.anonymize:
-            return _("Anonymous")
+            return self.username
         elif self.first_name and self.last_name:
             return self.first_name + " " + self.last_name
         else:
@@ -35,7 +35,7 @@ class User(AbstractUser):
 
     def get_short_name(self):
         if self.profile.anonymize:
-            return _("Anonymous")
+            return self.username
         elif self.first_name:
             return self.first_name
         else:
