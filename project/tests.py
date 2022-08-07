@@ -47,6 +47,7 @@ class SearchTest(TestCase):
     def setUpTestData(cls):
         print("\nTest search views")
         Article.objects.create(
+            id=1,
             title="Article 4",
             date="2020-05-10",
             body="Foo",
@@ -72,7 +73,7 @@ class SearchTest(TestCase):
         print("\n-Test search no success")
 
     def test_search_results_view_context_posts(self):
-        article = Article.objects.filter(slug="article-4")
+        article = Article.objects.filter(slug="article-4-1")
         response = self.client.get(reverse("search_results") + "?q=foo")
         # workaround found in
         # https://stackoverflow.com/questions/17685023/
