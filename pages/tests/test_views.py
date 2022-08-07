@@ -11,7 +11,7 @@ class PageViewTest(TestCase):
         print("\nTest page views")
         # Set up non-modified objects used by all test methods
         HomePage.objects.create(title="Title")
-        Article.objects.create(title="First", date="2022-04-09")
+        Article.objects.create(id=1, title="First", date="2022-04-09")
 
     def test_homepage_view(self):
         response = self.client.get(reverse("home"))
@@ -30,7 +30,7 @@ class PageViewTest(TestCase):
         response = self.client.get(
             reverse(
                 "pages:article_detail",
-                kwargs={"year": 2022, "month": 4, "day": 9, "slug": "first"},
+                kwargs={"year": 2022, "month": 4, "day": 9, "slug": "first-1"},
             )
         )
         self.assertEqual(response.status_code, 200)
