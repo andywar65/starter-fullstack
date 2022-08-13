@@ -11,9 +11,9 @@ class PageModelTest(TestCase):
         # Set up non-modified objects used by all test methods
         HomePage.objects.create(title="Title")
         HomePage.objects.create(intro="No title")
-        Article.objects.create(title="First", date="2022-04-09")
-        Article.objects.create(title="Central", date="2022-04-10")
-        Article.objects.create(title="Last", date="2022-04-11")
+        Article.objects.create(id=1, title="First", date="2022-04-09")
+        Article.objects.create(id=2, title="Central", date="2022-04-10")
+        Article.objects.create(id=3, title="Last", date="2022-04-11")
 
     def test_homepage_str(self):
         hp1 = HomePage.objects.get(title="Title")
@@ -26,12 +26,12 @@ class PageModelTest(TestCase):
         a = Article.objects.get(title="First")
         self.assertEquals(a.__str__(), "First")
         print("\n-Test Article title")
-        self.assertEquals(a.slug, "first")
+        self.assertEquals(a.slug, "first-1")
         print("\n-Test Article slug")
 
     def test_article_get_path(self):
         a = Article.objects.get(title="First")
-        self.assertEquals(a.get_path(), "/en/articles/2022/4/9/first/")
+        self.assertEquals(a.get_path(), "/en/articles/2022/4/9/first-1/")
         print("\n-Test Article path")
 
     def test_article_previous_next(self):
