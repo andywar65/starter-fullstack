@@ -18,7 +18,7 @@
                   <span><a class="link-primary"
                     hx-get="{{ article.get_path }}"
                     hx-target="#content"
-                    hx-push-url="{{ article.get_path }}">{{ article.title }}</a>
+                    hx-push-url="true">{{ article.title }}</a>
                     <em>{{ article.intro }}</em>
                     {{ article.date|date:"d M Y" }}</span>
                 </li>
@@ -33,7 +33,7 @@
                   <span><a class="link-primary"
                     hx-get="{% url 'pages:shotgun_detail' pk=shot.id %}"
                     hx-target="#content"
-                    hx-push-url="{% url 'pages:shotgun_detail' pk=shot.id %}">{{ shot.title }}</a>
+                    hx-push-url="true">{{ shot.title }}</a>
                     {{ shot.date|date:"d M Y" }}</span>
                 </li>
               </ul>
