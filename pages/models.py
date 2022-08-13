@@ -222,7 +222,7 @@ class Shotgun(models.Model):
     title = models.CharField(
         _("Title"), help_text=_("The title of the article"), max_length=100
     )
-    body = models.TextField(_("Text"), null=True)
+    body = HTMLField(_("Text"), null=True)
     date = models.DateField(
         _("Date"),
         default=now,
