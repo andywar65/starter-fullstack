@@ -64,6 +64,7 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    path("tinymce/", include("tinymce.urls")),
 ]
 
 urlpatterns += i18n_patterns(
