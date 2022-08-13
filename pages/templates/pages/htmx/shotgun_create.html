@@ -13,7 +13,7 @@
           hx-post="{% url 'pages:shotgun_create' %}"
           hx-target="#menucont"
           hx-encoding="multipart/form-data"
-          hx-push-url="{% url 'shotgun_index' %}">
+          hx-push-url="true">
           {% bootstrap_form form %}
           <button class="btn btn-primary" type="submit">{% trans "Add article" %}</button>
         </form>
