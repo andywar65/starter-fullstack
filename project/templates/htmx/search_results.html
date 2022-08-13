@@ -17,7 +17,7 @@
                   <span><a class="link-primary"
                     hx-get="{{ article.get_path }}"
                     hx-target="#content"
-                    hx-url-push="{{ article.get_path }}">{{ article.title }}</a>
+                    hx-push-url="true">{{ article.title }}</a>
                     <em>{{ article.intro }}</em>
                     {{ article.date|date:"d M Y" }}</span>
                 </li>
