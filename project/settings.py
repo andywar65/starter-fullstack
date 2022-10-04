@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "buildings.apps.BuildingsConfig",
     "djeotree.apps.DjeotreeConfig",
+    "djeocad.apps.DjeocadConfig",
 ]
 
 MIDDLEWARE = [
