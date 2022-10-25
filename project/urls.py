@@ -79,6 +79,7 @@ urlpatterns += i18n_patterns(
     path(_("articles/"), include("pages.urls", namespace="pages")),
     path(_("buildings/"), include("buildings.urls", namespace="buildings")),
     path(_("geotree/"), include("djeotree.urls", namespace="geotree")),
+    path(_("geocad/"), include("djeocad.urls", namespace="djeocad")),
 )
 
 if settings.DEBUG:
