@@ -9,7 +9,9 @@ asgiref==3.5.2
 beautifulsoup4==4.11.1
     # via django-bootstrap-v5
 certifi==2021.10.8
-    # via requests
+    # via
+    #   pyproj
+    #   requests
 cffi==1.15.0
     # via cryptography
 charset-normalizer==2.0.12
@@ -113,6 +115,8 @@ pyparsing==3.0.7
     # via
     #   ezdxf
     #   packaging
+pyproj==3.4.1
+    # via -r requirements.in
 python-dateutil==2.8.2
     # via faker
 python-dotenv==0.20.0

@@ -22,3 +22,4 @@ django-leaflet
 geopy
 ezdxf
 django-tinymce
+pyproj
