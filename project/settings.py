@@ -193,6 +193,7 @@ LEAFLET_CONFIG = {
     "RESET_VIEW": False,
 }
 MAPBOX_TOKEN = env.str("MAPBOX_TOKEN")
+DJEOCAD_MAX_ENTITIES = 20
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
