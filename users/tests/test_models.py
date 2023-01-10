@@ -4,6 +4,7 @@ from allauth.socialaccount.models import SocialAccount
 from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
+from PIL import Image
 
 from project.utils import check_wide_image
 from users.models import User, UserMessage
@@ -105,5 +106,9 @@ class ProfileModelTest(TestCase):
     def test_check_wide_image(self):
         user = User.objects.get(username="raw.ydna56")
         check_wide_image(user.profile.fb_image)
-        self.assertEquals(user.profile.fb_image.width, 128)
+        path = Path(settings.MEDIA_ROOT).joinpath(
+            "_versions/images/users/image_wide.jpg"
+        )
+        img = Image.open(path)
+        self.assertEquals(img.width, 1600)
         print("\n-Tested check wide image utility")
