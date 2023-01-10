@@ -5,6 +5,7 @@ from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
 
+from project.utils import check_wide_image
 from users.models import User, UserMessage
 
 
@@ -89,6 +90,10 @@ class ProfileModelTest(TestCase):
         list = [e for e in path.iterdir() if e.is_file()]
         for file in list:
             Path(file).unlink()
+        path = Path(settings.MEDIA_ROOT).joinpath("_versions/images/users/")
+        list = [e for e in path.iterdir() if e.is_file()]
+        for file in list:
+            Path(file).unlink()
 
     def test_profile_fb_image(self):
         user = User.objects.get(username="raw.ydna56")
@@ -96,3 +101,9 @@ class ProfileModelTest(TestCase):
         print("\n-Tested Profile temp_image")
         self.assertEquals(user.profile.fb_image.path, "uploads/images/users/image.jpg")
         print("\n-Tested Profile fb_image")
+
+    def test_check_wide_image(self):
+        user = User.objects.get(username="raw.ydna56")
+        check_wide_image(user.profile.fb_image)
+        self.assertEquals(user.profile.fb_image.width, 128)
+        print("\n-Tested check wide image utility")

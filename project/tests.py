@@ -6,6 +6,8 @@ from django.urls import reverse
 
 from pages.models import Article
 
+from .utils import generate_unique_slug
+
 
 class PendingMigrationsTests(TestCase):
     """Copy/paste from 'Boost your Django DX', by Adam Johnson"""
@@ -82,3 +84,7 @@ class SearchTest(TestCase):
             response.context["articles"], article, transform=lambda x: x
         )
         print("\n-Test search equal querysets")
+
+    def test_generate_unique_slug(self):
+        self.assertEqual(generate_unique_slug(Article, "Article-4-1"), "article-4-1-1")
+        print("\n-Test generate unique slug")
