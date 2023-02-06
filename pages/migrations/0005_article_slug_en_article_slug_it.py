@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("pages", "0004_article_body_en_article_body_it_article_intro_en_and_more"),
     ]
