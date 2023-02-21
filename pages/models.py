@@ -16,7 +16,6 @@ User = get_user_model()
 
 
 class Logo(models.Model):
-
     title = models.CharField(
         _("Title"),
         max_length=50,
@@ -35,7 +34,6 @@ class Logo(models.Model):
 
 
 class FooterLink(models.Model):
-
     title = models.CharField(
         _("Title"),
         max_length=50,
@@ -54,7 +52,6 @@ class FooterLink(models.Model):
 
 
 class HomePage(models.Model):
-
     title = models.CharField(
         _("Title"),
         help_text=_("Appears on first image"),
@@ -84,7 +81,6 @@ class HomePage(models.Model):
 
 
 class HomePageCarousel(models.Model):
-
     home = models.ForeignKey(
         HomePage,
         on_delete=models.CASCADE,
@@ -183,7 +179,6 @@ class Article(models.Model):
 
 
 class ArticleCarousel(models.Model):
-
     home = models.ForeignKey(
         Article,
         on_delete=models.CASCADE,

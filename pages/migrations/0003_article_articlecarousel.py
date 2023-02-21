@@ -10,7 +10,6 @@ import pages.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ("pages", "0002_alter_footerlink_icon"),

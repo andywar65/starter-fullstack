@@ -10,7 +10,6 @@ from filebrowser.fields import FileBrowseField
 
 
 class User(AbstractUser):
-
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     def save(self, *args, **kwargs):
@@ -68,7 +67,6 @@ class User(AbstractUser):
 
 
 class Profile(models.Model):
-
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True, editable=False
     )

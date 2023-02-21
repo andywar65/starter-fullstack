@@ -6,7 +6,6 @@ import pages.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("pages", "0003_article_articlecarousel"),
     ]
