@@ -16,31 +16,31 @@
           </p>
         {% endif %}
         <form hx-post="{% url 'account_profile' %}"
-          hx-target="#menucont"
-          hx-encoding="multipart/form-data">
+              hx-target="#menucont"
+              hx-encoding="multipart/form-data">
           {% if user.profile.fb_image %}
             <a href="{{ user.profile.fb_image.url }}">
               <img class="rounded-circle"
-                src="{% version user.profile.fb_image 'thumbnail' %}"
-                alt="">
+                   src="{% version user.profile.fb_image 'thumbnail' %}"
+                   alt="">
             </a>
           {% endif %}
           {% bootstrap_form form %}
           <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
           <a class="btn btn-secondary"
-            hx-get="{% url 'password_change' %}"
-            hx-target="#content"
-            hx-push-url="true">{% trans "Change Password?" %}
+             hx-get="{% url 'password_change' %}"
+             hx-target="#content"
+             hx-push-url="true">{% trans "Change Password?" %}
           </a>
         </form>
         <hr>
         <a class="btn btn-success"
-          href="{% url 'socialaccount_connections' %}">{% trans "Connect social" %}
+           href="{% url 'socialaccount_connections' %}">{% trans "Connect social" %}
         </a>
         <a class="btn btn-danger"
-          hx-get="{% url 'account_delete' %}"
-          hx-target="#content"
-          hx-push-url="true">{% trans "Delete Account" %}
+           hx-get="{% url 'account_delete' %}"
+           hx-target="#content"
+           hx-push-url="true">{% trans "Delete Account" %}
         </a>
       </div>
     </div>

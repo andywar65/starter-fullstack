@@ -12,9 +12,9 @@
         <p>
           {% blocktrans %}Already have an account or a Google account? Then please
             <a class="link-primary"
-              hx-get="{{ login_url }}"
-              hx-target="#menucont"
-              hx-push-url="true">sign in
+               hx-get="{{ login_url }}"
+               hx-target="#menucont"
+               hx-push-url="true">sign in
             </a>.
           {% endblocktrans %}
         </p>
@@ -24,8 +24,8 @@
           {% bootstrap_form form %}
           {% if redirect_field_value %}
             <input type="hidden"
-              name="{{ redirect_field_name }}"
-              value="{{ redirect_field_value }}" />
+                   name="{{ redirect_field_name }}"
+                   value="{{ redirect_field_value }}" />
           {% endif %}
           <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
         </form>

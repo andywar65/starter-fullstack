@@ -24,9 +24,9 @@
           <p>
             {% blocktrans with site.name as site_name %}...or,
               <a class="link-primary"
-                hx-get="{{ signup_url }}"
-                hx-target="#menucont"
-                hx-push-url="true">sign up
+                 hx-get="{{ signup_url }}"
+                 hx-target="#menucont"
+                 hx-push-url="true">sign up
               </a>
               for a {{ site_name }} account and sign in below:
             {% endblocktrans %}
@@ -36,9 +36,9 @@
           <p>
             {% blocktrans %}If you have not created an account yet, then please
               <a class="link-primary"
-                hx-get="{{ signup_url }}"
-                hx-target="#content"
-                hx-push-url="true">sign up
+                 hx-get="{{ signup_url }}"
+                 hx-target="#content"
+                 hx-push-url="true">sign up
               </a> first.
             {% endblocktrans %}
           </p>
@@ -48,14 +48,14 @@
           {% bootstrap_form form %}
           {% if redirect_field_value %}
             <input type="hidden"
-              name="{{ redirect_field_name }}"
-              value="{{ redirect_field_value }}" />
+                   name="{{ redirect_field_name }}"
+                   value="{{ redirect_field_value }}" />
           {% endif %}
           <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
           <a class="btn btn-secondary"
-            hx-get="{% url 'account_reset_password' %}"
-            hx-target="#content"
-            hx-push-url="true">{% trans "Forgot Password?" %}
+             hx-get="{% url 'account_reset_password' %}"
+             hx-target="#content"
+             hx-push-url="true">{% trans "Forgot Password?" %}
           </a>
         </form>
       </div>
