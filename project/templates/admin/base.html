@@ -22,15 +22,15 @@
     <!-- JAVASCRIPTS -->
     {% block javascripts %}
       <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "grappelli/" %}{% endfilter %}";</script>
-      <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
+        <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
       <script type="text/javascript" charset="utf-8">
         // GLOBALS
         var grappelli = {},
-        ADMIN_URL = "{% url 'admin:index' %}",
-        MODEL_URL_ARRAY = {% if user.is_staff %}{% get_content_types %}{% else %}[]{% endif %},
-        DATE_FORMAT = "{% get_date_format %}",
-        TIME_FORMAT = "{% get_time_format %}",
-        DATETIME_FORMAT = "{% get_datetime_format %}";
+            ADMIN_URL = "{% url 'admin:index' %}",
+            MODEL_URL_ARRAY = {% if user.is_staff %}{% get_content_types %}{% else %}[]{% endif %},
+            DATE_FORMAT = "{% get_date_format %}",
+            TIME_FORMAT = "{% get_time_format %}",
+            DATETIME_FORMAT = "{% get_datetime_format %}";
       </script>
       <!-- jQuery, jQuery-UI -->
       <script src="{% static "grappelli/jquery/jquery.min.js" %}" type="text/javascript"></script>

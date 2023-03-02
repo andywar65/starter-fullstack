@@ -8,16 +8,16 @@
         <div class="card h-100">
           <div class="card-header">
             <h4 class="link-primary"
-              hx-get="{{ article.get_path }}"
-              hx-target="#content"
-              hx-push-url="true">{{ article.title }}
+                hx-get="{{ article.get_path }}"
+                hx-target="#content"
+                hx-push-url="true">{{ article.title }}
             </h4>
           </div>
           <div class="card-body">
             {% if article.article_carousel.first %}
               <img class="card-img-top"
-                src="{% version article.article_carousel.first.fb_image 'popup' %}"
-                alt="{{ article.intro }}">
+                   src="{% version article.article_carousel.first.fb_image 'popup' %}"
+                   alt="{{ article.intro }}">
             {% endif %}
             <p>
               {{ article.date|date:"d M Y" }}
@@ -25,10 +25,10 @@
                 - {% translate "by"%}
                 {% if article.author.get_avatar %}
                   <img class="rounded-circle"
-                    heigth="20px"
-                    width="20px"
-                    src="{{ article.author.get_avatar }}"
-                    alt="">
+                       heigth="20px"
+                       width="20px"
+                       src="{{ article.author.get_avatar }}"
+                       alt="">
                 {% endif %}
                 {{ article.author.get_full_name }}
               {% endif %}

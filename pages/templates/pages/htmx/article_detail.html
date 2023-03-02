@@ -11,10 +11,10 @@
         - {% translate "by"%}
         {% if article.author.get_avatar %}
           <img class="rounded-circle"
-            heigth="20px"
-            width="20px"
-            src="{{ article.author.get_avatar }}"
-            alt="">
+               heigth="20px"
+               width="20px"
+               src="{{ article.author.get_avatar }}"
+               alt="">
         {% endif %}
         {{ article.author.get_full_name }}
       {% endif %}
@@ -29,9 +29,9 @@
           {% if prev %}
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
             <a class="link-primary"
-              hx-get="{{ prev.get_path }}"
-              hx-target="#content"
-              hx-push-url="true">{{ prev.title }}
+               hx-get="{{ prev.get_path }}"
+               hx-target="#content"
+               hx-push-url="true">{{ prev.title }}
             </a>
           {% endif %}
         {% endwith %}
@@ -40,9 +40,9 @@
         {% with next=article.get_next %}
           {% if next %}
             <a class="link-primary"
-              hx-get="{{ next.get_path }}"
-              hx-target="#content"
-              hx-push-url="true">{{ next.title }}
+               hx-get="{{ next.get_path }}"
+               hx-target="#content"
+               hx-push-url="true">{{ next.title }}
             </a>
             <i class="fa fa-arrow-right" aria-hidden="true"></i>
           {% endif %}
