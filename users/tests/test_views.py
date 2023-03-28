@@ -131,7 +131,7 @@ class UserViewsTest(TestCase):
                 "bio": "",
                 "anonymize": False,
             },
-            headers={"HTTP_HX-REQUEST": True},  # not working
+            HTTP_HX_REQUEST="true",
             follow=True,
         )
         self.assertRedirects(
