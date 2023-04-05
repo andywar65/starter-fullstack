@@ -80,7 +80,7 @@ class SearchTest(TestCase):
         # workaround found in
         # https://stackoverflow.com/questions/17685023/
         # how-do-i-test-django-querysets-are-equal
-        self.assertQuerysetEqual(
+        self.assertQuerySetEqual(
             response.context["articles"], article, transform=lambda x: x
         )
         print("\n-Test search equal querysets")

@@ -11,15 +11,13 @@ class ProfileAdmin(TranslationTabularInline):
     extra = 0
 
 
+@admin.register(User)
 class UserAdmin(UserAdmin):
     list_display = ("username", "is_staff", "is_active", "is_superuser")
     list_editable = ("is_staff", "is_active")
     inlines = [
         ProfileAdmin,
     ]
-
-
-admin.site.register(User, UserAdmin)
 
 
 @admin.register(UserMessage)
