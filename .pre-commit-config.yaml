@@ -17,7 +17,7 @@ repos:
       - id: django-upgrade
         args: [--target-version, "4.2"]
   - repo: https://github.com/psf/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
   - repo: https://github.com/pycqa/isort
@@ -40,7 +40,7 @@ repos:
         args:
           - --tabwidth=2
   - repo: https://github.com/gitguardian/ggshield
-    rev: v1.14.4
+    rev: v1.14.5
     hooks:
       - id: ggshield
         language_version: python3
