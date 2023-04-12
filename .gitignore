@@ -62,6 +62,7 @@ db.sqlite3-journal
 /buildings
 /djeotree
 /djeocad
+/timeline
 
 # Flask stuff:
 instance/

@@ -29,6 +29,12 @@
               <a class="dropdown-item" href="{% url 'djeocad:base_list' %}">
                 {% trans 'GeoCAD' %}
               </a>
+              <a class="dropdown-item"
+                hx-get="{% url 'timeline:base' %}"
+                hx-target="#content"
+                hx-push-url="true">
+                {% trans 'Timeline' %}
+              </a>
             </div>
           </li>
           <li class="nav-item">
