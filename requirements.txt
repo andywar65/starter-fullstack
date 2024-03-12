@@ -12,12 +12,16 @@ certifi==2021.10.8
     # via requests
 cffi==1.15.0
     # via cryptography
+chardet==5.2.0
+    # via reportlab
 charset-normalizer==2.0.12
     # via requests
 coverage==6.3.2
     # via -r requirements.in
 cryptography==36.0.2
     # via pyjwt
+cssselect2==0.7.0
+    # via svglib
 defusedxml==0.7.1
     # via python3-openid
 dj-database-url==0.5.0
@@ -30,8 +34,11 @@ django==4.1.1
     #   django-allauth
     #   django-bootstrap-v5
     #   django-debug-toolbar
+    #   django-filer
     #   django-htmx
     #   django-modeltranslation
+    #   django-polymorphic
+    #   easy-thumbnails
 django-allauth==0.50.0
     # via -r requirements.in
 django-bootstrap-v5==1.0.11
@@ -42,6 +49,8 @@ django-debug-toolbar==3.2.4
     # via -r requirements.in
 django-filebrowser==4.0.1
     # via -r requirements.in
+django-filer==3.1.1
+    # via -r requirements.in
 django-grappelli==3.0.3
     # via
     #   -r requirements.in
@@ -50,8 +59,14 @@ django-htmx==1.9.0
     # via -r requirements.in
 django-modeltranslation==0.17.5
     # via -r requirements.in
+django-polymorphic==3.1.0
+    # via django-filer
 django-tinymce==3.4.0
     # via -r requirements.in
+easy-thumbnails[svg]==2.8.5
+    # via
+    #   -r requirements.in
+    #   django-filer
 environs[django]==9.5.0
     # via -r requirements.in
 factory-boy==3.2.1
@@ -60,6 +75,8 @@ faker==13.3.4
     # via factory-boy
 idna==3.3
     # via requests
+lxml==5.1.0
+    # via svglib
 marshmallow==3.15.0
     # via environs
 oauthlib==3.2.0
@@ -67,7 +84,11 @@ oauthlib==3.2.0
 packaging==21.3
     # via marshmallow
 pillow==9.1.0
-    # via django-filebrowser
+    # via
+    #   -r requirements.in
+    #   django-filebrowser
+    #   easy-thumbnails
+    #   reportlab
 psycopg2-binary==2.9.3
     # via -r requirements.in
 pycparser==2.21
@@ -82,6 +103,10 @@ python-dotenv==0.20.0
     # via environs
 python3-openid==3.2.0
     # via django-allauth
+reportlab==4.1.0
+    # via
+    #   easy-thumbnails
+    #   svglib
 requests==2.27.1
     # via
     #   django-allauth
@@ -99,7 +124,17 @@ sqlparse==0.4.2
     # via
     #   django
     #   django-debug-toolbar
+svglib==1.5.1
+    # via easy-thumbnails
+tinycss2==1.2.1
+    # via
+    #   cssselect2
+    #   svglib
 tzdata==2022.1
     # via django
 urllib3==1.26.9
     # via requests
+webencodings==0.5.1
+    # via
+    #   cssselect2
+    #   tinycss2

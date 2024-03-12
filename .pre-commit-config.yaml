@@ -11,17 +11,22 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: 1.16.0
+    hooks:
+      - id: django-upgrade
+        args: [--target-version, "4.2"]
   - repo: https://github.com/psf/black
-    rev: 22.10.0
+    rev: 24.2.0
     hooks:
       - id: black
   - repo: https://github.com/pycqa/isort
-    rev: 5.10.1
+    rev: 5.13.2
     hooks:
       - id: isort
         name: isort (python)
   - repo: https://github.com/pycqa/flake8
-    rev: 5.0.4
+    rev: 7.0.0
     hooks:
       - id: flake8
   - repo: https://github.com/thibaudcolas/curlylint
@@ -35,7 +40,7 @@ repos:
         args:
           - --tabwidth=2
   - repo: https://github.com/gitguardian/ggshield
-    rev: v1.13.6
+    rev: v1.25.0
     hooks:
       - id: ggshield
         language_version: python3
