@@ -7,6 +7,7 @@ from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filebrowser.base import FileObject
 from filebrowser.fields import FileBrowseField
+from filer.fields.image import FilerImageField
 from tinymce.models import HTMLField
 
 from project.utils import check_wide_image
@@ -268,6 +269,9 @@ class ShotgunImage(models.Model):
         max_length=200,
         null=True,
         upload_to="uploads/images/shotgun/",
+    )
+    filer_image = FilerImageField(
+        null=True, related_name="shotgun_image", on_delete=models.SET_NULL
     )
     position = models.PositiveSmallIntegerField(_("Position"), null=True)
 
