@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     "bootstrap5",
     "django_htmx",
     "debug_toolbar",
+    "easy_thumbnails",
+    "filer",
     # local
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
