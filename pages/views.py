@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.http import Http404
 from django.urls import reverse
 from django.utils.crypto import get_random_string
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, TemplateView
 from django.views.generic.dates import (
@@ -11,6 +12,7 @@ from django.views.generic.dates import (
     YearArchiveView,
 )
 from django.views.generic.edit import FormView
+from filer.models import Image
 
 from users.views import HxTemplateMixin
 
@@ -148,13 +150,20 @@ class ShotgunCreateFormView(PermissionRequiredMixin, FormView):
 
     def form_valid(self, form):
         # assign Shotgun form fields
+        user = self.request.user
         title = form.cleaned_data["title"]
         body = form.cleaned_data["body"]
+        # create shotgun
         shot = Shotgun.objects.create(title=title, body=body)
-        # assign ShotgunImage form fields
-        image = form.cleaned_data["image"]
+        # create filer image
+        image = Image.objects.create(
+            owner=user,
+            original_filename=slugify(title),
+            file=form.cleaned_data["image"],
+        )
+        # create ShotgunImage
         description = form.cleaned_data["description"]
-        img = ShotgunImage(shot_id=shot.id, image=image, description=description)
+        img = ShotgunImage(shot_id=shot.id, filer_image=image, description=description)
         img.save()
 
         return super(ShotgunCreateFormView, self).form_valid(form)

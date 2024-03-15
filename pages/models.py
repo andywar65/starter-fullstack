@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
-from filebrowser.base import FileObject
 from filebrowser.fields import FileBrowseField
 from filer.fields.image import FilerImageField
 from tinymce.models import HTMLField
@@ -281,14 +280,3 @@ class ShotgunImage(models.Model):
         ordering = [
             "position",
         ]
-
-    def save(self, *args, **kwargs):
-        # TODO this function will be eliminated when filer takes over
-        # save and upload image
-        super(ShotgunImage, self).save(*args, **kwargs)
-        if self.image:
-            # image is saved on the front end, passed to fb_image and deleted
-            self.fb_image = FileObject(str(self.image))
-            # check_tall_image(self.fb_image)
-            self.image = None
-            super(ShotgunImage, self).save(*args, **kwargs)
