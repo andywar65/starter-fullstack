@@ -123,7 +123,6 @@ class ShotgunImageInline(admin.TabularInline):
     fields = (
         "position",
         "description",
-        "fb_image",
         "filer_image",
     )
     sortable_field_name = "position"
