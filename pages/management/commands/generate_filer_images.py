@@ -13,7 +13,7 @@ class Command(BaseCommand):
     help = "Get filebrowser images and create filer image."
 
     def handle(self, *args, **options):
-        if ShotgunImage.objects.exists():
+        if Image.objects.exists():
             raise CommandError(
                 "This command cannot be run if any Shotgun Image exists, "
                 + "to prevent from accidental overwriting."
