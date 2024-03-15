@@ -238,7 +238,7 @@ class Shotgun(models.Model):
 
     def get_card_width(self):
         for img in self.shotgun_image.all():
-            if img.fb_image.width > img.fb_image.height:
+            if img.filer_image.width > img.filer_image.height:
                 return "max-width: 960px"
         return "max-width: 480px"
 
@@ -271,7 +271,7 @@ class ShotgunImage(models.Model):
         upload_to="uploads/images/shotgun/",
     )
     filer_image = FilerImageField(
-        null=True, related_name="shotgun_image", on_delete=models.SET_NULL
+        null=True, related_name="shotgun_filer_image", on_delete=models.SET_NULL
     )
     position = models.PositiveSmallIntegerField(_("Position"), null=True)
 
@@ -283,6 +283,7 @@ class ShotgunImage(models.Model):
         ]
 
     def save(self, *args, **kwargs):
+        # TODO this function will be eliminated when filer takes over
         # save and upload image
         super(ShotgunImage, self).save(*args, **kwargs)
         if self.image:

@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load fb_versions %}
+{% load thumbnail %}
 
 <div class="card-header">
   <h4>
@@ -12,7 +12,7 @@
       <div class="text-center">
         <figure class="figure">
           <img class="figure-img img-fluid"
-            src="{% version image.fb_image 'shot' %}"
+            src="{% thumbnail image.filer_image 0x800 %}"
             alt="{{ image.description }}">
           <figcaption class="figure-caption">
             {{ image.description | default_if_none:'' }}
