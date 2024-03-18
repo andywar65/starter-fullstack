@@ -1,5 +1,9 @@
+from typing import Any
+
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.db.models.query import QuerySet
 from django.http import Http404
+from django.http.request import HttpRequest as HttpRequest
 from django.urls import reverse
 from django.utils.crypto import get_random_string
 from django.utils.text import slugify
@@ -73,6 +77,22 @@ class ShotgunArchiveIndexView(ArchiveIndexView):
             return ["pages/includes/infinite_shotgun.html"]
         else:
             return [self.template_name]
+
+
+class ShotgunArchiveLimited(ShotgunArchiveIndexView):
+
+    def setup(self, request: HttpRequest, *args: Any, **kwargs: Any) -> None:
+        self.shot = Shotgun.objects.get(id=kwargs["pk"])
+        return super().setup(request, *args, **kwargs)
+
+    def get_queryset(self) -> QuerySet[Any]:
+        qs = Shotgun.objects.filter(date__lte=self.shot.date)
+        return qs
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context["shot"] = self.shot
+        return context
 
 
 class ArticleYearArchiveView(HxPageTemplateMixin, YearArchiveView):

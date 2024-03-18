@@ -1,13 +1,13 @@
 from django.urls import path
 
-from .views import (  # ShotgunArchiveIndexView,
+from .views import (
     ArticleArchiveIndexView,
     ArticleDayArchiveView,
     ArticleDetailView,
     ArticleMonthArchiveView,
     ArticleYearArchiveView,
+    ShotgunArchiveLimited,
     ShotgunCreateFormView,
-    ShotgunDetailView,
 )
 
 app_name = "pages"
@@ -32,7 +32,7 @@ urlpatterns = [
     ),
     path(
         "shot/<int:pk>/",
-        ShotgunDetailView.as_view(),
+        ShotgunArchiveLimited.as_view(),
         name="shotgun_detail",
     ),
     path(
