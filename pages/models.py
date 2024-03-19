@@ -256,6 +256,13 @@ class ShotgunImage(models.Model):
         null=True,
         blank=True,
     )
+    fb_image = FileBrowseField(
+        _("Image"),
+        max_length=200,
+        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
+        directory="images/shotgun/",
+        null=True,
+    )
     filer_image = FilerImageField(
         null=True, related_name="shotgun_filer_image", on_delete=models.SET_NULL
     )
