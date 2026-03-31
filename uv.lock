@@ -178,53 +178,6 @@ wheels = [
 ]
 
 [[package]]
-name = "digitalkomix"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "coverage" },
-    { name = "django" },
-    { name = "django-allauth" },
-    { name = "django-bootstrap-v5" },
-    { name = "django-debug-toolbar" },
-    { name = "django-filebrowser" },
-    { name = "django-filer" },
-    { name = "django-grappelli" },
-    { name = "django-htmx" },
-    { name = "django-modeltranslation" },
-    { name = "django-tinymce" },
-    { name = "easy-thumbnails" },
-    { name = "environs", extra = ["django"] },
-    { name = "factory-boy" },
-    { name = "jwt" },
-    { name = "pillow" },
-    { name = "psycopg2-binary" },
-    { name = "requests" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "coverage" },
-    { name = "django", specifier = ">=4.1,<4.2" },
-    { name = "django-allauth" },
-    { name = "django-bootstrap-v5" },
-    { name = "django-debug-toolbar" },
-    { name = "django-filebrowser" },
-    { name = "django-filer" },
-    { name = "django-grappelli" },
-    { name = "django-htmx" },
-    { name = "django-modeltranslation" },
-    { name = "django-tinymce" },
-    { name = "easy-thumbnails" },
-    { name = "environs", extras = ["django"] },
-    { name = "factory-boy" },
-    { name = "jwt", specifier = ">=1.4.0" },
-    { name = "pillow" },
-    { name = "psycopg2-binary" },
-    { name = "requests", specifier = ">=2.32.5" },
-]
-
-[[package]]
 name = "dj-database-url"
 version = "2.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -629,6 +582,53 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/90/76/437d71068094df0726366574cf3432a4ed754217b436eb7429415cf2d480/sqlparse-0.5.5.tar.gz", hash = "sha256:e20d4a9b0b8585fdf63b10d30066c7c94c5d7a7ec47c889a2d83a3caa93ff28e", size = 120815 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/49/4b/359f28a903c13438ef59ebeee215fb25da53066db67b305c125f1c6d2a25/sqlparse-0.5.5-py3-none-any.whl", hash = "sha256:12a08b3bf3eec877c519589833aed092e2444e68240a3577e8e26148acc7b1ba", size = 46138 },
+]
+
+[[package]]
+name = "starter-fullstack"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "coverage" },
+    { name = "django" },
+    { name = "django-allauth" },
+    { name = "django-bootstrap-v5" },
+    { name = "django-debug-toolbar" },
+    { name = "django-filebrowser" },
+    { name = "django-filer" },
+    { name = "django-grappelli" },
+    { name = "django-htmx" },
+    { name = "django-modeltranslation" },
+    { name = "django-tinymce" },
+    { name = "easy-thumbnails" },
+    { name = "environs", extra = ["django"] },
+    { name = "factory-boy" },
+    { name = "jwt" },
+    { name = "pillow" },
+    { name = "psycopg2-binary" },
+    { name = "requests" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "coverage" },
+    { name = "django", specifier = ">=4.1,<4.2" },
+    { name = "django-allauth" },
+    { name = "django-bootstrap-v5" },
+    { name = "django-debug-toolbar" },
+    { name = "django-filebrowser" },
+    { name = "django-filer" },
+    { name = "django-grappelli" },
+    { name = "django-htmx" },
+    { name = "django-modeltranslation" },
+    { name = "django-tinymce" },
+    { name = "easy-thumbnails" },
+    { name = "environs", extras = ["django"] },
+    { name = "factory-boy" },
+    { name = "jwt", specifier = ">=1.4.0" },
+    { name = "pillow" },
+    { name = "psycopg2-binary" },
+    { name = "requests", specifier = ">=2.32.5" },
 ]
 
 [[package]]
