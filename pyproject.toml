@@ -4,5 +4,33 @@ target-version = ['py310']
 [tool.isort]
 profile = "black"
 
-[tool.curlylint.rules]
-image_alt = true
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "starter-fullstack"
+version = "0.1.0"
+description = "Django app for digitalkOmiX.com"
+readme = "README.md"
+requires-python = "==3.10.*"
+dependencies = [
+    "django>=4.1,<4.2",
+    "psycopg2-binary",
+    "django-allauth",
+    "django-bootstrap-v5",
+    "django-grappelli",
+    "django-filebrowser",
+    "django-htmx",
+    "django-modeltranslation",
+    "environs[django]",
+    "coverage",
+    "django-debug-toolbar",
+    "factory_boy",
+    "django-tinymce",
+    "pillow",
+    "easy-thumbnails",
+    "django-filer",
+    "requests>=2.32.5",
+    "jwt>=1.4.0",
+]
