@@ -42,10 +42,6 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item"
-                hx-get="{% url 'pages:article_index' %}"
-                hx-target="#menucont"
-                hx-push-url="true">{% trans 'Articles' %}</a>
-              <a class="dropdown-item"
                 hx-get="{% url 'pages:shotgun_create' %}"
                 hx-target="#content"
                 hx-push-url="true">{% trans 'Add Shot article' %}

@@ -2,19 +2,10 @@ from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
-from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+from modeltranslation.admin import TranslationAdmin
 from tinymce.widgets import TinyMCE
 
-from .models import (
-    Article,
-    ArticleCarousel,
-    FooterLink,
-    HomePage,
-    HomePageCarousel,
-    Logo,
-    Shotgun,
-    ShotgunImage,
-)
+from .models import FooterLink, Logo, Shotgun, ShotgunImage
 
 
 @admin.register(Logo)
@@ -25,25 +16,6 @@ class LogoAdmin(TranslationAdmin):
 @admin.register(FooterLink)
 class FooterLinkAdmin(TranslationAdmin):
     list_display = ("title", "link")
-
-
-class HomePageCarouselInline(TranslationTabularInline):
-    model = HomePageCarousel
-    fields = (
-        "position",
-        "fb_image",
-        "description",
-    )
-    sortable_field_name = "position"
-    extra = 0
-
-
-@admin.register(HomePage)
-class HomePageAdmin(TranslationAdmin):
-    list_display = ("__str__",)
-    inlines = [
-        HomePageCarouselInline,
-    ]
 
 
 class TinyMCEFlatPageAdmin(FlatPageAdmin):
@@ -74,48 +46,6 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
 # Re-register FlatPageAdmin
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
-
-
-class ArticleCarouselInline(TranslationTabularInline):
-    model = ArticleCarousel
-    fields = (
-        "position",
-        "fb_image",
-        "description",
-    )
-    sortable_field_name = "position"
-    extra = 0
-
-
-@admin.register(Article)
-class ArticleAdmin(TranslationAdmin):
-    list_display = ("title", "date", "author")
-    search_fields = ("title", "date", "intro")
-    inlines = [
-        ArticleCarouselInline,
-    ]
-
-    fieldsets = (
-        (
-            None,
-            {
-                "fields": ("title", "intro", "date"),
-            },
-        ),
-        (
-            _("Text"),
-            {
-                "classes": ("grp-collapse",),
-                "fields": ("body",),
-            },
-        ),
-        (
-            None,
-            {
-                "fields": ("author",),
-            },
-        ),
-    )
 
 
 class ShotgunImageInline(admin.TabularInline):
