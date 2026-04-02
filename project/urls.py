@@ -6,7 +6,6 @@ from django.contrib.flatpages.sitemaps import FlatPageSitemap
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.utils.translation import gettext_lazy as _
-from filebrowser.sites import site
 
 from pages.views import ShotgunArchiveIndexView  # HomePageTemplateView
 from users.views import (
@@ -29,8 +28,6 @@ sitemaps = {
 }
 
 urlpatterns = [
-    path("admin/filebrowser/", site.urls),
-    path("grappelli/", include("grappelli.urls")),  # grappelli URLS
     path("admin/", admin.site.urls),
     path("i18n/", include("django.conf.urls.i18n")),
     path("accounts/login/", HTMXLoginView.as_view(), name="account_login"),
