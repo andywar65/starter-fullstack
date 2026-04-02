@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.timezone import now
@@ -7,8 +6,6 @@ from filer.fields.image import FilerImageField
 from tinymce.models import HTMLField
 
 from .choices import ICONS
-
-User = get_user_model()
 
 
 class Logo(models.Model):
