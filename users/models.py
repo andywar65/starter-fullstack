@@ -5,8 +5,6 @@ from django.contrib.auth.models import AbstractUser, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from filebrowser.base import FileObject
-from filebrowser.fields import FileBrowseField
 from filer.fields.image import FilerImageField
 
 
@@ -72,21 +70,6 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True, editable=False
     )
-    temp_image = models.ImageField(
-        _("Image"),
-        max_length=200,
-        null=True,
-        blank=True,
-        upload_to="uploads/images/users/",
-    )
-    fb_image = FileBrowseField(
-        _("Image"),
-        max_length=200,
-        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
-        null=True,
-        blank=True,
-        directory="images/users/",
-    )
     image = FilerImageField(
         null=True, blank=True, related_name="profile_image", on_delete=models.SET_NULL
     )
@@ -99,15 +82,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-    def save(self, *args, **kwargs):
-        # save and upload image
-        super(Profile, self).save(*args, **kwargs)
-        if self.temp_image:
-            # image is saved on the front end, passed to fb_image and deleted
-            self.fb_image = FileObject(str(self.temp_image))
-            self.temp_image = None
-            super(Profile, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Profile")
