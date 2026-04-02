@@ -2,7 +2,7 @@
   <div class="container">
     <span class="text-muted">{{ request.site.name }} - {% now 'Y' %} </span>
     {% for link in f_links %}
-      <a class="btn btn-outline-secondary me-2" href="{{ link.link }}" title="{{ link.title }}"><i class="fa {{ link.icon }} fa-lg"></i></a>
+      <a class="link-secondary me-1" href="{{ link.link }}" title="{{ link.title }}">{{ link.title }}</a>
     {% endfor %}
     <a rel="me" href="https://opalstack.social/@andywar65">Mastodon</a>
   </div>

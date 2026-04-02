@@ -5,8 +5,6 @@ from django.utils.translation import gettext_lazy as _
 from filer.fields.image import FilerImageField
 from tinymce.models import HTMLField
 
-from .choices import ICONS
-
 
 class Logo(models.Model):
 
@@ -32,9 +30,6 @@ class FooterLink(models.Model):
     link = models.URLField(
         _("Link"),
         max_length=200,
-    )
-    icon = models.CharField(
-        max_length=50, choices=ICONS, verbose_name=_("Icon"), default="fa-external-link"
     )
 
     class Meta:
