@@ -258,20 +258,6 @@ wheels = [
 ]
 
 [[package]]
-name = "django-filebrowser"
-version = "4.0.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "django-grappelli" },
-    { name = "pillow" },
-    { name = "six" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/02/e0/1771ec7451677d30d4c33a75a4b87246f019f5fad4ecf129e7500b959948/django-filebrowser-4.0.3.tar.gz", hash = "sha256:5ed8da98fc9c5361a1e39e18908cc007d8bae77dd891c9fbe87d8aa9892d7656", size = 8732931 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/80/ad/26ab1b802139823fe6ff127143043b2e7342601a457bf740365ec3a756e1/django_filebrowser-4.0.3-py3-none-any.whl", hash = "sha256:0840bb2a390a83cfb7fcb482d09625e85d498459222af6a9f6a0342255c1afba", size = 2022144 },
-]
-
-[[package]]
 name = "django-filer"
 version = "3.4.4"
 source = { registry = "https://pypi.org/simple" }
@@ -284,15 +270,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/b1/6c/893a6ea17e78a8f2156899af04309a2c4aa61c7548c5153315d956dbc1dc/django_filer-3.4.4.tar.gz", hash = "sha256:465eec9fe63310a5b718267beebe7c348ee44afd16c6b5056a7bab49ee483412", size = 1113129 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/35/65/ebfb3dcc66a8d703bb09706d30a50ddf5b20e2afab89c388d1a35750600b/django_filer-3.4.4-py3-none-any.whl", hash = "sha256:5df64bb144c861ad2c2697bd6a3709282bda6e14f8623ccd934797474d415c4c", size = 1230519 },
-]
-
-[[package]]
-name = "django-grappelli"
-version = "3.0.10"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/1a/df/478efbfd261ca7519f1f48b72ec6d16727c36e2979ac567d2397f23ac0ef/django-grappelli-3.0.10.tar.gz", hash = "sha256:a711ae7323eb44977590bf4a5777016aeed9872f855bd4f0e439024f0ef5f5d2", size = 11062480 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/1b/26/fac1050aeea5f781fa2f4e13c24b41a03b60439c4d1af79f0a7fa31d9d61/django_grappelli-3.0.10-py2.py3-none-any.whl", hash = "sha256:dc6fa5685b39cc3048532b47b94fddc00707a73682b081137e47cfb018073bf0", size = 1823585 },
 ]
 
 [[package]]
@@ -558,15 +535,6 @@ wheels = [
 ]
 
 [[package]]
-name = "six"
-version = "1.17.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050 },
-]
-
-[[package]]
 name = "soupsieve"
 version = "2.8.3"
 source = { registry = "https://pypi.org/simple" }
@@ -594,9 +562,7 @@ dependencies = [
     { name = "django-allauth" },
     { name = "django-bootstrap-v5" },
     { name = "django-debug-toolbar" },
-    { name = "django-filebrowser" },
     { name = "django-filer" },
-    { name = "django-grappelli" },
     { name = "django-htmx" },
     { name = "django-modeltranslation" },
     { name = "django-tinymce" },
@@ -616,9 +582,7 @@ requires-dist = [
     { name = "django-allauth" },
     { name = "django-bootstrap-v5" },
     { name = "django-debug-toolbar" },
-    { name = "django-filebrowser" },
     { name = "django-filer" },
-    { name = "django-grappelli" },
     { name = "django-htmx" },
     { name = "django-modeltranslation" },
     { name = "django-tinymce" },

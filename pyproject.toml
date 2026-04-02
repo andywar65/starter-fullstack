@@ -22,8 +22,6 @@ dependencies = [
     "psycopg2-binary",
     "django-allauth",
     "django-bootstrap-v5",
-    "django-grappelli",
-    "django-filebrowser",
     "django-htmx",
     "django-modeltranslation",
     "environs[django]",
