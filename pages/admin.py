@@ -10,7 +10,7 @@ from .models import FooterLink, Logo, Shotgun, ShotgunImage
 
 @admin.register(Logo)
 class LogoAdmin(TranslationAdmin):
-    list_display = ("title", "fb_image")
+    list_display = ("title", "image")
 
 
 @admin.register(FooterLink)

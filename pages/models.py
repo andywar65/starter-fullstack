@@ -3,7 +3,6 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
-from filebrowser.fields import FileBrowseField
 from filer.fields.image import FilerImageField
 from tinymce.models import HTMLField
 
@@ -18,12 +17,8 @@ class Logo(models.Model):
         _("Title"),
         max_length=50,
     )
-    fb_image = FileBrowseField(
-        _("Image"),
-        max_length=200,
-        extensions=[".jpg", ".png", ".jpeg", ".gif", ".tif", ".tiff"],
-        directory="images/",
-        null=True,
+    image = FilerImageField(
+        null=True, blank=True, related_name="logo_image", on_delete=models.SET_NULL
     )
 
     class Meta:

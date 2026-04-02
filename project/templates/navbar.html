@@ -1,5 +1,5 @@
 {% load static %}
-{% load fb_versions %}
+{% load thumbnail %}
 {% load i18n %}
 {% load flatpages %}
 
@@ -12,13 +12,10 @@
         hx-target="#menucont"
         hx-push-url="true">
         {% if logo %}
-          <img src="{% version logo.fb_image 'thumbnail' %}"
-            width="32"
-            height="32"
+          <img src="{% thumbnail logo.image 32x32 crop %}"
             class="d-inline-block align-top"
-            alt="{{ logo.title }}">
-        {% endif %}
-        {{ request.site.name }}
+            alt="Logo">
+        {% endif %}{{ request.site.name }}
       </a>
       <button class="navbar-toggler"
         type="button"
