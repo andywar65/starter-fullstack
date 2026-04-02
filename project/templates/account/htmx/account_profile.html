@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load fb_versions %}
 {% load bootstrap5 %}
+{% load thumbnail %}
 
 {% include 'navbar.html' %}
 <main class="flex-shrink-0">
@@ -18,10 +19,10 @@
         <form hx-post="{% url 'account_profile' %}"
           hx-target="#menucont"
           hx-encoding="multipart/form-data">
-          {% if user.profile.fb_image %}
-            <a href="{{ user.profile.fb_image.url }}">
+          {% if user.profile.image %}
+            <a href="{{ user.profile.image.url }}" target="_blank">
               <img class="rounded-circle"
-                src="{% version user.profile.fb_image 'thumbnail' %}"
+                src="{% thumbnail user.profile.image 64x64 crop %}"
                 alt="">
             </a>
           {% endif %}

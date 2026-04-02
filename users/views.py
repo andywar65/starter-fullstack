@@ -16,6 +16,7 @@ from django.core.mail import EmailMessage
 from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.views.generic.edit import FormView
+from filer.models import Image
 
 from .forms import (
     ContactForm,
@@ -94,7 +95,7 @@ class ProfileChangeView(PermissionRequiredMixin, HxTemplateMixin, FormView):
         super(ProfileChangeView, self).setup(request, *args, **kwargs)
 
     def get_form_class(self):
-        if self.user.profile.fb_image:
+        if self.user.profile.image:
             self.form_class = ProfileChangeDelAvatarForm
         return self.form_class
 
@@ -122,9 +123,18 @@ class ProfileChangeView(PermissionRequiredMixin, HxTemplateMixin, FormView):
         # assign profile form fields
         profile = self.user.profile
         profile.bio = form.cleaned_data["bio"]
-        profile.temp_image = form.cleaned_data["avatar"]
+        if profile.image:
+            profile.image.file = form.cleaned_data["avatar"]
+            profile.image.save()
+        else:
+            image = Image.objects.create(
+                owner=self.user,
+                original_filename=self.user.username,
+                file=form.cleaned_data["avatar"],
+            )
+            profile.image = image
         if "del_avatar" in form.cleaned_data and form.cleaned_data["del_avatar"]:
-            profile.fb_image = None
+            profile.image = None
         profile.anonymize = form.cleaned_data["anonymize"]
         profile.save()
 
@@ -156,7 +166,7 @@ class ProfileDeleteView(PermissionRequiredMixin, HxTemplateMixin, FormView):
         self.user.email = ""
         self.user.save()
         profile = self.user.profile
-        profile.fb_image = None
+        profile.image = None
         profile.bio = ""
         profile.save()
         EmailAddress.objects.filter(user_id=self.user.uuid).delete()
@@ -164,7 +174,7 @@ class ProfileDeleteView(PermissionRequiredMixin, HxTemplateMixin, FormView):
         return super(ProfileDeleteView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse("home")
+        return reverse("pages:shotgun_index")
 
 
 class ContactFormView(PermissionRequiredMixin, HxTemplateMixin, FormView):

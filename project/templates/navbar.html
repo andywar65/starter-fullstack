@@ -68,7 +68,11 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false">
-                {% if user.get_avatar %}
+                {% if user.get_avatar and user.profile.image %}
+                  <img class="rounded-circle"
+                    src="{% thumbnail user.profile.image 20x20 crop %}"
+                    alt="">
+                {% elif user.get_avatar %}
                   <img class="rounded-circle"
                     heigth="20px"
                     width="20px"

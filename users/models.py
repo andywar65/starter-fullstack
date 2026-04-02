@@ -7,6 +7,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from filebrowser.base import FileObject
 from filebrowser.fields import FileBrowseField
+from filer.fields.image import FilerImageField
 
 
 class User(AbstractUser):
@@ -44,9 +45,8 @@ class User(AbstractUser):
     def get_avatar(self):
         if self.profile.anonymize:
             return
-        elif self.profile.fb_image:
-            thumb = self.profile.fb_image.version_generate("thumbnail")
-            return thumb.url
+        elif self.profile.image:
+            return True
         # attempts to retrieve avatar from social account
         try:
             s = SocialAccount.objects.get(user_id=self.uuid)
@@ -86,6 +86,9 @@ class Profile(models.Model):
         null=True,
         blank=True,
         directory="images/users/",
+    )
+    image = FilerImageField(
+        null=True, blank=True, related_name="profile_image", on_delete=models.SET_NULL
     )
     bio = models.TextField(_("Short bio"), null=True, blank=True)
     anonymize = models.BooleanField(
