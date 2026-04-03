@@ -4,4 +4,8 @@ from pages.models import FooterLink, Logo
 def get_navbar_footer_data(request):
     logo = Logo.objects.first()
     links = FooterLink.objects.all()
-    return {"logo": logo, "f_links": links}
+    return {
+        "logo": logo,
+        "f_links": links,
+        "l_code": f"/{request.LANGUAGE_CODE}/",
+    }

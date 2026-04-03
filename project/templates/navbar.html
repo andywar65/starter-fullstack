@@ -35,30 +35,23 @@
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false">
-              {% translate 'Blog' %}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item"
-                hx-get="{% url 'pages:shotgun_create' %}"
-                hx-target="#content"
-                hx-push-url="true">{% trans 'Add Shot article' %}
-              </a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"
-              href=""
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false">
               {% translate 'Docs' %}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              {% get_flatpages as flatpages %}
-              {% for page in flatpages %}
-                <a class="dropdown-item" href="/docs{{ page.url }}">{{ page.title }}</a>
-              {% endfor %}
+              {% get_flatpages l_code as flatpages %}
+              {% if flatpages %}
+                {% for page in flatpages %}
+                  <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
+                {% endfor %}
+              {% endif %}
+              {% if perms.pages.add_shotgun %}
+                <hr>
+                <a class="dropdown-item"
+                  hx-get="{% url 'pages:shotgun_create' %}"
+                  hx-target="#menucont"
+                  hx-push-url="true">{% trans 'Add article' %}
+                </a>
+              {% endif %}
             </div>
           </li>
           {% if user.is_authenticated %}
