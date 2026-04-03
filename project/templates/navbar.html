@@ -129,14 +129,11 @@
           hx-push-url="true">
           <i class="fa fa-language fa-lg"></i>
         </a>
-        <form class="d-flex" action="{% url 'search_results' %}" method="get">
-          <input class="form-control me-2"
-            name="q"
-            type="search"
-            placeholder="{% translate 'Write something' %}"
-            aria-label="Search">
-          <button class="btn btn-outline-secondary" type="submit">{% translate 'Search' %}</button>
-        </form>
+        <div id="searchbox"
+          hx-get="{% url 'search_box' %}"
+          hx-trigger="refreshSearch from:body">
+          {% include "htmx/searchbox.html" %}
+        </div>
       </div>
     </div>
   </nav>

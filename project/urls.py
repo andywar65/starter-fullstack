@@ -21,7 +21,7 @@ from users.views import (
     TestedPasswordSetView,
 )
 
-from .views import SelectLanguageTemplateView, search_results
+from .views import SelectLanguageTemplateView, search_box, search_results
 
 sitemaps = {
     "flatpages": FlatPageSitemap,
@@ -62,6 +62,7 @@ urlpatterns = [
         name="django.contrib.sitemaps.views.sitemap",
     ),
     path("tinymce/", include("tinymce.urls")),
+    path("search-box/", search_box, name="search_box"),
 ]
 
 urlpatterns += i18n_patterns(

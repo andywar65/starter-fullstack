@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<form class="d-flex">
+  <input class="form-control me-2"
+    name="q"
+    type="search"
+    placeholder="{% translate 'Write to search' %}"
+    hx-get="{% url 'search_results' %}"
+    hx-target="#content"
+    hx-trigger="keyup changed delay:500ms, search"
+    hx-push-url="true"
+    aria-label="Search">
+</form>
