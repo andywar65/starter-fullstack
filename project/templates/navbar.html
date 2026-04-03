@@ -115,13 +115,9 @@
             </li>
           {% endif %}
         </ul>
-        <a class="btn btn-outline-secondary me-2"
-          title="{% trans 'Set language' %}"
-          hx-get="{% url 'select_language' %}"
-          hx-target="#menucont"
-          hx-push-url="true">
-          <i class="fa fa-language fa-lg"></i>
-        </a>
+        <div id="selectlanguage">
+          {% include "htmx/select_language.html" %}
+        </div>
         <div id="searchbox"
           hx-get="{% url 'search_box' %}"
           hx-trigger="refreshSearch from:body">

@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<a class="btn btn-outline-secondary me-2"
+  title="{% trans 'Set language' %}"
+  script="on click hide me then show #language-selector">
+  <i class="fa fa-language fa-lg"></i>
+</a>
+<form id="language-selector" class="row me-1" action="{% url 'set_language' %}" method="POST" style="display: none">
+  {% csrf_token %}
+  <div class="col-auto">
+    <input name="next" type="hidden" value="{% url 'shotgun_index' %}">
+    <select class="form-control" name="language">
+      {% get_current_language as LANGUAGE_CODE %}
+      {% get_available_languages as LANGUAGES %}
+      {% get_language_info_list for LANGUAGES as languages %}
+      {% for language in languages %}
+        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+          {{ language.name_local }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-primary" type="submit">{% translate 'Set language' %}</button>
+  </div>
+</form>
