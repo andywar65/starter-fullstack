@@ -13,7 +13,14 @@
     {% bootstrap_css %}
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
     <title>{{ request.site.name }}</title>
-    {% block extra-head %}{% endblock extra-head %}
+    {% block extra-head %}
+      <meta property="og:url" content="https://{{ request.site.domain }}{% url 'shotgun_index' %}">
+      <meta property="og:title" content="{{ request.site.name }} - Home">
+      {% if logo %}
+        <meta property="og:image" content="https://{{ request.site.domain }}{{ logo.image.url }}">
+      {% endif %}
+      <meta property="og:site_name" content="{{ request.site.name }}">
+    {% endblock extra-head %}
   </head>
   <body class="d-flex flex-column h-100" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div id="menucont">
