@@ -11,7 +11,7 @@
       <div class="card-body">
         <form
           hx-post="{% url 'pages:shotgun_create' %}"
-          hx-target="#menucont"
+          hx-target="#content"
           hx-encoding="multipart/form-data"
           hx-push-url="true">
           {% bootstrap_form form %}

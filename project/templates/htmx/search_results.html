@@ -18,7 +18,7 @@
                 <li>
                   <span><a class="link link-primary"
                     hx-get="{% url 'pages:shotgun_detail' pk=shot.id %}"
-                    hx-target="#menucont"
+                    hx-target="#content"
                     hx-push-url="true">{{ shot.title }}</a>
                     {{ shot.body|truncatewords:10|safe }}</span>
                 </li>

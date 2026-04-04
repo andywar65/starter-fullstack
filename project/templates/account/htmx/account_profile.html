@@ -16,7 +16,7 @@
           </p>
         {% endif %}
         <form hx-post="{% url 'account_profile' %}"
-          hx-target="#menucont"
+          hx-target="#content"
           hx-encoding="multipart/form-data">
           {% if user.profile.image %}
             <a href="{{ user.profile.image.url }}" target="_blank">

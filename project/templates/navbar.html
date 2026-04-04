@@ -9,7 +9,7 @@
     <div class="container-fluid">
       <a class="navbar-brand"
         hx-get="{% url 'home' %}"
-        hx-target="#menucont"
+        hx-target="#content"
         hx-push-url="true">
         {% if logo %}
           <img src="{% thumbnail logo.image 32x32 crop %}"
@@ -48,7 +48,7 @@
                 <hr>
                 <a class="dropdown-item"
                   hx-get="{% url 'pages:shotgun_create' %}"
-                  hx-target="#menucont"
+                  hx-target="#content"
                   hx-push-url="true">{% trans 'Add article' %}
                 </a>
               {% endif %}
@@ -77,15 +77,15 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item"
                   hx-get="{% url 'account_profile' %}"
-                  hx-target="#menucont"
+                  hx-target="#content"
                   hx-push-url="true">{% trans 'Profile' %}</a>
                 <a class="dropdown-item"
                   hx-get="{% url 'account_contact' %}"
-                  hx-target="#menucont"
+                  hx-target="#content"
                   hx-push-url="true">{% trans 'Contact' %}</a>
                 <a class="dropdown-item"
                   hx-get="{% url 'account_logout' %}"
-                  hx-target="#menucont"
+                  hx-target="#content"
                   hx-push-url="true">{% trans 'Logout' %}</a>
                 {% if user.is_staff %}
                   <a class="dropdown-item" href="/admin/">{% trans "Go to Admin" %}</a>
@@ -105,11 +105,11 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item"
                   hx-get="{% url 'account_login' %}"
-                  hx-target="#menucont"
+                  hx-target="#content"
                   hx-push-url="true">{% trans 'Login' %}</a>
                 <a class="dropdown-item"
                   hx-get="{% url 'account_signup' %}"
-                  hx-target="#menucont"
+                  hx-target="#content"
                   hx-push-url="true">{% trans 'Sign Up' %}</a>
               </div>
             </li>

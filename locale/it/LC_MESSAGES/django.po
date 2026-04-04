@@ -396,11 +396,11 @@ msgstr "Accedi tramite Google..."
 #, python-format
 msgid ""
 "...or, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-target="
-"\"#menucont\" hx-push-url=\"%(signup_url)s\">sign up</a>\n"
+"\"#content\" hx-push-url=\"%(signup_url)s\">sign up</a>\n"
 "            for a %(site_name)s account and sign in below:"
 msgstr ""
 "...oppure, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-target="
-"\"#menucont\" hx-push-url=\"%(signup_url)s\">registra</a>\n"
+"\"#content\" hx-push-url=\"%(signup_url)s\">registra</a>\n"
 "      un account per %(site_name)s e accedi qui sotto:"
 
 #: .\project\templates\account\htmx\login.html:28
@@ -511,11 +511,11 @@ msgstr "Registrati"
 #, python-format
 msgid ""
 "Already have an account or a Google account? Then please <a class=\"link-"
-"primary\" hx-get=\"%(login_url)s\" hx-target=\"#menucont\" hx-push-url="
+"primary\" hx-get=\"%(login_url)s\" hx-target=\"#content\" hx-push-url="
 "\"%(login_url)s\">sign in</a>."
 msgstr ""
 "Sei già registrato o hai un account Google? Allora <a class=\"link-primary\" "
-"hx-get=\"%(login_url)s\" hx-target=\"#menucont\" hx-push-url=\"%(login_url)s"
+"hx-get=\"%(login_url)s\" hx-target=\"#content\" hx-push-url=\"%(login_url)s"
 "\">accedi</a>."
 
 #: .\project\templates\account\htmx\verification_sent.html:5

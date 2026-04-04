@@ -23,11 +23,15 @@
     {% endblock extra-head %}
   </head>
   <body class="d-flex flex-column h-100" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    <div id="menucont">
-      {% block menucont %}
-        <h1>Hello, world!</h1>
-      {% endblock menucont %}
-    </div>
+    {% include 'navbar.html' %}
+    <main class="flex-shrink-0">
+      <div id="content" class="container">
+        {% block content %}
+          <h1>Hello, world!</h1>
+        {% endblock content %}
+      </div>
+    </main>
+    {% include 'footer.html' %}
     <!-- Optional JavaScript -->
     <!-- Bootstrap bundled JS -->
     {% bootstrap_javascript %}
