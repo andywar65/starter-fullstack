@@ -38,7 +38,7 @@ class ShotgunArchiveIndexView(ArchiveIndexView):
         if not self.request.htmx:
             return [self.template_name.replace("htmx/", "")]
         elif "page" in self.request.GET:
-            return ["pages/includes/infinite_shotgun.html"]
+            return ["pages/includes/shotgun_list.html"]
         else:
             return [self.template_name]
 
@@ -58,8 +58,18 @@ class ShotgunArchiveLimited(ShotgunArchiveIndexView):
         context["shot"] = self.shot
         return context
 
+    def get_template_names(self):
+        if not self.request.htmx:
+            return ["pages/shotgun_index_limited.html"]
+        elif "page" in self.request.GET:
+            return ["pages/includes/shotgun_list.html"]
+        else:
+            return [self.template_name]
+
 
 class ShotgunDetailView(DetailView):
+    # this view is never used in the project,
+    # but is here to show how to use htmx with a DetailView
     model = Shotgun
     context_object_name = "shot"
     template_name = "pages/htmx/shotgun_detail.html"
