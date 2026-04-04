@@ -4,7 +4,7 @@
     {% if shot %}
       hx-get="{% url 'pages:shotgun_detail' pk=shot.id %}?page={{ page_obj.next_page_number }}"
     {% else %}
-      hx-get="{% url 'shotgun_index' %}?page={{ page_obj.next_page_number }}"
+      hx-get="{% url 'home' %}?page={{ page_obj.next_page_number }}"
     {% endif %}
     hx-trigger="revealed"
     hx-swap="afterend">

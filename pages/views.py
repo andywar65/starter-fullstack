@@ -103,4 +103,4 @@ class ShotgunCreateFormView(PermissionRequiredMixin, FormView):
         return super(ShotgunCreateFormView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse("shotgun_index")
+        return reverse("home")

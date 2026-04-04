@@ -67,7 +67,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     # path("", HomePageTemplateView.as_view(), name="home"),
-    path("", ShotgunArchiveIndexView.as_view(), name="shotgun_index"),
+    path("", ShotgunArchiveIndexView.as_view(), name="home"),
     path(_("search/"), search_results, name="search_results"),
     path(
         _("select-language/"),

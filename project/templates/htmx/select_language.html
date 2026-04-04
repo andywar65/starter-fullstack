@@ -8,7 +8,7 @@
 <form id="language-selector" class="row me-1" action="{% url 'set_language' %}" method="POST" style="display: none">
   {% csrf_token %}
   <div class="col-auto">
-    <input name="next" type="hidden" value="{% url 'shotgun_index' %}">
+    <input name="next" type="hidden" value="{% url 'home' %}">
     <select class="form-control" name="language">
       {% get_current_language as LANGUAGE_CODE %}
       {% get_available_languages as LANGUAGES %}

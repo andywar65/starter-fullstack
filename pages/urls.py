@@ -4,7 +4,7 @@ from .views import ShotgunArchiveLimited, ShotgunCreateFormView
 
 app_name = "pages"
 urlpatterns = [
-    # path("shotgun/", ShotgunArchiveIndexView.as_view(), name="shotgun_index"),
+    # path("shotgun/", ShotgunArchiveIndexView.as_view(), name="home"),
     path(
         "shot/<int:pk>/",
         ShotgunArchiveLimited.as_view(),
