@@ -2,48 +2,42 @@
 {% load bootstrap5 %}
 {% load thumbnail %}
 
-{% include 'navbar.html' %}
-<main class="flex-shrink-0">
-  <div id="content" class="container">
-    <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
-      <div class="card-header">
-        <h3>{% trans "Change Profile" %}</h3>
-      </div>
-      <div class="card-body">
-        {% if submitted %}
-          <p class="alert alert-success" role="alert">
-            {% trans 'Profile has been successfully modified!' %}
-          </p>
-        {% endif %}
-        <form hx-post="{% url 'account_profile' %}"
-          hx-target="#content"
-          hx-encoding="multipart/form-data">
-          {% if user.profile.image %}
-            <a href="{{ user.profile.image.url }}" target="_blank">
-              <img class="rounded-circle"
-                src="{% thumbnail user.profile.image 64x64 crop %}"
-                alt="">
-            </a>
-          {% endif %}
-          {% bootstrap_form form %}
-          <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
-          <a class="btn btn-secondary"
-            hx-get="{% url 'password_change' %}"
-            hx-target="#content"
-            hx-push-url="true">{% trans "Change Password?" %}
-          </a>
-        </form>
-        <hr>
-        <a class="btn btn-success"
-          href="{% url 'socialaccount_connections' %}">{% trans "Connect social" %}
-        </a>
-        <a class="btn btn-danger"
-          hx-get="{% url 'account_delete' %}"
-          hx-target="#content"
-          hx-push-url="true">{% trans "Delete Account" %}
-        </a>
-      </div>
-    </div>
+<div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
+  <div class="card-header">
+    <h3>{% trans "Change Profile" %}</h3>
   </div>
-</main>
-{% include 'footer.html' %}
+  <div class="card-body">
+    {% if submitted %}
+      <p class="alert alert-success" role="alert">
+        {% trans 'Profile has been successfully modified!' %}
+      </p>
+    {% endif %}
+    <form hx-post="{% url 'account_profile' %}"
+      hx-target="#content"
+      hx-encoding="multipart/form-data">
+      {% if user.profile.image %}
+        <a href="{{ user.profile.image.url }}" target="_blank">
+          <img class="rounded-circle"
+            src="{% thumbnail user.profile.image 64x64 crop %}"
+            alt="">
+        </a>
+      {% endif %}
+      {% bootstrap_form form %}
+      <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
+      <a class="btn btn-secondary"
+        hx-get="{% url 'password_change' %}"
+        hx-target="#content"
+        hx-push-url="true">{% trans "Change Password?" %}
+      </a>
+    </form>
+    <hr>
+    <a class="btn btn-success"
+      href="{% url 'socialaccount_connections' %}">{% trans "Connect social" %}
+    </a>
+    <a class="btn btn-danger"
+      hx-get="{% url 'account_delete' %}"
+      hx-target="#content"
+      hx-push-url="true">{% trans "Delete Account" %}
+    </a>
+  </div>
+</div>

@@ -1,59 +1,53 @@
 {% load i18n %}
 
-{% include 'navbar.html' %}
-<main class="flex-shrink-0">
-  <div id="content" class="container">
-    <div class="card mx-auto"
-      style="max-width: 960px;"
-      script="on click send refreshSearch">
-      {% if success %}
-        <div class="card-header">
-          <h3>{% translate 'Search' %}: "{{ search }}"</h3>
-        </div>
-        <div class="card-body">
-          {% if shots %}
-            <h5>{% translate 'Articles' %}</h5>
-            {% for shot in shots %}
-              <ul>
-                <li>
-                  <span><a class="link link-primary"
-                    hx-get="{% url 'pages:shotgun_detail' pk=shot.id %}"
-                    hx-target="#content"
-                    hx-push-url="true">{{ shot.title }}</a>
-                    {{ shot.body|truncatewords:10|safe }}</span>
-                </li>
-              </ul>
+<div class="card mx-auto"
+  style="max-width: 960px; margin-top: 60px;"
+  script="on click send refreshSearch">
+  {% if success %}
+    <div class="card-header">
+      <h3>{% translate 'Search' %}: "{{ search }}"</h3>
+    </div>
+    <div class="card-body">
+      {% if shots %}
+        <h5>{% translate 'Articles' %}</h5>
+        {% for shot in shots %}
+          <ul>
+            <li>
+              <span><a class="link link-primary"
+                hx-get="{% url 'pages:shotgun_detail' pk=shot.id %}"
+                hx-target="#content"
+                hx-push-url="true">{{ shot.title }}</a>
+                {{ shot.body|truncatewords:10|safe }}</span>
+            </li>
+          </ul>
+        {% endfor %}
+      {% endif %}
+      {% if flatpages %}
+        <h5>{% translate 'Documents' %}</h5>
+        <table class="table">
+          <tbody>
+            {% for page in flatpages %}
+              <tr>
+                <td>
+                  <a class="link link-primary" href="{{ page.url }}">
+                    {{ page.title }}
+                  </a>
+                </td>
+                <td>
+                  {{ page.content|truncatewords:10|safe }}
+                </td>
+              </tr>
             {% endfor %}
-          {% endif %}
-          {% if flatpages %}
-            <h5>{% translate 'Documents' %}</h5>
-            <table class="table">
-              <tbody>
-                {% for page in flatpages %}
-                  <tr>
-                    <td>
-                      <a class="link link-primary" href="{{ page.url }}">
-                        {{ page.title }}
-                      </a>
-                    </td>
-                    <td>
-                      {{ page.content|truncatewords:10|safe }}
-                    </td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          {% endif %}
-        </div>
-      {% else %}
-        <div class="card-header">
-          <h3>{% translate 'Null search' %}</h3>
-        </div>
-        <div class="card-body">
-          <p>{% trans "We didn't find elements that satisfy your search" %}</p>
-        </div>
+          </tbody>
+        </table>
       {% endif %}
     </div>
-  </div>
-</main>
-{% include 'footer.html' %}
+  {% else %}
+    <div class="card-header">
+      <h3>{% translate 'Null search' %}</h3>
+    </div>
+    <div class="card-body">
+      <p>{% trans "We didn't find elements that satisfy your search" %}</p>
+    </div>
+  {% endif %}
+</div>
