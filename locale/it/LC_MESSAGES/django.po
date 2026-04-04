@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-11 18:00+0200\n"
+"POT-Creation-Date: 2026-04-04 15:19+0200\n"
 "PO-Revision-Date: 2022-04-11 18:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,257 +18,194 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: .\pages\admin.py:62
+#: pages/admin.py:25
 msgid "Advanced options"
 msgstr "Opzioni avanzate"
 
-#: .\pages\admin.py:118 .\pages\models.py:71 .\pages\models.py:130
-#: .\users\models.py:126
-msgid "Text"
-msgstr "Testo"
-
-#: .\pages\apps.py:17
-msgid "Home page"
-msgstr "Home page"
-
-#: .\pages\choices.py:4
+#: pages/choices.py:4
 msgid "External link"
 msgstr "Link esterno"
 
-#: .\pages\models.py:19 .\pages\models.py:38 .\pages\models.py:57
-#: .\pages\models.py:127
+#: pages/forms.py:7 pages/models.py:12 pages/models.py:27 pages/models.py:51
 msgid "Title"
 msgstr "Titolo"
 
-#: .\pages\models.py:23 .\pages\models.py:93 .\pages\models.py:187
-#: .\users\models.py:76 .\users\models.py:83
-msgid "Image"
-msgstr "Immagine"
+#: pages/forms.py:8 pages/models.py:53 users/models.py:103
+msgid "Text"
+msgstr "Testo"
 
-#: .\pages\models.py:31 .\pages\models.py:32
+#: pages/forms.py:11
+msgid "Image caption"
+msgstr ""
+
+#: pages/models.py:20 pages/models.py:21
 msgid "Logo"
 msgstr "Logo"
 
-#: .\pages\models.py:42
+#: pages/models.py:31
 msgid "Link"
 msgstr "Collegamento"
 
-#: .\pages\models.py:46
-msgid "Icon"
-msgstr "Icona"
-
-#: .\pages\models.py:50
+#: pages/models.py:36
 msgid "Footer link"
 msgstr "Link a pie' di pagina"
 
-#: .\pages\models.py:51
+#: pages/models.py:37
 msgid "Footer links"
 msgstr "Link a pie' di pagina"
 
-#: .\pages\models.py:58
-msgid "Appears on first image"
-msgstr "Appare nella prima immagine"
-
-#: .\pages\models.py:64
-msgid "Subtitle"
-msgstr "Sottotitolo"
-
-#: .\pages\models.py:68
-msgid "Website in few words"
-msgstr "Il sito in poche parole"
-
-#: .\pages\models.py:71
-msgid "Talk about this website"
-msgstr "Descrivi questo sito"
-
-#: .\pages\models.py:77
-msgid "Home Page - "
-msgstr ""
-
-#: .\pages\models.py:80 .\pages\models.py:90
-msgid "Home Page"
-msgstr ""
-
-#: .\pages\models.py:81
-msgid "Home Pages"
-msgstr "Home Page"
-
-#: .\pages\models.py:99 .\pages\models.py:193
-msgid "Description"
-msgstr "Descrizione"
-
-#: .\pages\models.py:100 .\pages\models.py:194
-msgid "Will be used in captions"
-msgstr "Utilizzato nelle didascalie"
-
-#: .\pages\models.py:105 .\pages\models.py:199
-msgid "Position"
-msgstr "Posizione"
-
-#: .\pages\models.py:108
-msgid "Home page carousel"
-msgstr "Galleria delle homepage"
-
-#: .\pages\models.py:109
-msgid "Home page carousels"
-msgstr "Gallerie delle homepage"
-
-#: .\pages\models.py:119
+#: pages/models.py:44
 #, python-format
 msgid "Another article by %(name)s!"
 msgstr "Un nuovo articolo di %(name)s!"
 
-#: .\pages\models.py:121
+#: pages/models.py:46
 msgid "Another article by this site!"
 msgstr "Un nuovo articolo da questo sito!"
 
-#: .\pages\models.py:127
+#: pages/models.py:51
 msgid "The title of the article"
 msgstr "Il titolo dell'articolo"
 
-#: .\pages\models.py:129
-msgid "Introduction"
-msgstr "Introduzione"
-
-#: .\pages\models.py:132
+#: pages/models.py:55
 msgid "Date"
 msgstr "Data"
 
-#: .\pages\models.py:137
-msgid "Author"
-msgstr "Autore"
+#: pages/models.py:60
+msgid "Shotgun article"
+msgstr ""
 
-#: .\pages\models.py:173 .\pages\models.py:184
+#: pages/models.py:61
+#, fuzzy
+#| msgid "articles/"
+msgid "Shotgun articles"
+msgstr "articoli/"
+
+#: pages/models.py:78
 msgid "Article"
 msgstr "Articolo"
 
-#: .\pages\models.py:174 .\pages\templates\pages\article_index.html:4
-#: .\pages\templates\pages\htmx\article_index.html:8
-#: .\pages\templates\pages\htmx\home.html:24
-#: .\project\templates\htmx\search_results.html:13
-msgid "Articles"
-msgstr "Articoli"
+#: pages/models.py:81
+msgid "Description"
+msgstr "Descrizione"
 
-#: .\pages\models.py:202
-msgid "Article carousel"
-msgstr "Galleria degli articoli"
+#: pages/models.py:82
+#, fuzzy
+#| msgid "Will be used in captions"
+msgid "Used in captions"
+msgstr "Utilizzato nelle didascalie"
 
-#: .\pages\models.py:203
-msgid "Article carousels"
-msgstr "Gallerie degli articoli"
+#: pages/models.py:90
+msgid "Position"
+msgstr "Posizione"
 
-#: .\pages\templates\pages\gallery.html:15
-msgid "Previous"
-msgstr "Precedente"
-
-#: .\pages\templates\pages\gallery.html:19
-msgid "Next"
-msgstr "Prossimo"
-
-#: .\pages\templates\pages\home.html:4
-msgid "Home"
+#: pages/models.py:93
+msgid "Shotgun image"
 msgstr ""
 
-#: .\pages\templates\pages\htmx\article_detail.html:11
-#: .\pages\templates\pages\includes\article_list.html:21
-msgid "by"
-msgstr "di"
+#: pages/models.py:94
+msgid "Shotgun images"
+msgstr ""
 
-#: .\pages\templates\pages\includes\article_list.html:37
+#: pages/templates/pages/htmx/shotgun_create.html:6
+#: pages/templates/pages/htmx/shotgun_create.html:15
+#: project/templates/navbar.html:52
+#, fuzzy
+#| msgid "Article"
+msgid "Add article"
+msgstr "Articolo"
+
+#: pages/templates/pages/includes/shotgun_card.html:32
+msgid "Modify"
+msgstr ""
+
+#: pages/templates/pages/includes/shotgun_list.html:10
 msgid "No articles available"
 msgstr "Nessun articolo disponibile"
 
-#: .\pages\views.py:36
-msgid "No Home Pages available"
-msgstr "Nessuna home page disponibile"
-
-#: .\project\settings.py:129
-msgid "Admin"
-msgstr "Amministrazione"
-
-#: .\project\settings.py:178
+#: project/settings.py:147
 msgid "Italian"
 msgstr "Italiano"
 
-#: .\project\settings.py:179
+#: project/settings.py:148
 msgid "English"
 msgstr "Inglese"
 
-#: .\project\templates\403.html:4 .\project\templates\403.html:8
+#: project/templates/403.html:4 project/templates/403.html:8
 msgid "Access denied"
 msgstr "Accesso vietato"
 
-#: .\project\templates\403.html:11
+#: project/templates/403.html:11
 msgid "You don't have permissions to access this page"
 msgstr "Non hai i permessi per accedere a questa pagina"
 
-#: .\project\templates\403.html:12
+#: project/templates/403.html:12
 msgid "Maybe you still have to"
 msgstr "Forse devi ancora fare il"
 
-#: .\project\templates\403.html:12
+#: project/templates/403.html:12
 msgid "login"
 msgstr ""
 
-#: .\project\templates\403.html:13
+#: project/templates/403.html:13
 msgid "otherwise contact us to request permissions"
 msgstr "oppure contattaci per avere i permessi"
 
-#: .\project\templates\404.html:4 .\project\templates\404.html:8
+#: project/templates/404.html:4 project/templates/404.html:8
 msgid "Page not found"
 msgstr "Pagina non trovata"
 
-#: .\project\templates\404.html:11
+#: project/templates/404.html:11
 msgid "Maybe this page no more exists, or the address is wrong"
 msgstr "Forse la pagina non esiste più, o l'indirizzo è sbagliato"
 
-#: .\project\templates\404.html:12
+#: project/templates/404.html:12
 msgid "Double check it and contact us to notify"
 msgstr "Verifica e contattaci per segnalarlo"
 
-#: .\project\templates\account\account_delete.html:5
-#: .\project\templates\account\htmx\account_delete.html:6
-#: .\project\templates\account\htmx\account_profile.html:30
+#: project/templates/account/account_delete.html:5
+#: project/templates/account/htmx/account_delete.html:6
+#: project/templates/account/htmx/account_profile.html:40
 msgid "Delete Account"
 msgstr "Elimina registrazione"
 
-#: .\project\templates\account\account_inactive.html:5
-#: .\project\templates\account\htmx\account_inactive.html:5
+#: project/templates/account/account_inactive.html:5
+#: project/templates/account/htmx/account_inactive.html:5
 msgid "Account Inactive"
 msgstr "Registrazione inattiva"
 
-#: .\project\templates\account\account_profile.html:5
-#: .\project\templates\account\htmx\account_profile.html:10
-#: .\project\templates\account\htmx\account_profile.html:25
+#: project/templates/account/account_profile.html:5
+#: project/templates/account/htmx/account_profile.html:7
+#: project/templates/account/htmx/account_profile.html:26
 msgid "Change Profile"
 msgstr "Cambia profilo"
 
-#: .\project\templates\account\contact.html:5
-#: .\project\templates\account\htmx\contact.html:9
-#: .\project\templates\navbar.html:42
+#: project/templates/account/contact.html:5
+#: project/templates/account/htmx/contact.html:6
+#: project/templates/navbar.html:85
 msgid "Contact"
 msgstr "Contatto"
 
-#: .\project\templates\account\email.html:5
-#: .\project\templates\account\htmx\email.html:6
+#: project/templates/account/email.html:5
+#: project/templates/account/htmx/email.html:6
 msgid "E-mail Addresses"
 msgstr "Indirizzi email"
 
-#: .\project\templates\account\email_confirm.html:5
-#: .\project\templates\account\htmx\email_confirm.html:6
+#: project/templates/account/email_confirm.html:5
+#: project/templates/account/htmx/email_confirm.html:6
 msgid "Confirm E-mail Address"
 msgstr "Conferma indirizzo email"
 
-#: .\project\templates\account\htmx\account_delete.html:9
+#: project/templates/account/htmx/account_delete.html:9
 msgid "Are you sure you want to delete your profile?"
 msgstr "Sicuro di voler annullare la registrazione?"
 
-#: .\project\templates\account\htmx\account_delete.html:13
-#: .\project\templates\account\htmx\email_confirm.html:17
+#: project/templates/account/htmx/account_delete.html:13
+#: project/templates/account/htmx/email_confirm.html:17
 msgid "Confirm"
 msgstr "Conferma"
 
-#: .\project\templates\account\htmx\account_delete.html:15
+#: project/templates/account/htmx/account_delete.html:15
 #, python-format
 msgid ""
 "Account will\n"
@@ -279,7 +216,7 @@ msgstr ""
 "saranno cancellate eccetto l'username. Contatta %(site_name)s per\n"
 "ripristinare la registrazione originale"
 
-#: .\project\templates\account\htmx\account_delete.html:19
+#: project/templates/account/htmx/account_delete.html:19
 msgid ""
 "First check 'Anonymize' on your profile if you\n"
 "        want to anonymize your username"
@@ -287,64 +224,64 @@ msgstr ""
 "Per prima cosa spunta 'Anonimizza' sul tuo profilo\n"
 "        se vuoi anonimizzare il tuo username"
 
-#: .\project\templates\account\htmx\account_inactive.html:8
+#: project/templates/account/htmx/account_inactive.html:8
 msgid "This account is inactive."
 msgstr "Questa registrazione è inattiva."
 
-#: .\project\templates\account\htmx\account_profile.html:15
+#: project/templates/account/htmx/account_profile.html:12
 msgid "Profile has been successfully modified!"
 msgstr "Il profilo è stato modificato con successo!"
 
-#: .\project\templates\account\htmx\account_profile.html:26
+#: project/templates/account/htmx/account_profile.html:30
 msgid "Change Password?"
 msgstr "Cambia la password?"
 
-#: .\project\templates\account\htmx\account_profile.html:29
+#: project/templates/account/htmx/account_profile.html:35
 msgid "Connect social"
 msgstr "Connetti social"
 
-#: .\project\templates\account\htmx\contact.html:14
+#: project/templates/account/htmx/contact.html:11
 msgid "Message has been successfully sent!"
 msgstr "Il messaggio è stato inviato con successo!"
 
-#: .\project\templates\account\htmx\contact.html:19
+#: project/templates/account/htmx/contact.html:16
 msgid "Send message"
 msgstr "Invia messaggio"
 
-#: .\project\templates\account\htmx\email.html:10
+#: project/templates/account/htmx/email.html:10
 msgid "The following e-mail addresses are associated with your account:"
 msgstr "I seguenti indirizzi e-mail sono associati con la tua registrazione:"
 
-#: .\project\templates\account\htmx\email.html:24
+#: project/templates/account/htmx/email.html:24
 msgid "Verified"
 msgstr "Verificato"
 
-#: .\project\templates\account\htmx\email.html:26
+#: project/templates/account/htmx/email.html:26
 msgid "Unverified"
 msgstr "Non verificato"
 
-#: .\project\templates\account\htmx\email.html:28
+#: project/templates/account/htmx/email.html:28
 msgid "Primary"
 msgstr "Primario"
 
-#: .\project\templates\account\htmx\email.html:34
+#: project/templates/account/htmx/email.html:34
 msgid "Make Primary"
 msgstr "Rendi primario"
 
-#: .\project\templates\account\htmx\email.html:35
+#: project/templates/account/htmx/email.html:35
 msgid "Re-send Verification"
 msgstr "Invia di nuovo la verifica"
 
-#: .\project\templates\account\htmx\email.html:36
-#: .\project\templates\socialaccount\connections.html:38
+#: project/templates/account/htmx/email.html:36
+#: project/templates/socialaccount/connections.html:38
 msgid "Remove"
 msgstr "Elimina"
 
-#: .\project\templates\account\htmx\email.html:43
+#: project/templates/account/htmx/email.html:43
 msgid "Warning:"
 msgstr "Attenzione:"
 
-#: .\project\templates\account\htmx\email.html:43
+#: project/templates/account/htmx/email.html:43
 msgid ""
 "You currently do not have any e-mail address set up. You should really add "
 "an e-mail address so you can receive notifications, reset your password, etc."
@@ -352,19 +289,19 @@ msgstr ""
 "Attualmente non hai registrato indirizzi email. Dovresti aggiungere "
 "unindirizzo email così puoi ricevere notifiche, resettare la password, ecc."
 
-#: .\project\templates\account\htmx\email.html:48
+#: project/templates/account/htmx/email.html:48
 msgid "Add E-mail Address"
 msgstr "Aggiungi indirizzo email"
 
-#: .\project\templates\account\htmx\email.html:53
+#: project/templates/account/htmx/email.html:53
 msgid "Add E-mail"
 msgstr "Aggiungi email"
 
-#: .\project\templates\account\htmx\email.html:61
+#: project/templates/account/htmx/email.html:61
 msgid "Do you really want to remove the selected e-mail address?"
 msgstr "Vuoi veramente eliminare l'indirizzo email selezionato?"
 
-#: .\project\templates\account\htmx\email_confirm.html:13
+#: project/templates/account/htmx/email_confirm.html:13
 #, python-format
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
@@ -373,80 +310,97 @@ msgstr ""
 "Per favore conferma che <a href=\"mailto:%(email)s\">%(email)s</a> è un "
 "indirizzo email per l'utente %(user_display)s."
 
-#: .\project\templates\account\htmx\email_confirm.html:24
+#: project/templates/account/htmx/email_confirm.html:24
 #, python-format
 msgid ""
-"This e-mail confirmation link expired or is invalid. Please <a href="
-"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
-"Il link di conferma è scaduto o non valido. Per favore <a href="
-"\"%(email_url)s\">richiedi una nuova email di conferma</a>."
+"Il link di conferma è scaduto o non valido. Per favore <a "
+"href=\"%(email_url)s\">richiedi una nuova email di conferma</a>."
 
-#: .\project\templates\account\htmx\login.html:10
-#: .\project\templates\account\htmx\login.html:37
-#: .\project\templates\account\login.html:5
+#: project/templates/account/htmx/login.html:7
+#: project/templates/account/htmx/login.html:51
+#: project/templates/account/login.html:5
 msgid "Sign In"
 msgstr "Accedi"
 
-#: .\project\templates\account\htmx\login.html:17
+#: project/templates/account/htmx/login.html:14
 msgid "Sign in with Google..."
 msgstr "Accedi tramite Google..."
 
-#: .\project\templates\account\htmx\login.html:24
-#, python-format
+#: project/templates/account/htmx/login.html:22
+#, fuzzy, python-format
+#| msgid ""
+#| "...or, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-"
+#| "target=\"#content\" hx-push-url=\"%(signup_url)s\">sign up</a>\n"
+#| "            for a %(site_name)s account and sign in below:"
 msgid ""
-"...or, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-target="
-"\"#content\" hx-push-url=\"%(signup_url)s\">sign up</a>\n"
-"            for a %(site_name)s account and sign in below:"
+"...or,\n"
+"          <a class=\"link-primary\"\n"
+"            hx-get=\"%(signup_url)s\"\n"
+"            hx-target=\"#content\"\n"
+"            hx-push-url=\"true\">sign up\n"
+"          </a>\n"
+"          for a %(site_name)s account and sign in below:\n"
+"        "
 msgstr ""
-"...oppure, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-target="
-"\"#content\" hx-push-url=\"%(signup_url)s\">registra</a>\n"
+"...oppure, <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-"
+"target=\"#content\" hx-push-url=\"%(signup_url)s\">registra</a>\n"
 "      un account per %(site_name)s e accedi qui sotto:"
 
-#: .\project\templates\account\htmx\login.html:28
-#, python-format
+#: project/templates/account/htmx/login.html:34
+#, fuzzy, python-format
+#| msgid ""
+#| "If you have not created an account yet, then please\n"
+#| "            <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-"
+#| "target=\"#content\" hx-push-url=\"%(signup_url)s\">sign up</a> first."
 msgid ""
 "If you have not created an account yet, then please\n"
-"            <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-target="
-"\"#content\" hx-push-url=\"%(signup_url)s\">sign up</a> first."
+"          <a class=\"link-primary\"\n"
+"            hx-get=\"%(signup_url)s\"\n"
+"            hx-target=\"#content\"\n"
+"            hx-push-url=\"true\">sign up\n"
+"          </a> first.\n"
+"        "
 msgstr ""
 "Non hai ancora creato un account, quindi per prima cosa ti devi\n"
-"      <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-target="
-"\"#content\" hx-push-url=\"%(signup_url)s\">registrare</a>."
+"      <a class=\"link-primary\" hx-get=\"%(signup_url)s\" hx-"
+"target=\"#content\" hx-push-url=\"%(signup_url)s\">registrare</a>."
 
-#: .\project\templates\account\htmx\login.html:38
-#: .\project\templates\account\htmx\password_change.html:13
+#: project/templates/account/htmx/login.html:55
+#: project/templates/account/htmx/password_change.html:16
 msgid "Forgot Password?"
 msgstr "Password dimenticata?"
 
-#: .\project\templates\account\htmx\logout.html:8
-#: .\project\templates\account\htmx\logout.html:19
-#: .\project\templates\account\logout.html:5
+#: project/templates/account/htmx/logout.html:5
+#: project/templates/account/htmx/logout.html:16
+#: project/templates/account/logout.html:5
 msgid "Sign Out"
 msgstr "Esci"
 
-#: .\project\templates\account\htmx\logout.html:12
+#: project/templates/account/htmx/logout.html:9
 msgid "Are you sure you want to sign out?"
 msgstr "Sicuro di voler uscire?"
 
-#: .\project\templates\account\htmx\password_change.html:6
-#: .\project\templates\account\htmx\password_change.html:12
-#: .\project\templates\account\htmx\password_reset_from_key.html:6
-#: .\project\templates\account\htmx\password_reset_from_key_done.html:5
-#: .\project\templates\account\password_change.html:5
-#: .\project\templates\account\password_reset_from_key.html:5
-#: .\project\templates\account\password_reset_from_key_done.html:4
+#: project/templates/account/htmx/password_change.html:6
+#: project/templates/account/htmx/password_change.html:12
+#: project/templates/account/htmx/password_reset_from_key.html:6
+#: project/templates/account/htmx/password_reset_from_key_done.html:5
+#: project/templates/account/password_change.html:5
+#: project/templates/account/password_reset_from_key.html:5
+#: project/templates/account/password_reset_from_key_done.html:4
 msgid "Change Password"
 msgstr "Cambia la password"
 
-#: .\project\templates\account\htmx\password_reset.html:7
-#: .\project\templates\account\htmx\password_reset_done.html:6
-#: .\project\templates\account\password_reset.html:5
-#: .\project\templates\account\password_reset_done.html:5
+#: project/templates/account/htmx/password_reset.html:7
+#: project/templates/account/htmx/password_reset_done.html:6
+#: project/templates/account/password_reset.html:5
+#: project/templates/account/password_reset_done.html:5
 msgid "Password Reset"
 msgstr "Reimposta la password"
 
-#: .\project\templates\account\htmx\password_reset.html:13
+#: project/templates/account/htmx/password_reset.html:13
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
@@ -454,15 +408,15 @@ msgstr ""
 "Password dimenticata? Scrivi il tuo indirizzo email, ti invieremo un "
 "messaggio che ti permetterà di cambiarla."
 
-#: .\project\templates\account\htmx\password_reset.html:18
+#: project/templates/account/htmx/password_reset.html:18
 msgid "Reset My Password"
 msgstr "Reimposta la password"
 
-#: .\project\templates\account\htmx\password_reset.html:21
+#: project/templates/account/htmx/password_reset.html:21
 msgid "Please contact us if you have any trouble resetting your password."
 msgstr "Contattaci se hai problemi a modificare la password."
 
-#: .\project\templates\account\htmx\password_reset_done.html:13
+#: project/templates/account/htmx/password_reset_done.html:13
 msgid ""
 "We have sent you an e-mail. If you have not received it please check your "
 "spam folder. Otherwise contact us if you do not receive it in a few minutes."
@@ -470,11 +424,11 @@ msgstr ""
 "Ti abbiamo inviato una mail. Se non l'hai ricevuta cerca nella cartella "
 "dello spam. Altrimenti contattaci se non la ricevi nei prossimi minuti."
 
-#: .\project\templates\account\htmx\password_reset_from_key.html:6
+#: project/templates/account/htmx/password_reset_from_key.html:6
 msgid "Bad Token"
 msgstr "Token errato"
 
-#: .\project\templates\account\htmx\password_reset_from_key.html:11
+#: project/templates/account/htmx/password_reset_from_key.html:11
 #, python-format
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
@@ -485,47 +439,55 @@ msgstr ""
 "stato usato. Richiedi di nuovo <a href=\"%(passwd_reset_url)s\">il "
 "ripristino</a>."
 
-#: .\project\templates\account\htmx\password_reset_from_key.html:16
+#: project/templates/account/htmx/password_reset_from_key.html:16
 msgid "change password"
 msgstr "cambia la password"
 
-#: .\project\templates\account\htmx\password_reset_from_key_done.html:8
+#: project/templates/account/htmx/password_reset_from_key_done.html:8
 msgid "Your password is now changed."
 msgstr "La tua password è stata cambiata."
 
-#: .\project\templates\account\htmx\password_set.html:6
-#: .\project\templates\account\htmx\password_set.html:12
-#: .\project\templates\account\password_set.html:5
+#: project/templates/account/htmx/password_set.html:6
+#: project/templates/account/htmx/password_set.html:12
+#: project/templates/account/password_set.html:5
 msgid "Set Password"
 msgstr "Invia password"
 
-#: .\project\templates\account\htmx\signup.html:9
-#: .\project\templates\account\htmx\signup.html:20
-#: .\project\templates\navbar.html:56
-#: .\project\templates\socialaccount\signup.html:11
-#: .\project\templates\socialaccount\signup.html:23
+#: project/templates/account/htmx/signup.html:6
+#: project/templates/account/htmx/signup.html:27
+#: project/templates/navbar.html:113
+#: project/templates/socialaccount/signup.html:11
+#: project/templates/socialaccount/signup.html:23
 msgid "Sign Up"
 msgstr "Registrati"
 
-#: .\project\templates\account\htmx\signup.html:12
-#, python-format
+#: project/templates/account/htmx/signup.html:10
+#, fuzzy, python-format
+#| msgid ""
+#| "Already have an account or a Google account? Then please <a class=\"link-"
+#| "primary\" hx-get=\"%(login_url)s\" hx-target=\"#content\" hx-push-"
+#| "url=\"%(login_url)s\">sign in</a>."
 msgid ""
-"Already have an account or a Google account? Then please <a class=\"link-"
-"primary\" hx-get=\"%(login_url)s\" hx-target=\"#content\" hx-push-url="
-"\"%(login_url)s\">sign in</a>."
+"Already have an account or a Google account? Then please\n"
+"        <a class=\"link-primary\"\n"
+"          hx-get=\"%(login_url)s\"\n"
+"          hx-target=\"#content\"\n"
+"          hx-push-url=\"true\">sign in\n"
+"        </a>.\n"
+"      "
 msgstr ""
 "Sei già registrato o hai un account Google? Allora <a class=\"link-primary\" "
-"hx-get=\"%(login_url)s\" hx-target=\"#content\" hx-push-url=\"%(login_url)s"
-"\">accedi</a>."
+"hx-get=\"%(login_url)s\" hx-target=\"#content\" hx-push-"
+"url=\"%(login_url)s\">accedi</a>."
 
-#: .\project\templates\account\htmx\verification_sent.html:5
-#: .\project\templates\account\htmx\verified_email_required.html:5
-#: .\project\templates\account\verification_sent.html:5
-#: .\project\templates\account\verified_email_required.html:5
+#: project/templates/account/htmx/verification_sent.html:5
+#: project/templates/account/htmx/verified_email_required.html:5
+#: project/templates/account/verification_sent.html:5
+#: project/templates/account/verified_email_required.html:5
 msgid "Verify Your E-mail Address"
 msgstr "Verifica il tuo indirizzo email"
 
-#: .\project\templates\account\htmx\verification_sent.html:8
+#: project/templates/account/htmx/verification_sent.html:8
 msgid ""
 "We have sent an e-mail to you for verification. Follow the link provided to "
 "finalize the signup process. If you do not see the verification e-mail in "
@@ -536,7 +498,7 @@ msgstr ""
 "completare il procedimento di verifica clicca sul Link. Contattaci se non "
 "ricevi la mail entro qualche minuto."
 
-#: .\project\templates\account\htmx\verified_email_required.html:10
+#: project/templates/account/htmx/verified_email_required.html:10
 msgid ""
 "This part of the site requires us to verify that\n"
 "      you are who you claim to be. For this purpose, we require that you\n"
@@ -546,7 +508,7 @@ msgstr ""
 "che sei veramente chi dici di essere. Sarà sufficiente\n"
 "dimostrare che hai effettivamente accesso al tuo indirizzo e-mail. "
 
-#: .\project\templates\account\htmx\verified_email_required.html:14
+#: project/templates/account/htmx/verified_email_required.html:14
 msgid ""
 "We have sent an e-mail to you for\n"
 "      verification. Please click on the link inside that e-mail. If you do "
@@ -559,7 +521,7 @@ msgstr ""
 "Se non dovessi ricevere il messaggio entro qualche minuto, contattaci.\n"
 "Grazie."
 
-#: .\project\templates\account\htmx\verified_email_required.html:18
+#: project/templates/account/htmx/verified_email_required.html:18
 #, python-format
 msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
@@ -568,77 +530,78 @@ msgstr ""
 "<strong>Nota:</strong> Puoi cambiare <a href=\"%(email_url)s\">in ogni "
 "momento l'indirizzo e-mail usato per la registrazione</a>."
 
-#: .\project\templates\account\signup.html:5
-#: .\project\templates\socialaccount\signup.html:6
+#: project/templates/account/signup.html:5
+#: project/templates/socialaccount/signup.html:6
 msgid "Signup"
 msgstr "Registrazione"
 
-#: .\project\templates\account\snippets\already_logged_in.html:5
+#: project/templates/account/snippets/already_logged_in.html:5
 msgid "Note"
 msgstr "Nota"
 
-#: .\project\templates\account\snippets\already_logged_in.html:5
+#: project/templates/account/snippets/already_logged_in.html:5
 #, python-format
 msgid "you are already logged in as %(user_display)s."
 msgstr "sei già autenticato come %(user_display)s."
 
-#: .\project\templates\htmx\language_selector.html:8
-#: .\project\templates\htmx\language_selector.html:27
-#: .\project\templates\navbar.html:61
-msgid "Set language"
-msgstr "Seleziona lingua"
-
-#: .\project\templates\htmx\search_results.html:9
-#: .\project\templates\navbar.html:64 .\project\templates\search_results.html:4
+#: project/templates/htmx/search_results.html:8
+#: project/templates/search_results.html:4
 msgid "Search"
 msgstr "Cerca"
 
-#: .\project\templates\htmx\search_results.html:30
+#: project/templates/htmx/search_results.html:12
+msgid "Articles"
+msgstr "Articoli"
+
+#: project/templates/htmx/search_results.html:26
+msgid "Documents"
+msgstr ""
+
+#: project/templates/htmx/search_results.html:47
 msgid "Null search"
 msgstr "Nessun risultato"
 
-#: .\project\templates\htmx\search_results.html:33
+#: project/templates/htmx/search_results.html:50
 msgid "We didn't find elements that satisfy your search"
 msgstr "Non abbiamo trovato elementi che soddisfino la tua ricerca"
 
-#: .\project\templates\language_selector.html:4
-msgid "Select language"
-msgstr "Seleziona la lingua"
+#: project/templates/htmx/searchbox.html:7
+#, fuzzy
+#| msgid "Write something"
+msgid "Write to search"
+msgstr "Scrivi qualcosa"
 
-#: .\project\templates\navbar.html:19
-msgid "Blog"
-msgstr ""
+#: project/templates/htmx/select_language.html:4
+#: project/templates/htmx/select_language.html:24
+msgid "Set language"
+msgstr "Seleziona lingua"
 
-#: .\project\templates\navbar.html:23
+#: project/templates/navbar.html:38
 msgid "Docs"
 msgstr "Documenti"
 
-#: .\project\templates\navbar.html:41 .\users\models.py:110
+#: project/templates/navbar.html:81 users/models.py:87
 msgid "Profile"
 msgstr "Profilo"
 
-#: .\project\templates\navbar.html:43
+#: project/templates/navbar.html:89
 msgid "Logout"
 msgstr ""
 
-#: .\project\templates\navbar.html:45
+#: project/templates/navbar.html:91
 msgid "Go to Admin"
 msgstr "Vai all'amministrazione"
 
-#: .\project\templates\navbar.html:52 .\project\templates\navbar.html:55
+#: project/templates/navbar.html:103 project/templates/navbar.html:109
 msgid "Login"
 msgstr ""
 
-#: .\project\templates\navbar.html:63
-msgid "Write something"
-msgstr "Scrivi qualcosa"
-
-#: .\project\templates\socialaccount\connections.html:5
-#: .\project\templates\socialaccount\connections.html:10
+#: project/templates/socialaccount/connections.html:5
+#: project/templates/socialaccount/connections.html:10
 msgid "Account Connections"
 msgstr "Connessioni all'account"
 
-#: .\project\templates\socialaccount\connections.html:14
+#: project/templates/socialaccount/connections.html:14
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
@@ -646,40 +609,40 @@ msgstr ""
 "Puoi collegarti al tuo account utilizzando uno dei seguenti servizi di "
 "autenticazione Social Network:"
 
-#: .\project\templates\socialaccount\connections.html:46
+#: project/templates/socialaccount/connections.html:46
 msgid ""
 "You currently have no social network accounts connected to this account."
 msgstr "Non hai account di nessun Social Network collegato a questo account."
 
-#: .\project\templates\socialaccount\connections.html:51
+#: project/templates/socialaccount/connections.html:51
 msgid "Add a 3rd Party Account"
 msgstr "Aggiungi un account di un Social Network"
 
-#: .\project\templates\socialaccount\login.html:8
+#: project/templates/socialaccount/login.html:8
 #, python-format
 msgid "Connect %(provider)s"
 msgstr "Connetti %(provider)s"
 
-#: .\project\templates\socialaccount\login.html:10
+#: project/templates/socialaccount/login.html:10
 #, python-format
 msgid "Sign In Via %(provider)s"
 msgstr "Accedi tramite %(provider)s"
 
-#: .\project\templates\socialaccount\login.html:15
+#: project/templates/socialaccount/login.html:15
 #, python-format
 msgid "You are about to connect a new third party account from %(provider)s."
 msgstr "Stai per connettere un nuovo account da %(provider)s."
 
-#: .\project\templates\socialaccount\login.html:17
+#: project/templates/socialaccount/login.html:17
 #, python-format
 msgid "You are about to sign in using a third party account from %(provider)s."
 msgstr "Stai per accedere tramite un account da %(provider)s."
 
-#: .\project\templates\socialaccount\login.html:22
+#: project/templates/socialaccount/login.html:22
 msgid "Continue"
 msgstr "Continua"
 
-#: .\project\templates\socialaccount\signup.html:14
+#: project/templates/socialaccount/signup.html:14
 #, python-format
 msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
@@ -690,103 +653,162 @@ msgstr ""
 "%(site_name)s. Come ultima operazione ti chiediamo di riempire il form qui "
 "sotto:"
 
-#: .\project\urls.py:71
+#: project/urls.py:71
 msgid "search/"
 msgstr "cerca/"
 
-#: .\project\urls.py:73
+#: project/urls.py:73
 msgid "select-language/"
 msgstr "seleziona-lingua/"
 
-#: .\project\urls.py:77
+#: project/urls.py:77
 msgid "articles/"
 msgstr "articoli/"
 
-#: .\users\forms.py:11 .\users\forms.py:43
+#: users/forms.py:11 users/forms.py:43
 msgid "First name"
 msgstr "Nome"
 
-#: .\users\forms.py:14 .\users\forms.py:46
+#: users/forms.py:14 users/forms.py:46
 msgid "Last name"
 msgstr "Cognome"
 
-#: .\users\forms.py:17 .\users\forms.py:49
+#: users/forms.py:17 users/forms.py:49
 msgid "Email"
 msgstr ""
 
-#: .\users\forms.py:24 .\users\forms.py:56 .\users\models.py:90
+#: users/forms.py:24 users/forms.py:56 users/models.py:76
 msgid "Short bio"
 msgstr "Biografia"
 
-#: .\users\forms.py:26 .\users\forms.py:58
+#: users/forms.py:26 users/forms.py:58
 msgid "Talk about yourself"
 msgstr "Qualche notizia su di te"
 
-#: .\users\forms.py:29 .\users\forms.py:61
+#: users/forms.py:29 users/forms.py:61
 msgid "Check to anonymize your profile"
 msgstr "Spunta per anonimizzare il tuo profilo"
 
-#: .\users\forms.py:36
+#: users/forms.py:36
 msgid "Check to delete Avatar"
 msgstr "Spunta per eliminare Avatar"
 
-#: .\users\forms.py:40
+#: users/forms.py:40
 msgid "Change Avatar"
 msgstr "Cambia Avatar"
 
-#: .\users\forms.py:68
+#: users/forms.py:68
 msgid "Check and Confirm to delete* the profile"
 msgstr "Spunta e conferma per eliminare* la registrazione"
 
-#: .\users\forms.py:82
+#: users/forms.py:82
 msgid "Write here the subject"
 msgstr "Scrivi il soggetto"
 
-#: .\users\forms.py:84
+#: users/forms.py:84
 msgid "Write here the message"
 msgstr "Scrivi il messaggio"
 
-#: .\users\models.py:30 .\users\models.py:38
-msgid "Anonymous"
-msgstr "Anonimo"
-
-#: .\users\models.py:61 .\users\models.py:119
+#: users/models.py:59 users/models.py:96
 msgid "User"
 msgstr "Utente"
 
-#: .\users\models.py:62
+#: users/models.py:60
 msgid "Users"
 msgstr "Utenti"
 
-#: .\users\models.py:92
+#: users/models.py:78
 msgid "Anonymize"
 msgstr "Anonimizza"
 
-#: .\users\models.py:94
+#: users/models.py:80
 msgid "Anonymize your account in public pages"
 msgstr "Anonimizza il tuo profilo nelle pagine pubbliche"
 
-#: .\users\models.py:111
+#: users/models.py:88
 msgid "Profiles"
 msgstr "Profili"
 
-#: .\users\models.py:123
+#: users/models.py:100
 msgid "Subject"
 msgstr "Soggetto"
 
-#: .\users\models.py:130
+#: users/models.py:107
 #, python-format
 msgid "Message - %(id)d"
 msgstr "Messaggio - %(id)d"
 
-#: .\users\models.py:133
+#: users/models.py:110
 msgid "Message"
 msgstr "Messaggio"
 
-#: .\users\models.py:134
+#: users/models.py:111
 msgid "Messages"
 msgstr "Messaggi"
 
-#: .\users\views.py:190
+#: users/views.py:199
 msgid "From"
 msgstr "Da"
+
+#~ msgid "Home page"
+#~ msgstr "Home page"
+
+#~ msgid "Image"
+#~ msgstr "Immagine"
+
+#~ msgid "Icon"
+#~ msgstr "Icona"
+
+#~ msgid "Appears on first image"
+#~ msgstr "Appare nella prima immagine"
+
+#~ msgid "Subtitle"
+#~ msgstr "Sottotitolo"
+
+#~ msgid "Website in few words"
+#~ msgstr "Il sito in poche parole"
+
+#~ msgid "Talk about this website"
+#~ msgstr "Descrivi questo sito"
+
+#~ msgid "Home Pages"
+#~ msgstr "Home Page"
+
+#~ msgid "Home page carousel"
+#~ msgstr "Galleria delle homepage"
+
+#~ msgid "Home page carousels"
+#~ msgstr "Gallerie delle homepage"
+
+#~ msgid "Introduction"
+#~ msgstr "Introduzione"
+
+#~ msgid "Author"
+#~ msgstr "Autore"
+
+#~ msgid "Article carousel"
+#~ msgstr "Galleria degli articoli"
+
+#~ msgid "Article carousels"
+#~ msgstr "Gallerie degli articoli"
+
+#~ msgid "Previous"
+#~ msgstr "Precedente"
+
+#~ msgid "Next"
+#~ msgstr "Prossimo"
+
+#~ msgid "by"
+#~ msgstr "di"
+
+#~ msgid "No Home Pages available"
+#~ msgstr "Nessuna home page disponibile"
+
+#~ msgid "Admin"
+#~ msgstr "Amministrazione"
+
+#~ msgid "Select language"
+#~ msgstr "Seleziona la lingua"
+
+#~ msgid "Anonymous"
+#~ msgstr "Anonimo"
