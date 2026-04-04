@@ -28,7 +28,7 @@
     {{ shot.body | safe }}
   </p>
   {% if perms.pages.add_shotgun %}
-    <a href="/admin/pages/shotgun/{{ shot.id}}/change/">
+    <a href="/admin{{ SECRET_ADMIN }}/pages/shotgun/{{ shot.id}}/change/">
       {% translate "Modify" %}
     </a>
   {% endif %}
