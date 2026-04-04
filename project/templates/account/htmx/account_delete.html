@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load bootstrap5 %}
+{% load crispy_forms_tags %}
 
 <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
   <div class="card-header">
@@ -9,7 +9,7 @@
     <p>{% trans "Are you sure you want to delete your profile?" %}</p>
     <form method="POST" action="" >
       {% csrf_token %}
-      {% bootstrap_form form %}
+      {{ form|crispy }}
       <button class="btn btn-danger" type="submit">{% trans "Confirm" %}</button>
     </form>
     <p><small>*{% blocktrans with request.site.name as site_name %}Account will

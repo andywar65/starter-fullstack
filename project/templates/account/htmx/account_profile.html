@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load bootstrap5 %}
+{% load crispy_forms_tags %}
 {% load thumbnail %}
 
 <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
@@ -22,7 +22,7 @@
             alt="">
         </a>
       {% endif %}
-      {% bootstrap_form form %}
+      {{ form|crispy }}
       <button class="btn btn-primary" type="submit">{% trans "Change Profile" %}</button>
       <a class="btn btn-secondary"
         hx-get="{% url 'password_change' %}"

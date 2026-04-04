@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load bootstrap5 %}
+{% load crispy_forms_tags %}
 
 <div class="card mx-auto" style="max-width: 480px; margin-top: 60px">
   <div class="card-header">
@@ -12,7 +12,7 @@
       </p>
     {% endif %}
     <form hx-post="{% url 'account_contact' %}" hx-target="#content">
-      {% bootstrap_form form %}
+      {{ form|crispy }}
       <button class="btn btn-primary" type="submit">{% trans 'Send message' %}</button>
     </form>
   </div>

@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
-    "bootstrap5",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "django_htmx",
     "debug_toolbar",
     "easy_thumbnails",
@@ -160,6 +161,9 @@ STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 STATIC_ROOT = env.str("STATIC_ROOT")  # no trailing slash
 STATIC_URL = env.str("STATIC_URL", default="/static/")
 
@@ -178,6 +182,8 @@ TINYMCE_DEFAULT_CONFIG = {
     "alignright alignjustify | bullist numlist outdent indent | "
     "removeformat | help",
 }
+
+THUMBNAIL_DEFAULT_STORAGE_ALIAS = "default"
 
 # Mail configuration
 

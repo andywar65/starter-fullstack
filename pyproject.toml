@@ -16,12 +16,13 @@ name = "starter-fullstack"
 version = "0.1.0"
 description = "Django app for digitalkOmiX.com"
 readme = "README.md"
-requires-python = "==3.10.*"
+requires-python = "==3.13.*"
 dependencies = [
-    "django>=4.1,<4.2",
+    "django>=6.0",
     "psycopg2-binary",
     "django-allauth",
-    "django-bootstrap-v5",
+    "django-crispy-forms",
+    "crispy-bootstrap5",
     "django-htmx",
     "django-modeltranslation",
     "environs[django]",
