@@ -55,7 +55,6 @@ class ShotgunImageInline(admin.TabularInline):
         "description",
         "filer_image",
     )
-    sortable_field_name = "position"
     extra = 0
 
 
@@ -65,7 +64,13 @@ class ShotgunAdmin(admin.ModelAdmin):
         "title",
         "date",
     )
-    exclude = ("image",)
+    fields = (
+        "title",
+        "slug",
+        "body",
+        "date",
+    )
+    prepopulated_fields = {"slug": ("title",)}
     inlines = [
         ShotgunImageInline,
     ]

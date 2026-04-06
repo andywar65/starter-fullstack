@@ -1,5 +1,6 @@
 from django.contrib.sites.models import Site
 from django.db import models
+from django.utils.text import slugify
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from filer.fields.image import FilerImageField
@@ -50,6 +51,7 @@ class Shotgun(models.Model):
     title = models.CharField(
         _("Title"), help_text=_("The title of the article"), max_length=100
     )
+    slug = models.SlugField(_("Slug"), max_length=120, null=True, blank=True)
     body = HTMLField(_("Text"), null=True)
     date = models.DateTimeField(
         _("Date"),
@@ -68,6 +70,11 @@ class Shotgun(models.Model):
             if img.filer_image.width > img.filer_image.height:
                 return "max-width: 960px"
         return "max-width: 480px"
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class ShotgunImage(models.Model):

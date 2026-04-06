@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block extra-head %}
-  <meta property="og:url" content="https://{{ request.site.domain }}{% url 'pages:shotgun_detail' pk=shot.id %}">
+  <meta property="og:url" content="https://{{ request.site.domain }}{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}">
   <meta property="og:title" content="{{ request.site.name }} - {{ shot.title }}">
   {% if shot.shotgun_image %}
     <meta property="og:image" content="https://{{ request.site.domain }}{{ shot.shotgun_image.first.filer_image.url }}">
