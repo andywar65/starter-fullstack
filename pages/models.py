@@ -51,7 +51,7 @@ class Shotgun(models.Model):
         _("Title"), help_text=_("The title of the article"), max_length=100
     )
     body = HTMLField(_("Text"), null=True)
-    date = models.DateField(
+    date = models.DateTimeField(
         _("Date"),
         default=now,
     )
