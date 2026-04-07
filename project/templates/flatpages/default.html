@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
-{% load i18n %}
-
-{% block head_title %}{{ flatpage.title }}{% endblock %}
+{% block extra-head %}
+  <meta property="og:url" content="https://{{ request.site.domain }}{{ flatpage.url }}">
+  <meta property="og:title" content="{{ request.site.name }} - {{ flatpage.title }}">
+  <meta property="og:image" content="{% if logo %}https://{{ request.site.domain }}{{ logo.image.url }}{% endif %}">
+  <meta property="og:site_name" content="{{ request.site.name }}">
+{% endblock extra-head %}
 
 {% block content %}
   <div class="card mx-auto" style="max-width: 960px; margin-top: 60px">
