@@ -5,7 +5,7 @@ from django.http import Http404
 from django.template.response import TemplateResponse
 from django.views.generic import TemplateView
 
-from pages.models import Shotgun
+from pages.models import Shotgun, ShotgunImage
 from users.views import HxTemplateMixin
 
 
@@ -55,6 +55,13 @@ def search_results(request):
         if shots:
             shots = shots.order_by("-rank")
             success = True
+        # search in shotgun images, no language required
+        v = SearchVector("description")
+        images = ShotgunImage.objects.annotate(rank=SearchRank(v, q))
+        images = images.filter(rank__gt=0.01)
+        if images:
+            images = images.order_by("-rank")
+            success = True
 
         return TemplateResponse(
             request,
@@ -63,6 +70,7 @@ def search_results(request):
                 "search": request.GET["q"],
                 "flatpages": flatpages,
                 "shots": shots,
+                "images": images,
                 "success": success,
             },
         )
