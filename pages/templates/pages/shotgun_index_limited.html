@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block extra-head %}
   <meta property="og:url" content="https://{{ request.site.domain }}{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}">
   <meta property="og:title" content="{{ request.site.name }} - {{ shot.title }}">
   {% if shot.shotgun_image %}
-    <meta property="og:image" content="https://{{ request.site.domain }}{{ shot.shotgun_image.first.filer_image.url }}">
+    <meta property="og:image" content="https://{{ request.site.domain }}{% thumbnail shot.shotgun_image.first.filer_image 285x285 crop %}">
+    <meta property="og:image:width" content="285">
+    <meta property="og:image:height" content="285">
+    <meta property="og:image:alt" content="{{ shot.shotgun_image.first.description }}">
   {% elif logo %}
     <meta property="og:image" content="https://{{ request.site.domain }}{{ logo.filer_image.url }}">
   {% endif %}
