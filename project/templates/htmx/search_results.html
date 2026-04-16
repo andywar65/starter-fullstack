@@ -14,9 +14,9 @@
           <ul>
             <li>
               <span><a class="link link-primary"
-                hx-get="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}"
-                hx-target="#content"
-                hx-push-url="true">{{ shot.title }}</a>
+                href="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}">
+                {{ shot.title }}
+              </a>
                 {{ shot.body|truncatewords:10|safe }}</span>
             </li>
           </ul>
@@ -31,9 +31,9 @@
                 "{{ image.description|truncatewords:10 }}"
                 {% translate 'in' %}
                 <a class="link link-primary"
-                  hx-get="{% url 'pages:shotgun_detail' pk=image.shot.id slug=image.shot.slug %}"
-                  hx-target="#content"
-                  hx-push-url="true">{{ image.shot.title }}</a>
+                  href="{% url 'pages:shotgun_detail' pk=image.shot.id slug=image.shot.slug %}">
+                  {{ image.shot.title }}
+                </a>
               </span>
             </li>
           </ul>
