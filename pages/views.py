@@ -14,18 +14,6 @@ from .forms import ShotgunCreateForm
 from .models import Shotgun, ShotgunImage
 
 
-class HxPageTemplateMixin:
-    """Switches template depending on request.htmx and pagination"""
-
-    def get_template_names(self):
-        if not self.request.htmx:
-            return [self.template_name.replace("htmx/", "")]
-        elif "page" in self.request.GET:
-            return ["pages/includes/infinite_scroll.html"]
-        else:
-            return [self.template_name]
-
-
 class ShotgunArchiveIndexView(ArchiveIndexView):
     model = Shotgun
     date_field = "date"
@@ -37,10 +25,7 @@ class ShotgunArchiveIndexView(ArchiveIndexView):
     def get_template_names(self):
         if not self.request.htmx:
             return [self.template_name.replace("htmx/", "")]
-        elif "page" in self.request.GET:
-            return ["pages/includes/shotgun_list.html"]
-        else:
-            return [self.template_name]
+        return [self.template_name]
 
 
 class ShotgunArchiveLimited(ShotgunArchiveIndexView):
@@ -61,10 +46,7 @@ class ShotgunArchiveLimited(ShotgunArchiveIndexView):
     def get_template_names(self):
         if not self.request.htmx:
             return ["pages/shotgun_index_limited.html"]
-        elif "page" in self.request.GET:
-            return ["pages/includes/shotgun_list.html"]
-        else:
-            return [self.template_name]
+        return [self.template_name]
 
 
 class ShotgunDetailView(DetailView):
