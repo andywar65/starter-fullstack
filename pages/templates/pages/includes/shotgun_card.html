@@ -24,10 +24,13 @@
   <p>
     {{ shot.date|date:"d M Y" }}
   </p>
-  <p>
-    {{ shot.body | safe }}
-  </p>
+  {{ shot.body | safe }}
+  <a class="link link-primary"
+    href="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}">
+    {% translate "Link to this article" %}
+  </a>
   {% if perms.pages.add_shotgun %}
+    <br>
     <a href="/admin{{ SECRET_ADMIN }}/pages/shotgun/{{ shot.id}}/change/">
       {% translate "Modify" %}
     </a>
