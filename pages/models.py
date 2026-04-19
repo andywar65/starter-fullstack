@@ -1,4 +1,3 @@
-from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.text import slugify
 from django.utils.timezone import now
@@ -39,12 +38,17 @@ class FooterLink(models.Model):
 
 
 def default_intro():
-    # following try/except for test to work
-    try:
-        current_site = Site.objects.get_current()
-        return _("Another article by %(name)s!") % {"name": current_site.name}
-    except Site.DoesNotExist:
-        return _("Another article by this site!")
+    text = """
+<p>Introduction</p>
+<details>
+<summary>English text</summary>
+<p>English text</p>
+</details>
+<details>
+<summary>Testo in italiano</summary>
+<p>Testo in italiano</p>
+</details>"""
+    return text
 
 
 class Shotgun(models.Model):
@@ -52,7 +56,7 @@ class Shotgun(models.Model):
         _("Title"), help_text=_("The title of the article"), max_length=100
     )
     slug = models.SlugField(_("Slug"), max_length=120, null=True, blank=True)
-    body = HTMLField(_("Text"), null=True)
+    body = HTMLField(_("Text"), default=default_intro)
     date = models.DateTimeField(
         _("Date"),
         default=now,
@@ -94,7 +98,7 @@ class ShotgunImage(models.Model):
     filer_image = FilerImageField(
         null=True, related_name="shotgun_filer_image", on_delete=models.SET_NULL
     )
-    position = models.PositiveSmallIntegerField(_("Position"), null=True)
+    position = models.PositiveSmallIntegerField(_("Position"), default=0)
 
     class Meta:
         verbose_name = _("Shotgun image")
