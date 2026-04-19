@@ -11,7 +11,7 @@ from django.views.generic.edit import FormView
 from filer.models import Image
 
 from .forms import ShotgunCreateForm
-from .models import Shotgun, ShotgunImage
+from .models import Shotgun, ShotgunImage, default_intro
 
 
 class ShotgunArchiveIndexView(ArchiveIndexView):
@@ -73,6 +73,11 @@ class ShotgunCreateFormView(PermissionRequiredMixin, FormView):
             return [self.template_name.replace("htmx/", "")]
         else:
             return [self.template_name]
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial["body"] = default_intro()
+        return initial
 
     def form_valid(self, form):
         # assign Shotgun form fields
