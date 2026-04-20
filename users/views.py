@@ -1,3 +1,5 @@
+import json
+
 from allauth.account.models import EmailAddress
 from allauth.account.views import (
     EmailView,
@@ -145,6 +147,13 @@ class ProfileChangeView(PermissionRequiredMixin, HxTemplateMixin, FormView):
         if "submitted" in self.request.GET:
             context["submitted"] = self.request.GET["submitted"]
         return context
+
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        if request.htmx:
+            dict = {"refreshNavbar": True}
+            response["HX-Trigger-After-Swap"] = json.dumps(dict)
+        return response
 
     def get_success_url(self):
         return reverse("account_profile") + "?submitted=True"
