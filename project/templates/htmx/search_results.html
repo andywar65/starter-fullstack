@@ -2,7 +2,7 @@
 
 <div class="card mx-auto"
   style="max-width: 960px; margin-top: 60px;"
-  script="on click send refreshSearch">
+  script="on click send refreshNavbar">
   {% if success %}
     <div class="card-header">
       <h3>{% translate 'Search' %}: "{{ search }}"</h3>
@@ -14,7 +14,10 @@
           <ul>
             <li>
               <span><a class="link link-primary"
-                href="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}">
+                href="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}"
+                hx-get="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}"
+                hx-target="#content"
+                hx-push-url="true">
                 {{ shot.title }}
               </a>
                 {{ shot.body|truncatewords:10|safe }}</span>
@@ -31,7 +34,10 @@
                 "{{ image.description|truncatewords:10 }}"
                 {% translate 'in' %}
                 <a class="link link-primary"
-                  href="{% url 'pages:shotgun_detail' pk=image.shot.id slug=image.shot.slug %}">
+                  href="{% url 'pages:shotgun_detail' pk=image.shot.id slug=image.shot.slug %}"
+                  hx-get="{% url 'pages:shotgun_detail' pk=image.shot.id slug=image.shot.slug %}"
+                  hx-target="#content"
+                  hx-push-url="true">
                   {{ image.shot.title }}
                 </a>
               </span>
