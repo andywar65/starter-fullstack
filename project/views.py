@@ -16,6 +16,13 @@ def check_htmx_request(request):
         raise Http404("Request without HTMX headers")
 
 
+def nav_bar(request):
+    check_htmx_request(request)
+    template_name = "navbar.html"
+    context = {"user": request.user}
+    return TemplateResponse(request, template_name, context)
+
+
 class SelectLanguageTemplateView(HxTemplateMixin, TemplateView):
     template_name = "htmx/language_selector.html"
 

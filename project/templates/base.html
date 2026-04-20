@@ -22,7 +22,11 @@
     {% endblock extra-head %}
   </head>
   <body class="d-flex flex-column h-100" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    {% include 'navbar.html' %}
+    <div id="navbar"
+      hx-get="{% url 'nav_bar' %}"
+      hx-trigger="refreshNavbar from:body">
+      {% include 'navbar.html' %}
+    </div>
     <main class="flex-shrink-0">
       <div id="content" class="container">
         {% block content %}
