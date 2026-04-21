@@ -94,7 +94,7 @@ class ProfileChangeView(PermissionRequiredMixin, HxTemplateMixin, FormView):
 
     def setup(self, request, *args, **kwargs):
         self.user = request.user
-        super(ProfileChangeView, self).setup(request, *args, **kwargs)
+        super().setup(request, *args, **kwargs)
 
     def get_form_class(self):
         if self.user.profile.image:
@@ -102,7 +102,7 @@ class ProfileChangeView(PermissionRequiredMixin, HxTemplateMixin, FormView):
         return self.form_class
 
     def get_initial(self):
-        initial = super(ProfileChangeView, self).get_initial()
+        initial = super().get_initial()
 
         initial.update(
             {
@@ -125,17 +125,19 @@ class ProfileChangeView(PermissionRequiredMixin, HxTemplateMixin, FormView):
         # assign profile form fields
         profile = self.user.profile
         profile.bio = form.cleaned_data["bio"]
-        if profile.image:
-            profile.image.file = form.cleaned_data["avatar"]
-            profile.image.save()
-        else:
-            image = Image.objects.create(
-                owner=self.user,
-                original_filename=self.user.username,
-                file=form.cleaned_data["avatar"],
-            )
-            profile.image = image
+        if "avatar" in form.cleaned_data and form.cleaned_data["avatar"]:
+            if profile.image:
+                profile.image.file = form.cleaned_data["avatar"]
+                profile.image.save()
+            else:
+                image = Image.objects.create(
+                    owner=self.user,
+                    original_filename=self.user.username,
+                    file=form.cleaned_data["avatar"],
+                )
+                profile.image = image
         if "del_avatar" in form.cleaned_data and form.cleaned_data["del_avatar"]:
+            profile.image.delete()
             profile.image = None
         profile.anonymize = form.cleaned_data["anonymize"]
         profile.save()
