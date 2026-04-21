@@ -29,7 +29,7 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "modeltranslation",
+    # "modeltranslation",
     "tinymce",
     "django.contrib.admin",
     "django.contrib.auth",

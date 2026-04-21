@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from modeltranslation.admin import TranslationTabularInline
 
 from .models import Profile, User, UserMessage
 
+# from modeltranslation.admin import TranslationTabularInline
 
-class ProfileAdmin(TranslationTabularInline):
+
+class ProfileAdmin(admin.TabularInline):
     model = Profile
     extra = 0
 

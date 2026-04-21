@@ -2,19 +2,20 @@ from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
-from modeltranslation.admin import TranslationAdmin
+
+# from modeltranslation.admin import TranslationAdmin
 from tinymce.widgets import TinyMCE
 
 from .models import FooterLink, Logo, Shotgun, ShotgunImage
 
 
 @admin.register(Logo)
-class LogoAdmin(TranslationAdmin):
+class LogoAdmin(admin.ModelAdmin):
     list_display = ("title", "image")
 
 
 @admin.register(FooterLink)
-class FooterLinkAdmin(TranslationAdmin):
+class FooterLinkAdmin(admin.ModelAdmin):
     list_display = ("title", "link")
 
 
