@@ -44,6 +44,9 @@
                   <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
                 {% endfor %}
               {% endif %}
+              <a class="dropdown-item" href="{% url 'pages:shotgun_feed' %}">
+                {% trans 'Article Feed' %}
+              </a>
               {% if perms.pages.add_shotgun %}
                 <hr>
                 <a class="dropdown-item"

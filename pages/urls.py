@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import ShotgunArchiveLimited, ShotgunCreateFormView
+from .views import ShotgunArchiveLimited, ShotgunCreateFormView, ShotgunFeed
 
 app_name = "pages"
 urlpatterns = [
@@ -23,5 +23,10 @@ urlpatterns = [
         "add/",
         ShotgunCreateFormView.as_view(),
         name="shotgun_create",
+    ),
+    path(
+        "feed/",
+        ShotgunFeed(),
+        name="shotgun_feed",
     ),
 ]

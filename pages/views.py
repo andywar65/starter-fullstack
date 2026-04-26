@@ -1,9 +1,11 @@
 from typing import Any
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.syndication.views import Feed
 from django.db.models.query import QuerySet
 from django.http.request import HttpRequest as HttpRequest
 from django.urls import reverse
+from django.utils.html import strip_tags
 from django.utils.text import slugify
 from django.views.generic import DetailView
 from django.views.generic.dates import ArchiveIndexView
@@ -101,3 +103,22 @@ class ShotgunCreateFormView(PermissionRequiredMixin, FormView):
 
     def get_success_url(self):
         return reverse("home")
+
+
+class ShotgunFeed(Feed):
+    title = "digitalkOmiX article Feed"
+    link = "/en/articles/feed/"
+    description = "Updates on new articles in digitalkOmiX.com"
+
+    def items(self):
+        return Shotgun.objects.order_by("-date")[:5]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        # Return the first paragraph as description
+        return strip_tags(item.body.split("\n")[0])
+
+    def item_link(self, item):
+        return reverse("pages:shotgun_detail", args=[item.id, item.slug])
