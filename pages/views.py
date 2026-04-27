@@ -125,4 +125,4 @@ class ShotgunFeed(Feed):
         return strip_tags(item.body.split("\n")[0])
 
     def item_link(self, item):
-        return reverse("pages:shotgun_detail", args=[item.id, item.slug])
+        return item.get_absolute_url()

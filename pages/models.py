@@ -1,4 +1,9 @@
+import requests
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.db import models
+from django.urls import reverse
+from django.utils.html import strip_tags
 from django.utils.text import slugify
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
@@ -71,6 +76,9 @@ class Shotgun(models.Model):
             "-date",
         ]
 
+    def get_absolute_url(self):
+        return reverse("pages:shotgun_detail", args=[self.id, self.slug])
+
     def get_card_width(self):
         for img in self.shotgun_image.all():
             if img.filer_image.width > img.filer_image.height:
@@ -80,9 +88,16 @@ class Shotgun(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        if self.toot:
+        if self.toot and self.published:
             # Handle Mastodon publishing logic here
-            # Reset toot to False after handling
+            domain = Site.objects.get_current().domain
+            body = strip_tags(self.body.split("\n")[0])
+            requests.post(
+                settings.MASTODON_HOST,
+                headers={"Authorization": f"Bearer {settings.MASTODON_TOKEN}"},
+                data={"status": f"{body}\n https://{domain}{self.get_absolute_url()}"},
+            )
+            # Reset toot to False after handling Mastodon publishing
             self.toot = False
         super().save(*args, **kwargs)
 

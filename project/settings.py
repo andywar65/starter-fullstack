@@ -200,6 +200,9 @@ SERVER_EMAIL = env.str("SERVER_EMAIL", default="root@localhost")
 DEFAULT_FROM_EMAIL = env.str("DEFAULT_FROM_EMAIL", default="webmaster@localhost")
 EMAIL_RECIPIENT = env.str("EMAIL_RECIPIENT", default="me@example.com")
 
+MASTODON_HOST = env.str("MASTODON_HOST")
+MASTODON_TOKEN = env.str("MASTODON_TOKEN")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
