@@ -64,8 +64,10 @@ class ShotgunAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "date",
+        "published",
     )
     fields = (
+        "published",
         "title",
         "slug",
         "body",

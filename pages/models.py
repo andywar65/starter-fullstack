@@ -52,6 +52,7 @@ def default_intro():
 
 
 class Shotgun(models.Model):
+    published = models.BooleanField(_("Published"), default=True)
     title = models.CharField(
         _("Title"), help_text=_("The title of the article"), max_length=100
     )
