@@ -24,6 +24,10 @@ class ShotgunArchiveIndexView(ArchiveIndexView):
     allow_empty = True
     template_name = "pages/htmx/shotgun_index.html"
 
+    def get_queryset(self) -> QuerySet[Any]:
+        qs = Shotgun.objects.filter(published=True)
+        return qs
+
     def get_template_names(self):
         if not self.request.htmx:
             return [self.template_name.replace("htmx/", "")]
@@ -37,7 +41,7 @@ class ShotgunArchiveLimited(ShotgunArchiveIndexView):
         return super().setup(request, *args, **kwargs)
 
     def get_queryset(self) -> QuerySet[Any]:
-        qs = Shotgun.objects.filter(date__lte=self.shot.date)
+        qs = Shotgun.objects.filter(date__lte=self.shot.date, published=True)
         return qs
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
@@ -111,7 +115,7 @@ class ShotgunFeed(Feed):
     description = "Updates on new articles in digitalkOmiX.com"
 
     def items(self):
-        return Shotgun.objects.order_by("-date")[:5]
+        return Shotgun.objects.filter(published=True).order_by("-date")[:5]
 
     def item_title(self, item):
         return item.title

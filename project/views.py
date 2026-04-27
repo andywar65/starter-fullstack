@@ -57,14 +57,16 @@ def search_results(request):
             success = True
         # search in shotgun articles, no language required
         v = SearchVector("title", "body")
-        shots = Shotgun.objects.annotate(rank=SearchRank(v, q))
+        shots = Shotgun.objects.filter(published=True).annotate(rank=SearchRank(v, q))
         shots = shots.filter(rank__gt=0.01)
         if shots:
             shots = shots.order_by("-rank")
             success = True
         # search in shotgun images, no language required
         v = SearchVector("description")
-        images = ShotgunImage.objects.annotate(rank=SearchRank(v, q))
+        images = ShotgunImage.objects.filter(shot__published=True).annotate(
+            rank=SearchRank(v, q)
+        )
         images = images.filter(rank__gt=0.01)
         if images:
             images = images.order_by("-rank")
