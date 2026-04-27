@@ -68,6 +68,7 @@ class ShotgunAdmin(admin.ModelAdmin):
     )
     fields = (
         "published",
+        "toot",
         "title",
         "slug",
         "body",

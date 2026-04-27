@@ -53,6 +53,7 @@ def default_intro():
 
 class Shotgun(models.Model):
     published = models.BooleanField(_("Published"), default=True)
+    toot = models.BooleanField(_("Publish to Mastodon"), default=False)
     title = models.CharField(
         _("Title"), help_text=_("The title of the article"), max_length=100
     )
@@ -79,6 +80,10 @@ class Shotgun(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        if self.toot:
+            # Handle Mastodon publishing logic here
+            # Reset toot to False after handling
+            self.toot = False
         super().save(*args, **kwargs)
 
 
