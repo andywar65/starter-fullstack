@@ -7,13 +7,13 @@ from django.http.request import HttpRequest as HttpRequest
 from django.urls import reverse
 from django.utils.html import strip_tags
 from django.utils.text import slugify
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.views.generic.dates import ArchiveIndexView
 from django.views.generic.edit import FormView
 from filer.models import Image
 
 from .forms import ShotgunCreateForm
-from .models import Shotgun, ShotgunImage, default_intro
+from .models import Shotgun, ShotgunImage, Story, default_intro
 
 
 class ShotgunArchiveIndexView(ArchiveIndexView):
@@ -126,3 +126,14 @@ class ShotgunFeed(Feed):
 
     def item_link(self, item):
         return item.get_absolute_url()
+
+
+class StoryListView(ListView):
+    model = Story
+    template_name = "pages/htmx/story_list.html"
+
+    def get_template_names(self):
+        if not self.request.htmx:
+            return [self.template_name.replace("htmx/", "")]
+        else:
+            return [self.template_name]
