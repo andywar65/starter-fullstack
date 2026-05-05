@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 # from modeltranslation.admin import TranslationAdmin
 from tinymce.widgets import TinyMCE
 
-from .models import FooterLink, Logo, Shotgun, ShotgunImage
+from .models import FooterLink, Logo, Shotgun, ShotgunImage, Story
 
 
 @admin.register(Logo)
@@ -78,3 +78,17 @@ class ShotgunAdmin(admin.ModelAdmin):
     inlines = [
         ShotgunImageInline,
     ]
+
+
+@admin.register(Story)
+class StoryAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "description",
+    )
+    fields = (
+        "title",
+        "slug",
+        "description",
+    )
+    prepopulated_fields = {"slug": ("title",)}

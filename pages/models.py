@@ -127,3 +127,24 @@ class ShotgunImage(models.Model):
         ordering = [
             "position",
         ]
+
+
+class Story(models.Model):
+    title = models.CharField(
+        _("Title"), help_text=_("The title of the story"), max_length=100
+    )
+    slug = models.SlugField(_("Slug"), max_length=120, null=True, blank=True)
+    description = models.CharField(
+        _("Description"),
+        help_text=_("Description of the story"),
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        verbose_name = _("Shotgun story")
+        verbose_name_plural = _("Shotgun stories")
+        ordering = [
+            "title",
+        ]
