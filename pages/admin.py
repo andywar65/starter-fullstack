@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 # from modeltranslation.admin import TranslationAdmin
 from tinymce.widgets import TinyMCE
 
-from .models import FooterLink, Logo, Shotgun, ShotgunImage, Story
+from .models import FooterLink, Logo, Shot2Story, Shotgun, ShotgunImage, Story
 
 
 @admin.register(Logo)
@@ -59,6 +59,18 @@ class ShotgunImageInline(admin.TabularInline):
     extra = 0
 
 
+class Shot2StoryInline(admin.TabularInline):
+    model = Shot2Story
+    fields = ("story",)
+    extra = 0
+
+
+class Story2ShotInline(admin.TabularInline):
+    model = Shot2Story
+    fields = ("shot", "position")
+    extra = 0
+
+
 @admin.register(Shotgun)
 class ShotgunAdmin(admin.ModelAdmin):
     list_display = (
@@ -77,6 +89,7 @@ class ShotgunAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     inlines = [
         ShotgunImageInline,
+        Shot2StoryInline,
     ]
 
 
@@ -92,3 +105,6 @@ class StoryAdmin(admin.ModelAdmin):
         "description",
     )
     prepopulated_fields = {"slug": ("title",)}
+    inlines = [
+        Story2ShotInline,
+    ]

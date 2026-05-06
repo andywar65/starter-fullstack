@@ -76,6 +76,9 @@ class Shotgun(models.Model):
             "-date",
         ]
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse("pages:shotgun_detail", args=[self.id, self.slug])
 
@@ -147,4 +150,30 @@ class Story(models.Model):
         verbose_name_plural = _("Shotgun stories")
         ordering = [
             "title",
+        ]
+
+    def __str__(self):
+        return self.title
+
+
+class Shot2Story(models.Model):
+    shot = models.ForeignKey(
+        Shotgun,
+        on_delete=models.CASCADE,
+        related_name="shotgun_story",
+        verbose_name=_("Article"),
+    )
+    story = models.ForeignKey(
+        Story,
+        on_delete=models.CASCADE,
+        related_name="story_shotgun",
+        verbose_name=_("Story"),
+    )
+    position = models.PositiveSmallIntegerField(_("Position"), default=0)
+
+    class Meta:
+        verbose_name = _("Shotgun story association")
+        verbose_name_plural = _("Shotgun story associations")
+        ordering = [
+            "position",
         ]
