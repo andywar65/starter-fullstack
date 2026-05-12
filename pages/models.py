@@ -144,6 +144,10 @@ class Story(models.Model):
         null=True,
         blank=True,
     )
+    shots = models.ManyToManyField(
+        Shotgun,
+        through="Shot2Story",
+    )
 
     class Meta:
         verbose_name = _("Shotgun story")
