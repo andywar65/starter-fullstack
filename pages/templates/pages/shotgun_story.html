@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 {% block extra-head %}
+  <meta property="og:url" content="https://{{ request.site.domain }}{% url 'pages:story_detail' pk=story.id slug=story.slug %}">
+  <meta property="og:title" content="{{ request.site.name }} - {{ story.title }}">
+  {% if story.shots.first.shotgun_image %}
+    <meta property="og:image" content="https://{{ request.site.domain }}{% thumbnail story.shots.first.shotgun_image.first.filer_image 285x285 crop %}">
+    <meta property="og:image:width" content="285">
+    <meta property="og:image:height" content="285">
+    <meta property="og:image:alt" content="{{ story.shots.first.shotgun_image.first.description }}">
+  {% elif logo %}
+    <meta property="og:image" content="https://{{ request.site.domain }}{{ logo.filer_image.url }}">
+  {% endif %}
+  <meta property="og:site_name" content="{{ request.site.name }}">
 {% endblock extra-head %}
 
 {% block content %}

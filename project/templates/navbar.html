@@ -43,12 +43,18 @@
                 {% for page in flatpages %}
                   <a class="dropdown-item" href="{{ page.url }}">{{ page.title }}</a>
                 {% endfor %}
+                <hr>
               {% endif %}
+              <a class="dropdown-item"
+                href="{% url 'pages:story_list' %}"
+                hx-get="{% url 'pages:story_list' %}"
+                hx-target="#content"
+                hx-push-url="true">{% trans 'Stories' %}
+              </a>
               <a class="dropdown-item" href="{% url 'pages:shotgun_feed' %}">
                 {% trans 'Article Feed' %}
               </a>
               {% if perms.pages.add_shotgun %}
-                <hr>
                 <a class="dropdown-item"
                   hx-get="{% url 'pages:shotgun_create' %}"
                   hx-target="#content"
