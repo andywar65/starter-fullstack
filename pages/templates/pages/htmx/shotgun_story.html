@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<div class="card mx-auto"
+  style="max-width: 960px; margin-top: 60px;">
+  <div class="card-header">
+    <h3>{% translate 'Story' %}: "{{ story.title }}"</h3>
+  </div>
+  <div class="card-body">
+    <p>{{ story.description }}</p>
+  </div>
+</div>
+
+{% include "pages/htmx/shotgun_index.html" %}

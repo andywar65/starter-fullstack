@@ -1,6 +1,11 @@
 from django.urls import path
 
-from .views import ShotgunArchiveLimited, ShotgunCreateFormView, ShotgunFeed
+from .views import (
+    ShotgunArchiveLimited,
+    ShotgunCreateFormView,
+    ShotgunFeed,
+    ShotgunStoryListView,
+)
 
 app_name = "pages"
 urlpatterns = [
@@ -28,5 +33,10 @@ urlpatterns = [
         "feed/",
         ShotgunFeed(),
         name="shotgun_feed",
+    ),
+    path(
+        "stories/<int:pk>/<slug:slug>/",
+        ShotgunStoryListView.as_view(),
+        name="story_detail",
     ),
 ]

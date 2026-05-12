@@ -137,3 +137,33 @@ class StoryListView(ListView):
             return [self.template_name.replace("htmx/", "")]
         else:
             return [self.template_name]
+
+
+class ShotgunStoryListView(ListView):
+    model = Shotgun
+    context_object_name = "shots"
+    paginate_by = 6
+    allow_empty = True
+    template_name = "pages/htmx/shotgun_story.html"
+
+    def setup(self, request, *args, **kwargs):
+        super().setup(request, *args, **kwargs)
+        self.story = Story.objects.get(id=kwargs["pk"])
+
+    def get_queryset(self) -> QuerySet[Any]:
+        qs = (
+            self.story.shots.all()
+            .filter(published=True)
+            .order_by("shotgun_story__position")
+        )
+        return qs
+
+    def get_template_names(self):
+        if not self.request.htmx:
+            return [self.template_name.replace("htmx/", "")]
+        return [self.template_name]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["story"] = self.story
+        return context
