@@ -10,7 +10,7 @@
     <meta property="og:image:height" content="285">
     <meta property="og:image:alt" content="{{ story.shots.first.shotgun_image.first.description }}">
   {% elif logo %}
-    <meta property="og:image" content="https://{{ request.site.domain }}{{ logo.filer_image.url }}">
+    <meta property="og:image" content="https://{{ request.site.domain }}{{ logo.image.url }}">
   {% endif %}
   <meta property="og:site_name" content="{{ request.site.name }}">
 {% endblock extra-head %}

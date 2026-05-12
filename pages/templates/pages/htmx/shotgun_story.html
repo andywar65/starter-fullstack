@@ -7,6 +7,16 @@
   </div>
   <div class="card-body">
     <p>{{ story.description }}</p>
+    <a class="link link-primary"
+      href="{% url 'pages:story_detail' pk=story.id slug=story.slug %}">
+      {% translate "Link to this story" %}
+    </a>
+    {% if perms.pages.add_story %}
+      <br>
+      <a href="/admin{{ SECRET_ADMIN }}/pages/story/{{ story.id}}/change/">
+        {% translate "Modify" %}
+      </a>
+    {% endif %}
   </div>
 </div>
 
