@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
+{% load i18n %}
+
+{% block extra-head %}
+  <meta property="og:url" content="https://{{ request.site.domain }}{% url 'pages:story_list' %}">
+  <meta property="og:title" content="{{ request.site.name }} - {% translate 'Stories' %}">
+  {% if logo %}
+    <meta property="og:image" content="https://{{ request.site.domain }}{{ logo.filer_image.url }}">
+  {% endif %}
+  <meta property="og:site_name" content="{{ request.site.name }}">
+{% endblock extra-head %}
 
 {% block content %}
   {% include 'pages/htmx/story_list.html' %}

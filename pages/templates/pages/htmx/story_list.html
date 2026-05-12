@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<div class="card mx-auto"
+  style="max-width: 960px; margin-top: 60px;">
+  <div class="card-header">
+    <h3>{% translate 'Stories' %}</h3>
+  </div>
+  <div class="card-body">
+    {% if object_list %}
+      <ul>
+        {% for story in object_list %}
+          <span><a class="link link-primary"
+            href="{% url 'pages:story_detail' pk=story.id slug=story.slug %}"
+            hx-get="{% url 'pages:story_detail' pk=story.id slug=story.slug %}"
+            hx-target="#content"
+            hx-push-url="true">
+            {{ story.title }}
+          </a>
+            {{ story.description }}</span>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>{% translate 'No stories available.' %}</p>
+    {% endif %}
+  </div>
+</div>
