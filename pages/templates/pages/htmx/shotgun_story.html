@@ -1,23 +1,26 @@
 {% load i18n %}
 
-<div class="card mx-auto"
-  style="max-width: 960px; margin-top: 60px;">
-  <div class="card-header">
-    <h3>{% translate 'Story' %}: "{{ story.title }}"</h3>
-  </div>
-  <div class="card-body">
-    <p>{{ story.description }}</p>
-    <a class="link link-primary"
-      href="{% url 'pages:story_detail' pk=story.id slug=story.slug %}">
-      {% translate "Link to this story" %}
-    </a>
-    {% if perms.pages.add_story %}
-      <br>
-      <a href="/admin{{ SECRET_ADMIN }}/pages/story/{{ story.id}}/change/">
-        {% translate "Modify" %}
+{# Story title card appears only in first iteration of pagination loop #}
+{% if not page_obj.has_previous %}
+  <div class="card mx-auto"
+    style="max-width: 960px; margin-top: 60px;">
+    <div class="card-header">
+      <h3>{% translate 'Story' %}: "{{ story.title }}"</h3>
+    </div>
+    <div class="card-body">
+      <p>{{ story.description }}</p>
+      <a class="link link-primary"
+        href="{% url 'pages:story_detail' pk=story.id slug=story.slug %}">
+        {% translate "Link to this story" %}
       </a>
-    {% endif %}
+      {% if perms.pages.add_story %}
+        <br>
+        <a href="/admin{{ SECRET_ADMIN }}/pages/story/{{ story.id}}/change/">
+          {% translate "Modify" %}
+        </a>
+      {% endif %}
+    </div>
   </div>
-</div>
+{% endif %}
 
 {% include "pages/htmx/shotgun_index.html" %}

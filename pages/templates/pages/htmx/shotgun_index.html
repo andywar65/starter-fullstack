@@ -1,8 +1,11 @@
 {% include "pages/includes/shotgun_list.html" %}
 {% if page_obj.has_next %}
+  {# remember that shotgun detail is never called #}
   <p
     {% if shot %}
       hx-get="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}?page={{ page_obj.next_page_number }}"
+    {% elif story %}
+      hx-get="{% url 'pages:story_detail' pk=story.id slug=story.slug %}?page={{ page_obj.next_page_number }}"
     {% else %}
       hx-get="{% url 'home' %}?page={{ page_obj.next_page_number }}"
     {% endif %}
