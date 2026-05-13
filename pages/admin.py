@@ -92,6 +92,13 @@ class ShotgunAdmin(admin.ModelAdmin):
         ShotgunImageInline,
         Shot2StoryInline,
     ]
+    actions = [
+        "associate_with_story",
+    ]
+
+    @admin.action(description=_("Associate selected articles with a story"))
+    def associate_with_story(self, request, queryset):
+        pass
 
 
 @admin.register(Story)
