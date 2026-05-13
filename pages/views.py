@@ -176,11 +176,11 @@ class StorySelectFormView(FormView):
     def form_valid(self, form):
         story = form.cleaned_data["story"]
         # Get articles from queryset in GET and associate them with the selected story
-        article_ids = self.request.GET.getlist("ids")
+        article_ids = list(self.request.GET["ids"])
         articles = Shotgun.objects.filter(id__in=article_ids)
         for article in articles:
             Shot2Story.objects.create(shot=article, story=story)
-        return super().form_valid(form)
+        return
 
     def get_success_url(self):
-        return reverse("admin:shotgun_list")
+        return "admin/pages/shotgun/"

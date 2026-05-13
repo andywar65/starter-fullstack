@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <p>{% trans "Choose a story to associate the selected articles with:" %}</p>
+  <form action="" method="post">{% csrf_token %}
+    {{ form }}
+    <input type="submit" name="apply" value="{% trans 'Send' %}" />
+  </form>
+{% endblock %}

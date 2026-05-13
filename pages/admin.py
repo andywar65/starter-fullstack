@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 # from modeltranslation.admin import TranslationAdmin
@@ -98,7 +100,10 @@ class ShotgunAdmin(admin.ModelAdmin):
 
     @admin.action(description=_("Associate selected articles with a story"))
     def associate_with_story(self, request, queryset):
-        pass
+        selected = queryset.values_list("pk", flat=True)
+        return HttpResponseRedirect(
+            reverse("pages:shotgun_associate") + "?ids=" + ",".join(map(str, selected))
+        )
 
 
 @admin.register(Story)

@@ -6,6 +6,7 @@ from .views import (
     ShotgunFeed,
     ShotgunStoryListView,
     StoryListView,
+    StorySelectFormView,
 )
 
 app_name = "pages"
@@ -29,6 +30,11 @@ urlpatterns = [
         "add/",
         ShotgunCreateFormView.as_view(),
         name="shotgun_create",
+    ),
+    path(
+        "associate/",
+        StorySelectFormView.as_view(),
+        name="shotgun_associate",
     ),
     path(
         "feed/",
