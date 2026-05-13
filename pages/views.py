@@ -12,8 +12,8 @@ from django.views.generic.dates import ArchiveIndexView
 from django.views.generic.edit import FormView
 from filer.models import Image
 
-from .forms import ShotgunCreateForm
-from .models import Shotgun, ShotgunImage, Story, default_intro
+from .forms import ShotgunCreateForm, StorySelectForm
+from .models import Shot2Story, Shotgun, ShotgunImage, Story, default_intro
 
 
 class ShotgunArchiveIndexView(ArchiveIndexView):
@@ -167,3 +167,20 @@ class ShotgunStoryListView(ListView):
         context = super().get_context_data(**kwargs)
         context["story"] = self.story
         return context
+
+
+class StorySelectFormView(FormView):
+    form_class = StorySelectForm
+    template_name = "pages/admin/story_select.html"
+
+    def form_valid(self, form):
+        story = form.cleaned_data["story"]
+        # Get articles from queryset in GET and associate them with the selected story
+        article_ids = self.request.GET.getlist("ids")
+        articles = Shotgun.objects.filter(id__in=article_ids)
+        for article in articles:
+            Shot2Story.objects.create(shot=article, story=story)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse("admin:shotgun_list")
