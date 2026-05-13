@@ -78,6 +78,7 @@ class ShotgunAdmin(admin.ModelAdmin):
         "date",
         "published",
     )
+    list_editable = ("published",)
     fields = (
         "published",
         "toot",
