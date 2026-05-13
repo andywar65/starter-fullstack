@@ -29,6 +29,21 @@
     href="{% url 'pages:shotgun_detail' pk=shot.id slug=shot.slug %}">
     {% translate "Link to this article" %}
   </a>
+  {% if shot.get_stories and not story %}
+    <br><span><small>
+      {% translate "Stories this article belongs to:" %}
+      {% for story in shot.get_stories %}
+        <a
+          href="{% url 'pages:story_detail' pk=story.id slug=story.slug %}"
+          hx-get="{% url 'pages:story_detail' pk=story.id slug=story.slug %}"
+          hx-target="#content"
+          hx-push-url="true"
+        >
+          {{ story.title }}
+        </a>
+      {% endfor %}
+    </small></span>
+  {% endif %}
   {% if perms.pages.add_shotgun %}
     <br>
     <a href="/admin{{ SECRET_ADMIN }}/pages/shotgun/{{ shot.id}}/change/">

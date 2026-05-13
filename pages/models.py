@@ -104,6 +104,9 @@ class Shotgun(models.Model):
             self.toot = False
         super().save(*args, **kwargs)
 
+    def get_stories(self):
+        return Story.objects.filter(story_shotgun__shot=self)
+
 
 class ShotgunImage(models.Model):
     shot = models.ForeignKey(
