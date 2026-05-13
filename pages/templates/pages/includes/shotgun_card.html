@@ -31,7 +31,7 @@
   </a>
   {% if shot.get_stories and not story %}
     <br><span><small>
-      {% translate "Stories this article belongs to:" %}
+      {% translate "Here you can find related articles:" %}
       {% for story in shot.get_stories %}
         <a
           href="{% url 'pages:story_detail' pk=story.id slug=story.slug %}"
