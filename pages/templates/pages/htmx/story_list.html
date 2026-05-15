@@ -9,14 +9,14 @@
     {% if object_list %}
       <ul>
         {% for story in object_list %}
-          <span><a class="link link-primary"
+          <li><span><a class="link link-primary"
             href="{% url 'pages:story_detail' pk=story.id slug=story.slug %}"
             hx-get="{% url 'pages:story_detail' pk=story.id slug=story.slug %}"
             hx-target="#content"
             hx-push-url="true">
             {{ story.title }}
           </a>
-            {{ story.description }}</span>
+            {{ story.description }}</span></li>
         {% endfor %}
       </ul>
     {% else %}

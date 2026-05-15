@@ -7,5 +7,10 @@
     </div>
   {% endfor %}
 {% else %}
-  <p>{% translate "No articles available" %}</p>
+  <div class="card mx-auto"
+    style="max-width: 960px; margin-top: 60px;">
+    <div class="card-body">
+      <p>{% translate "No articles available" %}</p>
+    </div>
+  </div>
 {% endif %}

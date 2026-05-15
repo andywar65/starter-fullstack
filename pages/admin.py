@@ -133,7 +133,7 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
             )  # noqa
             if created:
                 count += 1
-        self.message_user(request, f"Added {count} articles to story {story.title}.")
+        self.message_user(request, f"Added {count} articles to story '{story.title}'.")
 
 
 @admin.register(Story)
