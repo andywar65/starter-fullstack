@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "easy_thumbnails",
     "filer",
+    "django_admin_action_forms",
     # local
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",

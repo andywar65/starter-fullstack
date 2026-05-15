@@ -28,6 +28,7 @@ sitemaps = {
 }
 
 urlpatterns = [
+    # path("admin/action-forms/", include("django_admin_action_forms.urls")),
     path("admin/", admin.site.urls),
     path("i18n/", include("django.conf.urls.i18n")),
     path("accounts/login/", HTMXLoginView.as_view(), name="account_login"),
