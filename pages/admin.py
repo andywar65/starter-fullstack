@@ -1,9 +1,15 @@
+from django import forms
 from django.contrib import admin
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from django_admin_action_forms import (
+    AdminActionForm,
+    AdminActionFormsMixin,
+    action_with_form,
+)
 
 # from modeltranslation.admin import TranslationAdmin
 from tinymce.widgets import TinyMCE
@@ -73,8 +79,16 @@ class Story2ShotInline(admin.TabularInline):
     extra = 0
 
 
+class AssociateWithStoryForm(AdminActionForm):
+    story = forms.ModelChoiceField(
+        queryset=Story.objects.all(),
+        required=True,
+        label=_("Story to associate with"),
+    )
+
+
 @admin.register(Shotgun)
-class ShotgunAdmin(admin.ModelAdmin):
+class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
     list_display = (
         "title",
         "date",
@@ -95,7 +109,8 @@ class ShotgunAdmin(admin.ModelAdmin):
         Shot2StoryInline,
     ]
     actions = [
-        "associate_with_story",
+        # "associate_with_story",
+        "action_associate_with_story",
     ]
 
     @admin.action(description=_("Associate selected articles with a story"))
@@ -104,6 +119,21 @@ class ShotgunAdmin(admin.ModelAdmin):
         return HttpResponseRedirect(
             reverse("pages:shotgun_associate") + "?ids=" + ",".join(map(str, selected))
         )
+
+    @action_with_form(
+        AssociateWithStoryForm,
+        description=_("Associate selected articles with a story"),
+    )
+    def action_associate_with_story(self, request, queryset, data):
+        story = data["story"]
+        count = 0
+        for shot in queryset:
+            obj, created = Shot2Story.objects.get_or_create(
+                shot=shot, story=story
+            )  # noqa
+            if created:
+                count += 1
+        self.message_user(request, f"Added {count} articles to story {story.title}.")
 
 
 @admin.register(Story)
