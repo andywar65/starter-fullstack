@@ -127,7 +127,7 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
     def action_associate_with_story(self, request, queryset, data):
         story = data["story"]
         count = 0
-        for shot in queryset:
+        for shot in queryset.reverse():
             obj, created = Shot2Story.objects.get_or_create(
                 shot=shot, story=story
             )  # noqa
