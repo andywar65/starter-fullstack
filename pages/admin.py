@@ -134,7 +134,11 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
             )  # noqa
             if created:
                 count += 1
-        self.message_user(request, f'Added {count} Articles to Story "{story.title}".')
+        message = _('Added %(count)s Articles to Story "%(story)s".') % {
+            "count": count,
+            "story": story.title,
+        }
+        self.message_user(request, message)
 
 
 @admin.register(Story)
@@ -169,4 +173,4 @@ class StoryAdmin(admin.ModelAdmin):
                 shot2story.position = last_position
                 shot2story.save(update_fields=["position"])
                 last_position -= 1
-        self.message_user(request, "Reverted Article positions in selected Stories.")
+        self.message_user(request, _("Reverted Article positions in selected Stories."))
