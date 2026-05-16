@@ -167,6 +167,7 @@ class StoryAdmin(AdminActionFormsMixin, admin.ModelAdmin):
     ]
     actions = [
         "revert_article_position",
+        "reorder_article_position",
         "action_delete_shotguns",
     ]
 
@@ -177,12 +178,26 @@ class StoryAdmin(AdminActionFormsMixin, admin.ModelAdmin):
     @admin.action(description=_("Revert Article position in selected Stories"))
     def revert_article_position(self, request, queryset):
         for story in queryset:
-            last_position = story.story_shotgun.last().position
-            for shot2story in story.story_shotgun.all():
-                shot2story.position = last_position
-                shot2story.save(update_fields=["position"])
-                last_position -= 1
+            last_position = story.story_shotgun.count()
+            if last_position:
+                for shot2story in story.story_shotgun.all():
+                    shot2story.position = last_position - 1
+                    shot2story.save(update_fields=["position"])
+                    last_position -= 1
         self.message_user(request, _("Reverted Article positions in selected Stories."))
+
+    @admin.action(description=_("Reorder Article position in selected Stories"))
+    def reorder_article_position(self, request, queryset):
+        for story in queryset:
+            last_position = story.story_shotgun.count()
+            if last_position:
+                for shot2story in story.story_shotgun.all().order_by("shot"):
+                    shot2story.position = last_position - 1
+                    shot2story.save(update_fields=["position"])
+                    last_position -= 1
+        self.message_user(
+            request, _("Reordered Article positions in selected Stories.")
+        )
 
     @action_with_form(
         DeleteShotgunActionForm,
