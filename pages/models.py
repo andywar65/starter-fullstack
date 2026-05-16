@@ -70,8 +70,8 @@ class Shotgun(models.Model):
     )
 
     class Meta:
-        verbose_name = _("Shotgun article")
-        verbose_name_plural = _("Shotgun articles")
+        verbose_name = _("Article")
+        verbose_name_plural = _("Articles")
         ordering = [
             "-date",
         ]
@@ -127,9 +127,12 @@ class ShotgunImage(models.Model):
     )
     position = models.PositiveSmallIntegerField(_("Position"), default=0)
 
+    def __str__(self):
+        return _("Image ") + str(self.id)
+
     class Meta:
-        verbose_name = _("Shotgun image")
-        verbose_name_plural = _("Shotgun images")
+        verbose_name = _("Article image")
+        verbose_name_plural = _("Article images")
         ordering = [
             "position",
         ]
@@ -153,8 +156,8 @@ class Story(models.Model):
     )
 
     class Meta:
-        verbose_name = _("Shotgun story")
-        verbose_name_plural = _("Shotgun stories")
+        verbose_name = _("Story")
+        verbose_name_plural = _("Stories")
         ordering = [
             "title",
         ]
@@ -178,9 +181,12 @@ class Shot2Story(models.Model):
     )
     position = models.PositiveSmallIntegerField(_("Position"), default=0)
 
+    def __str__(self):
+        return _("Association ") + str(self.id)
+
     class Meta:
-        verbose_name = _("Shotgun story association")
-        verbose_name_plural = _("Shotgun story associations")
+        verbose_name = _("Article - Story association")
+        verbose_name_plural = _("Article - Story associations")
         ordering = [
             "position",
         ]

@@ -174,7 +174,7 @@ class StoryAdmin(AdminActionFormsMixin, admin.ModelAdmin):
     def get_article_count(self, obj):
         return obj.story_shotgun.count()
 
-    @admin.action(description=_("Revert Article position in Story"))
+    @admin.action(description=_("Revert Article position in selected Stories"))
     def revert_article_position(self, request, queryset):
         for story in queryset:
             last_position = story.story_shotgun.last().position
