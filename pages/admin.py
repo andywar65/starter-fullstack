@@ -139,8 +139,18 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
         self.message_user(request, message)
 
 
+class DeleteShotgunActionForm(AdminActionForm):
+    # No fields needed
+
+    class Meta:
+        list_objects = True
+        help_text = _(
+            "Are you sure you want to remove all Articles in the selected Stories?"
+        )
+
+
 @admin.register(Story)
-class StoryAdmin(admin.ModelAdmin):
+class StoryAdmin(AdminActionFormsMixin, admin.ModelAdmin):
     list_display = (
         "title",
         "description",
@@ -157,6 +167,7 @@ class StoryAdmin(admin.ModelAdmin):
     ]
     actions = [
         "revert_article_position",
+        "action_delete_shotguns",
     ]
 
     @admin.display(description=_("Articles in Story"))
@@ -172,3 +183,15 @@ class StoryAdmin(admin.ModelAdmin):
                 shot2story.save(update_fields=["position"])
                 last_position -= 1
         self.message_user(request, _("Reverted Article positions in selected Stories."))
+
+    @action_with_form(
+        DeleteShotgunActionForm,
+        description=_("Remove Articles in selected Stories"),
+    )
+    def action_delete_shotguns(self, request, queryset, data):
+        for story in queryset:
+            story.story_shotgun.all().delete()
+        message = _("Removed Articles in %(count)s Stories.") % {
+            "count": queryset.count(),
+        }
+        self.message_user(request, message)
