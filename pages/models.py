@@ -184,3 +184,6 @@ class Shot2Story(models.Model):
         ordering = [
             "position",
         ]
+        constraints = [
+            models.UniqueConstraint(fields=["shot", "story"], name="unique_shot_story")
+        ]
