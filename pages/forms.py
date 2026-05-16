@@ -15,6 +15,8 @@ class ShotgunCreateForm(forms.Form):
 
 
 class StorySelectForm(forms.Form):
+    # This form is never used in the project,
+    # but is here to show how to use action_with_form in the admin
     story = forms.ModelChoiceField(
         queryset=Story.objects.all(),
         label=_("Select Story"),

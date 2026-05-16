@@ -114,6 +114,7 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
     ]
 
     @admin.action(description=_("Associate selected articles with a story"))
+    # never used, use action_with_form instead
     def associate_with_story(self, request, queryset):
         selected = queryset.values_list("pk", flat=True)
         return HttpResponseRedirect(

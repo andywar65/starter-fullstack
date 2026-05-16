@@ -170,6 +170,8 @@ class ShotgunStoryListView(ListView):
 
 
 class StorySelectFormView(FormView):
+    # This view is never used in the project,
+    # but is here to show how to use action_with_form in the admin
     form_class = StorySelectForm
     template_name = "pages/admin/story_select.html"
 

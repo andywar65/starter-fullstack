@@ -16,11 +16,13 @@ urlpatterns = [
         ShotgunArchiveLimited.as_view(),
         name="shotgun_detail",
     ),
+    # legacy URLs without slugs
     path(
         "<int:pk>/",
         ShotgunArchiveLimited.as_view(),
         name="shotgun_detail_unslug",
     ),
+    # legacy URLs with old "shot" prefix
     path(
         "shot/<int:pk>/",
         ShotgunArchiveLimited.as_view(),
@@ -31,6 +33,7 @@ urlpatterns = [
         ShotgunCreateFormView.as_view(),
         name="shotgun_create",
     ),
+    # never used, use action_with_form instead
     path(
         "associate/",
         StorySelectFormView.as_view(),
