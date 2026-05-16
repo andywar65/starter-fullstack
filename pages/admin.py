@@ -129,10 +129,8 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
         story = data["story"]
         count = 0
         for shot in queryset.reverse():
-            obj, created = Shot2Story.objects.get_or_create(
-                shot=shot, story=story, position=count
-            )  # noqa
-            if created:
+            if not Shot2Story.objects.filter(shot=shot, story=story).exists():
+                Shot2Story.objects.create(shot=shot, story=story, position=count)
                 count += 1
         message = _('Added %(count)s Articles to Story "%(story)s".') % {
             "count": count,
