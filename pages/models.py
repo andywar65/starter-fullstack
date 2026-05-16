@@ -187,9 +187,3 @@ class Shot2Story(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["shot", "story"], name="unique_shot_story")
         ]
-
-    def save(self, *args, **kwargs):
-        last_position = Shot2Story.objects.filter(story=self.story).last()
-        if last_position:
-            self.position = last_position.position + 1
-        super().save(*args, **kwargs)

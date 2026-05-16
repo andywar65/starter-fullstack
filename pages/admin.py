@@ -130,7 +130,7 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
         count = 0
         for shot in queryset.reverse():
             obj, created = Shot2Story.objects.get_or_create(
-                shot=shot, story=story
+                shot=shot, story=story, position=count
             )  # noqa
             if created:
                 count += 1
@@ -152,3 +152,16 @@ class StoryAdmin(admin.ModelAdmin):
     inlines = [
         Story2ShotInline,
     ]
+    actions = [
+        "revert_article_position",
+    ]
+
+    @admin.action(description=_("Revert article position in Story"))
+    def revert_article_position(self, request, queryset):
+        for story in queryset:
+            last_position = story.story_shotgun.last().position
+            for shot2story in story.story_shotgun.all():
+                shot2story.position = last_position
+                shot2story.save(update_fields=["position"])
+                last_position -= 1
+        self.message_user(request, "Reverted article positions in selected stories.")
