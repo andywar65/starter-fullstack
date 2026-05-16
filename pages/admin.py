@@ -113,7 +113,7 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
         "action_associate_with_story",
     ]
 
-    @admin.action(description=_("Associate selected articles with a story"))
+    @admin.action(description=_("Associate selected Articles with a Story"))
     # never used, use action_with_form instead
     def associate_with_story(self, request, queryset):
         selected = queryset.values_list("pk", flat=True)
@@ -123,7 +123,7 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
 
     @action_with_form(
         AssociateWithStoryForm,
-        description=_("Associate selected articles with a story"),
+        description=_("Associate selected Articles with a Story"),
     )
     def action_associate_with_story(self, request, queryset, data):
         story = data["story"]
@@ -134,7 +134,7 @@ class ShotgunAdmin(AdminActionFormsMixin, admin.ModelAdmin):
             )  # noqa
             if created:
                 count += 1
-        self.message_user(request, f"Added {count} articles to story '{story.title}'.")
+        self.message_user(request, f'Added {count} Articles to Story "{story.title}".')
 
 
 @admin.register(Story)
@@ -142,6 +142,7 @@ class StoryAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "description",
+        "get_article_count",
     )
     fields = (
         "title",
@@ -156,7 +157,11 @@ class StoryAdmin(admin.ModelAdmin):
         "revert_article_position",
     ]
 
-    @admin.action(description=_("Revert article position in Story"))
+    @admin.display(description=_("Articles in Story"))
+    def get_article_count(self, obj):
+        return obj.story_shotgun.count()
+
+    @admin.action(description=_("Revert Article position in Story"))
     def revert_article_position(self, request, queryset):
         for story in queryset:
             last_position = story.story_shotgun.last().position
@@ -164,4 +169,4 @@ class StoryAdmin(admin.ModelAdmin):
                 shot2story.position = last_position
                 shot2story.save(update_fields=["position"])
                 last_position -= 1
-        self.message_user(request, "Reverted article positions in selected stories.")
+        self.message_user(request, "Reverted Article positions in selected Stories.")
