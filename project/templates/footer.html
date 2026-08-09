@@ -1,6 +1,6 @@
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container">
-    <span class="text-muted">{{ request.site.name }} - 1999 / {% now 'Y' %} </span>
+    <span class="text-muted">{{ request.site.name }} - 1999 / {% now 'Y' %} - </span>
     {% for link in f_links %}
       <a class="link-secondary me-1" href="{{ link.link }}" title="{{ link.title }}">{{ link.title }}</a>
     {% endfor %}
