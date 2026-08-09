@@ -12,17 +12,17 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
   - repo: https://github.com/adamchainz/django-upgrade
-    rev: 1.30.0
+    rev: 1.31.1
     hooks:
       - id: django-upgrade
-        args: [--target-version, "6.0"]
+        args: [--target-version, "6.1"]
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 26.5.0
+    rev: 26.5.1
     hooks:
       - id: black
         language_version: python3.12
   - repo: https://github.com/pycqa/isort
-    rev: 9.0.0a3
+    rev: 9.0.0b1
     hooks:
       - id: isort
         name: isort (python)
